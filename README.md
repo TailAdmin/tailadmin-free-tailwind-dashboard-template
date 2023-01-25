@@ -3,7 +3,7 @@ TailAdmin is a premium-quality, open-source, and free Tailwind CSS admin templat
 powerful web applications and dashboard-admin projects.
 
 
-[![tailadmin](https://plainadmin.com/assets/images/plainadmin.jpg)](https://demo.tailadmin.com/)
+[![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://demo.tailadmin.com/)
 
 
 ### [🚀 View Demo](https://demo.tailadmin.com/)
