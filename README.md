@@ -8,13 +8,13 @@ powerful web applications and dashboard-admin projects.
 
 ### [🚀 View Demo](https://demo.tailadmin.com/)
 
-### [✨ Visit Website](https://tailadmin.com/)
+<!-- ### [✨ Visit Website](https://tailadmin.com/)
 
 ### [⬇️ Download Now](https://tailadmin.com/download)
 
 ### [📄 Documentation/Installation](https://tailadmin.com/docs/)
 
-### [⚡ PRO Version](https://tailadmin.com/pro)
+### [⚡ PRO Version](https://tailadmin.com/pro) -->
 
 ### 100+ Essential UI Components and App Pages
 With TailAdmin, you can launch your web projects quickly and easily, thanks to it contains 100+ pre-designed dashboard elements, components and pages. 
