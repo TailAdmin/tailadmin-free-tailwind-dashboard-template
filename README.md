@@ -8,6 +8,26 @@ powerful web applications and dashboard-admin projects.
 
 ### [🚀 View Demo](https://demo.tailadmin.com/)
 
+### Installation
+
+**Preparation**
+You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it) and serve (an NPM package)
+
+- Use terminal and navigate to the project (tailadmin) root.
+
+- Then run : <code>npm install</code>
+
+- Then run : <code>npm start</code>
+
+Now, in the browser go to <code>localhost:3000</code>
+
+**For Production Build**
+Run : <code>npm run build</code>
+
+This command will generate a Build folder in the root of your template that you can upload to your server.
+
+**DETAILED DOCUMENTATION WILL BE AVAILABLE SOON**
+
 <!-- ### [✨ Visit Website](https://tailadmin.com/)
 
 ### [⬇️ Download Now](https://tailadmin.com/download)
