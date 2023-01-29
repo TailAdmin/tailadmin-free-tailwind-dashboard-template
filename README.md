@@ -10,8 +10,7 @@ powerful web applications and dashboard-admin projects.
 
 ### Installation
 
-**Preparation**
-You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it) and serve (an NPM package)
+You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it)
 
 - Use terminal and navigate to the project (tailadmin) root.
 
