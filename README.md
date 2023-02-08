@@ -3,10 +3,17 @@ TailAdmin is a high-quality, open-source, and **free Tailwind CSS admin template
 powerful web applications and dashboard-admin projects.
 
 
-[![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://demo.tailadmin.com/)
+[![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://tailadmin.com/)
 
 
 ### [🚀 View Demo](https://demo.tailadmin.com/)
+[✨ Visit Website](https://tailadmin.com/)
+
+### [⬇️ Download Now](https://tailadmin.com/download)
+
+### [📄 Documentation/Installation](https://tailadmin.com/docs)
+
+### [⚡ PRO Version](https://tailadmin.com/pricing)
 
 ### Installation
 
@@ -25,15 +32,6 @@ Run : <code>npm run build</code>
 
 This command will generate a Build folder in the root of your template that you can upload to your server.
 
-**DETAILED DOCUMENTATION WILL BE AVAILABLE SOON**
-
-<!-- ### [✨ Visit Website](https://tailadmin.com/)
-
-### [⬇️ Download Now](https://tailadmin.com/download)
-
-### [📄 Documentation/Installation](https://tailadmin.com/docs/)
-
-### [⚡ PRO Version](https://tailadmin.com/pro) -->
 
 ### 100+ Essential UI Components and App Pages
 With TailAdmin, you can launch your web projects quickly and easily, thanks to it contains 100+ pre-designed dashboard elements, components and pages. 
