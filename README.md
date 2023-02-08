@@ -7,7 +7,7 @@ powerful web applications and dashboard-admin projects.
 
 
 ### [🚀 View Demo](https://demo.tailadmin.com/)
-[✨ Visit Website](https://tailadmin.com/)
+### [✨ Visit Website](https://tailadmin.com/)
 
 ### [⬇️ Download Now](https://tailadmin.com/download)
 
