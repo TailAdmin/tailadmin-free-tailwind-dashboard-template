@@ -1,4 +1,4 @@
-import ApexCharts from 'apexcharts';
+import ApexCharts from "apexcharts";
 
 // ===== chartThree
 const chart03 = () => {
@@ -39,11 +39,11 @@ const chart03 = () => {
     ],
   };
 
-  const chartSelector = document.querySelectorAll('#chartThree');
+  const chartSelector = document.querySelectorAll("#chartThree");
 
   if (chartSelector.length) {
     const chartThree = new ApexCharts(
-      document.querySelector('#chartThree'),
+      document.querySelector("#chartThree"),
       chartThreeOptions
     );
     chartThree.render();

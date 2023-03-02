@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+  <title>
+    Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
+  </title>
 </head>
 
 <body
@@ -25,45 +27,49 @@
     <!-- ===== Sidebar End ===== -->
 
     <!-- ===== Content Area Start ===== -->
-    <div class="flex flex-col flex-1 relative overflow-x-hidden overflow-y-auto">
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <!-- ===== Header Start ===== -->
       <include src="./partials/header.html" />
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
           <!-- Breadcrumb Start -->
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-            <h2 class="font-semibold text-title-md2 text-black dark:text-white">Form Layout</h2>
+          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+              Form Layout
+            </h2>
 
             <nav>
               <ol class="flex items-center gap-2">
-                <li><a href="index.html">Dashboard /</a></li>
-                <li class="text-primary">Form Layout</li>
+                <li><a class="font-medium" href="index.html">Dashboard /</a></li>
+                <li class="font-medium text-primary">Form Layout</li>
               </ol>
             </nav>
           </div>
           <!-- Breadcrumb End -->
 
           <!-- ====== Form Layout Section Start -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
+          <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
             <div class="flex flex-col gap-9">
               <!-- Contact Form -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Contact Form</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-semibold text-black dark:text-white">
+                    Contact Form
+                  </h3>
                 </div>
                 <form action="#">
                   <div class="p-6.5">
-                    <div class="flex flex-col xl:flex-row gap-6 mb-4.5">
+                    <div class="mb-4.5 flex flex-col gap-6 xl:flex-row">
                       <div class="w-full xl:w-1/2">
                         <label class="mb-2.5 block text-black dark:text-white">
                           First name
                         </label>
                         <input type="text" placeholder="Enter your first name"
-                          class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                          class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                       </div>
 
                       <div class="w-full xl:w-1/2">
@@ -71,7 +77,7 @@
                           Last name
                         </label>
                         <input type="text" placeholder="Enter your last name"
-                          class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                          class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                       </div>
                     </div>
 
@@ -80,7 +86,7 @@
                         Email <span class="text-meta-1">*</span>
                       </label>
                       <input type="email" placeholder="Enter your email address"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div class="mb-4.5">
@@ -88,7 +94,7 @@
                         Subject
                       </label>
                       <input type="text" placeholder="Select subject"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div class="mb-4.5">
@@ -97,7 +103,7 @@
                       </label>
                       <div class="relative z-20 bg-transparent dark:bg-form-input">
                         <select
-                          class="relative z-20 w-full appearance-none rounded border border-stroke dark:border-form-strokedark dark:bg-form-input bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:focus:border-primary active:border-primary">
+                          class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                           <option value="">Type your subject</option>
                           <option value="">USA</option>
                           <option value="">UK</option>
@@ -121,10 +127,10 @@
                         Message
                       </label>
                       <textarea rows="6" placeholder="Type your message"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter"></textarea>
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
                     </div>
 
-                    <button class="flex justify-center w-full font-medium text-gray rounded bg-primary p-3">
+                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Send Message
                     </button>
                   </div>
@@ -135,9 +141,11 @@
             <div class="flex flex-col gap-9">
               <!-- Sign In Form -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Sign In Form</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-semibold text-black dark:text-white">
+                    Sign In Form
+                  </h3>
                 </div>
                 <form action="#">
                   <div class="p-6.5">
@@ -146,7 +154,7 @@
                         Email
                       </label>
                       <input type="email" placeholder="Enter your email address"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div>
@@ -154,16 +162,16 @@
                         Password
                       </label>
                       <input type="password" placeholder="Enter password"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
-                    <div class="flex items-center justify-between mt-5 mb-5.5">
+                    <div class="mt-5 mb-5.5 flex items-center justify-between">
                       <label for="formCheckbox" class="flex cursor-pointer">
                         <div class="relative pt-0.5">
                           <input type="checkbox" id="formCheckbox" class="taskCheckbox sr-only" />
                           <div
-                            class="box mr-3 h-5 w-5 flex items-center justify-center rounded border border-stroke dark:border-strokedark">
-                            <span class="opacity-0 text-white">
+                            class="box mr-3 flex h-5 w-5 items-center justify-center rounded border border-stroke dark:border-strokedark">
+                            <span class="text-white opacity-0">
                               <svg class="fill-current" width="10" height="7" viewBox="0 0 10 7" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -179,7 +187,7 @@
                       <a href="#" class="text-sm text-primary">Forget password?</a>
                     </div>
 
-                    <button class="flex justify-center w-full font-medium text-gray rounded bg-primary p-3">
+                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Sign In
                     </button>
                   </div>
@@ -188,9 +196,11 @@
 
               <!-- Sign Up Form -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Sign Up Form</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-semibold text-black dark:text-white">
+                    Sign Up Form
+                  </h3>
                 </div>
                 <form action="#">
                   <div class="p-6.5">
@@ -199,7 +209,7 @@
                         Name
                       </label>
                       <input type="text" placeholder="Enter your full name"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div class="mb-4.5">
@@ -207,7 +217,7 @@
                         Email
                       </label>
                       <input type="email" placeholder="Enter your email address"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div class="mb-4.5">
@@ -215,7 +225,7 @@
                         Password
                       </label>
                       <input type="password" placeholder="Enter password"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
                     <div class="mb-5.5">
@@ -223,10 +233,10 @@
                         Re-type Password
                       </label>
                       <input type="password" placeholder="Re-enter password"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                     </div>
 
-                    <button class="flex justify-center w-full font-medium text-gray rounded bg-primary p-3">
+                    <button class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray">
                       Sign Up
                     </button>
                   </div>

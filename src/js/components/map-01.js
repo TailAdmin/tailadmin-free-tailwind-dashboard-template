@@ -1,15 +1,15 @@
-import jsVectorMap from 'jsvectormap'
-import '../us-aea-en'
+import jsVectorMap from "jsvectormap";
+import "../us-aea-en";
 
 const map01 = () => {
-  const mapSelector = document.querySelectorAll('#mapOne');
+  const mapSelector = document.querySelectorAll("#mapOne");
 
-  if(mapSelector.length) {
+  if (mapSelector.length) {
     const mapOne = new jsVectorMap({
-      selector: '#mapOne',
-      map: 'us_aea_en',
+      selector: "#mapOne",
+      map: "us_aea_en",
       zoomButtons: true,
-        
+
       regionStyle: {
         initial: {
           fill: "#C8D0D8",
@@ -21,7 +21,7 @@ const map01 = () => {
       },
       regionLabelStyle: {
         initial: {
-          fontFamily: "inter",
+          fontFamily: "Satoshi",
           fontWeight: "semibold",
           fill: "#fff",
         },
@@ -29,7 +29,7 @@ const map01 = () => {
           cursor: "pointer",
         },
       },
-    
+
       labels: {
         regions: {
           render(code) {
@@ -37,7 +37,7 @@ const map01 = () => {
           },
         },
       },
-    })
+    });
   }
 };
 

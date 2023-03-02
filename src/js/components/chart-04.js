@@ -1,4 +1,4 @@
-import ApexCharts from 'apexcharts';
+import ApexCharts from "apexcharts";
 
 // ===== chartFour
 const chart04 = () => {
@@ -6,14 +6,15 @@ const chart04 = () => {
     series: [
       {
         data: [
-          168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112, 123,
-          212, 270, 190, 310, 115, 90, 380, 112, 223, 292, 170, 290, 110,
-          115, 290, 380, 312,
+          168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112, 123, 212,
+          270, 190, 310, 115, 90, 380, 112, 223, 292, 170, 290, 110, 115, 290,
+          380, 312,
         ],
       },
     ],
     colors: ["#3C50E0"],
     chart: {
+      fontFamily: "Satoshi, sans-serif",
       type: "bar",
       height: 350,
       toolbar: {
@@ -81,7 +82,7 @@ const chart04 = () => {
       position: "top",
       horizontalAlign: "left",
       fontFamily: "inter",
-  
+
       markers: {
         radius: 99,
       },
@@ -99,7 +100,7 @@ const chart04 = () => {
     fill: {
       opacity: 1,
     },
-  
+
     tooltip: {
       x: {
         show: false,
@@ -112,11 +113,11 @@ const chart04 = () => {
     },
   };
 
-  const chartSelector = document.querySelectorAll('#chartFour');
+  const chartSelector = document.querySelectorAll("#chartFour");
 
   if (chartSelector.length) {
     const chartFour = new ApexCharts(
-      document.querySelector('#chartFour'),
+      document.querySelector("#chartFour"),
       chartFourOptions
     );
     chartFour.render();

@@ -1,29 +1,4 @@
 <div x-show="loaded" x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
-  class="table fixed left-0 top-0 w-screen h-screen bg-white z-999999">
-  <!-- loader -->
-  <div class="table-cell align-middle text-center">
-    <!-- spinner -->
-    <div class="absolute left-1/2 top-1/2 -ml-8 w-16 z-20 pointer-events-none">
-      <!-- container -->
-      <div class="absolute left-1/2 top-1/2 -ml-[50%] -mt-[50%] pb-[100%] w-full pointer-events-none animate-linspin">
-        <!-- rotator -->
-        <div class="absolute w-full h-full animate-easespin">
-          <!-- spinner-left -->
-          <div class="absolute top-0 left-0 bottom-0 right-1/2 overflow-hidden">
-            <!-- spinner-circle -->
-            <div
-              class="box-border absolute left-0 -right-full w-[200%] h-full rounded-[50%] border-6 border-t-primary border-l-stroke border-b-stroke border-r-primary animate-left-spin">
-            </div>
-          </div>
-          <!-- spinner-right -->
-          <div class="absolute top-0 left-1/2 bottom-0 right-0 overflow-hidden">
-            <!-- spinner-circle -->
-            <div
-              class="box-border absolute -left-full right-0 w-[200%] h-full rounded-[50%] border-6 border-t-primary border-l-primary border-b-stroke border-r-stroke animate-right-spin">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white">
+  <div class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
 </div>

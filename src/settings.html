@@ -25,23 +25,25 @@
     <!-- ===== Sidebar End ===== -->
 
     <!-- ===== Content Area Start ===== -->
-    <div class="flex flex-col flex-1 relative overflow-x-hidden overflow-y-auto">
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <!-- ===== Header Start ===== -->
       <include src="./partials/header.html" />
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
           <div class="mx-auto max-w-270">
             <!-- Breadcrumb Start -->
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-              <h2 class="font-semibold text-title-md2 text-black dark:text-white">Settings Page</h2>
+            <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Settings Page
+              </h2>
 
               <nav>
                 <ol class="flex items-center gap-2">
-                  <li><a href="index.html">Dashboard /</a></li>
-                  <li class="text-primary">Settings</li>
+                  <li><a class="font-medium" href="index.html">Dashboard /</a></li>
+                  <li class="font-medium text-primary">Settings</li>
                 </ol>
               </nav>
             </div>
@@ -51,15 +53,17 @@
             <div class="grid grid-cols-5 gap-8">
               <div class="col-span-5 xl:col-span-3">
                 <div
-                  class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                  <div class="py-4 px-7 border-b border-stroke dark:border-strokedark">
-                    <h3 class="font-medium text-black dark:text-white">Personal Information</h3>
+                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                  <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
+                    <h3 class="font-medium text-black dark:text-white">
+                      Personal Information
+                    </h3>
                   </div>
                   <div class="p-7">
                     <form action="#">
-                      <div class="flex flex-col sm:flex-row gap-5.5 mb-5.5">
+                      <div class="mb-5.5 flex flex-col gap-5.5 sm:flex-row">
                         <div class="w-full sm:w-1/2">
-                          <label class="block font-medium text-sm text-black dark:text-white mb-3" for="fullName">Full
+                          <label class="mb-3 block text-sm font-medium text-black dark:text-white" for="fullName">Full
                             Name</label>
                           <div class="relative">
                             <span class="absolute left-4.5 top-4">
@@ -76,23 +80,23 @@
                               </svg>
                             </span>
                             <input
-                              class="w-full bg-gray rounded border border-stroke focus-visible:outline-none focus:border-primary dark:focus:border-primary text-black dark:text-white py-3 pl-11.5 pr-4.5 dark:bg-meta-4 dark:border-strokedark"
+                              class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                               type="text" name="fullName" id="fullName" placeholder="Devid Jhon" value="Devid Jhon" />
                           </div>
                         </div>
 
                         <div class="w-full sm:w-1/2">
-                          <label class="block font-medium text-sm text-black dark:text-white mb-3"
+                          <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                             for="phoneNumber">Phone Number</label>
                           <input
-                            class="w-full bg-gray rounded border border-stroke focus-visible:outline-none focus:border-primary dark:focus:border-primary text-black dark:text-white py-3 px-4.5 dark:bg-meta-4 dark:border-strokedark"
+                            class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                             type="text" name="phoneNumber" id="phoneNumber" placeholder="+990 3343 7865"
                             value="+990 3343 7865" />
                         </div>
                       </div>
 
                       <div class="mb-5.5">
-                        <label class="block font-medium text-sm text-black dark:text-white mb-3"
+                        <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                           for="emailAddress">Email Address</label>
                         <div class="relative">
                           <span class="absolute left-4.5 top-4">
@@ -109,22 +113,22 @@
                             </svg>
                           </span>
                           <input
-                            class="w-full bg-gray rounded border border-stroke focus-visible:outline-none focus:border-primary dark:focus:border-primary text-black dark:text-white py-3 pl-11.5 pr-4.5 dark:bg-meta-4 dark:border-strokedark"
+                            class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                             type="email" name="emailAddress" id="emailAddress" placeholder="devidjond45@gmail.com"
                             value="devidjond45@gmail.com" />
                         </div>
                       </div>
 
                       <div class="mb-5.5">
-                        <label class="block font-medium text-sm text-black dark:text-white mb-3"
+                        <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                           for="Username">Username</label>
                         <input
-                          class="w-full bg-gray rounded border border-stroke focus-visible:outline-none focus:border-primary dark:focus:border-primary text-black dark:text-white py-3 px-4.5 dark:bg-meta-4 dark:border-strokedark"
+                          class="w-full rounded border border-stroke bg-gray py-3 px-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
                           type="text" name="Username" id="Username" placeholder="devidjhon24" value="devidjhon24" />
                       </div>
 
                       <div class="mb-5.5">
-                        <label class="block font-medium text-sm text-black dark:text-white mb-3"
+                        <label class="mb-3 block text-sm font-medium text-black dark:text-white"
                           for="Username">BIO</label>
                         <div class="relative">
                           <span class="absolute left-4.5 top-4">
@@ -147,20 +151,21 @@
                           </span>
 
                           <textarea
-                            class="w-full bg-gray rounded border border-stroke focus-visible:outline-none focus:border-primary dark:focus:border-primary text-black dark:text-white py-3 pl-11.5 pr-4.5 dark:bg-meta-4 dark:border-strokedark"
-                            name="bio" id="bio" rows="6" placeholder="Write your bio here">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.
+                            class="w-full rounded border border-stroke bg-gray py-3 pl-11.5 pr-4.5 font-medium text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4 dark:text-white dark:focus:border-primary"
+                            name="bio" id="bio" rows="6" placeholder="Write your bio here">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.
                               </textarea>
                         </div>
                       </div>
 
                       <div class="flex justify-end gap-4.5">
                         <button
-                          class="flex justify-center rounded font-medium text-black dark:text-white border border-stroke dark:border-strokedark hover:shadow-1 py-2 px-6"
+                          class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
                           type="submit">
                           Cancel
                         </button>
                         <button
-                          class="flex justify-center rounded font-medium text-gray bg-primary hover:shadow-1 py-2 px-6"
+                          class="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                           type="submit">
                           Save
                         </button>
@@ -171,32 +176,38 @@
               </div>
               <div class="col-span-5 xl:col-span-2">
                 <div
-                  class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                  <div class="py-4 px-7 border-b border-stroke dark:border-strokedark">
-                    <h3 class="font-medium text-black dark:text-white">Your Photo</h3>
+                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                  <div class="border-b border-stroke py-4 px-7 dark:border-strokedark">
+                    <h3 class="font-medium text-black dark:text-white">
+                      Your Photo
+                    </h3>
                   </div>
                   <div class="p-7">
                     <form action="#">
-                      <div class="flex items-center gap-3 mb-4">
-                        <div class="w-14 h-14 rounded-full">
-                          <img src="./images/user/user-03.png" alt="User">
+                      <div class="mb-4 flex items-center gap-3">
+                        <div class="h-14 w-14 rounded-full">
+                          <img src="./images/user/user-03.png" alt="User" />
                         </div>
                         <div>
-                          <span class="text-black dark:text-white mb-1.5">Edit your photo</span>
+                          <span class="mb-1.5 font-medium text-black dark:text-white">Edit your photo</span>
                           <span class="flex gap-2.5">
-                            <button class="text-sm hover:text-primary">Delete</button>
-                            <button class="text-sm hover:text-primary">Update</button>
+                            <button class="font-medium text-sm hover:text-primary">
+                              Delete
+                            </button>
+                            <button class="font-medium text-sm hover:text-primary">
+                              Update
+                            </button>
                           </span>
                         </div>
                       </div>
 
                       <div id="FileUpload"
-                        class="cursor-pointer block w-full py-4 sm:py-7.5 px-4 relative bg-gray dark:bg-meta-4 appearance-none border-2 border-dashed border-primary rounded mb-5.5">
+                        class="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border-2 border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5">
                         <input type="file" accept="image/*"
-                          class="cursor-pointer absolute inset-0 z-50 m-0 p-0 w-full h-full outline-none opacity-0">
-                        <div class="flex flex-col space-y-3 items-center justify-center">
+                          class="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none" />
+                        <div class="flex flex-col items-center justify-center space-y-3">
                           <span
-                            class="flex items-center justify-center w-10 h-10 rounded-full border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
+                            class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                               xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -210,20 +221,23 @@
                                 fill="#3C50E0" />
                             </svg>
                           </span>
-                          <p class="text-xs"><span class="text-primary">Click to upload</span> or drag and drop</p>
-                          <p class="text-xs mt-1.5">SVG, PNG, JPG or GIF</p>
-                          <p class="text-xs">(max, 800 X 800px)</p>
+                          <p class="font-medium text-sm">
+                            <span class="text-primary">Click to upload</span>
+                            or drag and drop
+                          </p>
+                          <p class="mt-1.5 font-medium text-sm">SVG, PNG, JPG or GIF</p>
+                          <p class="font-medium text-sm">(max, 800 X 800px)</p>
                         </div>
                       </div>
 
                       <div class="flex justify-end gap-4.5">
                         <button
-                          class="flex justify-center rounded font-medium text-black dark:text-white border border-stroke dark:border-strokedark hover:shadow-1 py-2 px-6"
+                          class="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
                           type="submit">
                           Cancel
                         </button>
                         <button
-                          class="flex justify-center rounded font-medium text-gray bg-primary hover:shadow-1 py-2 px-6"
+                          class="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                           type="submit">
                           Save
                         </button>

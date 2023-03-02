@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+  <title>
+    Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
+  </title>
 </head>
 
 <body
@@ -25,68 +27,74 @@
     <!-- ===== Sidebar End ===== -->
 
     <!-- ===== Content Area Start ===== -->
-    <div class="flex flex-col flex-1 relative overflow-x-hidden overflow-y-auto">
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <!-- ===== Header Start ===== -->
       <include src="./partials/header.html" />
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
           <!-- Breadcrumb Start -->
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-            <h2 class="font-semibold text-title-md2 text-black dark:text-white">Form Elements</h2>
+          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+              Form Elements
+            </h2>
 
             <nav>
               <ol class="flex items-center gap-2">
-                <li><a href="index.html">Dashboard /</a></li>
-                <li class="text-primary">Form Elements</li>
+                <li><a class="font-medium" href="index.html">Dashboard /</a></li>
+                <li class="font-medium text-primary">Form Elements</li>
               </ol>
             </nav>
           </div>
           <!-- Breadcrumb End -->
 
           <!-- ====== Form Elements Section Start -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-9">
+          <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
             <div class="flex flex-col gap-9">
               <!-- Input Fields -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Input Fields</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Input Fields
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Default Input
                     </label>
                     <input type="text" placeholder="Default Input"
-                      class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                      class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Active Input
                     </label>
                     <input type="text" placeholder="Active Input"
-                      class="border-primary focus:border-primary active:border-primary dark:bg-form-input bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter" />
+                      class="w-full rounded-lg border-[1.5px] border-primary bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input" />
                   </div>
 
                   <div>
-                    <label class="mb-3 block font-medium text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Disabled label
                     </label>
                     <input type="text" placeholder="Disabled label" disabled=""
-                      class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter dark:disabled:bg-black" />
+                      class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary dark:disabled:bg-black" />
                   </div>
                 </div>
               </div>
 
               <!-- Toggle switch input -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Toggle switch input</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Toggle switch input
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div x-data="{ switcherToggle: false }">
@@ -94,8 +102,8 @@
                       <div class="relative">
                         <input type="checkbox" id="toggle1" class="sr-only"
                           @change="switcherToggle = !switcherToggle" />
-                        <div class="block h-8 w-14 rounded-full bg-meta-9"></div>
-                        <div :class="switcherToggle && '!right-1 !translate-x-full !bg-primary'"
+                        <div class="block h-8 w-14 rounded-full bg-meta-9 dark:bg-[#5A616B]"></div>
+                        <div :class="switcherToggle && '!right-1 !translate-x-full !bg-primary dark:!bg-white'"
                           class="absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition"></div>
                       </div>
                     </label>
@@ -106,9 +114,9 @@
                       <div class="relative">
                         <input id="toggle2" type="checkbox" class="sr-only"
                           @change="switcherToggle = !switcherToggle" />
-                        <div class="h-5 w-14 rounded-full bg-meta-9 shadow-inner"></div>
-                        <div :class="switcherToggle && '!right-0 !translate-x-full !bg-primary'"
-                          class="dot shadow-switch-1 absolute left-0 -top-1 h-7 w-7 rounded-full bg-white transition">
+                        <div class="h-5 w-14 rounded-full bg-meta-9 shadow-inner dark:bg-[#5A616B]"></div>
+                        <div :class="switcherToggle && '!right-0 !translate-x-full !bg-primary dark:!bg-white'"
+                          class="dot absolute left-0 -top-1 h-7 w-7 rounded-full bg-white shadow-switch-1 transition">
                         </div>
                       </div>
                     </label>
@@ -119,8 +127,8 @@
                       <div class="relative">
                         <input type="checkbox" id="toggle3" class="sr-only"
                           @change="switcherToggle = !switcherToggle" />
-                        <div class="block h-8 w-14 rounded-full bg-meta-9"></div>
-                        <div :class="switcherToggle && '!right-1 !translate-x-full !bg-primary'"
+                        <div class="block h-8 w-14 rounded-full bg-meta-9 dark:bg-[#5A616B]"></div>
+                        <div :class="switcherToggle && '!right-1 !translate-x-full !bg-primary dark:!bg-white'"
                           class="dot absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition">
                           <span :class="switcherToggle && '!block'" class="hidden">
                             <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
@@ -147,7 +155,7 @@
                       <div class="relative">
                         <input type="checkbox" id="toggle4" class="sr-only"
                           @change="switcherToggle = !switcherToggle" />
-                        <div :class="switcherToggle && '!bg-primary'" class="bg-black block h-8 w-14 rounded-full">
+                        <div :class="switcherToggle && '!bg-primary'" class="block h-8 w-14 rounded-full bg-black">
                         </div>
                         <div :class="switcherToggle && '!right-1 !translate-x-full'"
                           class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition">
@@ -160,21 +168,23 @@
 
               <!-- Time and date -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Time and date</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Time and date
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Date picker
                     </label>
                     <div class="relative">
                       <input type="date"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
 
                       <span
-                        class="block absolute right-0.5 top-0.5 p-3.5 bg-white dark:bg-form-input rounded-tr rounded-br">
+                        class="absolute right-0.5 top-0.5 block rounded-tr rounded-br bg-white p-3.5 dark:bg-form-input">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M15.7504 2.9812H14.2879V2.36245C14.2879 2.02495 14.0066 1.71558 13.641 1.71558C13.2754 1.71558 12.9941 1.99683 12.9941 2.36245V2.9812H4.97852V2.36245C4.97852 2.02495 4.69727 1.71558 4.33164 1.71558C3.96602 1.71558 3.68477 1.99683 3.68477 2.36245V2.9812H2.25039C1.29414 2.9812 0.478516 3.7687 0.478516 4.75308V14.5406C0.478516 15.4968 1.26602 16.3125 2.25039 16.3125H15.7504C16.7066 16.3125 17.5223 15.525 17.5223 14.5406V4.72495C17.5223 3.7687 16.7066 2.9812 15.7504 2.9812ZM1.77227 8.21245H4.16289V10.9968H1.77227V8.21245ZM5.42852 8.21245H8.38164V10.9968H5.42852V8.21245ZM8.38164 12.2625V15.0187H5.42852V12.2625H8.38164V12.2625ZM9.64727 12.2625H12.6004V15.0187H9.64727V12.2625ZM9.64727 10.9968V8.21245H12.6004V10.9968H9.64727ZM13.8379 8.21245H16.2285V10.9968H13.8379V8.21245ZM2.25039 4.24683H3.71289V4.83745C3.71289 5.17495 3.99414 5.48433 4.35977 5.48433C4.72539 5.48433 5.00664 5.20308 5.00664 4.83745V4.24683H13.0504V4.83745C13.0504 5.17495 13.3316 5.48433 13.6973 5.48433C14.0629 5.48433 14.3441 5.20308 14.3441 4.83745V4.24683H15.7504C16.0316 4.24683 16.2566 4.47183 16.2566 4.75308V6.94683H1.77227V4.75308C1.77227 4.47183 1.96914 4.24683 2.25039 4.24683ZM1.77227 14.5125V12.2343H4.16289V14.9906H2.25039C1.96914 15.0187 1.77227 14.7937 1.77227 14.5125ZM15.7504 15.0187H13.8379V12.2625H16.2285V14.5406C16.2566 14.7937 16.0316 15.0187 15.7504 15.0187Z"
@@ -185,15 +195,15 @@
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Select date
                     </label>
                     <div class="relative">
                       <input type="date"
-                        class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded border-[1.5px] py-3 px-5 font-medium outline-none transition" />
+                        class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
 
                       <span
-                        class="block absolute right-0.5 top-0.5 p-3.5 bg-white dark:bg-form-input rounded-tr rounded-br">
+                        class="absolute right-0.5 top-0.5 block rounded-tr rounded-br bg-white p-3.5 dark:bg-form-input">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M9.0002 12.825C8.83145 12.825 8.69082 12.7688 8.5502 12.6563L2.08145 6.30002C1.82832 6.0469 1.82832 5.65315 2.08145 5.40002C2.33457 5.1469 2.72832 5.1469 2.98145 5.40002L9.0002 11.2781L15.0189 5.34377C15.2721 5.09065 15.6658 5.09065 15.9189 5.34377C16.1721 5.5969 16.1721 5.99065 15.9189 6.24377L9.45019 12.6C9.30957 12.7406 9.16895 12.825 9.0002 12.825Z"
@@ -207,25 +217,27 @@
 
               <!-- File upload -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">File upload</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    File upload
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Attach file
                     </label>
                     <input type="file"
-                      class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent file:border-stroke dark:file:border-form-strokedark file:hover:bg-primary w-full cursor-pointer rounded-lg border-[1.5px] font-medium outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:bg-whiter file:py-3 file:px-5 file:hover:bg-opacity-10 disabled:cursor-default disabled:bg-whiter" />
+                      class="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-medium outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter dark:file:bg-white/30 dark:file:text-white file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:focus:border-primary" />
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Attach file
                     </label>
                     <input type="file"
-                      class="w-full rounded-md border border-stroke dark:border-form-strokedark dark:bg-form-input p-3 outline-none transition file:mr-4 file:rounded file:border-[0.5px] file:border-stroke file:bg-[#EEEEEE] file:py-1 file:px-2.5 file:text-sm file:font-medium focus:border-primary file:focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter" />
+                      class="w-full rounded-md border border-stroke p-3 outline-none transition file:mr-4 file:rounded file:border-[0.5px] file:border-stroke dark:file:border-strokedark file:bg-[#EEEEEE] dark:file:bg-white/30 dark:file:text-white file:py-1 file:px-2.5 file:text-sm file:font-medium focus:border-primary file:focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input" />
                   </div>
                 </div>
               </div>
@@ -234,42 +246,46 @@
             <div class="flex flex-col gap-9">
               <!-- Textarea Fields -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Textarea Fields</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Textarea Fields
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Default textarea
                     </label>
                     <textarea rows="6" placeholder="Default textarea"
-                      class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter"></textarea>
+                      class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Active textarea
                     </label>
                     <textarea rows="6" placeholder="Active textarea"
-                      class="border-primary focus:border-primary active:border-primary dark:bg-form-input bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter"></textarea>
+                      class="w-full rounded-lg border-[1.5px] border-primary bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input"></textarea>
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Disabled textarea
                     </label>
                     <textarea rows="6" disabled="" placeholder="Disabled textarea"
-                      class="border-stroke dark:border-form-strokedark dark:bg-form-input focus:border-primary dark:focus:border-primary active:border-primary bg-transparent w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-whiter dark:disabled:bg-black"></textarea>
+                      class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary dark:disabled:bg-black"></textarea>
                   </div>
                 </div>
               </div>
 
               <!-- Checkbox and radio -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Checkbox and radio</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Checkbox and radio
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div x-data="{ checkboxToggle: false }">
@@ -277,7 +293,7 @@
                       <div class="relative">
                         <input type="checkbox" id="checkboxLabelOne" class="sr-only"
                           @change="checkboxToggle = !checkboxToggle" />
-                        <div :class="checkboxToggle && 'border-primary bg-gray'"
+                        <div :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
                           class="mr-4 flex h-5 w-5 items-center justify-center rounded border">
                           <span :class="checkboxToggle && 'bg-primary'" class="h-2.5 w-2.5 rounded-sm"></span>
                         </div>
@@ -291,7 +307,7 @@
                       <div class="relative">
                         <input type="checkbox" id="checkboxLabelTwo" class="sr-only"
                           @change="checkboxToggle = !checkboxToggle" />
-                        <div :class="checkboxToggle && 'border-primary bg-gray'"
+                        <div :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
                           class="mr-4 flex h-5 w-5 items-center justify-center rounded border">
                           <span :class="checkboxToggle && '!opacity-100'" class="opacity-0">
                             <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
@@ -312,7 +328,7 @@
                       <div class="relative">
                         <input type="checkbox" id="checkboxLabelThree" class="sr-only"
                           @change="checkboxToggle = !checkboxToggle" />
-                        <div :class="checkboxToggle && 'border-primary bg-gray'"
+                        <div :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
                           class="box mr-4 flex h-5 w-5 items-center justify-center rounded border">
                           <span :class="checkboxToggle && '!opacity-100'" class="text-primary opacity-0">
                             <svg class="h-3.5 w-3.5 stroke-current" fill="none" viewBox="0 0 24 24"
@@ -325,7 +341,6 @@
                       </div>
                       Checkbox Text
                     </label>
-
                   </div>
 
                   <div x-data="{ checkboxToggle: false }">
@@ -336,7 +351,8 @@
                         <div :class="checkboxToggle && 'border-primary'"
                           class="mr-4 flex h-5 w-5 items-center justify-center rounded-full border">
                           <span :class="checkboxToggle && '!bg-primary'"
-                            class="h-2.5 w-2.5 rounded-full bg-transparent"> </span>
+                            class="h-2.5 w-2.5 rounded-full bg-transparent">
+                          </span>
                         </div>
                       </div>
                       Checkbox Text
@@ -349,30 +365,32 @@
                         <input type="checkbox" id="checkboxLabelFive" class="sr-only"
                           @change="checkboxToggle = !checkboxToggle" />
                         <div :class="checkboxToggle && '!border-4'"
-                          class="box border-primary mr-4 flex h-5 w-5 items-center justify-center rounded-full border">
-                          <span class="h-2.5 w-2.5 rounded-full bg-white"> </span>
+                          class="box mr-4 flex h-5 w-5 items-center justify-center rounded-full border border-primary">
+                          <span class="h-2.5 w-2.5 rounded-full bg-white dark:bg-transparent">
+                          </span>
                         </div>
                       </div>
                       Checkbox Text
                     </label>
-
                   </div>
                 </div>
               </div>
 
               <!-- Select input -->
               <div
-                class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
-                <div class="py-4 px-6.5 border-b border-stroke dark:border-strokedark">
-                  <h3 class="font-medium text-black dark:text-white">Select input</h3>
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+                <div class="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
+                  <h3 class="font-medium text-black dark:text-white">
+                    Select input
+                  </h3>
                 </div>
                 <div class="flex flex-col gap-5.5 p-6.5">
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Select Country
                     </label>
                     <div class="relative z-20 bg-white dark:bg-form-input">
-                      <span class="absolute top-1/2 left-4 -translate-y-1/2 z-30">
+                      <span class="absolute top-1/2 left-4 z-30 -translate-y-1/2">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g opacity="0.8">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -388,7 +406,7 @@
                         </svg>
                       </span>
                       <select
-                        class="relative z-20 w-full appearance-none rounded border border-stroke dark:border-form-strokedark dark:bg-form-input bg-transparent py-3 px-12 outline-none transition focus:border-primary active:border-primary">
+                        class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                         <option value="">USA</option>
                         <option value="">UK</option>
                         <option value="">Canada</option>
@@ -406,14 +424,14 @@
                   </div>
 
                   <div>
-                    <label class="mb-3 block text-black dark:text-white">
+                    <label class="mb-3 block font-medium text-sm text-black dark:text-white">
                       Multiselect Dropdown
                     </label>
                     <div
-                      class="relative z-20 w-full rounded border border-stroke dark:border-form-strokedark dark:bg-form-input p-1.5 pr-8 font-medium outline-none transition focus:border-primary active:border-primary">
+                      class="relative z-20 w-full rounded border border-stroke p-1.5 pr-8 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                       <div class="flex flex-wrap items-center">
                         <span
-                          class="m-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray py-1.5 px-2.5 text-sm font-medium">
+                          class="m-1.5 flex items-center justify-center rounded border-[.5px] border-stroke dark:border-strokedark bg-gray dark:bg-white/30 py-1.5 px-2.5 text-sm font-medium">
                           Design
                           <span class="cursor-pointer pl-2 hover:text-danger">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -425,7 +443,7 @@
                           </span>
                         </span>
                         <span
-                          class="m-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray py-1.5 px-2.5 text-sm font-medium">
+                          class="m-1.5 flex items-center justify-center rounded border-[.5px] border-stroke dark:border-strokedark bg-gray dark:bg-white/30 py-1.5 px-2.5 text-sm font-medium">
                           Development
                           <span class="cursor-pointer pl-2 hover:text-danger">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"

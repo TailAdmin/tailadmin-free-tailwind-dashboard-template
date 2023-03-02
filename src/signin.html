@@ -25,38 +25,43 @@
     <!-- ===== Sidebar End ===== -->
 
     <!-- ===== Content Area Start ===== -->
-    <div class="flex flex-col flex-1 relative overflow-x-hidden overflow-y-auto">
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <!-- ===== Header Start ===== -->
       <include src="./partials/header.html" />
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
           <!-- Breadcrumb Start -->
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-            <h2 class="font-semibold text-title-md2 text-black dark:text-white">Sign In</h2>
+          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+              Sign In
+            </h2>
 
             <nav>
               <ol class="flex items-center gap-2">
-                <li><a href="index.html">Dashboard /</a></li>
-                <li class="text-primary">Sign In</li>
+                <li><a class="font-medium" href="index.html">Dashboard /</a></li>
+                <li class="font-medium text-primary">Sign In</li>
               </ol>
             </nav>
           </div>
           <!-- Breadcrumb End -->
 
           <!-- ====== Forms Section Start -->
-          <div class="shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
+          <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div class="flex flex-wrap items-center">
-              <div class="hidden xl:block w-full xl:w-1/2">
+              <div class="hidden w-full xl:block xl:w-1/2">
                 <div class="py-17.5 px-26 text-center">
-                  <a class="inline-block mb-5.5" href="index.html">
-                    <img class="hidden dark:block" src="./images/logo/logo.svg" alt="Logo">
-                    <img class="dark:hidden" src="./images/logo/logo-dark.svg" alt="Logo">
+                  <a class="mb-5.5 inline-block" href="index.html">
+                    <img class="hidden dark:block" src="./images/logo/logo.svg" alt="Logo" />
+                    <img class="dark:hidden" src="./images/logo/logo-dark.svg" alt="Logo" />
                   </a>
 
-                  <p class="2xl:px-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit suspendisse.</p>
+                  <p class="font-medium 2xl:px-20">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    suspendisse.
+                  </p>
 
                   <span class="mt-15 inline-block">
                     <svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,10 +147,10 @@
                   </span>
                 </div>
               </div>
-              <div class="w-full xl:w-1/2 xl:border-l-2 border-stroke dark:border-strokedark">
+              <div class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
                 <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
-                  <span class="block font-medium mb-1.5">Start for free</span>
-                  <h2 class="mb-9 font-bold text-2xl sm:text-title-xl2 text-black dark:text-white">
+                  <span class="mb-1.5 block font-medium">Start for free</span>
+                  <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                     Sign In to TailAdmin
                   </h2>
 
@@ -154,7 +159,7 @@
                       <label class="mb-2.5 block font-medium text-black dark:text-white">Email</label>
                       <div class="relative">
                         <input type="email" placeholder="Enter your email"
-                          class="w-full rounded-lg border border-stroke dark:border-form-strokedark bg-transparent dark:bg-form-input py-4 pl-6 pr-10 outline-none focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
 
                         <span class="absolute right-4 top-4">
                           <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -173,7 +178,7 @@
                       <label class="mb-2.5 block font-medium text-black dark:text-white">Re-type Password</label>
                       <div class="relative">
                         <input type="password" placeholder="6+ Characters, 1 Capital letter"
-                          class="w-full rounded-lg border border-stroke dark:border-form-strokedark bg-transparent dark:bg-form-input py-4 pl-6 pr-10 outline-none focus:border-primary dark:focus:border-primary focus-visible:shadow-none" />
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
 
                         <span class="absolute right-4 top-4">
                           <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -193,11 +198,11 @@
 
                     <div class="mb-5">
                       <input type="submit" value="Sign In"
-                        class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90" />
+                        class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90" />
                     </div>
 
                     <button
-                      class="w-full flex gap-3.5 items-center justify-center rounded-lg border border-stroke dark:border-strokedark bg-gray dark:bg-meta-4 hover:bg-opacity-90 p-4">
+                      class="flex w-full items-center justify-center gap-3.5 font-medium rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-70 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-70">
                       <span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clip-path="url(#clip0_191_13499)">
@@ -225,7 +230,10 @@
                     </button>
 
                     <div class="mt-6 text-center">
-                      <p>Don’t have any account? <a href="signup.html" class="text-primary">Sign Up</a></p>
+                      <p class="font-medium">
+                        Don’t have any account?
+                        <a href="signup.html" class="text-primary">Sign Up</a>
+                      </p>
                     </div>
                   </form>
                 </div>

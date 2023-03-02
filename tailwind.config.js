@@ -5,7 +5,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     fontFamily: {
-      inter: ['Inter', 'sans-serif'],
+      satoshi: ['Satoshi', 'sans-serif'],
     },
     colors: {
       current: 'currentColor',
@@ -46,7 +46,7 @@ module.exports = {
     },
     screens: {
       '2xsm': '375px',
-      'xsm': '425px',
+      xsm: '425px',
       '3xl': '2000px',
       ...defaultTheme.screens,
     },
@@ -148,7 +148,7 @@ module.exports = {
         242.5: '60.625rem',
       },
       maxWidth: {
-        '2.5': '0.625rem',
+        2.5: '0.625rem',
         3: '0.75rem',
         4: '1rem',
         11: '2.75rem',
@@ -164,6 +164,7 @@ module.exports = {
         42.5: '10.625rem',
         44: '11rem',
         45: '11.25rem',
+        60: '15rem',
         70: '17.5rem',
         90: '22.5rem',
         94: '23.5rem',
@@ -212,13 +213,14 @@ module.exports = {
       },
       transitionProperty: { width: 'width', stroke: 'stroke' },
       borderWidth: {
-        '6': '6px',
+        6: '6px',
       },
       boxShadow: {
-        'default': '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
-        'card': '0px 1px 3px rgba(0, 0, 0, 0.12)',
+        default: '0px 8px 13px -3px rgba(0, 0, 0, 0.07)',
+        card: '0px 1px 3px rgba(0, 0, 0, 0.12)',
         'card-2': '0px 1px 2px rgba(0, 0, 0, 0.05)',
-        'switcher': '0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #FFFFFF, inset 0px -1px 1px rgba(0, 0, 0, 0.1)',
+        switcher:
+          '0px 2px 4px rgba(0, 0, 0, 0.2), inset 0px 2px 2px #FFFFFF, inset 0px -1px 1px rgba(0, 0, 0, 0.1)',
         'switch-1': '0px 0px 5px rgba(0, 0, 0, 0.15)',
         1: '0px 1px 3px rgba(0, 0, 0, 0.08)',
         2: '0px 1px 4px rgba(0, 0, 0, 0.12)',
@@ -226,6 +228,8 @@ module.exports = {
         4: '0px 4px 10px rgba(0, 0, 0, 0.12)',
         5: '0px 1px 1px rgba(0, 0, 0, 0.15)',
         6: '0px 3px 15px rgba(0, 0, 0, 0.1)',
+        7: '-5px 0 0 #313D4A, 5px 0 0 #313D4A',
+        8: '1px 0 0 #313D4A, -1px 0 0 #313D4A, 0 1px 0 #313D4A, 0 -1px 0 #313D4A, 0 3px 13px rgb(0 0 0 / 8%)',
       },
       dropShadow: {
         1: '0px 1px 0px #E2E8F0',
@@ -271,8 +275,10 @@ module.exports = {
       animation: {
         linspin: 'linspin 1568.2353ms linear infinite',
         easespin: 'easespin 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
-        'left-spin': 'left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
-        'right-spin': 'right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
+        'left-spin':
+          'left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
+        'right-spin':
+          'right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both',
         'ping-once': 'ping 5s cubic-bezier(0, 0, 0.2, 1)',
         rotating: 'rotating 30s linear infinite',
         topbottom: 'topbottom 60s infinite alternate linear',
@@ -284,4 +290,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

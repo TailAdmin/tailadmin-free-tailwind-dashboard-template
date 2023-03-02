@@ -25,22 +25,24 @@
     <!-- ===== Sidebar End ===== -->
 
     <!-- ===== Content Area Start ===== -->
-    <div class="flex flex-col flex-1 relative overflow-x-hidden overflow-y-auto">
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
       <!-- ===== Header Start ===== -->
       <include src="./partials/header.html" />
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
       <main>
-        <div class="max-w-screen-2xl mx-auto p-4 md:p-6 2xl:p-10">
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
           <div class="mx-auto max-w-242.5">
             <!-- Breadcrumb Start -->
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-              <h2 class="font-semibold text-title-md2 text-black dark:text-white">Profile</h2>
+            <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Profile
+              </h2>
 
               <nav>
                 <ol class="flex items-center gap-2">
-                  <li><a href="index.html">Dashboard /</a></li>
+                  <li><a class="font-medium" href="index.html">Dashboard /</a></li>
                   <li class="text-primary">Profile</li>
                 </ol>
               </nav>
@@ -49,13 +51,13 @@
 
             <!-- ====== Profile Section Start -->
             <div
-              class="overflow-hidden rounded-sm shadow-default border border-stroke dark:border-strokedark bg-white dark:bg-boxdark">
+              class="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="relative z-20 h-35 md:h-65">
                 <img src="./images/cover/cover-01.png" alt="profile cover"
-                  class="h-full w-full object-cover object-center rounded-tl-sm rounded-tr-sm" />
-                <div class="absolute bottom-1 xsm:bottom-4 right-1 xsm:right-4 z-10">
+                  class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
+                <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
                   <label for="cover"
-                    class="cursor-pointer flex gap-2 items-center justify-center font-medium text-sm rounded bg-primary text-white hover:bg-opacity-80 py-1 px-2 xsm:px-4">
+                    class="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary py-1 px-2 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4">
                     <input type="file" name="cover" id="cover" class="sr-only" />
                     <span>
                       <svg class="fill-current" width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -72,13 +74,13 @@
                   </label>
                 </div>
               </div>
-              <div class="text-center px-4 pb-6 lg:pb-8 xl:pb-11.5">
+              <div class="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
                 <div
-                  class="relative mx-auto -mt-22 z-30 h-30 w-full max-w-30 rounded-full bg-white/20 backdrop-blur sm:h-44 sm:max-w-44 p-1 sm:p-3">
+                  class="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
                   <div class="relative drop-shadow-2">
                     <img src="./images/user/user-06.png" alt="profile" />
                     <label for="profile"
-                      class="cursor-pointer absolute bottom-0 sm:bottom-2 right-0 sm:right-2 h-8.5 w-8.5 flex items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90">
+                      class="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2">
                       <svg class="fill-current" width="14" height="14" viewBox="0 0 14 14" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -93,42 +95,46 @@
                   </div>
                 </div>
                 <div class="mt-4">
-                  <h3 class="mb-1.5 font-semibold text-2xl text-black dark:text-white">
+                  <h3 class="mb-1.5 text-2xl font-medium text-black dark:text-white">
                     Danish Heilium
                   </h3>
-                  <p class="font-medium">
-                    Ui/Ux Designer
-                  </p>
+                  <p class="font-medium">Ui/Ux Designer</p>
                   <div
-                    class="mt-4.5 mb-5.5 mx-auto max-w-94 grid grid-cols-3 shadow-1 rounded-md border border-stroke dark:border-strokedark py-2.5">
+                    class="dark:bg-[#37404F] mx-auto mt-4.5 mb-5.5 grid max-w-94 grid-cols-3 rounded-md border border-stroke py-2.5 shadow-1 dark:border-strokedark">
                     <div
-                      class="px-4 flex flex-col xsm:flex-row gap-1 items-center justify-center border-r border-stroke dark:border-strokedark">
+                      class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                       <span class="font-semibold text-black dark:text-white">259</span>
                       <span class="text-sm">Posts</span>
                     </div>
                     <div
-                      class="px-4 flex flex-col xsm:flex-row gap-1 items-center justify-center border-r border-stroke dark:border-strokedark">
+                      class="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                       <span class="font-semibold text-black dark:text-white">129K</span>
                       <span class="text-sm">Followers</span>
                     </div>
-                    <div class="px-4 flex flex-col xsm:flex-row gap-1 items-center justify-center">
+                    <div class="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
                       <span class="font-semibold text-black dark:text-white">2K</span>
                       <span class="text-sm">Following</span>
                     </div>
                   </div>
 
                   <div class="mx-auto max-w-180">
-                    <h4 class="font-semibold text-black dark:text-white">About Me</h4>
-                    <p class="text-sm mt-4.5">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu
-                      condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed
-                      vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.
+                    <h4 class="font-medium text-black dark:text-white">
+                      About Me
+                    </h4>
+                    <p class="mt-4.5 font-medium text-sm">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Pellentesque posuere fermentum urna, eu condimentum
+                      mauris tempus ut. Donec fermentum blandit aliquet. Etiam
+                      dictum dapibus ultricies. Sed vel aliquet libero. Nunc a
+                      augue fermentum, pharetra ligula sed, aliquam lacus.
                     </p>
                   </div>
 
                   <div class="mt-6.5">
-                    <h4 class="font-medium text-black dark:text-white mb-3.5">Follow me on</h4>
-                    <div class="flex items-center gap-3.5 justify-center">
+                    <h4 class="mb-3.5 font-medium text-black dark:text-white">
+                      Follow me on
+                    </h4>
+                    <div class="flex items-center justify-center gap-3.5">
                       <a href="#" class="hover:text-primary" name="social-icon" aria-label="social-icon">
                         <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none"
                           xmlns="http://www.w3.org/2000/svg">
