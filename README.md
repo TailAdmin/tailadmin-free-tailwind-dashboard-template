@@ -15,6 +15,8 @@ powerful web applications and dashboard-admin projects.
 
 ### [⚡ PRO Version](https://tailadmin.com/pricing)
 
+### [🖌️ TailAdmin Figma](https://www.figma.com/community/file/1214477970819985778)
+
 ### Installation
 
 You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it)
