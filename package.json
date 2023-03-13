@@ -1,5 +1,5 @@
 {
-  "name": "tailadmin-tailwind",
+  "name": "tailadmin-free",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,11 @@
     "sort": "npx prettier --write src"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+  "name": "TailAdmin",
+  "email": "hello@tailadmin.com",
+  "url": "https://tailadmin.com"
+},
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.16.12",
