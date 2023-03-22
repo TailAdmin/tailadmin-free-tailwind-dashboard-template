@@ -14,7 +14,7 @@ powerful web applications and dashboard-admin projects.
 ### TailAdmin PRO vs TailAdmin FREE Comparison 📊
 
 #### [TailAdmin PRO](https://demo.tailadmin.com/)
-- 4 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM
+- 4 Unique Dashboards: Analytics, Ecommerce, Marketing, and CRM (More will be added)
 - 120+ Dashboard UI Components: 
 - 45+ HTML Files
 - All Essential Elements and Files
