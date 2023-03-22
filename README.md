@@ -6,16 +6,37 @@ powerful web applications and dashboard-admin projects.
 [![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://tailadmin.com/)
 
 
-### [🚀 View Demo](https://demo.tailadmin.com/)
+### [🚀 PRO Demo](https://demo.tailadmin.com/)
+### [🚀 FREE Demo](https://free-demo.tailadmin.com/)
 ### [✨ Visit Website](https://tailadmin.com/)
+
+
+### TailAdmin PRO vs TailAdmin FREE Comparison 📊
+
+#### [TailAdmin PRO](https://demo.tailadmin.com/)
+- 4 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM
+- 120+ Dashboard UI Components: 
+- 45+ HTML Files
+- All Essential Elements and Files
+- Figma Design Source Provided - As Shown on Demo
+
+___
+
+#### [TailAdmin FREE](https://free-demo.tailadmin.com/)
+- 1 Unique Dashboard
+- 30+ Dashboard UI Components: 
+- 10+ HTML Files
+- Basic UI Kit Elements and Files
+- Figma Design Source - Free Sample
+___
 
 ### [⬇️ Download Now](https://tailadmin.com/download)
 
+### [⚡ Get PRO Version](https://tailadmin.com/pricing)
+
 ### [📄 Documentation/Installation](https://tailadmin.com/docs)
 
-### [⚡ PRO Version](https://tailadmin.com/pricing)
-
-### [🖌️ TailAdmin Figma](https://www.figma.com/community/file/1214477970819985778)
+### [🖌️ TailAdmin Figma Free Sample](https://www.figma.com/community/file/1214477970819985778)
 
 ### [👉 TailAdmin React](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
 
@@ -37,12 +58,12 @@ Run : <code>npm run build</code>
 This command will generate a Build folder in the root of your template that you can upload to your server.
 
 
-### 100+ Essential UI Components and App Pages
+### 120+ Essential UI Components and App Pages for Dashboards
 With TailAdmin, you can launch your web projects quickly and easily, thanks to it contains 100+ pre-designed dashboard elements, components and pages. 
 Such as - header, navigation menu, chat, message, invoice, setting, sidebar, charts, graphs, tables, filters, search boxes, auth, buttons
 and **everything a dashboard needs for interacting with the data**
 
-### Tailwind CSS Dashboard
+### Tailwind CSS Dashboard Admin Template
 TailAdmin is based on **Tailwind CSS and interaction handled by Alpine.js** Tailwind CSS is a powerful, utility-first framework that can help you build highly readable, fast-loading websites. 
 Its template-based design makes it easy to get started, and you can quickly create an admin interface with the same consistency. 
 So you can add your own style or customize TailAdmin without touching to CSS.
