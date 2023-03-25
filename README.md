@@ -5,26 +5,27 @@ powerful web applications and dashboard-admin projects.
 
 [![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://tailadmin.com/)
 
+### [✨ Visit Website](https://tailadmin.com/)
 
 ### [🚀 PRO Demo](https://demo.tailadmin.com/)
 ### [🚀 FREE Demo](https://free-demo.tailadmin.com/)
-### [✨ Visit Website](https://tailadmin.com/)
-
 
 ### TailAdmin PRO vs TailAdmin FREE Comparison 📊
 
 #### [TailAdmin PRO](https://demo.tailadmin.com/)
 - 4 Unique Dashboards: Analytics, Ecommerce, Marketing, and CRM (More will be added)
-- 120+ Dashboard UI Components: 
+- 120+ Dashboard UI Components
+- 200+ Total UI Elements
 - 45+ HTML Files
 - All Essential Elements and Files
-- Figma Design Source Provided - As Shown on Demo
+- Full Figma Design Source - As Shown on Demo
 
 ___
 
 #### [TailAdmin FREE](https://free-demo.tailadmin.com/)
 - 1 Unique Dashboard
-- 30+ Dashboard UI Components: 
+- 30+ Dashboard UI Components
+- 50+ Total UI Elements 
 - 10+ HTML Files
 - Basic UI Kit Elements and Files
 - Figma Design Source - Free Sample
@@ -44,11 +45,16 @@ ___
 
 You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it)
 
-- Use terminal and navigate to the project (tailadmin) root.
+Use terminal and navigate to the project (tailadmin) root. 
 
-- Then run : <code>npm install</code>
+- Clone the repository with the following command:
 
-- Then run : <code>npm start</code>
+```bash
+git clone https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template
+```
+- Then run : <code>npm install</code> to install dependencies
+
+- Then run : <code>npm start</code> to rund the project in dev mode
 
 Now, in the browser go to <code>localhost:3000</code>
 
