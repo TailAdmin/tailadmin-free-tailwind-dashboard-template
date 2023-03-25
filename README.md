@@ -64,7 +64,7 @@ Run : <code>npm run build</code>
 This command will generate a Build folder in the root of your template that you can upload to your server.
 
 
-### 120+ Essential UI Components and App Pages for Dashboards
+### 200+ Essential UI Components, Elements and App Pages for Dashboards
 With TailAdmin, you can launch your web projects quickly and easily, thanks to it contains 100+ pre-designed dashboard elements, components and pages. 
 Such as - header, navigation menu, chat, message, invoice, setting, sidebar, charts, graphs, tables, filters, search boxes, auth, buttons
 and **everything a dashboard needs for interacting with the data**
