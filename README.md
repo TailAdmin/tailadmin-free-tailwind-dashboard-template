@@ -69,7 +69,7 @@ With TailAdmin, you can launch your web projects quickly and easily, thanks to i
 Such as - header, navigation menu, chat, message, invoice, setting, sidebar, charts, graphs, tables, filters, search boxes, auth, buttons
 and **everything a dashboard needs for interacting with the data**
 
-### Tailwind CSS Dashboard Admin Template
+### Tailwind CSS HTML Admin Template
 TailAdmin is based on **Tailwind CSS and interaction handled by Alpine.js** Tailwind CSS is a powerful, utility-first framework that can help you build highly readable, fast-loading websites. 
 Its template-based design makes it easy to get started, and you can quickly create an admin interface with the same consistency. 
 So you can add your own style or customize TailAdmin without touching to CSS.
