@@ -1,19 +1,17 @@
-import "../../node_modules/prismjs/themes/prism.min.css";
 import "jsvectormap/dist/css/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "../css/style.css";
 
 import Alpine from "alpinejs";
-import intersect from "@alpinejs/intersect";
-import Prism from "prismjs";
+import persist from '@alpinejs/persist'
 import flatpickr from "flatpickr";
 import chart01 from "./components/chart-01";
 import chart02 from "./components/chart-02";
 import chart03 from "./components/chart-03";
 import chart04 from "./components/chart-04";
-import map01 from "./components/map-01";
+import map02 from "./components/map-02";
 
-Alpine.plugin(intersect);
+Alpine.plugin(persist)
 window.Alpine = Alpine;
 Alpine.start();
 
@@ -46,5 +44,5 @@ document.addEventListener("DOMContentLoaded", () => {
   chart02();
   chart03();
   chart04();
-  map01();
+  map02();
 });

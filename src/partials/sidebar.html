@@ -36,10 +36,7 @@
     <!-- Sidebar Menu -->
     <nav
       class="mt-5 py-4 px-4 lg:mt-9 lg:px-6"
-      x-data="{selected: 'Dashboard'}"
-      x-init="
-        selected = JSON.parse(localStorage.getItem('selected'));
-        $watch('selected', value => localStorage.setItem('selected', JSON.stringify(value)))"
+      x-data="{selected: $persist('Dashboard')}"
     >
       <!-- Menu Group -->
       <div>

@@ -93,7 +93,7 @@
   @apply !p-6 dark:!bg-boxdark dark:!text-bodydark dark:!shadow-8 2xsm:!w-auto;
 }
 .flatpickr-day {
-  @apply dark:!text-bodydark;
+  @apply dark:!text-bodydark dark:hover:!bg-meta-4 dark:hover:!border-meta-4;
 }
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
@@ -151,6 +151,18 @@ span.flatpickr-weekday,
 }
 .taskCheckbox:checked ~ .box {
   @apply border-primary bg-primary dark:border-primary;
+}
+
+.custom-input-date::-webkit-calendar-picker-indicator {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+}
+.custom-input-date-1::-webkit-calendar-picker-indicator {
+  background-image: url(../images/icon/icon-calendar.svg);
+}
+.custom-input-date-2::-webkit-calendar-picker-indicator {
+  background-image: url(../images/icon/icon-arrow-down.svg);
 }
 
 [x-cloak] {
