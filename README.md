@@ -41,6 +41,9 @@ ___
 
 ### [👉 TailAdmin React](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
 
+### [👉 TailAdmin Next.js](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
+
+
 ### Installation
 
 You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it)
