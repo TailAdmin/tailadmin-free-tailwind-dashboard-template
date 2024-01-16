@@ -57,7 +57,7 @@ git clone https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-templat
 ```
 - Then run : <code>npm install</code> to install dependencies
 
-- Then run : <code>npm start</code> to rund the project in dev mode
+- Then run : <code>npm start</code> to run the project in dev mode
 
 Now, in the browser go to <code>localhost:3000</code>
 
