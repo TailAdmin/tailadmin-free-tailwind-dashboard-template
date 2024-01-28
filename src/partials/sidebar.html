@@ -35,7 +35,7 @@
   >
     <!-- Sidebar Menu -->
     <nav
-      class="mt-5 py-4 px-4 lg:mt-9 lg:px-6"
+      class="mt-5 px-4 py-4 lg:mt-9 lg:px-6"
       x-data="{selected: $persist('Dashboard')}"
     >
       <!-- Menu Group -->
@@ -46,10 +46,10 @@
           <!-- Menu Item Dashboard -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Dashboard' ? '':'Dashboard')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics') }"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Dashboard') || (page === 'ecommerce' || page === 'analytics' || page === 'stocks') }"
             >
               <svg
                 class="fill-current"
@@ -99,17 +99,17 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Dashboard') ? 'block' :'hidden'"
             >
-              <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
                     href="index.html"
                     :class="page === 'ecommerce' && '!text-white'"
-                    >eCommerce</a
-                  >
+                    >eCommerce
+                  </a>
                 </li>
               </ul>
             </div>
@@ -120,7 +120,7 @@
           <!-- Menu Item Calendar -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="calendar.html"
               @click="selected = (selected === 'Calendar' ? '':'Calendar')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Calendar') && (page === 'calendar') }"
@@ -147,7 +147,7 @@
           <!-- Menu Item Profile -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="profile.html"
               @click="selected = (selected === 'Profile' ? '':'Profile')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
@@ -179,7 +179,7 @@
           <!-- Menu Item Forms -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'Forms' ? '':'Forms')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Forms') || (page === 'formElements' || page === 'formLayout') }"
@@ -236,10 +236,10 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Forms') ? 'block' :'hidden'"
             >
-              <ul class="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+              <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
@@ -268,7 +268,7 @@
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="tables.html"
               @click="selected = (selected === 'Tables' ? '':'Tables')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Tables') && (page === 'Tables') }"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Tables') && (page === 'tables') }"
             >
               <svg
                 class="fill-current"
@@ -398,10 +398,10 @@
           <!-- Menu Item Ui Elements -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'UiElements' ? '':'UiElements')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'UiElements') || (page === 'alerts' || page === 'buttons' || page === 'card' || page === 'tabs' || page === 'modals') }"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'UiElements') || (page === 'alerts' || page === 'buttons') }"
             >
               <svg
                 class="fill-current"
@@ -459,10 +459,10 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden"
+              class="translate transform overflow-hidden"
               :class="(selected === 'UiElements') ? 'block' :'hidden'"
             >
-              <ul class="mt-4 mb-3 flex flex-col gap-2 pl-6">
+              <ul class="mb-3 mt-4 flex flex-col gap-2 pl-6">
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
@@ -471,6 +471,7 @@
                     >Alerts</a
                   >
                 </li>
+
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
@@ -488,10 +489,10 @@
           <!-- Menu Item Auth Pages -->
           <li>
             <a
-              class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+              class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="#"
               @click.prevent="selected = (selected === 'AuthPages' ? '':'AuthPages')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' || page === 'login' || page === 'forgetPassword') }"
+              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'AuthPages') || (page === 'register' || page === 'login') }"
             >
               <svg
                 class="fill-current"
@@ -545,10 +546,10 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden"
+              class="translate transform overflow-hidden"
               :class="(selected === 'AuthPages') ? 'block' :'hidden'"
             >
-              <ul class="mt-4 mb-3 flex flex-col gap-2 pl-6">
+              <ul class="mb-3 mt-4 flex flex-col gap-2 pl-6">
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
@@ -577,11 +578,16 @@
 
     <!-- Promo Box -->
     <div
-      class="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark py-6 px-4 text-center shadow-default">
+      class="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark px-4 py-6 text-center shadow-default"
+    >
       <h3 class="mb-1 font-semibold text-white">TailAdmin Pro</h3>
       <p class="mb-4 text-xs">Get All Dashboards and 300+ UI Elements</p>
-      <a href="https://tailadmin.com/pricing" target="_blank" rel="nofollow"
-        class="flex items-center justify-center rounded-md bg-primary p-2 text-white hover:bg-opacity-95">
+      <a
+        href="https://tailadmin.com/pricing"
+        target="_blank"
+        rel="nofollow"
+        class="flex items-center justify-center rounded-md bg-primary p-2 text-white hover:bg-opacity-95"
+      >
         Purchase Now
       </a>
     </div>

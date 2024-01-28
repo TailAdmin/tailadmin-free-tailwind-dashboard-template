@@ -81,7 +81,7 @@ const chart04 = () => {
       show: true,
       position: "top",
       horizontalAlign: "left",
-      fontFamily: "inter",
+      fontFamily: "Satoshi",
 
       markers: {
         radius: 99,
