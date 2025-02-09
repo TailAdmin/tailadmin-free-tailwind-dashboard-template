@@ -1,41 +1,60 @@
 import jsVectorMap from "jsvectormap";
-import "../us-aea-en";
+import "jsvectormap/dist/maps/world";
 
 const map01 = () => {
-  const mapSelector = document.querySelectorAll("#mapOne");
+  const mapSelectorOne = document.querySelectorAll("#mapOne");
 
-  if (mapSelector.length) {
+  if (mapSelectorOne.length) {
     const mapOne = new jsVectorMap({
       selector: "#mapOne",
-      map: "us_aea_en",
-      zoomButtons: true,
+      map: "world",
+      zoomButtons: false,
 
       regionStyle: {
         initial: {
-          fill: "#C8D0D8",
+          fontFamily: "Outfit",
+          fill: "#D9D9D9",
         },
         hover: {
           fillOpacity: 1,
-          fill: "#3056D3",
+          fill: "#465fff",
         },
       },
-      regionLabelStyle: {
+      markers: [
+        {
+          name: "Egypt",
+          coords: [26.8206, 30.8025],
+        },
+        {
+          name: "United Kingdom",
+          coords: [55.3781, 3.436],
+        },
+        {
+          name: "United States",
+          coords: [37.0902, -95.7129],
+        },
+      ],
+
+      markerStyle: {
         initial: {
-          fontFamily: "Satoshi",
-          fontWeight: "semibold",
-          fill: "#fff",
+          strokeWidth: 1,
+          fill: "#465fff",
+          fillOpacity: 1,
+          r: 4,
         },
         hover: {
-          cursor: "pointer",
+          fill: "#465fff",
+          fillOpacity: 1,
         },
+        selected: {},
+        selectedHover: {},
       },
 
-      labels: {
-        regions: {
-          render(code) {
-            return code.split("-")[1];
-          },
-        },
+      onRegionTooltipShow: function (tooltip, code) {
+        if (code === "EG") {
+          tooltip.selector.innerHTML =
+            tooltip.text() + " <b>(Hello Russia)</b>";
+        }
       },
     });
   }

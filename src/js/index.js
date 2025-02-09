@@ -1,16 +1,19 @@
-import "jsvectormap/dist/css/jsvectormap.css";
+import "jsvectormap/dist/jsvectormap.min.css";
 import "flatpickr/dist/flatpickr.min.css";
-import "../css/satoshi.css";
+import "dropzone/dist/dropzone.css";
 import "../css/style.css";
 
 import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
 import flatpickr from "flatpickr";
-import chart01 from "./components/chart-01";
-import chart02 from "./components/chart-02";
-import chart03 from "./components/chart-03";
-import chart04 from "./components/chart-04";
+import Dropzone from "dropzone";
+
+import chart01 from "./components/charts/chart-01";
+import chart02 from "./components/charts/chart-02";
+import chart03 from "./components/charts/chart-03";
 import map01 from "./components/map-01";
+import "./components/calendar-init.js";
+import "./components/image-resize";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -24,9 +27,9 @@ flatpickr(".datepicker", {
   dateFormat: "M j, Y",
   defaultDate: [new Date().setDate(new Date().getDate() - 6), new Date()],
   prevArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+    '<svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.25 6L9 12.25L15.25 18.5" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   nextArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+    '<svg class="stroke-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.75 19L15 12.75L8.75 6.5" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   onReady: (selectedDates, dateStr, instance) => {
     // eslint-disable-next-line no-param-reassign
     instance.element.value = dateStr.replace("to", "-");
@@ -39,22 +42,48 @@ flatpickr(".datepicker", {
   },
 });
 
-flatpickr(".form-datepicker", {
-  mode: "single",
-  static: true,
-  monthSelectorType: "static",
-  dateFormat: "M j, Y",
-  prevArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
-  nextArrow:
-    '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
-});
+// Init Dropzone
+const dropzoneArea = document.querySelectorAll("#demo-upload");
+
+if (dropzoneArea.length) {
+  let myDropzone = new Dropzone("#demo-upload", { url: "/file/post" });
+}
 
 // Document Loaded
 document.addEventListener("DOMContentLoaded", () => {
   chart01();
   chart02();
   chart03();
-  chart04();
   map01();
+});
+
+// Get the current year
+const year = document.getElementById("year");
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+// For Copy//
+document.addEventListener("DOMContentLoaded", () => {
+  const copyInput = document.getElementById("copy-input");
+  if (copyInput) {
+    // Select the copy button and input field
+    const copyButton = document.getElementById("copy-button");
+    const copyText = document.getElementById("copy-text");
+    const websiteInput = document.getElementById("website-input");
+
+    // Event listener for the copy button
+    copyButton.addEventListener("click", () => {
+      // Copy the input value to the clipboard
+      navigator.clipboard.writeText(websiteInput.value).then(() => {
+        // Change the text to "Copied"
+        copyText.textContent = "Copied";
+
+        // Reset the text back to "Copy" after 2 seconds
+        setTimeout(() => {
+          copyText.textContent = "Copy";
+        }, 2000);
+      });
+    });
+  }
 });
