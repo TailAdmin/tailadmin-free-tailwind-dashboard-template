@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
       Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
     </title>
   </head>
-
   <body
-    x-data="{ page: 'formElements', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'formElements', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
-          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark bg-gray-900': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
@@ -30,644 +32,271 @@
       <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
+        <!-- Small Device Overlay Start -->
+        <include src="./partials/overlay.html" />
+        <!-- Small Device Overlay End -->
+
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6">
             <!-- Breadcrumb Start -->
-            <div
-              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Form Elements
-              </h2>
-
-              <nav>
-                <ol class="flex items-center gap-2">
-                  <li>
-                    <a class="font-medium" href="index.html">Dashboard /</a>
-                  </li>
-                  <li class="font-medium text-primary">Form Elements</li>
-                </ol>
-              </nav>
+            <div x-data="{ pageName: `Form Elements`}">
+              <include src="./partials/breadcrumb.html" />
             </div>
             <!-- Breadcrumb End -->
 
             <!-- ====== Form Elements Section Start -->
-            <div class="grid grid-cols-1 gap-9 sm:grid-cols-2">
-              <div class="flex flex-col gap-9">
-                <!-- Input Fields -->
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              <div class="space-y-6">
                 <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
                 >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Input Fields
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Default Inputs
                     </h3>
                   </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
                     <div>
                       <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Default Input
+                        Input
                       </label>
                       <input
                         type="text"
-                        placeholder="Default Input"
-                        class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                       />
                     </div>
 
+                    <!-- Elements -->
                     <div>
                       <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Active Input
+                        Input with Placeholder
                       </label>
                       <input
                         type="text"
-                        placeholder="Active Input"
-                        class="w-full rounded-lg border-[1.5px] border-primary bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
+                        placeholder="info@gmail.com"
+                        class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
                       />
                     </div>
 
+                    <!-- Elements -->
                     <div>
                       <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Disabled label
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Disabled label"
-                        disabled=""
-                        class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary dark:disabled:bg-black"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Toggle switch input -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Toggle switch input
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div x-data="{ switcherToggle: false }">
-                      <label
-                        for="toggle1"
-                        class="flex cursor-pointer select-none items-center"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="toggle1"
-                            class="sr-only"
-                            @change="switcherToggle = !switcherToggle"
-                          />
-                          <div
-                            class="block h-8 w-14 rounded-full bg-meta-9 dark:bg-[#5A616B]"
-                          ></div>
-                          <div
-                            :class="switcherToggle && '!right-1 !translate-x-full !bg-primary dark:!bg-white'"
-                            class="absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition"
-                          ></div>
-                        </div>
-                      </label>
-                    </div>
-
-                    <div x-data="{ switcherToggle: false }">
-                      <label
-                        for="toggle2"
-                        class="flex cursor-pointer select-none items-center"
-                      >
-                        <div class="relative">
-                          <input
-                            id="toggle2"
-                            type="checkbox"
-                            class="sr-only"
-                            @change="switcherToggle = !switcherToggle"
-                          />
-                          <div
-                            class="h-5 w-14 rounded-full bg-meta-9 shadow-inner dark:bg-[#5A616B]"
-                          ></div>
-                          <div
-                            :class="switcherToggle && '!right-0 !translate-x-full !bg-primary dark:!bg-white'"
-                            class="dot absolute -top-1 left-0 h-7 w-7 rounded-full bg-white shadow-switch-1 transition"
-                          ></div>
-                        </div>
-                      </label>
-                    </div>
-
-                    <div x-data="{ switcherToggle: false }">
-                      <label
-                        for="toggle3"
-                        class="flex cursor-pointer select-none items-center"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="toggle3"
-                            class="sr-only"
-                            @change="switcherToggle = !switcherToggle"
-                          />
-                          <div
-                            class="block h-8 w-14 rounded-full bg-meta-9 dark:bg-[#5A616B]"
-                          ></div>
-                          <div
-                            :class="switcherToggle && '!right-1 !translate-x-full !bg-primary dark:!bg-white'"
-                            class="dot absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"
-                          >
-                            <span
-                              :class="switcherToggle && '!block'"
-                              class="hidden text-white dark:text-bodydark"
-                            >
-                              <svg
-                                class="fill-current stroke-current"
-                                width="11"
-                                height="8"
-                                viewBox="0 0 11 8"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                                  fill=""
-                                  stroke=""
-                                  stroke-width="0.4"
-                                ></path>
-                              </svg>
-                            </span>
-                            <span :class="switcherToggle && 'hidden'">
-                              <svg
-                                class="h-4 w-4 stroke-current"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"
-                                ></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                      </label>
-                    </div>
-
-                    <div x-data="{ switcherToggle: false }">
-                      <label
-                        for="toggle4"
-                        class="flex cursor-pointer select-none items-center"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="toggle4"
-                            class="sr-only"
-                            @change="switcherToggle = !switcherToggle"
-                          />
-                          <div
-                            :class="switcherToggle && '!bg-primary'"
-                            class="block h-8 w-14 rounded-full bg-black"
-                          ></div>
-                          <div
-                            :class="switcherToggle && '!right-1 !translate-x-full'"
-                            class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition"
-                          ></div>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Time and date -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Time and date
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Date picker
-                      </label>
-                      <div class="relative">
-                        <input
-                          class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                          placeholder="mm/dd/yyyy"
-                          data-class="flatpickr-right"
-                        />
-
-                        <div
-                          class="pointer-events-none absolute inset-0 left-auto right-5 flex items-center"
-                        >
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M15.7504 2.9812H14.2879V2.36245C14.2879 2.02495 14.0066 1.71558 13.641 1.71558C13.2754 1.71558 12.9941 1.99683 12.9941 2.36245V2.9812H4.97852V2.36245C4.97852 2.02495 4.69727 1.71558 4.33164 1.71558C3.96602 1.71558 3.68477 1.99683 3.68477 2.36245V2.9812H2.25039C1.29414 2.9812 0.478516 3.7687 0.478516 4.75308V14.5406C0.478516 15.4968 1.26602 16.3125 2.25039 16.3125H15.7504C16.7066 16.3125 17.5223 15.525 17.5223 14.5406V4.72495C17.5223 3.7687 16.7066 2.9812 15.7504 2.9812ZM1.77227 8.21245H4.16289V10.9968H1.77227V8.21245ZM5.42852 8.21245H8.38164V10.9968H5.42852V8.21245ZM8.38164 12.2625V15.0187H5.42852V12.2625H8.38164V12.2625ZM9.64727 12.2625H12.6004V15.0187H9.64727V12.2625ZM9.64727 10.9968V8.21245H12.6004V10.9968H9.64727ZM13.8379 8.21245H16.2285V10.9968H13.8379V8.21245ZM2.25039 4.24683H3.71289V4.83745C3.71289 5.17495 3.99414 5.48433 4.35977 5.48433C4.72539 5.48433 5.00664 5.20308 5.00664 4.83745V4.24683H13.0504V4.83745C13.0504 5.17495 13.3316 5.48433 13.6973 5.48433C14.0629 5.48433 14.3441 5.20308 14.3441 4.83745V4.24683H15.7504C16.0316 4.24683 16.2566 4.47183 16.2566 4.75308V6.94683H1.77227V4.75308C1.77227 4.47183 1.96914 4.24683 2.25039 4.24683ZM1.77227 14.5125V12.2343H4.16289V14.9906H2.25039C1.96914 15.0187 1.77227 14.7937 1.77227 14.5125ZM15.7504 15.0187H13.8379V12.2625H16.2285V14.5406C16.2566 14.7937 16.0316 15.0187 15.7504 15.0187Z"
-                              fill="#64748B"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Select date
-                      </label>
-                      <div class="relative">
-                        <input
-                          class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                          placeholder="mm/dd/yyyy"
-                          data-class="flatpickr-right"
-                        />
-
-                        <div
-                          class="pointer-events-none absolute inset-0 left-auto right-5 flex items-center"
-                        >
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M9.0002 12.8249C8.83145 12.8249 8.69082 12.7687 8.5502 12.6562L2.08145 6.2999C1.82832 6.04678 1.82832 5.65303 2.08145 5.3999C2.33457 5.14678 2.72832 5.14678 2.98145 5.3999L9.0002 11.278L15.0189 5.34365C15.2721 5.09053 15.6658 5.09053 15.9189 5.34365C16.1721 5.59678 16.1721 5.99053 15.9189 6.24365L9.45019 12.5999C9.30957 12.7405 9.16895 12.8249 9.0002 12.8249Z"
-                              fill="#64748B"
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- File upload -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      File upload
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Attach file
-                      </label>
-                      <input
-                        type="file"
-                        class="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-normal outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:px-5 file:py-3 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Attach file
-                      </label>
-                      <input
-                        type="file"
-                        class="w-full rounded-md border border-stroke p-3 outline-none transition file:mr-4 file:rounded file:border-[0.5px] file:border-stroke file:bg-[#EEEEEE] file:px-2.5 file:py-1 file:text-sm file:font-normal focus:border-primary file:focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-strokedark dark:file:bg-white/30 dark:file:text-white"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex flex-col gap-9">
-                <!-- Textarea Fields -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Textarea Fields
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Default textarea
-                      </label>
-                      <textarea
-                        rows="6"
-                        placeholder="Default textarea"
-                        class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                      ></textarea>
-                    </div>
-
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Active textarea
-                      </label>
-                      <textarea
-                        rows="6"
-                        placeholder="Active textarea"
-                        class="w-full rounded-lg border-[1.5px] border-primary bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
-                      ></textarea>
-                    </div>
-
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Disabled textarea
-                      </label>
-                      <textarea
-                        rows="6"
-                        disabled=""
-                        placeholder="Disabled textarea"
-                        class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary dark:disabled:bg-black"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Checkbox and radio -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Checkbox and radio
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div x-data="{ checkboxToggle: false }">
-                      <label
-                        for="checkboxLabelOne"
-                        class="flex cursor-pointer select-none items-center text-sm font-medium"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabelOne"
-                            class="sr-only"
-                            @change="checkboxToggle = !checkboxToggle"
-                          />
-                          <div
-                            :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
-                            class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
-                          >
-                            <span
-                              :class="checkboxToggle && 'bg-primary'"
-                              class="h-2.5 w-2.5 rounded-sm"
-                            ></span>
-                          </div>
-                        </div>
-                        Checkbox Text
-                      </label>
-                    </div>
-
-                    <div x-data="{ checkboxToggle: false }">
-                      <label
-                        for="checkboxLabelTwo"
-                        class="flex cursor-pointer select-none items-center text-sm font-medium"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabelTwo"
-                            class="sr-only"
-                            @change="checkboxToggle = !checkboxToggle"
-                          />
-                          <div
-                            :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
-                            class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
-                          >
-                            <span
-                              :class="checkboxToggle && '!opacity-100'"
-                              class="opacity-0"
-                            >
-                              <svg
-                                width="11"
-                                height="8"
-                                viewBox="0 0 11 8"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                                  fill="#3056D3"
-                                  stroke="#3056D3"
-                                  stroke-width="0.4"
-                                ></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                        Checkbox Text
-                      </label>
-                    </div>
-
-                    <div x-data="{ checkboxToggle: false }">
-                      <label
-                        for="checkboxLabelThree"
-                        class="flex cursor-pointer select-none items-center text-sm font-medium"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabelThree"
-                            class="sr-only"
-                            @change="checkboxToggle = !checkboxToggle"
-                          />
-                          <div
-                            :class="checkboxToggle && 'border-primary bg-gray dark:bg-transparent'"
-                            class="box mr-4 flex h-5 w-5 items-center justify-center rounded border"
-                          >
-                            <span
-                              :class="checkboxToggle && '!opacity-100'"
-                              class="text-primary opacity-0"
-                            >
-                              <svg
-                                class="h-3.5 w-3.5 stroke-current"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"
-                                ></path>
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                        Checkbox Text
-                      </label>
-                    </div>
-
-                    <div x-data="{ checkboxToggle: false }">
-                      <label
-                        for="checkboxLabelFour"
-                        class="flex cursor-pointer select-none items-center text-sm font-medium text-black dark:text-white"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabelFour"
-                            class="sr-only"
-                            @change="checkboxToggle = !checkboxToggle"
-                          />
-                          <div
-                            :class="checkboxToggle && 'border-primary'"
-                            class="mr-4 flex h-5 w-5 items-center justify-center rounded-full border"
-                          >
-                            <span
-                              :class="checkboxToggle && '!bg-primary'"
-                              class="h-2.5 w-2.5 rounded-full bg-transparent"
-                            >
-                            </span>
-                          </div>
-                        </div>
-                        Checkbox Text
-                      </label>
-                    </div>
-
-                    <div x-data="{ checkboxToggle: false }">
-                      <label
-                        for="checkboxLabelFive"
-                        class="flex cursor-pointer select-none items-center text-sm font-medium text-black dark:text-white"
-                      >
-                        <div class="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabelFive"
-                            class="sr-only"
-                            @change="checkboxToggle = !checkboxToggle"
-                          />
-                          <div
-                            :class="checkboxToggle && '!border-4'"
-                            class="box mr-4 flex h-5 w-5 items-center justify-center rounded-full border border-primary"
-                          >
-                            <span
-                              class="h-2.5 w-2.5 rounded-full bg-white dark:bg-transparent"
-                            >
-                            </span>
-                          </div>
-                        </div>
-                        Checkbox Text
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Select input -->
-                <div
-                  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
-                >
-                  <div
-                    class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
-                  >
-                    <h3 class="font-medium text-black dark:text-white">
-                      Select input
-                    </h3>
-                  </div>
-                  <div class="flex flex-col gap-5.5 p-6.5">
-                    <div>
-                      <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
-                      >
-                        Select Option
+                        Select Input
                       </label>
                       <div
                         x-data="{ isOptionSelected: false }"
-                        class="relative z-20 bg-white dark:bg-form-input"
+                        class="relative z-20 bg-transparent"
                       >
                         <select
-                          class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 pl-5 pr-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
-                          :class="isOptionSelected && 'text-black dark:text-white'"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                          :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                           @change="isOptionSelected = true"
                         >
-                          <option value="" class="text-body">Option 1</option>
-                          <option value="" class="text-body">Option 2</option>
-                          <option value="" class="text-body">Option 3</option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Select Option
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Marketing
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Template
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Development
+                          </option>
                         </select>
                         <span
-                          class="absolute right-4 top-1/2 z-10 -translate-y-1/2"
+                          class="pointer-events-none absolute right-4 top-1/2 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400"
                         >
                           <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
+                            class="stroke-current"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <g opacity="0.8">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                                fill="#637381"
-                              ></path>
-                            </g>
+                            <path
+                              d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                              stroke=""
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
                           </svg>
                         </span>
                       </div>
                     </div>
 
+                    <!-- Elements -->
                     <div>
                       <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Select Country
+                        Password Input
                       </label>
-                      <div
-                        x-data="{ isOptionSelected: false }"
-                        class="relative z-20 bg-white dark:bg-form-input"
-                      >
+                      <div x-data="{ showPassword: false }" class="relative">
+                        <input
+                          :type="showPassword ? 'text' : 'password'"
+                          placeholder="Enter your password"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
                         <span
-                          class="absolute left-4 top-1/2 z-30 -translate-y-1/2"
+                          @click="showPassword = !showPassword"
+                          class="absolute right-4 top-1/2 z-30 -translate-y-1/2 cursor-pointer"
+                        >
+                          <svg
+                            x-show="!showPassword"
+                            class="fill-gray-500 dark:fill-gray-400"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M10.0002 13.8619C7.23361 13.8619 4.86803 12.1372 3.92328 9.70241C4.86804 7.26761 7.23361 5.54297 10.0002 5.54297C12.7667 5.54297 15.1323 7.26762 16.0771 9.70243C15.1323 12.1372 12.7667 13.8619 10.0002 13.8619ZM10.0002 4.04297C6.48191 4.04297 3.49489 6.30917 2.4155 9.4593C2.3615 9.61687 2.3615 9.78794 2.41549 9.94552C3.49488 13.0957 6.48191 15.3619 10.0002 15.3619C13.5184 15.3619 16.5055 13.0957 17.5849 9.94555C17.6389 9.78797 17.6389 9.6169 17.5849 9.45932C16.5055 6.30919 13.5184 4.04297 10.0002 4.04297ZM9.99151 7.84413C8.96527 7.84413 8.13333 8.67606 8.13333 9.70231C8.13333 10.7286 8.96527 11.5605 9.99151 11.5605H10.0064C11.0326 11.5605 11.8646 10.7286 11.8646 9.70231C11.8646 8.67606 11.0326 7.84413 10.0064 7.84413H9.99151Z"
+                            />
+                          </svg>
+
+                          <svg
+                            x-show="showPassword"
+                            class="fill-gray-500 dark:fill-gray-400"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4.63803 3.57709C4.34513 3.2842 3.87026 3.2842 3.57737 3.57709C3.28447 3.86999 3.28447 4.34486 3.57737 4.63775L4.85323 5.91362C3.74609 6.84199 2.89363 8.06395 2.4155 9.45936C2.3615 9.61694 2.3615 9.78801 2.41549 9.94558C3.49488 13.0957 6.48191 15.3619 10.0002 15.3619C11.255 15.3619 12.4422 15.0737 13.4994 14.5598L15.3625 16.4229C15.6554 16.7158 16.1302 16.7158 16.4231 16.4229C16.716 16.13 16.716 15.6551 16.4231 15.3622L4.63803 3.57709ZM12.3608 13.4212L10.4475 11.5079C10.3061 11.5423 10.1584 11.5606 10.0064 11.5606H9.99151C8.96527 11.5606 8.13333 10.7286 8.13333 9.70237C8.13333 9.5461 8.15262 9.39434 8.18895 9.24933L5.91885 6.97923C5.03505 7.69015 4.34057 8.62704 3.92328 9.70247C4.86803 12.1373 7.23361 13.8619 10.0002 13.8619C10.8326 13.8619 11.6287 13.7058 12.3608 13.4212ZM16.0771 9.70249C15.7843 10.4569 15.3552 11.1432 14.8199 11.7311L15.8813 12.7925C16.6329 11.9813 17.2187 11.0143 17.5849 9.94561C17.6389 9.78803 17.6389 9.61696 17.5849 9.45938C16.5055 6.30925 13.5184 4.04303 10.0002 4.04303C9.13525 4.04303 8.30244 4.17999 7.52218 4.43338L8.75139 5.66259C9.1556 5.58413 9.57311 5.54303 10.0002 5.54303C12.7667 5.54303 15.1323 7.26768 16.0771 9.70249Z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Date Picker Input
+                      </label>
+
+                      <div class="relative">
+                        <input
+                          type="date"
+                          placeholder="Select date"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                          onclick="this.showPicker()"
+                        />
+                        <span
+                          class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                        >
+                          <svg
+                            class="fill-current"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z"
+                              fill=""
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Time Select Input
+                      </label>
+                      <div class="relative">
+                        <input
+                          type="time"
+                          placeholder="12:00 AM"
+                          onclick="this.showPicker()"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                        <span
+                          class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                        >
+                          <svg
+                            class="fill-current"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3.04175 9.99984C3.04175 6.15686 6.1571 3.0415 10.0001 3.0415C13.8431 3.0415 16.9584 6.15686 16.9584 9.99984C16.9584 13.8428 13.8431 16.9582 10.0001 16.9582C6.1571 16.9582 3.04175 13.8428 3.04175 9.99984ZM10.0001 1.5415C5.32867 1.5415 1.54175 5.32843 1.54175 9.99984C1.54175 14.6712 5.32867 18.4582 10.0001 18.4582C14.6715 18.4582 18.4584 14.6712 18.4584 9.99984C18.4584 5.32843 14.6715 1.5415 10.0001 1.5415ZM9.99998 10.7498C9.58577 10.7498 9.24998 10.4141 9.24998 9.99984V5.4165C9.24998 5.00229 9.58577 4.6665 9.99998 4.6665C10.4142 4.6665 10.75 5.00229 10.75 5.4165V9.24984H13.3334C13.7476 9.24984 14.0834 9.58562 14.0834 9.99984C14.0834 10.4141 13.7476 10.7498 13.3334 10.7498H10.0001H9.99998Z"
+                              fill=""
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Input with Payment
+                      </label>
+
+                      <div class="relative">
+                        <input
+                          type="text"
+                          placeholder="Card number"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-[62px] text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                        <span
+                          class="absolute left-0 top-1/2 flex h-11 w-[46px] -translate-y-1/2 items-center justify-center border-r border-gray-200 dark:border-gray-800"
                         >
                           <svg
                             width="20"
@@ -676,68 +305,114 @@
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <g opacity="0.8">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M10.0007 2.50065C5.85852 2.50065 2.50065 5.85852 2.50065 10.0007C2.50065 14.1428 5.85852 17.5007 10.0007 17.5007C14.1428 17.5007 17.5007 14.1428 17.5007 10.0007C17.5007 5.85852 14.1428 2.50065 10.0007 2.50065ZM0.833984 10.0007C0.833984 4.93804 4.93804 0.833984 10.0007 0.833984C15.0633 0.833984 19.1673 4.93804 19.1673 10.0007C19.1673 15.0633 15.0633 19.1673 10.0007 19.1673C4.93804 19.1673 0.833984 15.0633 0.833984 10.0007Z"
-                                fill="#637381"
-                              ></path>
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M0.833984 9.99935C0.833984 9.53911 1.20708 9.16602 1.66732 9.16602H18.334C18.7942 9.16602 19.1673 9.53911 19.1673 9.99935C19.1673 10.4596 18.7942 10.8327 18.334 10.8327H1.66732C1.20708 10.8327 0.833984 10.4596 0.833984 9.99935Z"
-                                fill="#637381"
-                              ></path>
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M7.50084 10.0008C7.55796 12.5632 8.4392 15.0301 10.0006 17.0418C11.5621 15.0301 12.4433 12.5632 12.5005 10.0008C12.4433 7.43845 11.5621 4.97153 10.0007 2.95982C8.4392 4.97153 7.55796 7.43845 7.50084 10.0008ZM10.0007 1.66749L9.38536 1.10547C7.16473 3.53658 5.90275 6.69153 5.83417 9.98346C5.83392 9.99503 5.83392 10.0066 5.83417 10.0182C5.90275 13.3101 7.16473 16.4651 9.38536 18.8962C9.54325 19.069 9.76655 19.1675 10.0007 19.1675C10.2348 19.1675 10.4581 19.069 10.6159 18.8962C12.8366 16.4651 14.0986 13.3101 14.1671 10.0182C14.1674 10.0066 14.1674 9.99503 14.1671 9.98346C14.0986 6.69153 12.8366 3.53658 10.6159 1.10547L10.0007 1.66749Z"
-                                fill="#637381"
-                              ></path>
-                            </g>
+                            <circle
+                              cx="6.25"
+                              cy="10"
+                              r="5.625"
+                              fill="#E80B26"
+                            />
+                            <circle
+                              cx="13.75"
+                              cy="10"
+                              r="5.625"
+                              fill="#F59D31"
+                            />
+                            <path
+                              d="M10 14.1924C11.1508 13.1625 11.875 11.6657 11.875 9.99979C11.875 8.33383 11.1508 6.8371 10 5.80713C8.84918 6.8371 8.125 8.33383 8.125 9.99979C8.125 11.6657 8.84918 13.1625 10 14.1924Z"
+                              fill="#FC6020"
+                            />
                           </svg>
                         </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Select Inputs
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Select Input
+                      </label>
+                      <div
+                        x-data="{ isOptionSelected: false }"
+                        class="relative z-20 bg-transparent"
+                      >
                         <select
-                          class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-12 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
-                          :class="isOptionSelected && 'text-black dark:text-white'"
+                          class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                          :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                           @change="isOptionSelected = true"
                         >
-                          <option value="" class="text-body">USA</option>
-                          <option value="" class="text-body">UK</option>
-                          <option value="" class="text-body">Canada</option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Select Option
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Marketing
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Template
+                          </option>
+                          <option
+                            value=""
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                          >
+                            Development
+                          </option>
                         </select>
                         <span
-                          class="absolute right-4 top-1/2 z-10 -translate-y-1/2"
+                          class="pointer-events-none absolute right-4 top-1/2 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400"
                         >
                           <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
+                            class="stroke-current"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <g opacity="0.8">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                                fill="#637381"
-                              ></path>
-                            </g>
+                            <path
+                              d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                              stroke=""
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
                           </svg>
                         </span>
                       </div>
                     </div>
 
+                    <!-- Elements -->
                     <div>
                       <label
-                        class="mb-3 block text-sm font-medium text-black dark:text-white"
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
                       >
-                        Multiselect Dropdown
+                        Multiple Select Options
                       </label>
-
-                      <div class="">
+                      <div>
                         <select class="hidden" x-cloak id="select">
                           <option value="1">Option 2</option>
                           <option value="2">Option 3</option>
@@ -759,15 +434,15 @@
                             <div class="relative flex flex-col items-center">
                               <div @click="open" class="w-full">
                                 <div
-                                  class="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input"
+                                  class="mb-2 flex h-11 rounded-lg border border-gray-300 py-1.5 pl-3 pr-3 shadow-theme-xs outline-none transition focus:border-brand-300 focus:shadow-focus-ring dark:border-gray-700 dark:bg-gray-900 dark:focus:border-brand-300"
                                 >
-                                  <div class="flex flex-auto flex-wrap gap-3">
+                                  <div class="flex flex-auto flex-wrap gap-2">
                                     <template
                                       x-for="(option,index) in selected"
                                       :key="index"
                                     >
                                       <div
-                                        class="my-1.5 flex items-center justify-center rounded border-[.5px] border-stroke bg-gray px-2.5 py-1.5 text-sm font-medium dark:border-strokedark dark:bg-white/30"
+                                        class="group flex items-center justify-center rounded-full border-[0.7px] border-transparent bg-gray-100 py-1 pl-2.5 pr-2 text-sm text-gray-800 hover:border-gray-200 dark:bg-gray-800 dark:text-white/90 dark:hover:border-gray-800"
                                       >
                                         <div
                                           class="max-w-full flex-initial"
@@ -779,23 +454,23 @@
                                         >
                                           <div
                                             @click="remove(index,option)"
-                                            class="cursor-pointer pl-2 hover:text-danger"
+                                            class="cursor-pointer pl-2 text-gray-500 group-hover:text-gray-400 dark:text-gray-400"
                                           >
                                             <svg
                                               class="fill-current"
                                               role="button"
-                                              width="12"
-                                              height="12"
-                                              viewBox="0 0 12 12"
+                                              width="14"
+                                              height="14"
+                                              viewBox="0 0 14 14"
                                               fill="none"
                                               xmlns="http://www.w3.org/2000/svg"
                                             >
                                               <path
                                                 fill-rule="evenodd"
                                                 clip-rule="evenodd"
-                                                d="M9.35355 3.35355C9.54882 3.15829 9.54882 2.84171 9.35355 2.64645C9.15829 2.45118 8.84171 2.45118 8.64645 2.64645L6 5.29289L3.35355 2.64645C3.15829 2.45118 2.84171 2.45118 2.64645 2.64645C2.45118 2.84171 2.45118 3.15829 2.64645 3.35355L5.29289 6L2.64645 8.64645C2.45118 8.84171 2.45118 9.15829 2.64645 9.35355C2.84171 9.54882 3.15829 9.54882 3.35355 9.35355L6 6.70711L8.64645 9.35355C8.84171 9.54882 9.15829 9.54882 9.35355 9.35355C9.54882 9.15829 9.54882 8.84171 9.35355 8.64645L6.70711 6L9.35355 3.35355Z"
-                                                fill="currentColor"
-                                              ></path>
+                                                d="M3.40717 4.46881C3.11428 4.17591 3.11428 3.70104 3.40717 3.40815C3.70006 3.11525 4.17494 3.11525 4.46783 3.40815L6.99943 5.93975L9.53095 3.40822C9.82385 3.11533 10.2987 3.11533 10.5916 3.40822C10.8845 3.70112 10.8845 4.17599 10.5916 4.46888L8.06009 7.00041L10.5916 9.53193C10.8845 9.82482 10.8845 10.2997 10.5916 10.5926C10.2987 10.8855 9.82385 10.8855 9.53095 10.5926L6.99943 8.06107L4.46783 10.5927C4.17494 10.8856 3.70006 10.8856 3.40717 10.5927C3.11428 10.2998 3.11428 9.8249 3.40717 9.53201L5.93877 7.00041L3.40717 4.46881Z"
+                                                fill=""
+                                              />
                                             </svg>
                                           </div>
                                         </div>
@@ -806,36 +481,36 @@
                                       class="flex-1"
                                     >
                                       <input
-                                        placeholder="Select a option"
-                                        class="h-full w-full appearance-none bg-transparent p-1 px-2 outline-none"
+                                        placeholder="Select option"
+                                        class="h-full w-full appearance-none border-0 bg-transparent p-1 pr-2 text-sm outline-none placeholder:text-gray-800 focus:border-0 focus:outline-none focus:ring-0 dark:placeholder:text-white/90"
                                         :value="selectedValues()"
                                       />
                                     </div>
                                   </div>
                                   <div
-                                    class="flex w-8 items-center py-1 pl-1 pr-1"
+                                    class="flex w-7 items-center py-1 pl-1 pr-1"
                                   >
                                     <button
                                       type="button"
                                       @click="open"
-                                      class="h-6 w-6 cursor-pointer outline-none focus:outline-none"
+                                      class="h-5 w-5 cursor-pointer text-gray-700 outline-none focus:outline-none dark:text-gray-400"
                                       :class="isOpen() === true ? 'rotate-180' : ''"
                                     >
                                       <svg
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
+                                        class="stroke-current"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 20 20"
                                         fill="none"
                                         xmlns="http://www.w3.org/2000/svg"
                                       >
-                                        <g opacity="0.8">
-                                          <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                                            fill="#637381"
-                                          ></path>
-                                        </g>
+                                        <path
+                                          d="M4.79175 7.39551L10.0001 12.6038L15.2084 7.39551"
+                                          stroke=""
+                                          stroke-width="1.5"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                        />
                                       </svg>
                                     </button>
                                   </div>
@@ -844,7 +519,7 @@
                               <div class="w-full px-4">
                                 <div
                                   x-show.transition.origin.top="isOpen()"
-                                  class="max-h-select absolute top-full left-0 z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input"
+                                  class="max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded-lg bg-white shadow dark:bg-gray-900"
                                   @click.outside="close"
                                 >
                                   <div class="flex w-full flex-col">
@@ -854,7 +529,7 @@
                                     >
                                       <div>
                                         <div
-                                          class="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
+                                          class="hover:bg-primary/5 w-full cursor-pointer rounded-t border-b border-gray-200 dark:border-gray-800"
                                           @click="select(index,$event)"
                                         >
                                           <div
@@ -865,7 +540,7 @@
                                               class="flex w-full items-center"
                                             >
                                               <div
-                                                class="mx-2 leading-6"
+                                                class="mx-2 leading-6 text-gray-800 dark:text-white/90"
                                                 x-model="option"
                                                 x-text="option.text"
                                               ></div>
@@ -882,6 +557,955 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Textarea input field
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Description
+                      </label>
+                      <textarea
+                        placeholder="Enter a description..."
+                        type="text"
+                        rows="6"
+                        class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                      ></textarea>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-300 dark:text-white/15"
+                      >
+                        Description
+                      </label>
+                      <textarea
+                        placeholder="Enter a description..."
+                        type="text"
+                        rows="6"
+                        disabled
+                        class="dark:bg-dark-900 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:shadow-focus-ring focus:outline-none focus:ring-0 disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
+                      ></textarea>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Description
+                      </label>
+                      <textarea
+                        placeholder="Enter a description..."
+                        type="text"
+                        rows="6"
+                        class="dark:bg-dark-900 w-full rounded-lg border border-error-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-error-300 focus:outline-none focus:ring focus:ring-error-500/10 dark:border-error-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-error-800"
+                      ></textarea>
+                      <p class="text-theme-xs text-error-500">
+                        Please enter a message in the textarea.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Input States
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      Validation styles for error, success and disabled states
+                      on form controls.
+                    </p>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Email
+                      </label>
+                      <div class="relative">
+                        <input
+                          type="text"
+                          value="demoemail"
+                          class="dark:bg-dark-900 w-full rounded-lg border border-error-300 bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-error-300 focus:outline-none focus:ring focus:ring-error-500/10 dark:border-error-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-error-800"
+                        />
+                        <span
+                          class="absolute right-3.5 top-1/2 -translate-y-1/2"
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M2.58325 7.99967C2.58325 5.00813 5.00838 2.58301 7.99992 2.58301C10.9915 2.58301 13.4166 5.00813 13.4166 7.99967C13.4166 10.9912 10.9915 13.4163 7.99992 13.4163C5.00838 13.4163 2.58325 10.9912 2.58325 7.99967ZM7.99992 1.08301C4.17995 1.08301 1.08325 4.17971 1.08325 7.99967C1.08325 11.8196 4.17995 14.9163 7.99992 14.9163C11.8199 14.9163 14.9166 11.8196 14.9166 7.99967C14.9166 4.17971 11.8199 1.08301 7.99992 1.08301ZM7.09932 5.01639C7.09932 5.51345 7.50227 5.91639 7.99932 5.91639H7.99999C8.49705 5.91639 8.89999 5.51345 8.89999 5.01639C8.89999 4.51933 8.49705 4.11639 7.99999 4.11639H7.99932C7.50227 4.11639 7.09932 4.51933 7.09932 5.01639ZM7.99998 11.8306C7.58576 11.8306 7.24998 11.4948 7.24998 11.0806V7.29627C7.24998 6.88206 7.58576 6.54627 7.99998 6.54627C8.41419 6.54627 8.74998 6.88206 8.74998 7.29627V11.0806C8.74998 11.4948 8.41419 11.8306 7.99998 11.8306Z"
+                              fill="#F04438"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+
+                      <p class="mt-1.5 text-theme-xs text-error-500">
+                        This is an error message.
+                      </p>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Email
+                      </label>
+                      <div class="relative">
+                        <input
+                          type="text"
+                          value="demoemail@gmail.com"
+                          class="dark:bg-dark-900 w-full rounded-lg border border-success-300 bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-success-300 focus:outline-none focus:ring focus:ring-success-500/10 dark:border-success-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-success-800"
+                        />
+                        <span
+                          class="absolute right-3.5 top-1/2 -translate-y-1/2"
+                        >
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M2.61792 8.00034C2.61792 5.02784 5.0276 2.61816 8.00009 2.61816C10.9726 2.61816 13.3823 5.02784 13.3823 8.00034C13.3823 10.9728 10.9726 13.3825 8.00009 13.3825C5.0276 13.3825 2.61792 10.9728 2.61792 8.00034ZM8.00009 1.11816C4.19917 1.11816 1.11792 4.19942 1.11792 8.00034C1.11792 11.8013 4.19917 14.8825 8.00009 14.8825C11.801 14.8825 14.8823 11.8013 14.8823 8.00034C14.8823 4.19942 11.801 1.11816 8.00009 1.11816ZM10.5192 7.266C10.8121 6.97311 10.8121 6.49823 10.5192 6.20534C10.2264 5.91245 9.75148 5.91245 9.45858 6.20534L7.45958 8.20434L6.54162 7.28638C6.24873 6.99349 5.77385 6.99349 5.48096 7.28638C5.18807 7.57927 5.18807 8.05415 5.48096 8.34704L6.92925 9.79533C7.0699 9.93599 7.26067 10.015 7.45958 10.015C7.6585 10.015 7.84926 9.93599 7.98991 9.79533L10.5192 7.266Z"
+                              fill="#12B76A"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+
+                      <p class="mt-1.5 text-theme-xs text-success-500">
+                        This is an error message.
+                      </p>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-300 dark:text-white/15"
+                      >
+                        Email
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="info@gmail.com"
+                        disabled
+                        class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:shadow-focus-ring focus:outline-none disabled:border-gray-100 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-400 dark:focus:border-brand-300 dark:disabled:border-gray-800 disabled:dark:placeholder:text-white/15"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-6">
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Input Group
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Email
+                      </label>
+                      <div class="relative">
+                        <span
+                          class="absolute left-0 top-1/2 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500 dark:border-gray-800 dark:text-gray-400"
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M3.04175 7.06206V14.375C3.04175 14.6511 3.26561 14.875 3.54175 14.875H16.4584C16.7346 14.875 16.9584 14.6511 16.9584 14.375V7.06245L11.1443 11.1168C10.457 11.5961 9.54373 11.5961 8.85638 11.1168L3.04175 7.06206ZM16.9584 5.19262C16.9584 5.19341 16.9584 5.1942 16.9584 5.19498V5.20026C16.9572 5.22216 16.946 5.24239 16.9279 5.25501L10.2864 9.88638C10.1145 10.0062 9.8862 10.0062 9.71437 9.88638L3.07255 5.25485C3.05342 5.24151 3.04202 5.21967 3.04202 5.19636C3.042 5.15695 3.07394 5.125 3.11335 5.125H16.8871C16.9253 5.125 16.9564 5.15494 16.9584 5.19262ZM18.4584 5.21428V14.375C18.4584 15.4796 17.563 16.375 16.4584 16.375H3.54175C2.43718 16.375 1.54175 15.4796 1.54175 14.375V5.19498C1.54175 5.1852 1.54194 5.17546 1.54231 5.16577C1.55858 4.31209 2.25571 3.625 3.11335 3.625H16.8871C17.7549 3.625 18.4584 4.32843 18.4585 5.19622C18.4585 5.20225 18.4585 5.20826 18.4584 5.21428Z"
+                              fill="#667085"
+                            />
+                          </svg>
+                        </span>
+                        <input
+                          type="text"
+                          placeholder="info@gmail.com"
+                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-[62px] text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div
+                      x-data="{
+                          selectedCountry: 'US',
+                          countryCodes: {
+                              'US': '+1',
+                              'GB': '+44',
+                              'CA': '+1',
+                              'AU': '+61'
+                          },
+                          phoneNumber: ''
+                      }"
+                    >
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Phone
+                      </label>
+                      <div class="relative">
+                        <div class="absolute">
+                          <select
+                            x-model="selectedCountry"
+                            @change="phoneNumber = countryCodes[selectedCountry]"
+                            class="appearance-none rounded-l-lg border-0 border-r border-gray-200 bg-transparent bg-none py-3 pl-3.5 pr-8 leading-tight text-gray-700 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-800 dark:text-gray-400"
+                          >
+                            <option
+                              value="US"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              US
+                            </option>
+                            <option
+                              value="GB"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              GB
+                            </option>
+                            <option
+                              value="CA"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              CA
+                            </option>
+                            <option
+                              value="AU"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              AU
+                            </option>
+                            <!-- Add more country codes as needed -->
+                          </select>
+                          <div
+                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 dark:text-gray-400"
+                          >
+                            <svg
+                              class="stroke-current"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                                stroke=""
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <input
+                          placeholder="+1 (555) 000-0000"
+                          x-model="phoneNumber"
+                          type="tel"
+                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-[84px] pr-4 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div
+                      x-data="{
+                          selectedCountry: 'US',
+                          countryCodes: {
+                              'US': '+1',
+                              'GB': '+44',
+                              'CA': '+1',
+                              'AU': '+61'
+                          },
+                          phoneNumber: ''
+                      }"
+                    >
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Phone
+                      </label>
+                      <div class="relative">
+                        <div class="absolute right-0">
+                          <select
+                            x-model="selectedCountry"
+                            @change="phoneNumber = countryCodes[selectedCountry]"
+                            class="appearance-none rounded-r-lg border-0 border-l border-gray-200 bg-transparent bg-none py-3 pl-3.5 pr-8 leading-tight text-gray-700 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-800 dark:text-gray-400"
+                          >
+                            <option
+                              value="US"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              US
+                            </option>
+                            <option
+                              value="GB"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              GB
+                            </option>
+                            <option
+                              value="CA"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              CA
+                            </option>
+                            <option
+                              value="AU"
+                              class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            >
+                              AU
+                            </option>
+                            <!-- Add more country codes as needed -->
+                          </select>
+                          <div
+                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 dark:text-gray-400"
+                          >
+                            <svg
+                              class="stroke-current"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
+                                stroke=""
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <input
+                          placeholder="+1 (555) 000-0000"
+                          x-model="phoneNumber"
+                          type="tel"
+                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-[84px] text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        URL
+                      </label>
+                      <div class="relative">
+                        <span
+                          class="absolute left-0 top-1/2 inline-flex h-11 -translate-y-1/2 items-center justify-center border-r border-gray-200 py-3 pl-3.5 pr-3 text-gray-500 dark:border-gray-800 dark:text-gray-400"
+                        >
+                          http://
+                        </span>
+                        <input
+                          type="url"
+                          placeholder="www.tailadmin.com"
+                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-[90px] text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div id="copy-input">
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Website
+                      </label>
+                      <div class="relative">
+                        <button
+                          id="copy-button"
+                          class="absolute right-0 top-1/2 inline-flex -translate-y-1/2 cursor-pointer items-center gap-1 border-l border-gray-200 py-3 pl-3.5 pr-3 text-sm font-medium text-gray-700 dark:border-gray-800 dark:text-gray-400"
+                        >
+                          <svg
+                            class="fill-current"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M6.58822 4.58398C6.58822 4.30784 6.81207 4.08398 7.08822 4.08398H15.4154C15.6915 4.08398 15.9154 4.30784 15.9154 4.58398L15.9154 12.9128C15.9154 13.189 15.6916 13.4128 15.4154 13.4128H7.08821C6.81207 13.4128 6.58822 13.189 6.58822 12.9128V4.58398ZM7.08822 2.58398C5.98365 2.58398 5.08822 3.47942 5.08822 4.58398V5.09416H4.58496C3.48039 5.09416 2.58496 5.98959 2.58496 7.09416V15.4161C2.58496 16.5207 3.48039 17.4161 4.58496 17.4161H12.9069C14.0115 17.4161 14.9069 16.5207 14.9069 15.4161L14.9069 14.9128H15.4154C16.52 14.9128 17.4154 14.0174 17.4154 12.9128L17.4154 4.58398C17.4154 3.47941 16.52 2.58398 15.4154 2.58398H7.08822ZM13.4069 14.9128H7.08821C5.98364 14.9128 5.08822 14.0174 5.08822 12.9128V6.59416H4.58496C4.30882 6.59416 4.08496 6.81801 4.08496 7.09416V15.4161C4.08496 15.6922 4.30882 15.9161 4.58496 15.9161H12.9069C13.183 15.9161 13.4069 15.6922 13.4069 15.4161L13.4069 14.9128Z"
+                              fill=""
+                            />
+                          </svg>
+                          <div id="copy-text">Copy</div>
+                        </button>
+                        <input
+                          value="www.tailadmin.com"
+                          type="url"
+                          id="website-input"
+                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pl-4 pr-[90px] text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      File Input
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div>
+                      <label
+                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+                      >
+                        Upload file
+                      </label>
+                      <input
+                        type="file"
+                        class="focus:border-ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 shadow-theme-xs transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pl-3.5 file:pr-3 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-none focus:file:ring-brand-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:text-white/90 dark:file:border-gray-800 dark:file:bg-white/[0.03] dark:file:text-gray-400 dark:placeholder:text-gray-400"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Checkboxes
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div class="flex flex-wrap items-center gap-8">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="checkboxLabelOne"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="checkboxLabelOne"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
+                              class="f mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] hover:border-brand-500 dark:hover:border-brand-500"
+                            >
+                              <span :class="checkboxToggle ? '' : 'opacity-0'">
+                                <svg
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 14 14"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
+                                    stroke="white"
+                                    stroke-width="1.94437"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          Default
+                        </label>
+                      </div>
+
+                      <div x-data="{ checkboxToggle: true }">
+                        <label
+                          for="checkboxLabelTwo"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="checkboxLabelTwo"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] hover:border-brand-500 dark:hover:border-brand-500"
+                            >
+                              <span :class="checkboxToggle ? '' : 'opacity-0'">
+                                <svg
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 14 14"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
+                                    stroke="white"
+                                    stroke-width="1.94437"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          Checked
+                        </label>
+                      </div>
+
+                      <div x-data="{ checkboxToggle: true }">
+                        <label
+                          for="checkboxLabelThree"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-300 dark:text-gray-700"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="checkboxLabelThree"
+                              class="peer sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                              disabled
+                            />
+                            <div
+                              :class="checkboxToggle ? 'bg-transparent border-gray-200 dark:border-gray-800' : 'border-brand-500 bg-brand-500'"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]"
+                            >
+                              <span :class="checkboxToggle ? '' : 'opacity-0'">
+                                <svg
+                                  class="stroke-gray-200 dark:stroke-gray-800"
+                                  width="14"
+                                  height="14"
+                                  viewBox="0 0 14 14"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M11.6666 3.5L5.24992 9.91667L2.33325 7"
+                                    stroke=""
+                                    stroke-width="2.33333"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          Disabled
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Radio Buttons
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div class="flex flex-wrap items-center gap-8">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="radioLabelOne"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="radioLabelOne"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] hover:border-brand-500 dark:hover:border-brand-500"
+                            >
+                              <span
+                                class="h-2 w-2 rounded-full"
+                                :class="checkboxToggle ? 'bg-white' : 'bg-white dark:bg-[#171f2e]'"
+                              ></span>
+                            </div>
+                          </div>
+                          Default
+                        </label>
+                      </div>
+
+                      <div x-data="{ checkboxToggle: true }">
+                        <label
+                          for="radioLabelTwo"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="radioLabelTwo"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] hover:border-brand-500 dark:hover:border-brand-500"
+                            >
+                              <span
+                                class="h-2 w-2 rounded-full"
+                                :class="checkboxToggle ? 'bg-white' : 'bg-white dark:bg-[#171f2e]'"
+                              ></span>
+                            </div>
+                          </div>
+                          Secondary
+                        </label>
+                      </div>
+
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="radioLabelThree"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium text-gray-300 dark:text-gray-700"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="radioLabelThree"
+                              class="peer sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                              disabled
+                            />
+                            <div
+                              :class="checkboxToggle ? 'bg-transparent border-gray-300 dark:border-gray-700' : 'border-brand-500 bg-brand-500'"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px]"
+                            >
+                              <span
+                                class="h-2 w-2 rounded-full"
+                                :class="checkboxToggle ? 'bg-white' : 'bg-white dark:bg-[#171f2e]'"
+                              ></span>
+                            </div>
+                          </div>
+                          Disabled Secondary
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Toggle switch input
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <!-- Elements -->
+                    <div
+                      class="mb-6 flex flex-wrap items-center gap-6 sm:gap-8"
+                    >
+                      <div x-data="{ switcherToggle: false }">
+                        <label
+                          for="toggle1"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle1"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-200 dark:bg-white/10'"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Default
+                        </label>
+                      </div>
+
+                      <div x-data="{ switcherToggle: true }">
+                        <label
+                          for="toggle2"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle2"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-200 dark:bg-white/10'"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Checked
+                        </label>
+                      </div>
+
+                      <div x-data="{ switcherToggle: false }">
+                        <label
+                          for="toggle3"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle3"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                              disabled
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-100 dark:bg-gray-800'"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-gray-50 shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Disabled
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Elements -->
+                    <div class="flex flex-wrap items-center gap-6 sm:gap-8">
+                      <div x-data="{ switcherToggle: false }">
+                        <label
+                          for="toggle11"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle11"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full bg-gray-700 dark:bg-white/10"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Default
+                        </label>
+                      </div>
+
+                      <div x-data="{ switcherToggle: true }">
+                        <label
+                          for="toggle22"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-700 dark:text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle22"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full bg-gray-700 dark:bg-white/10"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Checked
+                        </label>
+                      </div>
+
+                      <div x-data="{ switcherToggle: false }">
+                        <label
+                          for="toggle33"
+                          class="flex cursor-pointer select-none items-center gap-3 text-sm font-medium text-gray-400"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="toggle33"
+                              class="sr-only"
+                              @change="switcherToggle = !switcherToggle"
+                              disabled
+                            />
+                            <div
+                              class="block h-6 w-11 rounded-full bg-gray-100 dark:bg-gray-800"
+                            ></div>
+                            <div
+                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
+                              class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-gray-50 shadow-theme-sm duration-300 ease-linear"
+                            ></div>
+                          </div>
+
+                          Disabled
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                >
+                  <div class="px-5 py-4 sm:px-6 sm:py-5">
+                    <h3
+                      class="text-base font-medium text-gray-800 dark:text-white/90"
+                    >
+                      Dropzone
+                    </h3>
+                  </div>
+                  <div
+                    class="space-y-6 border-t border-gray-100 p-5 dark:border-gray-800 sm:p-6"
+                  >
+                    <form
+                      class="dropzone rounded-xl border-dashed border-gray-300 bg-gray-50 p-7 hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500 lg:p-10"
+                      id="demo-upload"
+                      action="/upload"
+                    >
+                      <div class="dz-message !m-0">
+                        <div class="mb-[22px] flex justify-center">
+                          <div
+                            class="flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400"
+                          >
+                            <svg
+                              class="fill-current"
+                              width="29"
+                              height="28"
+                              viewBox="0 0 29 28"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z"
+                                fill=""
+                              />
+                            </svg>
+                          </div>
+                        </div>
+
+                        <h4
+                          class="mb-3 text-theme-xl font-semibold text-gray-800 dark:text-white/90"
+                        >
+                          Drop File Here
+                        </h4>
+                        <span
+                          class="mx-auto mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400"
+                        >
+                          Drag and drop your PNG, JPG, WebP, SVG images here or
+                          browse
+                        </span>
+
+                        <span
+                          class="text-theme-sm font-medium text-brand-500 underline"
+                        >
+                          Browse File
+                        </span>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
