@@ -82,7 +82,7 @@ TailAdmin is a pre-designed starting point for building a web-based dashboard us
 
 ### Pro Version
 - 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 200+ dashboard components and UI elements
+- 400+ dashboard components and UI elements
 - Complete Figma design file
 - Email support
 
