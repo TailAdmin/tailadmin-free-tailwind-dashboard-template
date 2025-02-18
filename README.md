@@ -1,85 +1,125 @@
-# TailAdmin - Free Tailwind Admin Dashboard Template
-TailAdmin is a high-quality, open-source, and **free Tailwind CSS admin template** that is perfect for creating data-rich backends, 
-powerful web applications and dashboard-admin projects.
+# TailAdmin - HTML & Alpine.js
 
+A free, open-source admin dashboard template built with Alpine.js and Tailwind CSS.
 
-[![tailwind admin template](https://ucarecdn.com/364f2f57-6e1a-4ca4-9fc8-ab721029f6c3/tailadmingh.png)](https://tailadmin.com/)
+![TailAdmin Dashboard Preview](./banner.png)
 
-### [✨ Visit Website](https://tailadmin.com/)
+## Overview
 
-### [🚀 PRO Demo](https://demo.tailadmin.com/)
-### [🚀 FREE Demo](https://free-demo.tailadmin.com/)
+TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and control panels. It's built using:
 
-### TailAdmin PRO vs TailAdmin FREE Comparison 📊
+- HTML
+- Alpine.js
+- Tailwind CSS
+- and Webpack (for bundling)
 
-#### [TailAdmin PRO](https://demo.tailadmin.com/)
-- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (More will be added)
-- 200+ Dashboard UI Components
-- 50+ HTML Files
-- All Essential Elements and Files
-- Full Figma Design Source - As Shown on Demo
+### Quick Links
+- [✨ Visit Website](https://tailadmin.com)
+- [📄 Documentation](https://tailadmin.com/docs)
+- [⬇️ Download](https://tailadmin.com/download)
+- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1214477970819985778)
+- [⚡ Get PRO Version](https://tailadmin.com/pricing)
 
-___
+### Demos
+- [Free Version](https://free-demo.tailadmin.com/)
+- [Pro Version](https://demo.tailadmin.com)
 
-#### [TailAdmin FREE](https://free-demo.tailadmin.com/)
-- 1 Unique Dashboard
-- 30+ Dashboard UI Components
-- 50+ Total UI Elements 
-- 10+ HTML Files
-- Basic UI Kit Elements and Files
-- Figma Design Source - Free Sample
-___
+### Other Versions
+- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
+- [React.js Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
+- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
 
-### [⬇️ Download Now](https://tailadmin.com/download)
+## Installation
 
-### [⚡ Get PRO Version](https://tailadmin.com/pricing)
+### Prerequisites
+To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
 
-### [📄 Documentation/Installation](https://tailadmin.com/docs)
+- Node.js 18.x or later
 
-### [🖌️ TailAdmin Figma Free Sample](https://www.figma.com/community/file/1214477970819985778)
-
-### [👉 TailAdmin React](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
-
-### [👉 TailAdmin Next.js](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-
-### [👉 TailAdmin Vue](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
-
-### Installation
-
-You'll need to install Node.js >=v14.16+ (Recommended Version) (NPM comes along with it)
-
-Use terminal and navigate to the project (tailadmin) root. 
-
-- Clone the repository with the following command:
+### Cloning the Repository
+Clone the repository using the following command:
 
 ```bash
-git clone https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template
+git clone https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template.git
 ```
-- Then run : <code>npm install</code> to install dependencies
 
-- Then run : <code>npm start</code> to run the project in dev mode
+> Windows Users: place the repository near the root of your drive if you face issues while cloning.
 
-Now, in the browser go to <code>localhost:3000</code>
+1. Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-**For Production Build**
-Run : <code>npm run build</code>
+2. Start the development server:
+    ```bash
+    npm run start
+    # or
+    yarn start
+    ```
 
-This command will generate a Build folder in the root of your template that you can upload to your server.
+## Components
 
+TailAdmin is a pre-designed starting point for building a web-based dashboard using HTML, Alpine.js and Tailwind CSS. The template includes:
 
-### 200+ Essential UI Components, Elements and App Pages for Dashboards
-With TailAdmin, you can launch your web projects quickly and easily, thanks to it contains 100+ pre-designed dashboard elements, components and pages. 
-Such as - header, navigation menu, chat, message, invoice, setting, sidebar, charts, graphs, tables, filters, search boxes, auth, buttons
-and **everything a dashboard needs for interacting with the data**
+- Sophisticated and accessible sidebar
+- Data visualization components
+- Prebuilt profile management and 404 page
+- Tables and Charts(Line and Bar)
+- Authentication forms and input elements
+- Alerts, Dropdowns, Modals, Buttons and more
+- Can't forget Dark Mode 🕶️
 
-### Tailwind CSS HTML Admin Template
-TailAdmin is based on **Tailwind CSS and interaction handled by Alpine.js** Tailwind CSS is a powerful, utility-first framework that can help you build highly readable, fast-loading websites. 
-Its template-based design makes it easy to get started, and you can quickly create an admin interface with the same consistency. 
-So you can add your own style or customize TailAdmin without touching to CSS.
+## Feature Comparison
 
-### License 
-TailAdmin Basic version is 100% free and open-source, allowing you to use it freely for both personal and commercial projects without any need for 
-attribution or credits.
+### Free Version
+- 1 Unique Dashboard
+- 30+ dashboard components
+- 50+ UI elements
+- Basic Figma design files
+- Community support
 
-If you're in search of a top-notch Tailwind CSS admin and dashboard template that comprises all the necessary dashboard elements and functionalities, TailAdmin is an ideal option for you.
+### Pro Version
+- 5 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
+- 200+ dashboard components and UI elements
+- Complete Figma design file
+- Email support
 
+To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
+
+## Update Logs
+
+### Version 2.0.0 - [February 2025]
+Major update with comprehensive redesign and new features.
+
+#### Major Improvements
+- Complete UI redesign of all pages and components
+- Enhanced user interface with new elements
+- Improved responsiveness and accessibility
+- New features: collapsible sidebar, chat, and calendar
+- Updated data visualization components
+
+#### New Features
+- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
+- Enhanced navigation with improved header and breadcrumbs
+- Advanced table components with sorting and filtering
+- New UI components (Avatar, Alert, Ribbon)
+- Full-featured calendar with drag-and-drop
+
+#### Breaking Changes
+- Updated sidebar component API
+- New charting library implementation
+- Revised authentication system
+- **Deprecations:** SimpleTable component and legacy icon set
+
+#### Previous Versions
+For detailed changelogs of previous versions (1.0.0 - 1.3.0), visit our [documentation](https://tailadmin.com/docs/update-logs/).
+
+## License
+
+The community edition of TailAdmin is released under the MIT License.
+
+## Support
+
+If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing and maintaining this template.
