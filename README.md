@@ -1,6 +1,7 @@
-# TailAdmin - HTML & Alpine.js
+# TailAdmin - Free Tailwind Admin Dashboard Template
 
-A free, open-source admin dashboard template built with Alpine.js and Tailwind CSS.
+TailAdmin is a high-quality, open-source, and **free Tailwind CSS admin template** that is perfect for creating data-rich backends, 
+powerful web applications and dashboard-admin projects.
 
 ![TailAdmin Dashboard Preview](./banner.png)
 
