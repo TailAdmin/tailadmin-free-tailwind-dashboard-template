@@ -1,17 +1,17 @@
 <header
   x-data="{menuToggle: false}"
-  class="sticky top-0 z-99999 flex w-full border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 lg:border-b"
+  class="sticky top-0 flex w-full bg-white border-gray-200 z-99999 dark:border-gray-800 dark:bg-gray-900 lg:border-b"
 >
   <div
-    class="flex flex-grow flex-col items-center justify-between lg:flex-row lg:px-6"
+    class="flex flex-col items-center justify-between flex-grow lg:flex-row lg:px-6"
   >
     <div
-      class="flex w-full items-center justify-between gap-2 border-b border-gray-200 px-3 py-3 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4"
+      class="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4"
     >
       <!-- Hamburger Toggle BTN -->
       <button
         :class="sidebarToggle ? 'lg:bg-transparent dark:lg:bg-transparent bg-gray-100 dark:bg-gray-800' : ''"
-        class="z-99999 flex h-10 w-10 items-center justify-center rounded-lg border-gray-200 text-gray-500 dark:border-gray-800 dark:text-gray-400 lg:h-11 lg:w-11 lg:border"
+        class="flex items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 dark:border-gray-800 dark:text-gray-400 lg:h-11 lg:w-11 lg:border"
         @click.stop="sidebarToggle = !sidebarToggle"
       >
         <svg
@@ -78,7 +78,7 @@
 
       <!-- Application nav menu button -->
       <button
-        class="z-99999 flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
+        class="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
         :class="menuToggle ? 'bg-gray-100 dark:bg-gray-800' : ''"
         @click.stop="menuToggle = !menuToggle"
       >
@@ -103,7 +103,7 @@
       <div class="hidden lg:block">
         <form action="https://formbold.com/s/unique_form_id" method="POST">
           <div class="relative">
-            <button class="absolute left-4 top-1/2 -translate-y-1/2">
+            <button class="absolute -translate-y-1/2 left-4 top-1/2">
               <svg
                 class="fill-gray-500 dark:fill-gray-400"
                 width="20"
@@ -139,12 +139,12 @@
 
     <div
       :class="menuToggle ? 'flex' : 'hidden'"
-      class="w-full items-center justify-between gap-4 px-5 py-4 shadow-theme-md lg:flex lg:justify-end lg:px-0 lg:shadow-none"
+      class="items-center justify-between w-full gap-4 px-5 py-4 shadow-theme-md lg:flex lg:justify-end lg:px-0 lg:shadow-none"
     >
       <div class="flex items-center gap-2 2xsm:gap-3">
         <!-- Dark Mode Toggler -->
         <button
-          class="hover:text-dark-900 relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+          class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
           @click.prevent="darkMode = !darkMode"
         >
           <svg
@@ -185,7 +185,7 @@
           @click.outside="dropdownOpen = false"
         >
           <button
-            class="hover:text-dark-900 relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+            class="relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
             @click.prevent="dropdownOpen = ! dropdownOpen; notifying = false"
           >
             <span
@@ -193,7 +193,7 @@
               class="absolute right-0 top-0.5 z-1 h-2 w-2 rounded-full bg-orange-400"
             >
               <span
-                class="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"
+                class="absolute inline-flex w-full h-full bg-orange-400 rounded-full opacity-75 -z-1 animate-ping"
               ></span>
             </span>
             <svg
@@ -219,7 +219,7 @@
             class="absolute -right-[240px] mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark sm:w-[361px] lg:right-0"
           >
             <div
-              class="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800"
+              class="flex items-center justify-between pb-3 mb-3 border-b border-gray-100 dark:border-gray-800"
             >
               <h5
                 class="text-lg font-semibold text-gray-800 dark:text-white/90"
@@ -249,14 +249,14 @@
               </button>
             </div>
 
-            <ul class="custom-scrollbar flex h-auto flex-col overflow-y-auto">
+            <ul class="flex flex-col h-auto overflow-y-auto custom-scrollbar">
               <li>
                 <a
                   class="flex gap-3 rounded-lg border-b border-gray-100 p-3 px-4.5 py-3 hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-white/5"
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-02.jpg"
@@ -282,10 +282,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>5 min ago</span>
                     </span>
                   </span>
@@ -298,7 +298,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-03.jpg"
@@ -324,10 +324,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>8 min ago</span>
                     </span>
                   </span>
@@ -340,7 +340,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-04.jpg"
@@ -366,10 +366,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>15 min ago</span>
                     </span>
                   </span>
@@ -382,7 +382,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-05.jpg"
@@ -408,10 +408,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>1 hr ago</span>
                     </span>
                   </span>
@@ -424,7 +424,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-02.jpg"
@@ -450,10 +450,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>5 min ago</span>
                     </span>
                   </span>
@@ -466,7 +466,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-03.jpg"
@@ -492,10 +492,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>8 min ago</span>
                     </span>
                   </span>
@@ -508,7 +508,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-04.jpg"
@@ -534,10 +534,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>15 min ago</span>
                     </span>
                   </span>
@@ -550,7 +550,7 @@
                   href="#"
                 >
                   <span
-                    class="relative z-1 block h-10 w-full max-w-10 rounded-full"
+                    class="relative block w-full h-10 rounded-full z-1 max-w-10"
                   >
                     <img
                       src="./images/user/user-05.jpg"
@@ -576,10 +576,10 @@
                     </span>
 
                     <span
-                      class="flex items-center gap-2 text-theme-xs text-gray-500 dark:text-gray-400"
+                      class="flex items-center gap-2 text-gray-500 text-theme-xs dark:text-gray-400"
                     >
                       <span>Project</span>
-                      <span class="h-1 w-1 rounded-full bg-gray-400"></span>
+                      <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                       <span>1 hr ago</span>
                     </span>
                   </span>
@@ -610,13 +610,11 @@
           href="#"
           @click.prevent="dropdownOpen = ! dropdownOpen"
         >
-          <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
-            <img src="./images/user/user-01.jpg" alt="User" />
+          <span class="mr-3 overflow-hidden rounded-full h-11 w-11">
+            <img src="./images/user/owner.jpg" alt="User" />
           </span>
 
-          <span class="mr-1 block text-theme-sm font-medium">
-            Emirhan Boruch
-          </span>
+          <span class="block mr-1 font-medium text-theme-sm"> Musharof </span>
 
           <svg
             :class="dropdownOpen && 'rotate-180'"
@@ -644,24 +642,24 @@
         >
           <div>
             <span
-              class="block text-theme-sm font-medium text-gray-700 dark:text-gray-400"
+              class="block font-medium text-gray-700 text-theme-sm dark:text-gray-400"
             >
-              Emirhan Boruch
+              Musharof Chowdhury
             </span>
             <span
               class="mt-0.5 block text-theme-xs text-gray-500 dark:text-gray-400"
             >
-              emirhanboruch51@gmail.com
+              randomuser@pimjo.com
             </span>
           </div>
 
           <ul
-            class="flex flex-col gap-1 border-b border-gray-200 pb-3 pt-4 dark:border-gray-800"
+            class="flex flex-col gap-1 pt-4 pb-3 border-b border-gray-200 dark:border-gray-800"
           >
             <li>
               <a
                 href="profile.html"
-                class="group flex items-center gap-3 rounded-lg px-3 py-2 text-theme-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                class="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
               >
                 <svg
                   class="fill-gray-500 group-hover:fill-gray-700 dark:fill-gray-400 dark:group-hover:fill-gray-300"
@@ -684,7 +682,7 @@
             <li>
               <a
                 href="messages.html"
-                class="group flex items-center gap-3 rounded-lg px-3 py-2 text-theme-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                class="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
               >
                 <svg
                   class="fill-gray-500 group-hover:fill-gray-700 dark:fill-gray-400 dark:group-hover:fill-gray-300"
@@ -707,7 +705,7 @@
             <li>
               <a
                 href="settings.html"
-                class="group flex items-center gap-3 rounded-lg px-3 py-2 text-theme-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                class="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
               >
                 <svg
                   class="fill-gray-500 group-hover:fill-gray-700 dark:fill-gray-400 dark:group-hover:fill-gray-300"
@@ -729,7 +727,7 @@
             </li>
           </ul>
           <button
-            class="group mt-3 flex items-center gap-3 rounded-lg px-3 py-2 text-theme-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+            class="flex items-center gap-3 px-3 py-2 mt-3 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
           >
             <svg
               class="fill-gray-500 group-hover:fill-gray-700 dark:group-hover:fill-gray-300"

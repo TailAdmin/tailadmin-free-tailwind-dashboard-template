@@ -28,7 +28,7 @@
 
       <!-- ===== Content Area Start ===== -->
       <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+        class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto"
       >
         <!-- Small Device Overlay Start -->
         <include src="./partials/overlay.html" />
@@ -40,7 +40,7 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6">
+          <div class="p-4 mx-auto max-w-screen-2xl md:p-6">
             <!-- Breadcrumb Start -->
             <div x-data="{ pageName: `Profile`}">
               <include src="./partials/breadcrumb.html" />
@@ -57,24 +57,24 @@
               </h3>
 
               <div
-                class="mb-6 rounded-2xl border border-gray-200 p-5 dark:border-gray-800 lg:p-6"
+                class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
               >
                 <div
                   class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between"
                 >
                   <div
-                    class="flex w-full flex-col items-center gap-6 xl:flex-row"
+                    class="flex flex-col items-center w-full gap-6 xl:flex-row"
                   >
                     <div
-                      class="h-20 w-20 overflow-hidden rounded-full border border-gray-200 dark:border-gray-800"
+                      class="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800"
                     >
-                      <img src="./images/user/user-01.jpg" alt="user" />
+                      <img src="./images/user/owner.jpg" alt="user" />
                     </div>
                     <div class="order-3 xl:order-2">
                       <h4
-                        class="mb-2 text-center text-lg font-semibold text-gray-800 dark:text-white/90 xl:text-left"
+                        class="mb-2 text-lg font-semibold text-center text-gray-800 dark:text-white/90 xl:text-left"
                       >
-                        Emirhan Boruch
+                        Musharof Chowdhury
                       </h4>
                       <div
                         class="flex flex-col items-center gap-1 text-center xl:flex-row xl:gap-3 xl:text-left"
@@ -86,12 +86,12 @@
                           class="hidden h-3.5 w-px bg-gray-300 dark:bg-gray-700 xl:block"
                         ></div>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
-                          Leeds, United Kingdom
+                          Arizona, United States
                         </p>
                       </div>
                     </div>
                     <div
-                      class="order-2 flex grow items-center gap-2 xl:order-3 xl:justify-end"
+                      class="flex items-center order-2 gap-2 grow xl:order-3 xl:justify-end"
                     >
                       <button
                         class="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
@@ -192,7 +192,7 @@
               </div>
 
               <div
-                class="mb-6 rounded-2xl border border-gray-200 p-5 dark:border-gray-800 lg:p-6"
+                class="p-5 mb-6 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
               >
                 <div
                   class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
@@ -216,7 +216,7 @@
                         <p
                           class="text-sm font-medium text-gray-800 dark:text-white/90"
                         >
-                          Emirhan
+                          Musharof
                         </p>
                       </div>
 
@@ -229,7 +229,7 @@
                         <p
                           class="text-sm font-medium text-gray-800 dark:text-white/90"
                         >
-                          Boruch
+                          Chowdhury
                         </p>
                       </div>
 
@@ -242,7 +242,7 @@
                         <p
                           class="text-sm font-medium text-gray-800 dark:text-white/90"
                         >
-                          emirhanboruch55@gmail.com
+                          randomuser@pimjo.com
                         </p>
                       </div>
 
@@ -298,7 +298,7 @@
                 </div>
               </div>
               <div
-                class="rounded-2xl border border-gray-200 p-5 dark:border-gray-800 lg:p-6"
+                class="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6"
               >
                 <div
                   class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
@@ -322,7 +322,7 @@
                         <p
                           class="text-sm font-medium text-gray-800 dark:text-white/90"
                         >
-                          United Kingdom
+                          United States
                         </p>
                       </div>
 
@@ -335,7 +335,7 @@
                         <p
                           class="text-sm font-medium text-gray-800 dark:text-white/90"
                         >
-                          Leeds, East London
+                          Arizona, United States
                         </p>
                       </div>
 
