@@ -1,6 +1,6 @@
 {
   "name": "tailadmin-free",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "TailAdmin is a high-quality, open-source, and free Tailwind CSS admin template that is perfect for creating data-rich backends, powerful web applications and dashboard-admin projects.",
   "main": "index.js",
   "scripts": {
