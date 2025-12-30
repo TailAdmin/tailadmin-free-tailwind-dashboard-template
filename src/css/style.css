@@ -188,7 +188,7 @@ layer(base);
 }
 
 @utility menu-item {
-  @apply relative flex items-center gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm;
+  @apply text-theme-sm relative flex items-center gap-3 rounded-lg px-3 py-2 font-medium;
 }
 
 @utility menu-item-active {
@@ -212,7 +212,7 @@ layer(base);
 }
 
 @utility menu-item-arrow-active {
-  @apply rotate-180 stroke-brand-500 dark:stroke-brand-400;
+  @apply stroke-brand-500 dark:stroke-brand-400 rotate-180;
 }
 
 @utility menu-item-arrow-inactive {
@@ -262,7 +262,7 @@ layer(base);
   }
 
   &::-webkit-scrollbar-thumb {
-    @apply bg-gray-200 rounded-full;
+    @apply rounded-full bg-gray-200;
   }
 }
 
@@ -272,7 +272,7 @@ layer(base);
 
 @layer base {
   body {
-    @apply relative text-base font-normal font-outfit z-1 bg-gray-50;
+    @apply font-outfit relative z-1 bg-gray-50 text-base font-normal;
   }
 }
 
@@ -430,7 +430,7 @@ layer(base);
 }
 
 .flatpickr-weekdays {
-  @apply h-auto mt-6 mb-4;
+  @apply mt-6 mb-4 h-auto;
 }
 
 .flatpickr-weekday {
@@ -528,8 +528,14 @@ span.flatpickr-weekday,
   @apply right-0;
 }
 
+@media screen and (max-width: 525px) {
+  .flatpickr-calendar.static {
+    margin-right: -60px !important;
+  }
+}
+
 .fc .fc-view-harness {
-  @apply max-w-full overflow-x-auto custom-scrollbar;
+  @apply custom-scrollbar max-w-full overflow-x-auto;
 }
 .fc-dayGridMonth-view.fc-view.fc-daygrid {
   @apply min-w-[718px];
@@ -552,11 +558,11 @@ span.flatpickr-weekday,
 }
 
 .fc-button-group .fc-button.fc-prev-button:before {
-  @apply inline-block mt-1;
+  @apply mt-1 inline-block;
   content: url("data:image/svg+xml,%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.0068 6L9.75684 12.25L16.0068 18.5' stroke='%23344054' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 .fc-button-group .fc-button.fc-next-button:before {
-  @apply inline-block mt-1;
+  @apply mt-1 inline-block;
   content: url("data:image/svg+xml,%3Csvg width='25' height='24' viewBox='0 0 25 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.50684 19L15.7568 12.75L9.50684 6.5' stroke='%23344054' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
 .dark .fc-button-group .fc-button.fc-prev-button:before {
@@ -583,7 +589,7 @@ span.flatpickr-weekday,
 .fc-header-toolbar.fc-toolbar
   .fc-toolbar-chunk:last-child
   .fc-button.fc-button-active {
-  @apply text-gray-900 bg-white dark:bg-gray-800 dark:text-white;
+  @apply bg-white text-gray-900 dark:bg-gray-800 dark:text-white;
 }
 .fc-theme-standard th {
   @apply border-x-0! border-t border-gray-200! bg-gray-50 text-left! dark:border-gray-800! dark:bg-gray-900;
@@ -623,7 +629,7 @@ span.flatpickr-weekday,
   @apply p-0 text-sm font-normal text-gray-700;
 }
 .fc-daygrid-event-dot {
-  @apply w-1 h-5 ml-0 mr-3 border-none rounded-sm;
+  @apply mr-3 ml-0 h-5 w-1 rounded-sm border-none;
 }
 .fc-event {
   @apply focus:shadow-none;
