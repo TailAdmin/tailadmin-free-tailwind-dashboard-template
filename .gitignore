@@ -1,3 +1,106 @@
-node_modules
-package-lock.json
-/build
+# ==========================================
+# Dependencies
+# ==========================================
+node_modules/
+.pnp
+.pnp.js
+
+# ==========================================
+# Build outputs
+# ==========================================
+dist/
+dist-ssr/
+build/
+out/
+.output/
+
+# ==========================================
+# Environment variables (NEVER commit these)
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+.env.staging
+
+# ==========================================
+# Vite
+# ==========================================
+*.local
+vite.config.*.timestamp-*
+
+# ==========================================
+# TypeScript
+# ==========================================
+*.tsbuildinfo
+
+# ==========================================
+# Logs
+# ==========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================================
+# Package manager lock files
+# (keep only the one you use — remove this section if using npm)
+# ==========================================
+# package-lock.json   # uncomment if NOT using npm
+# yarn.lock           # uncomment if NOT using yarn
+# pnpm-lock.yaml      # uncomment if NOT using pnpm
+
+# ==========================================
+# OS generated files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Editor / IDE
+# ==========================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# ==========================================
+# Testing
+# ==========================================
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# ==========================================
+# Storybook
+# ==========================================
+storybook-static/
+
+# ==========================================
+# Misc
+# ==========================================
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.tgz
+*.zip
