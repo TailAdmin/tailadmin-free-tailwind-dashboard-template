@@ -1,156 +1,90 @@
-# TailAdmin - Free Tailwind Admin Dashboard Template
+# Admin T1 Support — Panel Administrativo
 
-TailAdmin is a high-quality, open-source, and **free Tailwind CSS admin template** that is perfect for creating data-rich backends,
-powerful web applications and dashboard-admin projects.
+Dashboard administrativo construido con **React + TypeScript + Vite**, con autenticación JWT, control de acceso basado en roles (RBAC) y gestión de usuarios.
 
-![TailAdmin Dashboard Preview](./banner.png)
+## Stack
 
-## Overview
+- **React 18** + **TypeScript**
+- **Vite** — servidor de desarrollo y bundler
+- **React Router v6** — enrutamiento con rutas protegidas
+- **Tailwind CSS** — estilos
+- **Axios** — cliente HTTP
+- **Framer Motion** — animaciones
+- **MUI / Emotion** — componentes de UI complementarios
+- **ApexCharts** — visualización de datos
 
-TailAdmin provides essential UI components and layouts for building feature-rich, data-driven admin dashboards and control panels. It's built using:
+## Requisitos
 
-- HTML
-- Alpine.js
-- Tailwind CSS
-- and Webpack (for bundling)
+- Node.js 18+
+- API backend corriendo en `http://localhost:3000` (configurable via `.env`)
 
-### Quick Links
-
-- [✨ Visit Website](https://tailadmin.com)
-- [📄 Documentation](https://tailadmin.com/docs)
-- [⬇️ Download](https://tailadmin.com/download)
-- [🖌️ Figma Design File (Community Edition)](https://www.figma.com/community/file/1463141366275764364)
-- [⚡ Get PRO Version](https://tailadmin.com/pricing)
-
-### Demos
-
-- [Free Version](https://free-demo.tailadmin.com/)
-- [Pro Version](https://demo.tailadmin.com)
-
-### Other Versions
-
-- [Next.js Version](https://github.com/TailAdmin/free-nextjs-admin-dashboard)
-- [React.js Version](https://github.com/TailAdmin/free-react-tailwind-admin-dashboard)
-- [Vue.js Version](https://github.com/TailAdmin/vue-tailwind-admin-dashboard)
-- [Angular Version](https://github.com/TailAdmin/free-angular-tailwind-dashboard)
-- [Laravel Version](https://github.com/TailAdmin/tailadmin-laravel)
-
-## Installation
-
-### Prerequisites
-
-To get started with TailAdmin, ensure you have the following prerequisites installed and set up:
-
-- Node.js 18.x or later
-
-### Cloning the Repository
-
-Clone the repository using the following command:
+## Instalación
 
 ```bash
-git clone https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template.git
+# 1. Clonar el repositorio
+git clone <url-del-repositorio>
+cd admin-t1-support
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Configurar variables de entorno
+cp .env.example .env
+# Editar .env con la URL de tu API
+
+# 4. Iniciar en desarrollo
+npm run dev
 ```
 
-> Windows Users: place the repository near the root of your drive if you face issues while cloning.
+## Variables de entorno
 
-1. Install dependencies:
+Crear un archivo `.env` en la raíz del proyecto:
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+```env
+VITE_API_URL=http://localhost:3000
+```
 
-2. Start the development server:
-   ```bash
-   npm run start
-   # or
-   yarn start
-   ```
+## Scripts disponibles
 
-## Components
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Genera el bundle de producción |
+| `npm run preview` | Previsualiza el build de producción |
+| `npm run lint` | Ejecuta ESLint |
 
-TailAdmin is a pre-designed starting point for building a web-based dashboard using HTML, Alpine.js and Tailwind CSS. The template includes:
+## Estructura del proyecto
 
-- Sophisticated and accessible sidebar
-- Data visualization components
-- Prebuilt profile management and 404 page
-- Tables and Charts(Line and Bar)
-- Authentication forms and input elements
-- Alerts, Dropdowns, Modals, Buttons and more
-- Can't forget Dark Mode 🕶️
+```
+src/
+├── components/
+│   ├── Login.tsx          # Pantalla de autenticación
+│   ├── Dashboard.tsx      # Layout principal con sidebar
+│   ├── DashboardHome.tsx  # Vista de inicio con métricas
+│   ├── UsersList.tsx      # Listado y gestión de usuarios
+│   ├── CreateUser.tsx     # Formulario de creación de usuarios
+│   ├── Profile.tsx        # Perfil del usuario autenticado
+│   ├── Header.tsx         # Cabecera del dashboard
+│   └── ProtectedRoute.tsx # Guard de rutas con validación de rol
+├── models/
+│   └── roles.ts           # Enum de roles (SUPER_USER / SECONDARY_USER)
+├── services/              # Llamadas a la API (axios)
+└── utils/                 # Utilidades compartidas
+```
 
-## Feature Comparison
+## Roles de usuario
 
-### Free Version
+| Rol | Permisos |
+|---|---|
+| `SUPER_USER` | Acceso total: dashboard, listado de usuarios, creación de usuarios, perfil |
+| `SECONDARY_USER` | Acceso limitado: dashboard y perfil únicamente |
 
-- 1 Unique Dashboard
-- 30+ dashboard components
-- 50+ UI elements
-- Basic Figma design files
-- Community support
+## Rutas
 
-### Pro Version
-
-- 7 Unique Dashboards: Analytics, Ecommerce, Marketing, CRM, Stocks (more coming soon)
-- 500+ dashboard components and UI elements
-- Complete Figma design system file
-- Email support
-
-To learn more about pro version features and pricing, visit our [pricing page](https://tailadmin.com/pricing).
-
-## Update Logs
-
-### Version 2.0.1 - [February 27, 2025]
-
-#### Update Overview
-
-- Upgraded to Tailwind CSS v4 for better performance and efficiency.
-- Updated class usage to match the latest syntax and features.
-- Replaced deprecated class and optimized styles.
-
-#### Next Steps
-
-- Run npm install or yarn install to update dependencies.
-- Check for any style changes or compatibility issues.
-- Refer to the Tailwind CSS v4 [Migration Guide](https://tailwindcss.com/docs/upgrade-guide) on this release. if needed.
-- This update keeps the project up to date with the latest Tailwind improvements. 🚀
-
-### Version 2.0.0 - [February 2025]
-
-Major update with comprehensive redesign and new features.
-
-#### Major Improvements
-
-- Complete UI redesign of all pages and components
-- Enhanced user interface with new elements
-- Improved responsiveness and accessibility
-- New features: collapsible sidebar, chat, and calendar
-- Updated data visualization components
-
-#### New Features
-
-- Redesigned dashboards (Ecommerce, Analytics, Marketing, CRM)
-- Enhanced navigation with improved header and breadcrumbs
-- Advanced table components with sorting and filtering
-- New UI components (Avatar, Alert, Ribbon)
-- Full-featured calendar with drag-and-drop
-
-#### Breaking Changes
-
-- Updated sidebar component API
-- New charting library implementation
-- Revised authentication system
-- **Deprecations:** SimpleTable component and legacy icon set
-
-#### Previous Versions
-
-For detailed changelogs of previous versions (1.0.0 - 1.3.0), visit our [documentation](https://tailadmin.com/docs/update-logs/).
-
-## License
-
-The community edition of TailAdmin is released under the MIT License.
-
-## Support
-
-If you find this project helpful, please consider giving it a star on GitHub. Your support helps us continue developing and maintaining this template.
+| Ruta | Componente | Acceso |
+|---|---|---|
+| `/auth/login` | `Login` | Público |
+| `/dashboard` | `DashboardHome` | Autenticado |
+| `/dashboard/users` | `UsersList` | Solo `SUPER_USER` |
+| `/dashboard/users/create` | `CreateUser` | Solo `SUPER_USER` |
+| `/dashboard/profile` | `Profile` | Autenticado |
