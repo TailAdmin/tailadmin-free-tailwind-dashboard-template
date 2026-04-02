@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #db3b2b;
+  --brand-primary-rgb: 219, 59, 43;
+  --brand-secondary: #db3b2b;
+  --bg-dark: #f6f7f9;
+  /* light page background to match design */
+  --sidebar-bg: #ffffff;
+  --content-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-primary-2: #ffffff;
+  --text-muted: #6b7280;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.bg-content {
+  background-color: var(--content-bg);
+}
+
+/* Inputs styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  background: var(--content-bg);
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 120ms ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 12px 30px rgba(var(--brand-primary-rgb), 0.08);
+  transform: translateY(-1px);
+}
+
+/* Button primary utility */
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  box-shadow: 0 8px 20px rgba(var(--brand-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--brand-primary-rgb), 0.12);
+}
+
+.btn-primary:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+.hover-brand-bg:hover {
+  background: rgba(var(--brand-primary-rgb), 0.06) !important;
+}
+
+/* Panel style to mimic rounded white cards in design */
+.panel {
+  background: var(--content-bg);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.04);
+  border: 1px solid #f1f1f1;
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    padding: 28px;
+  }
+}
+
+/* Login specific background and card */
+.login-background {
+  background: radial-gradient(600px 600px at 10% 80%, #1e3760 0%, rgba(30, 55, 96, 0) 30%), radial-gradient(400px 400px at 90% 10%, #2b1b4b 0%, rgba(43, 27, 75, 0) 30%), linear-gradient(180deg, #0b1530 0%, #111827 100%);
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(2, 6, 23, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Small compatibility helpers for existing Tailwind utility usage */
+.bg-white\/5 {
+  background-color: var(--content-bg) !important;
+}
+
+.border-white\/10 {
+  border-color: #e6e6e6 !important;
+}
+
+.text-white {
+  color: var(--text-primary) !important;
+}
+
+.text-white-2 {
+  color: var(--text-primary-2) !important;
+}
+
+.text-white\/40 {
+  color: var(--text-muted) !important;
+}
+
+/* Phone Input Custom Styles */
+.phone-input-container {
+  width: 100% !important;
+}
+
+.phone-input-container .form-control {
+  width: 100% !important;
+  background: var(--content-bg) !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 12px !important;
+  color: var(--text-primary) !important;
+  height: 42px !important;
+  font-size: 0.95rem !important;
+  transition: all 200ms ease !important;
+}
+
+.phone-input-container .form-control:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 2px rgba(var(--brand-primary-rgb), 0.1) !important;
+}
+
+.phone-input-container .flag-dropdown {
+  background-color: transparent !important;
+  border: 1px solid #e6e6e6 !important;
+  border-right: none !important;
+  border-radius: 12px 0 0 12px !important;
+  transition: all 200ms ease !important;
+}
+
+.phone-input-container .selected-flag:hover,
+.phone-input-container .selected-flag.open {
+  background-color: rgba(var(--brand-primary-rgb), 0.04) !important;
+}
+
+.phone-input-container .country-list {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 12px !important;
+  border: 1px solid #e6e6e6 !important;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.1) !important;
+  margin-top: 5px !important;
+}
+
+.phone-input-container .country-list .country:hover {
+  background-color: rgba(var(--brand-primary-rgb), 0.04) !important;
+}
+
+.phone-input-container .country-list .country.highlight {
+  background-color: rgba(var(--brand-primary-rgb), 0.08) !important;
+}

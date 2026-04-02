@@ -14,9 +14,12 @@ import chart03 from "./components/charts/chart-03";
 import map01 from "./components/map-01";
 import "./components/calendar-init.js";
 import "./components/image-resize";
+import auth from "./auth";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
+window.auth = auth; // Make auth available to Alpine components
+auth.checkAuth(); // Check authentication on page load
 Alpine.start();
 
 // Init flatpickr
