@@ -97,7 +97,7 @@ const Dashboard: React.FC = () => {
 				</button>
 			</aside>
 
-			<main className="flex-1 overflow-y-auto p-8 relative">
+			<main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 relative">
 				<button
 					onClick={toggleSidebar}
 					className="absolute left-1 top-4 p-2 rounded-md bg-content border border-gray-200 z-50 transition-all hover:bg-gray-50"

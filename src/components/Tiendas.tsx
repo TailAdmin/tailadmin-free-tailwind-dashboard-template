@@ -75,24 +75,24 @@ const Tiendas: React.FC = () => {
     ];
 
     return (
-        <div className="p-8 max-w-7xl mx-auto space-y-6">
+        <div className="w-full max-w-7xl mx-auto space-y-6">
             {/* Search Bar Section */}
-            <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-4 flex items-center gap-4">
-                <div className="flex items-center gap-2 px-3 py-2 border border-gray-100 rounded-lg min-w-[140px] bg-white">
+            <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <div className="flex items-center gap-2 px-3 py-2 border border-gray-100 rounded-lg sm:min-w-[140px] bg-white">
                     <span className="text-sm font-semibold text-gray-800">Nombre</span>
                     <ChevronDown size={14} className="text-gray-400 ml-auto" />
                 </div>
-                <div className="flex-1 relative border-l border-gray-100 pl-4 ml-0">
+                <div className="flex-1 relative sm:border-l border-gray-100 sm:pl-4 ml-0">
                     <input
                         type="text"
                         placeholder="Buscar..."
                         className="w-full py-2 bg-transparent border-none focus:ring-0 text-sm text-gray-400 font-medium outline-none"
                     />
                 </div>
-                <button className="bg-[#db3b2b] text-white-2 px-10 py-1.5 rounded-lg font-bold text-sm tracking-widest hover:bg-[#c43527] transition-all hover:shadow-lg uppercase">
+                <button className="bg-[#db3b2b] text-white-2 px-10 py-2 sm:py-1.5 rounded-lg font-bold text-sm tracking-widest hover:bg-[#c43527] transition-all hover:shadow-lg uppercase w-full sm:w-auto">
                     BUSCAR
                 </button>
-                <div className="pl-4">
+                <div className="sm:pl-4 text-center sm:text-left pt-2 sm:pt-0 border-t sm:border-none border-gray-50">
                     <button className="text-gray-300 text-[10px] font-bold hover:text-gray-500 transition-colors uppercase tracking-widest whitespace-nowrap">
                         VER TODAS
                     </button>

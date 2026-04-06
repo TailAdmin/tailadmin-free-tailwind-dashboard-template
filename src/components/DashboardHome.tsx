@@ -83,14 +83,14 @@ const DashboardHome: React.FC = () => {
 			</div>
 
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-				<div className="lg:col-span-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+				<div className="lg:col-span-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-8">
 					<h3 className="text-lg font-bold mb-6">Revenue Analytics</h3>
 					<div id="chart">
 						<ReactApexChart options={chartOptions} series={chartSeries} type="area" height={350} />
 					</div>
 				</div>
 
-				<div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+				<div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-8">
 					<h3 className="text-lg font-bold mb-6">Audience Growth</h3>
 					<div className="space-y-6">
 						{[1, 2, 3].map((i) => (

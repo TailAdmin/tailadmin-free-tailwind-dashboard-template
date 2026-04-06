@@ -90,7 +90,7 @@ const Profile: React.FC = () => {
 
 	if (error) {
 		return (
-			<div className="p-8">
+			<div>
 				<div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl">
 					{error}
 				</div>
@@ -99,12 +99,12 @@ const Profile: React.FC = () => {
 	}
 
 	return (
-		<div className="p-8 max-w-4xl">
+		<div className="max-w-4xl">
 			<h2 className="text-2xl font-bold mb-6">Mi Perfil</h2>
 
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{/* Información Personal */}
-				<div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+				<div className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl">
 					<h3 className="text-lg font-semibold mb-4">Información Personal</h3>
 					<form onSubmit={handleUpdatePersonalInfo} className="space-y-4">
 						<div>
@@ -148,7 +148,7 @@ const Profile: React.FC = () => {
 				</div>
 
 				{/* Cambiar Contraseña */}
-				<div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
+				<div className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-2xl">
 					<h3 className="text-lg font-semibold mb-4">Cambiar Contraseña</h3>
 					<form onSubmit={handleUpdatePassword} className="space-y-4">
 						<div>

@@ -66,7 +66,7 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 	};
 
 	return (
-		<div className="p-8">
+		<div>
 			<h2 className="text-2xl font-bold mb-4">Crear nuevo usuario</h2>
 			<form onSubmit={handleSubmit} className="space-y-4 max-w-md">
 				<div>
