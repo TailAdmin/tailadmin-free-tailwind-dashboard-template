@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
 			>
 				<div className={`flex items-center gap-3 mb-10 ${isCollapsed ? 'lg:justify-center' : ''}`}>
 					<div className="w-10 h-10 min-w-[40px] flex items-center justify-center">
-						<img src="/src/assets/logo/logo_t1.svg" className="w-full h-full object-contain" alt="T1 Logo" />
+						<img src="/logo_t1.svg" className="w-full h-full object-contain" alt="T1 Logo" />
 					</div>
 					{!isCollapsed && (
 						<motion.span
