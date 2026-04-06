@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import { Alert, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar, IconButton, Skeleton } from '@mui/material';
-import { X } from 'lucide-react';
+import { Alert, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar, IconButton, Skeleton, Menu, MenuItem, ListItemIcon, ListItemText } from '@mui/material';
+import { X, MoreVertical, Edit2, UserMinus, UserCheck } from 'lucide-react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import type { User } from '../models/user';
@@ -38,10 +38,15 @@ const UsersList: React.FC = () => {
 	const [confirmId, setConfirmId] = useState<string | null>(null);
 	const [confirmLoading, setConfirmLoading] = useState(false);
 
-	const [open, setOpen] = useState(false);
+	const [createOpen, setCreateOpen] = useState(false);
 	const [snack, setSnack] = useState<{ open: boolean; message: string; severity: 'success' | 'error' | 'info' }>({
 		open: false, message: '', severity: 'success'
 	});
+
+	// Menu state
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+	const menuOpen = Boolean(anchorEl);
 
 	const currentRole = getUserRole();
 	const roleLabels: Record<string, string> = {
@@ -79,7 +84,17 @@ const UsersList: React.FC = () => {
 	const handleUserCreated = (user: User) => {
 		setUsers((prev) => [user, ...prev]);
 		setSnack({ open: true, message: 'Usuario creado correctamente', severity: 'success' });
-		setTimeout(() => setOpen(false), 1200);
+		setTimeout(() => setCreateOpen(false), 1200);
+	};
+
+	const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
+		setAnchorEl(event.currentTarget);
+		setSelectedUserId(id);
+	};
+
+	const handleCloseMenu = () => {
+		setAnchorEl(null);
+		setSelectedUserId(null);
 	};
 
 	const handleOpenEdit = (id: string) => {
@@ -138,7 +153,7 @@ const UsersList: React.FC = () => {
 
 	// Definición de Columnas
 	const columns: GridColDef<UserRow>[] = [
-		{ field: 'id', headerName: 'ID', width: 10 },
+
 		{ field: 'name', headerName: 'Nombre', flex: 1, minWidth: 150 },
 		{ field: 'email', headerName: 'Email', flex: 1, minWidth: 200 },
 		{ field: 'role', headerName: 'Rol', width: 160 },
@@ -160,27 +175,20 @@ const UsersList: React.FC = () => {
 				return value.startsWith('+') ? value : `+${value}`;
 			},
 		},
-		{ field: 'createdAt', headerName: 'Creado', width: 160 },
 		{
 			field: 'actions',
 			headerName: 'Acciones',
-			width: 160,
+			width: 100,
 			sortable: false,
 			renderCell: (params: GridRenderCellParams<UserRow>) => (
-				<div className="flex items-center gap-2 h-full">
-					<button
-						onClick={() => handleOpenEdit(params.row.id)}
-						className="px-3 py-1.5 text-xs font-medium border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+				<div className="flex items-center justify-center h-full">
+					<IconButton
+						onClick={(e) => handleOpenMenu(e, params.row.id)}
+						size="small"
+						className="hover:bg-black/5"
 					>
-						Actualizar
-					</button>
-					<button
-						onClick={() => { setConfirmId(params.row.id); setConfirmOpen(true); }}
-						className={`px-3 py-1.5 text-xs font-medium rounded-lg text-white-2 transition-opacity hover:opacity-90 ${params.row._disabled ? 'bg-emerald-500' : 'bg-red-500'
-							}`}
-					>
-						{params.row._disabled ? 'Habilitar' : 'Deshabilitar'}
-					</button>
+						<MoreVertical size={20} className="text-gray-500" />
+					</IconButton>
 				</div>
 			),
 		},
@@ -192,7 +200,7 @@ const UsersList: React.FC = () => {
 			<div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
 				<div className="flex items-center justify-end mb-4">
 					<button
-						onClick={() => setOpen(true)}
+						onClick={() => setCreateOpen(true)}
 						className="px-6 py-2 rounded-xl btn-primary text-white-2 text-sm font-semibold transition-all hover:scale-[1.02]"
 					>
 						Crear usuario
@@ -224,9 +232,64 @@ const UsersList: React.FC = () => {
 				)}
 			</div>
 
+			{/* Actions Menu */}
+			<Menu
+				anchorEl={anchorEl}
+				open={menuOpen}
+				onClose={handleCloseMenu}
+				PaperProps={{
+					sx: {
+						borderRadius: '12px',
+						boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+						border: '1px solid #f1f1f1',
+						mt: 1,
+						minWidth: '180px',
+					}
+				}}
+				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+			>
+				<MenuItem onClick={() => {
+					if (selectedUserId) handleOpenEdit(selectedUserId);
+					handleCloseMenu();
+				}}>
+					<ListItemIcon>
+						<Edit2 size={18} className="text-blue-500" />
+					</ListItemIcon>
+					<ListItemText primary="Actualizar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+				</MenuItem>
+				{users.find(u => String(u.id) === String(selectedUserId))?.disabled ? (
+					<MenuItem onClick={() => {
+						if (selectedUserId) {
+							setConfirmId(selectedUserId);
+							setConfirmOpen(true);
+						}
+						handleCloseMenu();
+					}}>
+						<ListItemIcon>
+							<UserCheck size={18} className="text-emerald-500" />
+						</ListItemIcon>
+						<ListItemText primary="Habilitar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+					</MenuItem>
+				) : (
+					<MenuItem onClick={() => {
+						if (selectedUserId) {
+							setConfirmId(selectedUserId);
+							setConfirmOpen(true);
+						}
+						handleCloseMenu();
+					}}>
+						<ListItemIcon>
+							<UserMinus size={18} className="text-red-500" />
+						</ListItemIcon>
+						<ListItemText primary="Deshabilitar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+					</MenuItem>
+				)}
+			</Menu>
+
 			{/* Modal Crear */}
-			<Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="md" PaperProps={{ sx: { borderRadius: '18px' } }}>
-				<IconButton onClick={() => setOpen(false)} sx={{ position: 'absolute', right: 16, top: 16 }}><X size={20} /></IconButton>
+			<Dialog open={createOpen} onClose={() => setCreateOpen(false)} fullWidth maxWidth="md" PaperProps={{ sx: { borderRadius: '18px' } }}>
+				<IconButton onClick={() => setCreateOpen(false)} sx={{ position: 'absolute', right: 16, top: 16 }}><X size={20} /></IconButton>
 				<DialogTitle>Crear usuario</DialogTitle>
 				<DialogContent><CreateUser onCreated={handleUserCreated} /></DialogContent>
 			</Dialog>
@@ -255,14 +318,29 @@ const UsersList: React.FC = () => {
 				</DialogActions>
 			</Dialog>
 
-			{/* Confirmación Eliminar */}
+			{/* Confirmación Habilitar/Deshabilitar */}
 			<Dialog open={confirmOpen} onClose={() => setConfirmOpen(false)} PaperProps={{ sx: { borderRadius: '18px' } }}>
-				<DialogTitle>¿Eliminar usuario?</DialogTitle>
-				<DialogContent><p className="text-sm text-gray-500">Esta acción no se puede deshacer.</p></DialogContent>
+				<DialogTitle>
+					{users.find(u => String(u.id) === String(confirmId))?.disabled ? '¿Habilitar usuario?' : '¿Deshabilitar usuario?'}
+				</DialogTitle>
+				<DialogContent>
+					<p className="text-sm text-gray-500">
+						{users.find(u => String(u.id) === String(confirmId))?.disabled
+							? 'Esta acción permitirá al usuario acceder al sistema nuevamente.'
+							: 'Esta acción restringirá el acceso del usuario al sistema.'}
+					</p>
+				</DialogContent>
 				<DialogActions sx={{ p: 3 }}>
-					<button onClick={() => setConfirmOpen(false)} className="px-4 py-2">Cancelar</button>
-					<button onClick={handleConfirmDelete} disabled={confirmLoading} className="px-6 py-2 bg-red-500 text-white-2 rounded-xl">
-						{confirmLoading ? 'Eliminando...' : 'Eliminar'}
+					<button onClick={() => setConfirmOpen(false)} className="px-4 py-2 border border-gray-200 rounded-xl mr-2 text-sm">Cancelar</button>
+					<button
+						onClick={handleConfirmDelete}
+						disabled={confirmLoading}
+						className={`px-6 py-2 text-white-2 rounded-xl text-sm font-semibold transition-all ${users.find(u => String(u.id) === String(confirmId))?.disabled ? 'bg-emerald-500' : 'bg-red-500'
+							}`}
+					>
+						{confirmLoading
+							? (users.find(u => String(u.id) === String(confirmId))?.disabled ? 'Habilitando...' : 'Deshabilitando...')
+							: (users.find(u => String(u.id) === String(confirmId))?.disabled ? 'Habilitar' : 'Deshabilitar')}
 					</button>
 				</DialogActions>
 			</Dialog>
