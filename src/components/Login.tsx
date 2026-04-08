@@ -41,6 +41,7 @@ const Login: React.FC = () => {
 				className="w-full max-w-md p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl z-10"
 			>
 
+				<h1 className='text-2xl font-bold text-red-600 text-center'>T1</h1>
 
 				<form onSubmit={handleLogin} className="space-y-6">
 					{error && (

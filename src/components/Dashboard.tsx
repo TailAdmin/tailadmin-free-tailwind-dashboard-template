@@ -90,7 +90,7 @@ const Dashboard: React.FC = () => {
 							animate={{ opacity: 1 }}
 							className="font-semibold whitespace-nowrap lg:block hidden"
 						>
-							Logout
+							Salir
 						</motion.span>
 					)}
 					<span className="font-semibold lg:hidden">Logout</span>
@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
 			<main className="flex-1 overflow-y-auto p-8 relative">
 				<button
 					onClick={toggleSidebar}
-					className="absolute left-1 top-4 p-2 rounded-md bg-content border border-gray-200 z-50 transition-all hover:bg-gray-50"
+					className="absolute left-1 top-4 p-2 rounded-md bg-white border border-gray-100 z-50 transition-all hover:bg-gray-50 text-[#db3b2b] shadow-sm"
 					aria-label="Toggle sidebar"
 				>
 					{(sidebarOpen || (window.innerWidth >= 1024 && !isCollapsed)) ? <X size={18} /> : <Menu size={18} />}

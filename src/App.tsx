@@ -7,7 +7,7 @@ import DashboardHome from './components/DashboardHome';
 import CreateUser from './components/CreateUser';
 import UsersList from './components/UsersList';
 import Profile from './components/Profile';
-import Tiendas from './components/Tiendas';
+import Tiendas from './components/tiendas/Tiendas';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserRole } from './models/roles';
 

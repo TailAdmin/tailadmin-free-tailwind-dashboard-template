@@ -72,19 +72,19 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 				<div>
 					<label className="block text-sm font-medium mb-1">Nombre Completo</label>
 					<input value={name} onChange={(e) => setName(e.target.value)} className="w-full px-3 py-2 rounded bg-white/5 border border-white/10" required />
-					{errors.name && <div className="text-red-400 text-sm mt-1">{errors.name}</div>}
+					{errors.name && <div className="text-[#db3b2b] text-sm mt-1">{errors.name}</div>}
 				</div>
 
 				<div>
 					<label className="block text-sm font-medium mb-1">Email</label>
 					<input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="w-full px-3 py-2 rounded bg-white/5 border border-white/10" required />
-					{errors.email && <div className="text-red-400 text-sm mt-1">{errors.email}</div>}
+					{errors.email && <div className="text-[#db3b2b] text-sm mt-1">{errors.email}</div>}
 				</div>
 
 				<div>
 					<label className="block text-sm font-medium mb-1">Contraseña</label>
 					<input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="w-full px-3 py-2 rounded bg-white/5 border border-white/10" required />
-					{errors.password && <div className="text-red-400 text-sm mt-1">{errors.password}</div>}
+					{errors.password && <div className="text-[#db3b2b] text-sm mt-1">{errors.password}</div>}
 				</div>
 
 				<div>
@@ -97,7 +97,7 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 					{currentRole !== 'SUPER_USER' && (
 						<div className="text-xs text-white/40 mt-1">Solo Super usuario puede crear otro Super usuario.</div>
 					)}
-					{errors.role && <div className="text-red-400 text-sm mt-1">{errors.role}</div>}
+					{errors.role && <div className="text-[#db3b2b] text-sm mt-1">{errors.role}</div>}
 				</div>
 
 				<div>
@@ -108,7 +108,7 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 						onChange={val => setPhone(val)}
 						containerClass="phone-input-container"
 					/>
-					{errors.phone && <div className="text-red-400 text-sm mt-1">{errors.phone}</div>}
+					{errors.phone && <div className="text-[#db3b2b] text-sm mt-1">{errors.phone}</div>}
 				</div>
 				<div>
 					<button type="submit" disabled={loading} className="px-4 py-2 rounded btn-primary text-white-2">

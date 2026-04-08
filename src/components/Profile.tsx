@@ -91,7 +91,7 @@ const Profile: React.FC = () => {
 	if (error) {
 		return (
 			<div className="p-8">
-				<div className="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl">
+				<div className="bg-[#db3b2b]/10 border border-[#db3b2b]/20 text-[#db3b2b] p-4 rounded-xl">
 					{error}
 				</div>
 			</div>
@@ -185,7 +185,7 @@ const Profile: React.FC = () => {
 			{message && (
 				<div className={`mt-6 p-4 rounded-xl border ${message.type === 'success'
 					? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500'
-					: 'bg-red-500/10 border-red-500/20 text-red-500'
+					: 'bg-[#db3b2b]/10 border-[#db3b2b]/20 text-[#db3b2b]'
 					}`}>
 					{message.text}
 				</div>

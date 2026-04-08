@@ -185,9 +185,10 @@ const UsersList: React.FC = () => {
 					<IconButton
 						onClick={(e) => handleOpenMenu(e, params.row.id)}
 						size="small"
-						className="hover:bg-black/5"
+						className="hover:bg-gray-100 transition-colors"
+						sx={{ color: '#db3b2b' }}
 					>
-						<MoreVertical size={20} className="text-gray-500" />
+						<MoreVertical size={20} />
 					</IconButton>
 				</div>
 			),
@@ -224,8 +225,30 @@ const UsersList: React.FC = () => {
 							disableRowSelectionOnClick
 							sx={{
 								border: 'none',
-								'& .MuiDataGrid-cell': { color: 'inherit', borderBottom: '1px solid rgba(255,255,255,0.05)' },
-								'& .MuiDataGrid-columnHeaders': { backgroundColor: 'rgba(255,255,255,0.02)', borderBottom: '1px solid rgba(255,255,255,0.1)' },
+								'& .MuiDataGrid-cell': { 
+									color: 'inherit', 
+									borderBottom: '1px solid #f9fafb',
+									display: 'flex',
+									alignItems: 'center'
+								},
+								'& .MuiDataGrid-columnHeaders': { 
+									backgroundColor: 'white', 
+									color: '#a3a3a3',
+									fontSize: '0.7rem',
+									fontWeight: '800',
+									letterSpacing: '0.15em',
+									textTransform: 'uppercase',
+									borderBottom: '1px solid #f3f4f6'
+								},
+								'& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-cell:focus': {
+									outline: 'none !important',
+								},
+								'& .MuiDataGrid-columnSeparator': {
+									display: 'none',
+								},
+								'& .MuiDataGrid-row:hover': {
+									backgroundColor: '#fafafa',
+								},
 							}}
 						/>
 					</div>
@@ -239,25 +262,36 @@ const UsersList: React.FC = () => {
 				onClose={handleCloseMenu}
 				PaperProps={{
 					sx: {
-						borderRadius: '12px',
-						boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-						border: '1px solid #f1f1f1',
+						borderRadius: '10px',
 						mt: 1,
 						minWidth: '180px',
+						boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+						border: '1px solid #f1f1f1',
+						'& .MuiList-root': { p: 0.5 },
 					}
 				}}
 				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+				disableScrollLock
 			>
 				<MenuItem onClick={() => {
 					if (selectedUserId) handleOpenEdit(selectedUserId);
 					handleCloseMenu();
-				}}>
-					<ListItemIcon>
-						<Edit2 size={18} className="text-blue-500" />
+				}} sx={{ py: 1.2, px: 2 }}>
+					<ListItemIcon sx={{ minWidth: '32px !important' }}>
+						<Edit2 size={16} className="text-[#db3b2b]" />
 					</ListItemIcon>
-					<ListItemText primary="Actualizar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+					<ListItemText 
+						primary="ACTUALIZAR" 
+						primaryTypographyProps={{ 
+							variant: 'caption', 
+							fontWeight: 800, 
+							color: '#db3b2b',
+							letterSpacing: '0.05em'
+						}} 
+					/>
 				</MenuItem>
+				<div className="mx-2 border-t border-gray-50 my-0.5" />
 				{users.find(u => String(u.id) === String(selectedUserId))?.disabled ? (
 					<MenuItem onClick={() => {
 						if (selectedUserId) {
@@ -265,11 +299,19 @@ const UsersList: React.FC = () => {
 							setConfirmOpen(true);
 						}
 						handleCloseMenu();
-					}}>
-						<ListItemIcon>
-							<UserCheck size={18} className="text-emerald-500" />
+					}} sx={{ py: 1.2, px: 2 }}>
+						<ListItemIcon sx={{ minWidth: '32px !important' }}>
+							<UserCheck size={16} className="text-[#10b981]" />
 						</ListItemIcon>
-						<ListItemText primary="Habilitar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+						<ListItemText 
+							primary="HABILITAR" 
+							primaryTypographyProps={{ 
+								variant: 'caption', 
+								fontWeight: 800, 
+								color: '#10b981',
+								letterSpacing: '0.05em'
+							}} 
+						/>
 					</MenuItem>
 				) : (
 					<MenuItem onClick={() => {
@@ -278,11 +320,19 @@ const UsersList: React.FC = () => {
 							setConfirmOpen(true);
 						}
 						handleCloseMenu();
-					}}>
-						<ListItemIcon>
-							<UserMinus size={18} className="text-red-500" />
+					}} sx={{ py: 1.2, px: 2 }}>
+						<ListItemIcon sx={{ minWidth: '32px !important' }}>
+							<UserMinus size={16} className="text-[#db3b2b]" />
 						</ListItemIcon>
-						<ListItemText primary="Deshabilitar" primaryTypographyProps={{ variant: 'body2', fontWeight: 500 }} />
+						<ListItemText 
+							primary="DESHABILITAR" 
+							primaryTypographyProps={{ 
+								variant: 'caption', 
+								fontWeight: 800, 
+								color: '#db3b2b',
+								letterSpacing: '0.05em'
+							}} 
+						/>
 					</MenuItem>
 				)}
 			</Menu>
@@ -335,7 +385,7 @@ const UsersList: React.FC = () => {
 					<button
 						onClick={handleConfirmDelete}
 						disabled={confirmLoading}
-						className={`px-6 py-2 text-white-2 rounded-xl text-sm font-semibold transition-all ${users.find(u => String(u.id) === String(confirmId))?.disabled ? 'bg-emerald-500' : 'bg-red-500'
+						className={`px-6 py-2 text-white-2 rounded-xl text-sm font-semibold transition-all ${users.find(u => String(u.id) === String(confirmId))?.disabled ? 'bg-[#10b981]' : 'bg-[#db3b2b]'
 							}`}
 					>
 						{confirmLoading
