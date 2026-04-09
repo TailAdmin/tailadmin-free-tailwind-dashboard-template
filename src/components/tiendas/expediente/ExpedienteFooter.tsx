@@ -14,11 +14,11 @@ const ExpedienteFooter: React.FC<Props> = ({ onSears, onSanborns, onClose }) => 
         <ContractButton label="CONTRATO SEARS" onClick={onSears} />
         <ContractButton label="CONTRATO SANBORNS" onClick={onSanborns} />
       </div>
-      
+
       <div className="flex justify-end">
         <button
           onClick={onClose}
-          className="bg-[#111827] text-white px-8 py-3 rounded-lg text-xs font-black uppercase tracking-widest hover:bg-black transition-all shadow-lg"
+          className="bg-[#111827] text-white-2 px-8 py-3 rounded-lg text-xs font-black uppercase tracking-widest hover:bg-black transition-all shadow-lg"
         >
           CERRAR EXPEDIENTE
         </button>
@@ -30,9 +30,9 @@ const ExpedienteFooter: React.FC<Props> = ({ onSears, onSanborns, onClose }) => 
 const ContractButton = ({ label, onClick }: { label: string; onClick: () => void }) => (
   <button
     onClick={onClick}
-    className="bg-[#1e293b] text-white py-3 px-6 rounded-lg flex items-center justify-center gap-3 hover:bg-[#0f172a] transition-all group shadow-md"
+    className="bg-[#1e293b] text-white-2 py-3 px-6 rounded-lg flex items-center justify-center gap-3 hover:bg-[#0f172a] transition-all group shadow-md"
   >
-    <FileText size={16} className="text-gray-400 group-hover:text-white transition-colors" />
+    <FileText size={16} className="text-gray-400 group-hover:text-white-2 transition-colors" />
     <span className="text-[10px] font-black uppercase tracking-widest">{label}</span>
   </button>
 );

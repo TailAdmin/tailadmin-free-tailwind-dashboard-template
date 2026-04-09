@@ -4,47 +4,67 @@ import { IconButton, Menu, MenuItem, ListItemIcon, ListItemText } from '@mui/mat
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import ExpedienteModal from './expediente/ExpedienteModal';
 import AsignarSoporteModal from './AsignarSoporteModal';
-
-interface Tienda {
-    id: string;
-    idt1: string;
-    nombre: string;
-    asignacion: string | null;
-}
+import storeService from '../../services/storeService';
+import { Store } from '../../models/store';
 
 const Tiendas: React.FC = () => {
-    const [tiendas] = useState<Tienda[]>([
-        { id: '1', idt1: '210708', nombre: 'TRINITY', asignacion: 'soporte@t1envios.com' },
-        { id: '2', idt1: '10703', nombre: 'SALVAJE TENTACIÓN', asignacion: null },
-        { id: '3', idt1: '32668', nombre: 'ANANTEJOYERÍA', asignacion: 'sistemas@t1.com' },
-        { id: '4', idt1: '20559', nombre: 'ONKY', asignacion: null },
-        { id: '5', idt1: '10315', nombre: 'TU MEJOR OPCION', asignacion: null },
-        { id: '6', idt1: '45612', nombre: 'TIENDA TEST 1', asignacion: 'test1@t1.com' },
-        { id: '7', idt1: '78945', nombre: 'TIENDA TEST 2', asignacion: null },
-        { id: '8', idt1: '12354', nombre: 'TIENDA TEST 3', asignacion: 'test3@t1.com' },
-        { id: '9', idt1: '55667', nombre: 'TIENDA TEST 4', asignacion: null },
-        { id: '10', idt1: '22334', nombre: 'TIENDA TEST 5', asignacion: null },
-        { id: '11', idt1: '99887', nombre: 'TIENDA TEST 6', asignacion: 'test6@t1.com' },
-    ]);
+    // API States
+    const [tiendas, setTiendas] = useState<Store[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [categoryAnchorEl, setCategoryAnchorEl] = useState<null | HTMLElement>(null);
     const [searchCategory, setSearchCategory] = useState<'Nombre' | 'IDT1'>('Nombre');
-    
+
     // Expediente Modal State
     const [expedienteOpen, setExpedienteOpen] = useState(false);
-    const [selectedTienda, setSelectedTienda] = useState<Tienda | null>(null);
-    const [selectedTiendaId, setSelectedTiendaId] = useState<string | null>(null);
-    
+    const [selectedTienda, setSelectedTienda] = useState<Store | null>(null);
+    const [selectedTiendaId, setSelectedTiendaId] = useState<string | number | null>(null);
+
     // Asignar Soporte Modal State
     const [assignOpen, setAssignOpen] = useState(false);
+
+    const fetchTiendas = async (query: string = '') => {
+        try {
+            setLoading(true);
+            setError(null);
+
+            const cleanQuery = query.trim();
+
+            if (searchCategory === 'IDT1' && cleanQuery) {
+                // Specific ID search using /getinfo
+                const info = await storeService.getStoreInfo(cleanQuery);
+                setTiendas([{
+                    id: info.id_t1,
+                    name: info.store_name
+                }]);
+            } else {
+                // Text search (Nombre) or empty search using /find
+                const data = await storeService.findStores(cleanQuery);
+                setTiendas(data);
+            }
+        } catch (err: any) {
+            console.error('Search error:', err);
+            setError(err.message || 'Error en la búsqueda');
+            setTiendas([]);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    React.useEffect(() => {
+        fetchTiendas();
+    }, []);
+
 
 
 
     const menuOpen = Boolean(anchorEl);
     const categoryMenuOpen = Boolean(categoryAnchorEl);
 
-    const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>, id: string | number) => {
         setAnchorEl(event.currentTarget);
         setSelectedTiendaId(id);
     };
@@ -63,20 +83,20 @@ const Tiendas: React.FC = () => {
     };
 
 
-    const columns: GridColDef<Tienda>[] = [
+    const columns: GridColDef<Store>[] = [
         {
-            field: 'idt1',
+            field: 'id',
             headerName: 'IDT1',
             width: 150,
-            renderCell: (params: GridRenderCellParams<Tienda>) => (
+            renderCell: (params: GridRenderCellParams<Store>) => (
                 <span className="font-extrabold text-[#db3b2b] text-base">{params.value}</span>
             )
         },
         {
-            field: 'nombre',
+            field: 'name',
             headerName: 'TIENDA',
             flex: 1,
-            renderCell: (params: GridRenderCellParams<Tienda>) => (
+            renderCell: (params: GridRenderCellParams<Store>) => (
                 <span className="font-extrabold text-gray-800 uppercase text-sm tracking-tight">{params.value}</span>
             )
         },
@@ -84,11 +104,11 @@ const Tiendas: React.FC = () => {
             field: 'asignacion',
             headerName: 'ASIGNACIÓN',
             flex: 1.5,
-            renderCell: (params: GridRenderCellParams<Tienda>) => (
-                params.value ? (
+            renderCell: (params: GridRenderCellParams<Store>) => (
+                params.row.id ? (
                     <div className="flex items-center gap-2">
                         <span className="w-[1.5px] h-4 bg-[#db3b2b] inline-block" />
-                        <span className="text-sm font-semibold text-gray-700">{params.value}</span>
+                        <span className="text-sm font-semibold text-gray-400 italic">Pendiente de detalle...</span>
                     </div>
                 ) : (
                     <span className="text-gray-300 text-sm font-medium italic">Sin asignar</span>
@@ -102,11 +122,11 @@ const Tiendas: React.FC = () => {
             sortable: false,
             align: 'right',
             headerAlign: 'right',
-            renderCell: (params: GridRenderCellParams<Tienda>) => (
+            renderCell: (params: GridRenderCellParams<Store>) => (
                 <div className="pr-2">
                     <IconButton
                         size="small"
-                        onClick={(e) => handleOpenMenu(e, params.row.id)}
+                        onClick={(e) => handleOpenMenu(e, params.row.id as any)}
                         sx={{ color: '#db3b2b' }}
                         className="hover:bg-gray-50 transition-colors"
                     >
@@ -168,18 +188,35 @@ const Tiendas: React.FC = () => {
                     <input
                         type="text"
                         placeholder="Buscar..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && fetchTiendas(searchTerm)}
                         className="flex-1 px-4 py-2 bg-transparent !border-none !shadow-none !ring-0 !outline-none text-sm text-gray-400 font-medium"
                     />
                 </div>
-                <button className="bg-[#db3b2b] text-white-2 px-10 h-11 rounded-lg font-extrabold text-sm tracking-[0.1em] hover:bg-[#c43527] transition-all hover:shadow-lg uppercase whitespace-nowrap">
-                    BUSCAR
+                <button
+                    onClick={() => fetchTiendas(searchTerm)}
+                    disabled={loading}
+                    className="bg-[#db3b2b] text-white-2 px-10 h-11 rounded-lg font-extrabold text-sm tracking-[0.1em] hover:bg-[#c43527] transition-all hover:shadow-lg uppercase whitespace-nowrap disabled:opacity-50"
+                >
+                    {loading ? 'CARGANDO...' : 'BUSCAR'}
                 </button>
                 <div className="pl-2">
-                    <button className="text-[#c1c1c1] text-[11px] font-bold hover:text-gray-500 transition-colors uppercase tracking-[0.2em] whitespace-nowrap">
+                    <button
+                        onClick={() => { setSearchTerm(''); fetchTiendas(''); }}
+                        className="text-[#c1c1c1] text-[11px] font-bold hover:text-gray-500 transition-colors uppercase tracking-[0.2em] whitespace-nowrap"
+                    >
                         VER TODAS
                     </button>
                 </div>
             </div>
+
+            {error && (
+                <div className="bg-red-50 border border-red-100 text-[#db3b2b] px-4 py-3 rounded-lg text-sm font-semibold flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#db3b2b]" />
+                    {error}
+                </div>
+            )}
 
             {/* Table Section (MUI Data Grid) */}
             <div className="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden p-2">
@@ -187,6 +224,7 @@ const Tiendas: React.FC = () => {
                     <DataGrid
                         rows={tiendas}
                         columns={columns}
+                        loading={loading}
                         disableRowSelectionOnClick
                         pageSizeOptions={[10, 25, 50]}
                         initialState={{
@@ -246,7 +284,7 @@ const Tiendas: React.FC = () => {
                 }}
             >
                 <MenuItem onClick={() => {
-                    const t = tiendas.find(x => x.id === selectedTiendaId);
+                    const t = tiendas.find(x => x.id === selectedTiendaId as any);
                     if (t) {
                         setSelectedTienda(t);
                         setExpedienteOpen(true);
@@ -270,7 +308,7 @@ const Tiendas: React.FC = () => {
                 <div className="mx-3 border-t border-gray-50 my-0.5" />
 
                 <MenuItem onClick={() => {
-                    const t = tiendas.find(x => x.id === selectedTiendaId);
+                    const t = tiendas.find(x => x.id === selectedTiendaId as any);
                     if (t) {
                         setSelectedTienda(t);
                         setAssignOpen(true);
@@ -309,16 +347,16 @@ const Tiendas: React.FC = () => {
                 </MenuItem>
             </Menu>
 
-            <ExpedienteModal 
-                open={expedienteOpen} 
-                onClose={() => setExpedienteOpen(false)} 
+            <ExpedienteModal
+                open={expedienteOpen}
+                onClose={() => setExpedienteOpen(false)}
                 tienda={selectedTienda}
             />
 
             <AsignarSoporteModal
                 open={assignOpen}
                 onClose={() => setAssignOpen(false)}
-                tiendaName={selectedTienda?.nombre || ''}
+                tiendaName={selectedTienda?.name || ''}
             />
         </div>
     );

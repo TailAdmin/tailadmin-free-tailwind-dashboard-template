@@ -13,18 +13,18 @@ const OwnerInfoSection: React.FC<Props> = ({ nombre, email, tel }) => {
         <h3 className="text-[10px] font-black text-[#db3b2b] uppercase tracking-[0.15em] mb-6 border-b border-red-50/50 pb-2">
           DATOS DEL OWNER
         </h3>
-        
+
         <div className="grid grid-cols-3 gap-4">
           <div>
             <Label>NOMBRE</Label>
             <Value>{nombre}</Value>
           </div>
-          
+
           <div>
             <Label>EMAIL</Label>
             <Value className="text-[#db3b2b] underline lowercase font-bold">{email}</Value>
           </div>
-          
+
           <div>
             <Label>TEL</Label>
             <Value>{tel}</Value>
@@ -36,7 +36,7 @@ const OwnerInfoSection: React.FC<Props> = ({ nombre, email, tel }) => {
 };
 
 const Label = ({ children }: { children: React.ReactNode }) => (
-  <div className="text-[8px] font-bold text-gray-300 uppercase mb-1 tracking-widest">{children}</div>
+  <div className="text-[8px] font-bold text-gray-800 uppercase mb-1 tracking-widest">{children}</div>
 );
 
 const Value = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (

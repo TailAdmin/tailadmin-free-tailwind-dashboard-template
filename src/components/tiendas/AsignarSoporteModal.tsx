@@ -11,8 +11,8 @@ const AsignarSoporteModal: React.FC<Props> = ({ open, onClose, tiendaName }) => 
   const [selectedEmail, setSelectedEmail] = React.useState('soporte@t1envios.com');
 
   return (
-    <Dialog 
-      open={open} 
+    <Dialog
+      open={open}
       onClose={onClose}
       PaperProps={{
         sx: {
@@ -28,7 +28,7 @@ const AsignarSoporteModal: React.FC<Props> = ({ open, onClose, tiendaName }) => 
         <h2 className="text-2xl font-black italic text-[#1e293b] tracking-tight mb-1 uppercase">
           ASIGNAR TIENDA
         </h2>
-        <p className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em] mb-8">
+        <p className="text-[10px] font-black text-gray-800 uppercase tracking-[0.2em] mb-8">
           GESTIÓN DE SOPORTE ADMINISTRATIVO - {tiendaName}
         </p>
 
@@ -68,7 +68,7 @@ const AsignarSoporteModal: React.FC<Props> = ({ open, onClose, tiendaName }) => 
         </div>
 
         <button
-          className="w-full bg-[#db3b2b] text-white py-4 rounded-lg font-black text-sm uppercase tracking-widest hover:bg-[#c43527] transition-all shadow-lg shadow-red-500/20 mb-6"
+          className="w-full bg-[#db3b2b] text-white-2 py-4 rounded-lg font-black text-sm uppercase tracking-widest hover:bg-[#c43527] transition-all shadow-lg shadow-red-500/20 mb-6"
         >
           CONFIRMAR ASIGNACIÓN
         </button>
