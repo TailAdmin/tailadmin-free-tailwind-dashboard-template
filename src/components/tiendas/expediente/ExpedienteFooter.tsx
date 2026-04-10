@@ -2,17 +2,35 @@ import React from 'react';
 import { FileText } from 'lucide-react';
 
 interface Props {
-  onSears: () => void;
-  onSanborns: () => void;
+  onSears: (id: number) => void;
+  onSanborns: (id: number) => void;
   onClose: () => void;
+  searsMultilateralId?: number;
+  sanbornsMultilateralId?: number;
 }
 
-const ExpedienteFooter: React.FC<Props> = ({ onSears, onSanborns, onClose }) => {
+const ExpedienteFooter: React.FC<Props> = ({
+  onSears,
+  onSanborns,
+  onClose,
+  searsMultilateralId,
+  sanbornsMultilateralId
+}) => {
   return (
     <div className="px-6 pb-6 pt-2 space-y-4">
       <div className="grid grid-cols-2 gap-4">
-        <ContractButton label="CONTRATO SEARS" onClick={onSears} />
-        <ContractButton label="CONTRATO SANBORNS" onClick={onSanborns} />
+        {searsMultilateralId && (
+          <ContractButton
+            label="CONTRATO SEARS"
+            onClick={() => onSears(searsMultilateralId)}
+          />
+        )}
+        {sanbornsMultilateralId && (
+          <ContractButton
+            label="CONTRATO SANBORNS"
+            onClick={() => onSanborns(sanbornsMultilateralId)}
+          />
+        )}
       </div>
 
       <div className="flex justify-end">

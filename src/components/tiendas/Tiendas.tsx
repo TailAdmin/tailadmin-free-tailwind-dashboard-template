@@ -8,7 +8,6 @@ import storeService from '../../services/storeService';
 import { Store } from '../../models/store';
 
 const Tiendas: React.FC = () => {
-    // API States
     const [tiendas, setTiendas] = useState<Store[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -18,15 +17,14 @@ const Tiendas: React.FC = () => {
     const [categoryAnchorEl, setCategoryAnchorEl] = useState<null | HTMLElement>(null);
     const [searchCategory, setSearchCategory] = useState<'Nombre' | 'IDT1'>('Nombre');
 
-    // Expediente Modal State
     const [expedienteOpen, setExpedienteOpen] = useState(false);
     const [selectedTienda, setSelectedTienda] = useState<Store | null>(null);
     const [selectedTiendaId, setSelectedTiendaId] = useState<string | number | null>(null);
 
-    // Asignar Soporte Modal State
     const [assignOpen, setAssignOpen] = useState(false);
 
     const fetchTiendas = async (query: string = '') => {
+        console.log(query);
         try {
             setLoading(true);
             setError(null);
@@ -34,20 +32,18 @@ const Tiendas: React.FC = () => {
             const cleanQuery = query.trim();
 
             if (searchCategory === 'IDT1' && cleanQuery) {
-                // Specific ID search using /getinfo
                 const info = await storeService.getStoreInfo(cleanQuery);
                 setTiendas([{
                     id: info.id_t1,
                     name: info.store_name
                 }]);
             } else {
-                // Text search (Nombre) or empty search using /find
                 const data = await storeService.findStores(cleanQuery);
                 setTiendas(data);
             }
         } catch (err: any) {
             console.error('Search error:', err);
-            setError(err.message || 'Error en la búsqueda');
+            setError('No se encontró la tienda');
             setTiendas([]);
         } finally {
             setLoading(false);
@@ -72,13 +68,15 @@ const Tiendas: React.FC = () => {
     const handleCategoryClick = (event: React.MouseEvent<HTMLElement>) => {
         setCategoryAnchorEl(event.currentTarget);
     };
-
+    setCategoryAnchorEl
     const handleClose = () => {
         setAnchorEl(null);
     };
 
     const handleCategoryClose = (category?: 'Nombre' | 'IDT1') => {
+        console.log(category);
         if (category) setSearchCategory(category);
+        setSearchTerm('');
         setCategoryAnchorEl(null);
     };
 

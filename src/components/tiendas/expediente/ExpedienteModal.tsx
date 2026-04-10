@@ -19,6 +19,7 @@ interface Props {
 const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
   const [activeTab, setActiveTab] = useState<'ficha' | 'bitacora'>('ficha');
   const [identity, setIdentity] = useState<StoreIdentityV3 | null>(null);
+  const [sellerStatus, setSellerStatus] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
@@ -28,6 +29,18 @@ const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
           setLoading(true);
           const data = await storeService.getStoreIdentity(tienda.id);
           setIdentity(data);
+          if (data?.store_portal_id) {
+            try {
+              const sellerData = await storeService.getSellerInfo(data.store_portal_id);
+              setSellerStatus(sellerData?.status ?? null);
+            } catch (err) {
+              console.error('Error fetching seller status:', err);
+              setSellerStatus(null);
+            }
+          }
+          else {
+            setSellerStatus(false);
+          }
         } catch (error) {
           console.error('Error fetching store identity:', error);
           setIdentity(null);
@@ -38,6 +51,7 @@ const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
       fetchIdentity();
     } else {
       setIdentity(null);
+      setSellerStatus(null);
       setActiveTab('ficha');
     }
   }, [open, tienda?.id]);
@@ -71,10 +85,10 @@ const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
             ) : null}
 
             <ExpedienteSystemID
-              idt1={identity?.id_seller.toString() || tienda.id.toString()}
-              idPortal={identity?.id_seller.toString() || tienda.id.toString()}
+              idt1={identity?.id_seller?.toString() || tienda.id.toString()}
+              store_portal_id={identity?.store_portal_id?.toString() || tienda.id.toString()}
               legacy_finance_id={identity?.legacy_finance_id || ""}
-              status="ACTIVO"
+              portalStatus={sellerStatus}
             />
 
             <FiscalInfoSection
@@ -95,8 +109,26 @@ const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
             />
 
             <ExpedienteFooter
-              onSears={() => console.log('Sears')}
-              onSanborns={() => console.log('Sanborns')}
+              searsMultilateralId={identity?.contracts?.SR?.sign_signer?.[0]?.multilateral_id}
+              sanbornsMultilateralId={identity?.contracts?.SN?.sign_signer?.[0]?.multilateral_id}
+              onSears={async (id) => {
+                try {
+                  const blob = await storeService.getContractPdf(id);
+                  const url = window.URL.createObjectURL(blob);
+                  window.open(url, '_blank');
+                } catch (err) {
+                  console.error('Error opening Sears contract:', err);
+                }
+              }}
+              onSanborns={async (id) => {
+                try {
+                  const blob = await storeService.getContractPdf(id);
+                  const url = window.URL.createObjectURL(blob);
+                  window.open(url, '_blank');
+                } catch (err) {
+                  console.error('Error opening Sanborns contract:', err);
+                }
+              }}
               onClose={onClose}
             />
           </div>

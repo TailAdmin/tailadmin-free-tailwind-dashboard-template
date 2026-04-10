@@ -31,8 +31,14 @@ export interface StoreInfo {
 export interface StoreIdentityV3 {
   _id: string;
   id_seller: number;
+  store_portal_id: number;
+  portalStore_id: number;
   store_name: string;
   email_owner: string;
+  user_id: number;
+  step: number;
+  legacy_finance_id: number;
+  organization_id: string;
   contact: {
     name: string;
     phone: string;
@@ -42,6 +48,10 @@ export interface StoreIdentityV3 {
     business_name: string;
     rfc: string;
     regime: string;
+    regime_type?: string;
+    taxpayer_type?: string;
+    tax_certificate?: string;
+    business_description?: string;
     address: {
       street: string;
       outer_number: string;
@@ -56,13 +66,59 @@ export interface StoreIdentityV3 {
     bank: string;
     clabe: string;
     holder_name: string;
+    bank_statement?: string;
+    rfc?: string;
   };
   creation_date: string;
   update_date: string;
   services: {
-    store: { enabled: boolean };
-    shipping: { enabled: boolean };
-    payments: { enabled: boolean; status: string; spei: string };
+    store: {
+      enabled: boolean;
+      name?: string;
+      slug?: string;
+      domain?: string;
+      logo_url?: string;
+      favicon_url?: string;
+      has_page?: boolean;
+    };
+    shipping: {
+      enabled: boolean;
+      name?: string;
+      slug?: string;
+    };
+    payments: {
+      enabled: boolean;
+      status: string;
+      spei: string;
+      validation_status?: boolean;
+      payment_id?: string;
+    };
   };
-  legacy_finance_id?: string;
+  contracts?: {
+    SR?: ContractDetail;
+    SN?: ContractDetail;
+  };
+  country: string;
+  currency: string;
+  language: string;
+  timezone: string;
+  created_by: string;
+  updated_by: string;
+  origin: string;
+  business_type: string;
+  industry_type: string;
+}
+
+export interface ContractDetail {
+  status: number;
+  sign_signer: ContractSigner[];
+}
+
+export interface ContractSigner {
+  multilateral_id: number;
+  signer_name: string;
+  type_signer: string;
+  create_at: {
+    $date: string;
+  };
 }

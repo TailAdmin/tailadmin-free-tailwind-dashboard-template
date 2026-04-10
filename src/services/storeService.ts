@@ -39,7 +39,6 @@ export const getStoreInfo = async (storeId: number | string): Promise<StoreInfo>
   }
 
   const response: ApiResponse<StoreInfo> = await res.json();
-  console.log(response.data);
   return response.data;
 };
 
@@ -58,12 +57,48 @@ export const getStoreIdentity = async (storeId: number | string): Promise<StoreI
   }
 
   const response: ApiResponse<StoreIdentityV3> = await res.json();
-  console.log(response.data);
   return response.data;
+};
+
+/**
+ * 17. Info vendedor (reemplaza <PORTAL_ID>)
+ * Endpoint: GET /api/external/t1/sellers/:portalId
+ */
+export const getSellerInfo = async (portalId: string | number): Promise<any> => {
+  const res = await auth.fetch(`${API_URL}/external/t1/sellers/${portalId}`, {
+    method: 'GET',
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({ message: 'Error obteniendo info del vendedor' }));
+    throw new Error(data.message || 'Error obteniendo información del vendedor');
+  }
+
+  const response: ApiResponse<any> = await res.json();
+  return response.data;
+};
+
+/**
+ * 18. Get contract PDF from Seguridata
+ * Endpoint: GET /api/external/t1/seguridata/multilateral/finalize/:id/false/pdf
+ */
+export const getContractPdf = async (multilateralId: number | string): Promise<Blob> => {
+  const res = await auth.fetch(`${API_URL}/external/t1/seguridata/multilateral/finalize/${multilateralId}/false/pdf`, {
+    method: 'GET',
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({ message: 'Error obteniendo PDF del contrato' }));
+    throw new Error(data.message || 'Error obteniendo PDF del contrato');
+  }
+
+  return await res.blob();
 };
 
 export default {
   findStores,
   getStoreInfo,
   getStoreIdentity,
+  getSellerInfo,
+  getContractPdf,
 };
