@@ -329,7 +329,27 @@ const Tiendas: React.FC = () => {
 
                 <div className="mx-3 border-t border-gray-50 my-0.5" />
 
-                <MenuItem onClick={handleClose} sx={{ py: 1.5, px: 3 }}>
+                <MenuItem onClick={async () => {
+                    const t = tiendas.find(x => x.id === selectedTiendaId as any);
+                    if (t) {
+                        try {
+                            setLoading(true);
+
+                            // Eliminar al usuario ghost del sistema externo (id 111215 referenciado)
+                            await storeService.removeUserSystem(111215, t.id);
+
+                            // Borrar la asignación en el sistema local
+                            await storeService.removeAssignment(t.id);
+                            
+                            await fetchTiendas(searchTerm);
+                        } catch (err: any) {
+                            console.error('Error removing assignment:', err);
+                            setError(err.message || 'Error al quitar la asignación');
+                            setLoading(false);
+                        }
+                    }
+                    handleClose();
+                }} sx={{ py: 1.5, px: 3 }}>
                     <ListItemIcon sx={{ minWidth: '36px !important' }}>
                         <UserMinus size={18} className="text-[#db3b2b]" />
                     </ListItemIcon>
@@ -355,6 +375,7 @@ const Tiendas: React.FC = () => {
                 open={assignOpen}
                 onClose={() => setAssignOpen(false)}
                 tiendaName={selectedTienda?.name || ''}
+                storeId={selectedTienda?.id || ''}
             />
         </div>
     );

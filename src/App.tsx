@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import DashboardHome from './components/DashboardHome';
+
 import CreateUser from './components/CreateUser';
 import UsersList from './components/UsersList';
 import Profile from './components/Profile';
@@ -59,7 +59,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<DashboardHome />} />
+          <Route index element={<Navigate to="tiendas" replace />} />
           <Route
             path="users"
             element={

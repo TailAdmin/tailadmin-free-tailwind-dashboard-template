@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, LogOut, Menu, X, Store } from 'lucide-react';
+import { LogOut, Menu, X, Store } from 'lucide-react';
 import auth, { getUserRole } from '../utils/auth';
 import { UserRole } from '../models/roles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
 			>
 				<div className={`flex items-center gap-3 mb-10 ${isCollapsed ? 'lg:justify-center' : ''}`}>
 					<div className="w-10 h-10 min-w-[40px] flex items-center justify-center">
-						<img src="/logo_t1.svg" className="w-full h-full object-contain" alt="T1 Logo" />
+						<h1 className="text-3xl font-black text-[#db3b2b] m-0 leading-none tracking-tight">T1</h1>
 					</div>
 					{!isCollapsed && (
 						<motion.span
@@ -39,17 +39,16 @@ const Dashboard: React.FC = () => {
 							animate={{ opacity: 1, x: 0 }}
 							className="text-xl font-bold tracking-tight whitespace-nowrap lg:block hidden"
 						>
-
 						</motion.span>
 					)}
 				</div>
 
 				<nav className="flex-1 space-y-2 overflow-x-hidden">
 					<SidebarItem
-						icon={<LayoutDashboard size={20} />}
-						label="Inicio"
-						to="/dashboard"
-						active={location.pathname === '/dashboard'}
+						icon={<Store size={20} />}
+						label="Tiendas"
+						to="/dashboard/tiendas"
+						active={location.pathname === '/dashboard/tiendas' || location.pathname === '/dashboard'}
 						isCollapsed={isCollapsed}
 					/>
 					{isAdmin && (
@@ -63,13 +62,6 @@ const Dashboard: React.FC = () => {
 							/>
 						</>
 					)}
-					<SidebarItem
-						icon={<Store size={20} />}
-						label="Tiendas"
-						to="/dashboard/tiendas"
-						active={location.pathname === '/dashboard/tiendas'}
-						isCollapsed={isCollapsed}
-					/>
 					<SidebarItem
 						icon={<FontAwesomeIcon icon={faUser} style={{ fontSize: '20px' }} />}
 						label="Perfil"

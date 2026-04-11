@@ -134,7 +134,7 @@ const ExpedienteModal: React.FC<Props> = ({ open, onClose, tienda }) => {
           </div>
         ) : (
           <div className="animate-in fade-in duration-300">
-            <BitacoraTab />
+            <BitacoraTab storeId={tienda.id} />
             <div className="px-6 pb-6 flex justify-end">
               <button
                 onClick={onClose}
