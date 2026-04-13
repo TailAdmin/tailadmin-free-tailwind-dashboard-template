@@ -126,15 +126,6 @@ const Profile: React.FC = () => {
 								required
 							/>
 						</div>
-						<div>
-							<label className="block text-sm font-medium mb-1">Teléfono</label>
-							<PhoneInput
-								country={'mx'}
-								value={phone}
-								onChange={val => setPhone(val)}
-								containerClass="phone-input-container"
-							/>
-						</div>
 						<div className="pt-2">
 							<button
 								type="submit"

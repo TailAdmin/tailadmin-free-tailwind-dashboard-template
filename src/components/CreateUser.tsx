@@ -67,7 +67,6 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 
 	return (
 		<div>
-			<h2 className="text-2xl font-bold mb-4">Crear nuevo usuario</h2>
 			<form onSubmit={handleSubmit} className="space-y-4 max-w-md">
 				<div>
 					<label className="block text-sm font-medium mb-1">Nombre Completo</label>
@@ -98,17 +97,6 @@ const CreateUser: React.FC<Props> = ({ onCreated }) => {
 						<div className="text-xs text-white/40 mt-1">Solo Super usuario puede crear otro Super usuario.</div>
 					)}
 					{errors.role && <div className="text-[#db3b2b] text-sm mt-1">{errors.role}</div>}
-				</div>
-
-				<div>
-					<label className="block text-sm font-medium mb-1">Teléfono</label>
-					<PhoneInput
-						country={'mx'}
-						value={phone}
-						onChange={val => setPhone(val)}
-						containerClass="phone-input-container"
-					/>
-					{errors.phone && <div className="text-[#db3b2b] text-sm mt-1">{errors.phone}</div>}
 				</div>
 				<div>
 					<button type="submit" disabled={loading} className="px-4 py-2 rounded btn-primary text-white-2">
