@@ -3,7 +3,6 @@ import { validateUserForm } from '../utils/validation';
 import { createUser } from '../services/userService';
 import { getUserRole } from '../utils/auth';
 import type { User, CreateUserPayload } from '../models/user';
-import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 type Props = {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Skeleton } from '@mui/material';
 import userService from '../services/userService';
 import type { User } from '../models/user';
-import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 const Profile: React.FC = () => {
