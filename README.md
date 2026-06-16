@@ -35,6 +35,28 @@ TailAdmin provides essential UI components and layouts for building feature-rich
 - [Angular Version](https://github.com/TailAdmin/free-angular-tailwind-dashboard)
 - [Laravel Version](https://github.com/TailAdmin/tailadmin-laravel)
 
+## RTL Support
+
+TailAdmin includes built-in Right-to-Left (RTL) support powered by Tailwind CSS v4 logical properties.
+
+### How It Works
+
+- A **RTL/LTR toggle button** is available in the header next to the Dark Mode toggle.
+- The toggle uses Alpine.js to manage the `rtl` state and persists the preference in `localStorage`.
+- When RTL is active, the `dir="rtl"` attribute is set on the `<html>` element.
+- Tailwind CSS v4 logical properties (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`) automatically flip with the direction.
+- Direction-specific styles (e.g., notification dropdown positioning) use `ltr:` and `rtl:` variant prefixes.
+
+### Programmatic Access
+
+The `rtl` state is available in the Alpine.js `x-data` scope on every page:
+
+```js
+// Toggle RTL programmatically
+$data.rtl = true;  // enable RTL
+$data.rtl = false; // enable LTR (default)
+```
+
 ## Installation
 
 ### Prerequisites
@@ -79,6 +101,7 @@ TailAdmin is a pre-designed starting point for building a web-based dashboard us
 - Authentication forms and input elements
 - Alerts, Dropdowns, Modals, Buttons and more
 - Can't forget Dark Mode 🕶️
+- RTL / LTR Support with one-click toggle 🔄
 
 ## Feature Comparison
 

@@ -129,7 +129,7 @@
 
             <button
               id="search-button"
-              class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400"
+              class="absolute end-2.5 top-1/2 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400"
             >
               <span> ⌘ </span>
               <span> K </span>
@@ -144,6 +144,28 @@
       class="shadow-theme-md w-full items-center justify-between gap-4 px-5 py-4 lg:flex lg:justify-end lg:px-0 lg:shadow-none"
     >
       <div class="2xsm:gap-3 flex items-center gap-2">
+        <!-- RTL/LTR Toggler -->
+        <button
+          class="relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+          @click.prevent="rtl = !rtl"
+          :title="rtl ? 'Switch to LTR' : 'Switch to RTL'"
+          aria-label="Toggle text direction"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 3H13V21H11V3Z M5 7H9V9H5V7Z M5 11H9V13H5V11Z M5 15H9V17H5V15Z M15 7H19V9H15V7Z M15 11H19V13H15V11Z M15 15H19V17H15V15Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <!-- RTL/LTR Toggler -->
+
         <!-- Dark Mode Toggler -->
         <button
           class="hover:text-dark-900 relative flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
@@ -218,7 +240,7 @@
           <!-- Dropdown Start -->
           <div
             x-show="dropdownOpen"
-            class="shadow-theme-lg dark:bg-gray-dark absolute -right-[240px] mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 sm:w-[361px] lg:right-0 dark:border-gray-800"
+            class="shadow-theme-lg dark:bg-gray-dark absolute mt-[17px] flex h-[480px] w-[350px] flex-col rounded-2xl border border-gray-200 bg-white p-3 sm:w-[361px] ltr:-right-[240px] ltr:lg:right-0 rtl:-left-[240px] rtl:lg:left-0 dark:border-gray-800"
           >
             <div
               class="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-gray-800"
@@ -612,11 +634,11 @@
           href="#"
           @click.prevent="dropdownOpen = ! dropdownOpen"
         >
-          <span class="mr-3 h-11 w-11 overflow-hidden rounded-full">
+          <span class="me-3 h-11 w-11 overflow-hidden rounded-full">
             <img src="./images/user/owner.jpg" alt="User" />
           </span>
 
-          <span class="text-theme-sm mr-1 block font-medium"> Musharof </span>
+          <span class="text-theme-sm me-1 block font-medium"> Musharof </span>
 
           <svg
             :class="dropdownOpen && 'rotate-180'"

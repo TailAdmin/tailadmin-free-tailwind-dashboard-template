@@ -10,10 +10,13 @@
     <title>Sign In| TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   </head>
   <body
-    x-data="{ page: 'comingSoon', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'comingSoon', 'loaded': true, 'darkMode': false, 'rtl': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         rtl = JSON.parse(localStorage.getItem('rtl')) || false;
+         document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)));
+         $watch('rtl', value => { localStorage.setItem('rtl', JSON.stringify(value)); document.documentElement.setAttribute('dir', value ? 'rtl' : 'ltr'); })"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
@@ -21,13 +24,13 @@
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
-    <div class="relative p-6 bg-white z-1 dark:bg-gray-900 sm:p-0">
+    <div class="relative z-1 bg-white p-6 sm:p-0 dark:bg-gray-900">
       <div
-        class="relative flex flex-col justify-center w-full h-screen dark:bg-gray-900 sm:p-0 lg:flex-row"
+        class="relative flex h-screen w-full flex-col justify-center sm:p-0 lg:flex-row dark:bg-gray-900"
       >
         <!-- Form -->
-        <div class="flex flex-col flex-1 w-full lg:w-1/2">
-          <div class="w-full max-w-md pt-10 mx-auto">
+        <div class="flex w-full flex-1 flex-col lg:w-1/2">
+          <div class="mx-auto w-full max-w-md pt-10">
             <a
               href="index.html"
               class="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
@@ -52,12 +55,12 @@
             </a>
           </div>
           <div
-            class="flex flex-col justify-center flex-1 w-full max-w-md mx-auto"
+            class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center"
           >
             <div>
               <div class="mb-5 sm:mb-8">
                 <h1
-                  class="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md"
+                  class="text-title-sm sm:text-title-md mb-2 font-semibold text-gray-800 dark:text-white/90"
                 >
                   Sign In
                 </h1>
@@ -68,7 +71,7 @@
               <div>
                 <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
                   <button
-                    class="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
+                    class="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
                   >
                     <svg
                       width="20"
@@ -97,7 +100,7 @@
                     Sign in with Google
                   </button>
                   <button
-                    class="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
+                    class="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10"
                   >
                     <svg
                       width="21"
@@ -123,7 +126,7 @@
                   </div>
                   <div class="relative flex justify-center text-sm">
                     <span
-                      class="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2"
+                      class="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900"
                       >Or</span
                     >
                   </div>
@@ -142,7 +145,7 @@
                         id="email"
                         name="email"
                         placeholder="info@gmail.com"
-                        class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                       />
                     </div>
                     <!-- Password -->
@@ -156,11 +159,11 @@
                         <input
                           :type="showPassword ? 'text' : 'password'"
                           placeholder="Enter your password"
-                          class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
                           @click="showPassword = !showPassword"
-                          class="absolute z-30 text-gray-500 -translate-y-1/2 cursor-pointer right-4 top-1/2 dark:text-gray-400"
+                          class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer text-gray-500 dark:text-gray-400"
                         >
                           <svg
                             x-show="!showPassword"
@@ -202,7 +205,7 @@
                       <div x-data="{ checkboxToggle: false }">
                         <label
                           for="checkboxLabelOne"
-                          class="flex items-center text-sm font-normal text-gray-700 cursor-pointer select-none dark:text-gray-400"
+                          class="flex cursor-pointer items-center text-sm font-normal text-gray-700 select-none dark:text-gray-400"
                         >
                           <div class="relative">
                             <input
@@ -239,14 +242,14 @@
                       </div>
                       <a
                         href="/reset-password.html"
-                        class="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                        class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm"
                         >Forgot password?</a
                       >
                     </div>
                     <!-- Button -->
                     <div>
                       <button
-                        class="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600"
+                        class="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition"
                       >
                         Sign In
                       </button>
@@ -255,7 +258,7 @@
                 </form>
                 <div class="mt-5">
                   <p
-                    class="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start"
+                    class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400"
                   >
                     Don't have an account?
                     <a
@@ -271,13 +274,13 @@
         </div>
 
         <div
-          class="relative items-center hidden w-full h-full bg-brand-950 dark:bg-white/5 lg:grid lg:w-1/2"
+          class="bg-brand-950 relative hidden h-full w-full items-center lg:grid lg:w-1/2 dark:bg-white/5"
         >
-          <div class="flex items-center justify-center z-1">
+          <div class="z-1 flex items-center justify-center">
             <!-- ===== Common Grid Shape Start ===== -->
             <include src="./partials/common-grid-shape.html"></include>
-            <div class="flex flex-col items-center max-w-xs">
-              <a href="index.html" class="block mb-4">
+            <div class="flex max-w-xs flex-col items-center">
+              <a href="index.html" class="mb-4 block">
                 <img src="./images/logo/auth-logo.svg" alt="Logo" />
               </a>
               <p class="text-center text-gray-400 dark:text-white/60">
@@ -287,9 +290,9 @@
           </div>
         </div>
         <!-- Toggler -->
-        <div class="fixed z-50 hidden bottom-6 right-6 sm:block">
+        <div class="fixed right-6 bottom-6 z-50 hidden sm:block">
           <button
-            class="inline-flex items-center justify-center text-white transition-colors rounded-full size-14 bg-brand-500 hover:bg-brand-600"
+            class="bg-brand-500 hover:bg-brand-600 inline-flex size-14 items-center justify-center rounded-full text-white transition-colors"
             @click.prevent="darkMode = !darkMode"
           >
             <svg

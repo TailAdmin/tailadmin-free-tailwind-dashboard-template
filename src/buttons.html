@@ -10,10 +10,13 @@
     <title>Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   </head>
   <body
-    x-data="{ page: 'buttons', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'buttons', 'loaded': true, 'darkMode': false, 'rtl': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         rtl = JSON.parse(localStorage.getItem('rtl')) || false;
+         document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)));
+         $watch('rtl', value => { localStorage.setItem('rtl', JSON.stringify(value)); document.documentElement.setAttribute('dir', value ? 'rtl' : 'ltr'); })"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
@@ -28,7 +31,7 @@
 
       <!-- ===== Content Area Start ===== -->
       <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
       >
         <!-- Small Device Overlay Start -->
         <include src="./partials/overlay.html" />

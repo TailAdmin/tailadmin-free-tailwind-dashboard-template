@@ -1,11 +1,11 @@
 <aside
-  :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : '-translate-x-full'"
-  class="sidebar fixed left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0"
+  :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : (rtl ? 'translate-x-full' : '-translate-x-full')"
+  class="sidebar fixed top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-gray-200 bg-white px-5 lg:static lg:translate-x-0 ltr:left-0 ltr:border-r rtl:right-0 rtl:border-l dark:border-gray-800 dark:bg-black"
 >
   <!-- SIDEBAR HEADER -->
   <div
     :class="sidebarToggle ? 'justify-center' : 'justify-between'"
-    class="flex items-center gap-2 pt-8 sidebar-header pb-7"
+    class="sidebar-header flex items-center gap-2 pt-8 pb-7"
   >
     <a href="index.html">
       <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
@@ -28,13 +28,13 @@
   <!-- SIDEBAR HEADER -->
 
   <div
-    class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar"
+    class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
   >
     <!-- Sidebar Menu -->
     <nav x-data="{selected: $persist('Dashboard')}">
       <!-- Menu Group -->
       <div>
-        <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+        <h3 class="mb-4 text-xs leading-[20px] text-gray-400 uppercase">
           <span
             class="menu-group-title"
             :class="sidebarToggle ? 'lg:hidden' : ''"
@@ -44,7 +44,7 @@
 
           <svg
             :class="sidebarToggle ? 'lg:block hidden' : 'hidden'"
-            class="mx-auto fill-current menu-group-icon"
+            class="menu-group-icon mx-auto fill-current"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -60,7 +60,7 @@
           </svg>
         </h3>
 
-        <ul class="flex flex-col gap-4 mb-6">
+        <ul class="mb-6 flex flex-col gap-4">
           <!-- Menu Item Dashboard -->
           <li>
             <a
@@ -113,12 +113,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Dashboard') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -235,7 +235,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Forms') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -255,12 +255,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Forms') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -309,7 +309,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Tables') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -329,12 +329,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Tables') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -383,7 +383,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Pages') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -403,12 +403,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Pages') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -438,7 +438,7 @@
 
       <!-- Others Group -->
       <div>
-        <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+        <h3 class="mb-4 text-xs leading-[20px] text-gray-400 uppercase">
           <span
             class="menu-group-title"
             :class="sidebarToggle ? 'lg:hidden' : ''"
@@ -448,7 +448,7 @@
 
           <svg
             :class="sidebarToggle ? 'lg:block hidden' : 'hidden'"
-            class="mx-auto fill-current menu-group-icon"
+            class="menu-group-icon mx-auto fill-current"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -464,7 +464,7 @@
           </svg>
         </h3>
 
-        <ul class="flex flex-col gap-4 mb-6">
+        <ul class="mb-6 flex flex-col gap-4">
           <!-- Menu Item Charts -->
           <li>
             <a
@@ -497,7 +497,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Charts') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -517,12 +517,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Charts') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -580,7 +580,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'UIElements') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -600,12 +600,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'UIElements') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -699,7 +699,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Authentication') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -719,12 +719,12 @@
 
             <!-- Dropdown Menu Start -->
             <div
-              class="overflow-hidden transform translate"
+              class="translate transform overflow-hidden"
               :class="(selected === 'Authentication') ? 'block' :'hidden'"
             >
               <ul
                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
-                class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
+                class="menu-dropdown mt-2 flex flex-col gap-1 ps-9"
               >
                 <li>
                   <a
@@ -762,14 +762,14 @@
       <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
         #1 Tailwind CSS Dashboard
       </h3>
-      <p class="mb-4 text-gray-500 text-theme-sm dark:text-gray-400">
+      <p class="text-theme-sm mb-4 text-gray-500 dark:text-gray-400">
         Leading Tailwind CSS Admin Template with 400+ UI Component and Pages.
       </p>
       <a
         href="https://tailadmin.com/pricing"
         target="_blank"
         rel="nofollow"
-        class="flex items-center justify-center p-3 font-medium text-white rounded-lg bg-brand-500 text-theme-sm hover:bg-brand-600"
+        class="bg-brand-500 text-theme-sm hover:bg-brand-600 flex items-center justify-center rounded-lg p-3 font-medium text-white"
       >
         Purchase Plan
       </a>

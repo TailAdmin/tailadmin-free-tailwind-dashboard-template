@@ -10,10 +10,13 @@
     <title>Bar Chart | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   </head>
   <body
-    x-data="{ page: 'barChart', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'barChart', 'loaded': true, 'darkMode': false, 'rtl': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         rtl = JSON.parse(localStorage.getItem('rtl')) || false;
+         document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)));
+         $watch('rtl', value => { localStorage.setItem('rtl', JSON.stringify(value)); document.documentElement.setAttribute('dir', value ? 'rtl' : 'ltr'); })"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
@@ -28,7 +31,7 @@
 
       <!-- ===== Content Area Start ===== -->
       <div
-        class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto"
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
       >
         <!-- Small Device Overlay Start -->
         <include src="./partials/overlay.html" />
@@ -40,7 +43,7 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
             <!-- Breadcrumb Start -->
             <div x-data="{ pageName: `Bar Chart`}">
               <include src="./partials/breadcrumb.html" />
@@ -59,10 +62,10 @@
                   </h3>
                 </div>
                 <div
-                  class="p-5 border-t border-gray-100 dark:border-gray-800 sm:p-6"
+                  class="border-t border-gray-100 p-5 sm:p-6 dark:border-gray-800"
                 >
                   <!-- ====== Bar Chart One Start -->
-                  <div class="max-w-full overflow-x-auto custom-scrollbar">
+                  <div class="custom-scrollbar max-w-full overflow-x-auto">
                     <div id="chartOne" class="min-w-[1000px]"></div>
                   </div>
                   <!-- ====== Bar Chart One End -->

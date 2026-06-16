@@ -1,12 +1,12 @@
 <aside
   :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : '-translate-x-full'"
-  class="sidebar fixed left-0 top-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 duration-300 ease-linear dark:border-gray-800 dark:bg-black lg:static lg:translate-x-0"
+  class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-hidden border-r border-gray-200 bg-white px-5 duration-300 ease-linear lg:static lg:translate-x-0 dark:border-gray-800 dark:bg-black"
   @click.outside="sidebarToggle = false"
 >
   <!-- SIDEBAR HEADER -->
   <div
     :class="sidebarToggle ? 'justify-center' : 'justify-between'"
-    class="sidebar-header flex items-center gap-2 pb-7 pt-8"
+    class="sidebar-header flex items-center gap-2 pt-8 pb-7"
   >
     <a href="index.html">
       <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
@@ -35,7 +35,7 @@
     <nav x-data="{selected: $persist('Dashboard')}">
       <!-- Menu Group -->
       <div>
-        <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+        <h3 class="mb-4 text-xs leading-[20px] text-gray-400 uppercase">
           <span
             class="menu-group-title"
             :class="sidebarToggle ? 'lg:hidden' : ''"
@@ -409,7 +409,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Forms') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -492,7 +492,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Tables') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -583,7 +583,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Pages') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -790,7 +790,7 @@
 
       <!-- Support Group -->
       <div>
-        <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+        <h3 class="mb-4 text-xs leading-[20px] text-gray-400 uppercase">
           <span
             class="menu-group-title"
             :class="sidebarToggle ? 'lg:hidden' : ''"
@@ -883,7 +883,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Email') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -988,7 +988,7 @@
 
       <!-- Others Group -->
       <div>
-        <h3 class="mb-4 text-xs uppercase leading-[20px] text-gray-400">
+        <h3 class="mb-4 text-xs leading-[20px] text-gray-400 uppercase">
           <span
             class="menu-group-title"
             :class="sidebarToggle ? 'lg:hidden' : ''"
@@ -1047,7 +1047,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Charts') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -1163,7 +1163,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'UiElements') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -1297,7 +1297,7 @@
               </span>
 
               <svg
-                class="menu-item-arrow absolute right-2.5 top-1/2 -translate-y-1/2 stroke-current"
+                class="menu-item-arrow absolute end-2.5 top-1/2 -translate-y-1/2 stroke-current"
                 :class="[(selected === 'Authentication') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]"
                 width="20"
                 height="20"
@@ -1377,14 +1377,14 @@
       <h3 class="mb-2 font-semibold text-gray-900 dark:text-white">
         TailAdmin Pro
       </h3>
-      <p class="mb-4 text-theme-sm text-gray-500 dark:text-gray-400">
+      <p class="text-theme-sm mb-4 text-gray-500 dark:text-gray-400">
         Get All Dashboards and 300+ UI Elements
       </p>
       <a
         href="https://tailadmin.com/pricing"
         target="_blank"
         rel="nofollow"
-        class="flex items-center justify-center rounded-lg bg-brand-500 p-3 text-theme-sm font-medium text-white hover:bg-brand-600"
+        class="bg-brand-500 text-theme-sm hover:bg-brand-600 flex items-center justify-center rounded-lg p-3 font-medium text-white"
       >
         Upgrade Plan
       </a>
