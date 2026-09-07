@@ -14,7 +14,7 @@
     "email": "hello@tailadmin.com",
     "url": "https://tailadmin.com"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.8",
