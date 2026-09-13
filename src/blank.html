@@ -14,7 +14,7 @@
   <body
     x-data="{ page: 'blank', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
@@ -30,7 +30,7 @@
 
       <!-- ===== Content Area Start ===== -->
       <div
-        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
       >
         <!-- Small Device Overlay Start -->
         <include src="./partials/overlay.html" />
@@ -42,7 +42,9 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+          <div
+            class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6"
+          >
             <!-- Breadcrumb Start -->
             <div x-data="{ pageName: `Blank Page`}">
               <include src="./partials/breadcrumb.html" />
@@ -50,21 +52,21 @@
             <!-- Breadcrumb End -->
 
             <div
-              class="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12"
+              class="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 xl:px-10 xl:py-12 dark:border-gray-800 dark:bg-white/3"
             >
-              <div class="mx-auto w-full max-w-[630px] text-center">
+              <div class="mx-auto w-full max-w-157.5 text-center">
                 <h3
-                  class="mb-4 text-theme-xl font-semibold text-gray-800 dark:text-white/90 sm:text-2xl"
+                  class="text-theme-xl mb-4 font-semibold text-gray-800 sm:text-2xl dark:text-white/90"
                 >
                   Card Title Here
                 </h3>
 
                 <p
-                  class="text-sm text-gray-500 dark:text-gray-400 sm:text-base"
+                  class="text-sm text-gray-500 sm:text-base dark:text-gray-400"
                 >
                   Start putting content on grids or panels, you can also use
-                  different combinations of grids. Please check out the
-                  dashboard and other pages
+                  different combinations of grids.Please check out the dashboard
+                  and other pages
                 </p>
               </div>
             </div>

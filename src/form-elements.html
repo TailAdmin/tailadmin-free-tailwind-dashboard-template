@@ -14,7 +14,7 @@
   <body
     x-data="{ page: 'formElements', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
@@ -42,7 +42,9 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+          <div
+            class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6"
+          >
             <!-- Breadcrumb Start -->
             <div x-data="{ pageName: `Form Elements`}">
               <include src="./partials/breadcrumb.html" />
@@ -53,7 +55,7 @@
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div class="space-y-6">
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -104,7 +106,7 @@
                         class="relative z-20 bg-transparent"
                       >
                         <select
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-11 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                           :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                           @change="isOptionSelected = true"
                         >
@@ -134,7 +136,7 @@
                           </option>
                         </select>
                         <span
-                          class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                          class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 rtl:right-auto rtl:left-4 dark:text-gray-400"
                         >
                           <svg
                             class="stroke-current"
@@ -167,11 +169,11 @@
                         <input
                           :type="showPassword ? 'text' : 'password'"
                           placeholder="Enter your password"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-11 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
                           @click="showPassword = !showPassword"
-                          class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer"
+                          class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer rtl:right-auto rtl:left-4"
                         >
                           <svg
                             x-show="!showPassword"
@@ -201,7 +203,7 @@
                             <path
                               fill-rule="evenodd"
                               clip-rule="evenodd"
-                              d="M4.63803 3.57709C4.34513 3.2842 3.87026 3.2842 3.57737 3.57709C3.28447 3.86999 3.28447 4.34486 3.57737 4.63775L4.85323 5.91362C3.74609 6.84199 2.89363 8.06395 2.4155 9.45936C2.3615 9.61694 2.3615 9.78801 2.41549 9.94558C3.49488 13.0957 6.48191 15.3619 10.0002 15.3619C11.255 15.3619 12.4422 15.0737 13.4994 14.5598L15.3625 16.4229C15.6554 16.7158 16.1302 16.7158 16.4231 16.4229C16.716 16.13 16.716 15.6551 16.4231 15.3622L4.63803 3.57709ZM12.3608 13.4212L10.4475 11.5079C10.3061 11.5423 10.1584 11.5606 10.0064 11.5606H9.99151C8.96527 11.5606 8.13333 10.7286 8.13333 9.70237C8.13333 9.5461 8.15262 9.39434 8.18895 9.24933L5.91885 6.97923C5.03505 7.69015 4.34057 8.62704 3.92328 9.70247C4.86803 12.1373 7.23361 13.8619 10.0002 13.8619C10.8326 13.8619 11.6287 13.7058 12.3608 13.4212ZM16.0771 9.70249C15.7843 10.4569 15.3552 11.1432 14.8199 11.7311L15.8813 12.7925C16.6329 11.9813 17.2187 11.0143 17.5849 9.94561C17.6389 9.78803 17.6389 9.61696 17.5849 9.45938C16.5055 6.30925 13.5184 4.04303 10.0002 4.04303C9.13525 4.04303 8.30244 4.17999 7.52218 4.43338L8.75139 5.66259C9.1556 5.58413 9.57311 5.54303 10.0002 5.54303C12.7667 5.54303 15.1323 7.26768 16.0771 9.70249Z"
+                              d="M4.63803 3.57709C4.34513 3.2842 3.87026 3.2842 3.57737 3.57709C3.28447 3.86999 3.28447 4.34486 3.57737 4.63775L4.85323 5.91362C3.74609 6.84199 2.89363 8.06395 2.4155 9.45936C2.3615 9.61694 2.3615 9.78801 2.41549 9.94558C3.49488 13.0957 6.48191 15.3619 10.0002 15.3619C11.255 15.3619 12.4422 15.0737 13.4994 14.5598L15.3625 16.4229C15.6554 16.7158 16.1302 16.7158 16.4231 16.4229C16.716 16.13 16.716 15.6551 16.4231 15.3622L4.63803 3.57709ZM12.3608 13.4212L10.4475 11.5079C10.3061 11.5423 10.1584 11.5606 10.0002 11.5606H9.99151C8.96527 11.5606 8.13333 10.7286 8.13333 9.70237C8.13333 9.5461 8.15262 9.39434 8.18895 9.24933L5.91885 6.97923C5.03505 7.69015 4.34057 8.62704 3.92328 9.70247C4.86803 12.1373 7.23361 13.8619 10.0002 13.8619C10.8326 13.8619 11.6287 13.7058 12.3608 13.4212ZM16.0771 9.70249C15.7843 10.4569 15.3552 11.1432 14.8199 11.7311L15.8813 12.7925C16.6329 11.9813 17.2187 11.0143 17.5849 9.94561C17.6389 9.78803 17.6389 9.61696 17.5849 9.45938C16.5055 6.30925 13.5184 4.04303 10.0002 4.04303C9.13525 4.04303 8.30244 4.17999 7.52218 4.43338L8.75139 5.66259C9.1556 5.58413 9.57311 5.54303 10.0002 5.54303C12.7667 5.54303 15.1323 7.26768 16.0771 9.70249Z"
                             />
                           </svg>
                         </span>
@@ -220,11 +222,10 @@
                         <input
                           type="date"
                           placeholder="Select date"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                          onclick="this.showPicker()"
+                          class="dark:bg-dark-900 datepickerTwo shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-11 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
-                          class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                          class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 rtl:right-auto rtl:left-3 dark:text-gray-400"
                         >
                           <svg
                             class="fill-current"
@@ -257,10 +258,10 @@
                           type="time"
                           placeholder="12:00 AM"
                           onclick="this.showPicker()"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-11 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
-                          class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+                          class="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 rtl:right-auto rtl:left-3 dark:text-gray-400"
                         >
                           <svg
                             class="fill-current"
@@ -293,10 +294,10 @@
                         <input
                           type="text"
                           placeholder="Card number"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-[62px] text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-15.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-15.5 rtl:pl-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
-                          class="absolute top-1/2 left-0 flex h-11 w-[46px] -translate-y-1/2 items-center justify-center border-r border-gray-200 dark:border-gray-800"
+                          class="absolute top-1/2 left-0 flex h-11 w-11.5 -translate-y-1/2 items-center justify-center border-r border-gray-200 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800"
                         >
                           <svg
                             width="20"
@@ -329,7 +330,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -353,7 +354,7 @@
                         class="relative z-20 bg-transparent"
                       >
                         <select
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-11 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                           :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                           @change="isOptionSelected = true"
                         >
@@ -383,7 +384,7 @@
                           </option>
                         </select>
                         <span
-                          class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400"
+                          class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 rtl:right-auto rtl:left-4 dark:text-gray-400"
                         >
                           <svg
                             class="stroke-current"
@@ -406,162 +407,12 @@
                     </div>
 
                     <!-- Elements -->
-                    <div>
-                      <label
-                        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-                      >
-                        Multiple Select Options
-                      </label>
-                      <div>
-                        <select class="hidden" x-cloak id="select">
-                          <option value="1">Option 2</option>
-                          <option value="2">Option 3</option>
-                          <option value="3">Option 4</option>
-                          <option value="4">Option 5</option>
-                        </select>
-
-                        <div
-                          x-data="dropdown()"
-                          x-init="loadOptions()"
-                          class="flex flex-col items-center"
-                        >
-                          <input
-                            name="values"
-                            type="hidden"
-                            :value="selectedValues()"
-                          />
-                          <div class="relative z-20 inline-block w-full">
-                            <div class="relative flex flex-col items-center">
-                              <div @click="open" class="w-full">
-                                <div
-                                  class="shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-300 mb-2 flex h-11 rounded-lg border border-gray-300 py-1.5 pr-3 pl-3 outline-hidden transition dark:border-gray-700 dark:bg-gray-900"
-                                >
-                                  <div class="flex flex-auto flex-wrap gap-2">
-                                    <template
-                                      x-for="(option,index) in selected"
-                                      :key="index"
-                                    >
-                                      <div
-                                        class="group flex items-center justify-center rounded-full border-[0.7px] border-transparent bg-gray-100 py-1 pr-2 pl-2.5 text-sm text-gray-800 hover:border-gray-200 dark:bg-gray-800 dark:text-white/90 dark:hover:border-gray-800"
-                                      >
-                                        <div
-                                          class="max-w-full flex-initial"
-                                          x-model="options[option]"
-                                          x-text="options[option].text"
-                                        ></div>
-                                        <div
-                                          class="flex flex-auto flex-row-reverse"
-                                        >
-                                          <div
-                                            @click="remove(index,option)"
-                                            class="cursor-pointer pl-2 text-gray-500 group-hover:text-gray-400 dark:text-gray-400"
-                                          >
-                                            <svg
-                                              class="fill-current"
-                                              role="button"
-                                              width="14"
-                                              height="14"
-                                              viewBox="0 0 14 14"
-                                              fill="none"
-                                              xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                              <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M3.40717 4.46881C3.11428 4.17591 3.11428 3.70104 3.40717 3.40815C3.70006 3.11525 4.17494 3.11525 4.46783 3.40815L6.99943 5.93975L9.53095 3.40822C9.82385 3.11533 10.2987 3.11533 10.5916 3.40822C10.8845 3.70112 10.8845 4.17599 10.5916 4.46888L8.06009 7.00041L10.5916 9.53193C10.8845 9.82482 10.8845 10.2997 10.5916 10.5926C10.2987 10.8855 9.82385 10.8855 9.53095 10.5926L6.99943 8.06107L4.46783 10.5927C4.17494 10.8856 3.70006 10.8856 3.40717 10.5927C3.11428 10.2998 3.11428 9.8249 3.40717 9.53201L5.93877 7.00041L3.40717 4.46881Z"
-                                                fill=""
-                                              />
-                                            </svg>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </template>
-                                    <div
-                                      x-show="selected.length == 0"
-                                      class="flex-1"
-                                    >
-                                      <input
-                                        placeholder="Select option"
-                                        class="h-full w-full appearance-none border-0 bg-transparent p-1 pr-2 text-sm outline-hidden placeholder:text-gray-800 focus:border-0 focus:ring-0 focus:outline-hidden dark:placeholder:text-white/90"
-                                        :value="selectedValues()"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="flex w-7 items-center py-1 pr-1 pl-1"
-                                  >
-                                    <button
-                                      type="button"
-                                      @click="open"
-                                      class="h-5 w-5 cursor-pointer text-gray-700 outline-hidden focus:outline-hidden dark:text-gray-400"
-                                      :class="isOpen() === true ? 'rotate-180' : ''"
-                                    >
-                                      <svg
-                                        class="stroke-current"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 20 20"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <path
-                                          d="M4.79175 7.39551L10.0001 12.6038L15.2084 7.39551"
-                                          stroke=""
-                                          stroke-width="1.5"
-                                          stroke-linecap="round"
-                                          stroke-linejoin="round"
-                                        />
-                                      </svg>
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="w-full px-4">
-                                <div
-                                  x-show.transition.origin.top="isOpen()"
-                                  class="max-h-select absolute top-full left-0 z-40 w-full overflow-y-auto rounded-lg bg-white shadow-sm dark:bg-gray-900"
-                                  @click.outside="close"
-                                >
-                                  <div class="flex w-full flex-col">
-                                    <template
-                                      x-for="(option,index) in options"
-                                      :key="index"
-                                    >
-                                      <div>
-                                        <div
-                                          class="hover:bg-primary/5 w-full cursor-pointer rounded-t border-b border-gray-200 dark:border-gray-800"
-                                          @click="select(index,$event)"
-                                        >
-                                          <div
-                                            :class="option.selected ? 'border-primary' : ''"
-                                            class="relative flex w-full items-center border-l-2 border-transparent p-2 pl-2"
-                                          >
-                                            <div
-                                              class="flex w-full items-center"
-                                            >
-                                              <div
-                                                class="mx-2 leading-6 text-gray-800 dark:text-white/90"
-                                                x-model="option"
-                                                x-text="option.text"
-                                              ></div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </template>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <include src="./multiple-select.html" />
                   </div>
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -600,7 +451,7 @@
                         type="text"
                         rows="6"
                         disabled
-                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:placeholder:text-white/15"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:shadow-focus-ring dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-0 focus:outline-hidden disabled:border-gray-100 disabled:bg-gray-50 disabled:placeholder:text-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:disabled:border-gray-800 dark:disabled:bg-white/3 dark:disabled:placeholder:text-white/15"
                       ></textarea>
                     </div>
 
@@ -625,7 +476,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -652,10 +503,10 @@
                         <input
                           type="text"
                           value="demoemail"
-                          class="dark:bg-dark-900 border-error-300 shadow-theme-xs focus:border-error-300 focus:ring-error-500/10 dark:border-error-700 dark:focus:border-error-800 w-full rounded-lg border bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 border-error-300 shadow-theme-xs focus:border-error-300 focus:ring-error-500/10 dark:border-error-700 dark:focus:border-error-800 w-full rounded-lg border bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-10 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
-                          class="absolute top-1/2 right-3.5 -translate-y-1/2"
+                          class="absolute top-1/2 right-3.5 -translate-y-1/2 rtl:right-auto rtl:left-3.5"
                         >
                           <svg
                             width="16"
@@ -690,10 +541,10 @@
                         <input
                           type="text"
                           value="demoemail@gmail.com"
-                          class="dark:bg-dark-900 border-success-300 shadow-theme-xs focus:border-success-300 focus:ring-success-500/10 dark:border-success-700 dark:focus:border-success-800 w-full rounded-lg border bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 border-success-300 shadow-theme-xs focus:border-success-300 focus:ring-success-500/10 dark:border-success-700 dark:focus:border-success-800 w-full rounded-lg border bg-transparent px-4 py-2.5 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-10 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                         <span
-                          class="absolute top-1/2 right-3.5 -translate-y-1/2"
+                          class="absolute top-1/2 right-3.5 -translate-y-1/2 rtl:right-auto rtl:left-3.5"
                         >
                           <svg
                             width="16"
@@ -737,7 +588,7 @@
 
               <div class="space-y-6">
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -758,7 +609,7 @@
                       </label>
                       <div class="relative">
                         <span
-                          class="absolute top-1/2 left-0 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500 dark:border-gray-800 dark:text-gray-400"
+                          class="absolute top-1/2 left-0 -translate-y-1/2 border-r border-gray-200 px-3.5 py-3 text-gray-500 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:text-gray-400"
                         >
                           <svg
                             width="20"
@@ -778,7 +629,7 @@
                         <input
                           type="text"
                           placeholder="info@gmail.com"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-[62px] text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-15.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-15.5 rtl:pl-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                       </div>
                     </div>
@@ -802,11 +653,11 @@
                         Phone
                       </label>
                       <div class="relative">
-                        <div class="absolute">
+                        <div class="absolute left-0 rtl:right-0 rtl:left-auto">
                           <select
                             x-model="selectedCountry"
                             @change="phoneNumber = countryCodes[selectedCountry]"
-                            class="focus:border-brand-300 focus:ring-brand-500/10 appearance-none rounded-l-lg border-0 border-r border-gray-200 bg-transparent bg-none py-3 pr-8 pl-3.5 leading-tight text-gray-700 focus:ring-3 focus:outline-hidden dark:border-gray-800 dark:text-gray-400"
+                            class="focus:border-brand-300 focus:ring-brand-500/10 appearance-none rounded-l-lg border-0 border-r border-gray-200 bg-transparent bg-none py-3 pr-8 pl-3.5 leading-tight text-gray-700 focus:ring-3 focus:outline-hidden rtl:rounded-l-none rtl:rounded-r-lg rtl:border-r-0 rtl:border-l rtl:pr-3.5 rtl:pl-8 dark:border-gray-800 dark:text-gray-400"
                           >
                             <option
                               value="US"
@@ -835,7 +686,7 @@
                             <!-- Add more country codes as needed -->
                           </select>
                           <div
-                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 dark:text-gray-400"
+                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 rtl:right-auto rtl:left-3 dark:text-gray-400"
                           >
                             <svg
                               class="stroke-current"
@@ -859,7 +710,7 @@
                           placeholder="+1 (555) 000-0000"
                           x-model="phoneNumber"
                           type="tel"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-4 pl-[84px] text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-4 pl-21 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-21 rtl:pl-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                       </div>
                     </div>
@@ -883,11 +734,11 @@
                         Phone
                       </label>
                       <div class="relative">
-                        <div class="absolute right-0">
+                        <div class="absolute right-0 rtl:right-auto rtl:left-0">
                           <select
                             x-model="selectedCountry"
                             @change="phoneNumber = countryCodes[selectedCountry]"
-                            class="focus:border-brand-300 focus:ring-brand-500/10 appearance-none rounded-r-lg border-0 border-l border-gray-200 bg-transparent bg-none py-3 pr-8 pl-3.5 leading-tight text-gray-700 focus:ring-3 focus:outline-hidden dark:border-gray-800 dark:text-gray-400"
+                            class="focus:border-brand-300 focus:ring-brand-500/10 appearance-none rounded-r-lg border-0 border-l border-gray-200 bg-transparent bg-none py-3 pr-8 pl-3.5 leading-tight text-gray-700 focus:ring-3 focus:outline-hidden rtl:rounded-l-lg rtl:rounded-r-none rtl:border-r rtl:border-l-0 rtl:pr-3.5 rtl:pl-8 dark:border-gray-800 dark:text-gray-400"
                           >
                             <option
                               value="US"
@@ -916,7 +767,7 @@
                             <!-- Add more country codes as needed -->
                           </select>
                           <div
-                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 dark:text-gray-400"
+                            class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700 rtl:right-auto rtl:left-3 dark:text-gray-400"
                           >
                             <svg
                               class="stroke-current"
@@ -940,7 +791,7 @@
                           placeholder="+1 (555) 000-0000"
                           x-model="phoneNumber"
                           type="tel"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-[84px] pl-3 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-21 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-21 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                       </div>
                     </div>
@@ -954,14 +805,14 @@
                       </label>
                       <div class="relative">
                         <span
-                          class="absolute top-1/2 left-0 inline-flex h-11 -translate-y-1/2 items-center justify-center border-r border-gray-200 py-3 pr-3 pl-3.5 text-gray-500 dark:border-gray-800 dark:text-gray-400"
+                          class="absolute top-1/2 left-0 inline-flex h-11 -translate-y-1/2 items-center justify-center border-r border-gray-200 py-3 pr-3 pl-3.5 text-gray-500 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l rtl:pr-3.5 rtl:pl-3 dark:border-gray-800 dark:text-gray-400"
                         >
                           http://
                         </span>
                         <input
                           type="url"
                           placeholder="www.tailadmin.com"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-[90px] text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 pl-[90px] text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-[90px] rtl:pl-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                       </div>
                     </div>
@@ -976,7 +827,7 @@
                       <div class="relative">
                         <button
                           id="copy-button"
-                          class="absolute top-1/2 right-0 inline-flex -translate-y-1/2 cursor-pointer items-center gap-1 border-l border-gray-200 py-3 pr-3 pl-3.5 text-sm font-medium text-gray-700 dark:border-gray-800 dark:text-gray-400"
+                          class="absolute top-1/2 right-0 inline-flex -translate-y-1/2 cursor-pointer items-center gap-1 border-l border-gray-200 py-3 pr-3 pl-3.5 text-sm font-medium text-gray-700 rtl:right-auto rtl:left-0 rtl:border-r rtl:border-l-0 rtl:pr-3.5 rtl:pl-3 dark:border-gray-800 dark:text-gray-400"
                         >
                           <svg
                             class="fill-current"
@@ -999,7 +850,7 @@
                           value="www.tailadmin.com"
                           type="url"
                           id="website-input"
-                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-[90px] pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                          class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-3 pr-[90px] pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden rtl:pr-4 rtl:pl-[90px] dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
                         />
                       </div>
                     </div>
@@ -1007,7 +858,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -1028,14 +879,14 @@
                       </label>
                       <input
                         type="file"
-                        class="focus:border-ring-brand-300 shadow-theme-xs focus:file:ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pr-3 file:pl-3.5 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:text-white/90 dark:file:border-gray-800 dark:file:bg-white/[0.03] dark:file:text-gray-400 dark:placeholder:text-gray-400"
+                        class="focus:border-ring-brand-300 shadow-theme-xs focus:file:ring-brand-300 h-11 w-full overflow-hidden rounded-lg border border-gray-300 bg-transparent text-sm text-gray-500 transition-colors file:mr-5 file:border-collapse file:cursor-pointer file:rounded-l-lg file:border-0 file:border-r file:border-solid file:border-gray-200 file:bg-gray-50 file:py-3 file:pr-3 file:pl-3.5 file:text-sm file:text-gray-700 placeholder:text-gray-400 hover:file:bg-gray-100 focus:outline-hidden rtl:file:mr-0 rtl:file:ml-5 rtl:file:rounded-l-none rtl:file:rounded-r-lg rtl:file:border-r-0 rtl:file:border-l rtl:file:pr-3.5 rtl:file:pl-3 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:file:border-gray-800 dark:file:bg-white/3 dark:file:text-gray-400 dark:placeholder:text-gray-400"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -1063,7 +914,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
-                              class="f hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]"
+                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span :class="checkboxToggle ? '' : 'opacity-0'">
                                 <svg
@@ -1102,7 +953,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
-                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]"
+                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span :class="checkboxToggle ? '' : 'opacity-0'">
                                 <svg
@@ -1142,7 +993,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'bg-transparent border-gray-200 dark:border-gray-800' : 'border-brand-500 bg-brand-500'"
-                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px]"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-md border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span :class="checkboxToggle ? '' : 'opacity-0'">
                                 <svg
@@ -1172,7 +1023,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -1200,7 +1051,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
-                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px]"
+                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span
                                 class="h-2 w-2 rounded-full"
@@ -1226,7 +1077,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'border-brand-500 bg-brand-500' : 'bg-transparent border-gray-300 dark:border-gray-700'"
-                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px]"
+                              class="hover:border-brand-500 dark:hover:border-brand-500 mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span
                                 class="h-2 w-2 rounded-full"
@@ -1253,7 +1104,7 @@
                             />
                             <div
                               :class="checkboxToggle ? 'bg-transparent border-gray-300 dark:border-gray-700' : 'border-brand-500 bg-brand-500'"
-                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px]"
+                              class="mr-3 flex h-5 w-5 items-center justify-center rounded-full border-[1.25px] rtl:mr-0 rtl:ml-3"
                             >
                               <span
                                 class="h-2 w-2 rounded-full"
@@ -1269,7 +1120,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -1302,8 +1153,8 @@
                               :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-200 dark:bg-white/10'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1328,8 +1179,8 @@
                               :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-200 dark:bg-white/10'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1355,8 +1206,8 @@
                               :class="switcherToggle ? 'bg-brand-500 dark:bg-brand-500' : 'bg-gray-100 dark:bg-gray-800'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-gray-50 duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-gray-50 duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1380,11 +1231,12 @@
                               @change="switcherToggle = !switcherToggle"
                             />
                             <div
-                              class="block h-6 w-11 rounded-full bg-gray-700 dark:bg-white/10"
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-gray-700 dark:bg-white/10' : 'bg-gray-200 dark:bg-gray-800'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1404,12 +1256,14 @@
                               class="sr-only"
                               @change="switcherToggle = !switcherToggle"
                             />
+
                             <div
-                              class="block h-6 w-11 rounded-full bg-gray-700 dark:bg-white/10"
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-gray-700 dark:bg-white/10' : 'bg-gray-200 dark:bg-gray-800'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1431,11 +1285,12 @@
                               disabled
                             />
                             <div
-                              class="block h-6 w-11 rounded-full bg-gray-100 dark:bg-gray-800"
+                              class="block h-6 w-11 rounded-full"
+                              :class="switcherToggle ? 'bg-gray-700 dark:bg-white/10' : 'bg-gray-100 dark:bg-gray-800'"
                             ></div>
                             <div
-                              :class="switcherToggle ? 'translate-x-full': 'translate-x-0'"
-                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-gray-50 duration-300 ease-linear"
+                              :class="switcherToggle ? 'translate-x-full rtl:-translate-x-full': 'translate-x-0'"
+                              class="shadow-theme-sm absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-gray-50 duration-300 ease-linear rtl:right-0.5 rtl:left-auto"
                             ></div>
                           </div>
 
@@ -1447,7 +1302,7 @@
                 </div>
 
                 <div
-                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
                 >
                   <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3
@@ -1490,7 +1345,7 @@
                         <h4
                           class="text-theme-xl mb-3 font-semibold text-gray-800 dark:text-white/90"
                         >
-                          Drop File Here
+                          Drag & Drop File Here
                         </h4>
                         <span
                           class="mx-auto mb-5 block w-full max-w-[290px] text-sm text-gray-700 dark:text-gray-400"
@@ -1518,56 +1373,5 @@
       <!-- ===== Content Area End ===== -->
     </div>
     <!-- ===== Page Wrapper End ===== -->
-
-    <script>
-      function dropdown() {
-        return {
-          options: [],
-          selected: [],
-          show: false,
-          open() {
-            this.show = true;
-          },
-          close() {
-            this.show = false;
-          },
-          isOpen() {
-            return this.show === true;
-          },
-          select(index, event) {
-            if (!this.options[index].selected) {
-              this.options[index].selected = true;
-              this.options[index].element = event.target;
-              this.selected.push(index);
-            } else {
-              this.selected.splice(this.selected.lastIndexOf(index), 1);
-              this.options[index].selected = false;
-            }
-          },
-          remove(index, option) {
-            this.options[option].selected = false;
-            this.selected.splice(index, 1);
-          },
-          loadOptions() {
-            const options = document.getElementById("select").options;
-            for (let i = 0; i < options.length; i++) {
-              this.options.push({
-                value: options[i].value,
-                text: options[i].innerText,
-                selected:
-                  options[i].getAttribute("selected") != null
-                    ? options[i].getAttribute("selected")
-                    : false,
-              });
-            }
-          },
-          selectedValues() {
-            return this.selected.map((option) => {
-              return this.options[option].value;
-            });
-          },
-        };
-      }
-    </script>
   </body>
 </html>

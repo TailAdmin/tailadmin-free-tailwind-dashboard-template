@@ -40,7 +40,7 @@
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
             <!-- Breadcrumb Start -->
             <div x-data="{ pageName: `Avatars`}">
               <include src="./partials/breadcrumb.html" />
@@ -49,7 +49,7 @@
 
             <div class="space-y-5 sm:space-y-6">
               <div
-                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
               >
                 <div class="px-6 py-5">
                   <h3
@@ -58,13 +58,28 @@
                     Default Avatar
                   </h3>
                 </div>
-                <div class="p-8 border-t border-gray-100 dark:border-gray-800">
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
                   <include src="./partials/avatar/avatar-01.html" />
                 </div>
               </div>
 
               <div
-                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div class="px-6 py-5">
+                  <h3
+                    class="text-base font-medium text-gray-800 dark:text-white/90"
+                  >
+                    Avatar Group
+                  </h3>
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include src="./partials/avatar/avatar-group.html" />
+                </div>
+              </div>
+
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
               >
                 <div class="px-6 py-5">
                   <h3
@@ -73,13 +88,13 @@
                     Avatar with online indicator
                   </h3>
                 </div>
-                <div class="p-8 border-t border-gray-100 dark:border-gray-800">
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
                   <include src="./partials/avatar/avatar-02.html" />
                 </div>
               </div>
 
               <div
-                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
               >
                 <div class="px-6 py-5">
                   <h3
@@ -88,13 +103,13 @@
                     Avatar with Offline indicator
                   </h3>
                 </div>
-                <div class="p-8 border-t border-gray-100 dark:border-gray-800">
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
                   <include src="./partials/avatar/avatar-03.html" />
                 </div>
               </div>
 
               <div
-                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
               >
                 <div class="px-6 py-5">
                   <h3
@@ -103,7 +118,7 @@
                     Avatar with busy indicator
                   </h3>
                 </div>
-                <div class="p-8 border-t border-gray-100 dark:border-gray-800">
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
                   <include src="./partials/avatar/avatar-04.html" />
                 </div>
               </div>

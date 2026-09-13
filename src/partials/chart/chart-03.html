@@ -1,12 +1,18 @@
 <div
-  class="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 dark:border-gray-800 dark:bg-white/[0.03]"
+  class="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 dark:border-gray-800 dark:bg-white/3"
 >
   <div class="mb-6 flex flex-col gap-5 sm:flex-row sm:justify-between">
     <div class="w-full">
-      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+      <h3
+        class="text-lg font-semibold text-gray-800 dark:text-white/90"
+        x-text="$t('ecommerce.statistics.title')"
+      >
         Statistics
       </h3>
-      <p class="text-theme-sm mt-1 text-gray-500 dark:text-gray-400">
+      <p
+        class="text-theme-sm mt-1 text-gray-500 dark:text-gray-400"
+        x-text="$t('ecommerce.statistics.subtitle')"
+      >
         Target you’ve set for each month
       </p>
     </div>
@@ -20,6 +26,7 @@
           @click="selected = 'overview'"
           :class="selected === 'overview' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="text-theme-sm rounded-md px-3 py-2 font-medium hover:text-gray-900 dark:hover:text-white"
+          x-text="$t('saas.metrics.overview')"
         >
           Overview
         </button>
@@ -27,6 +34,7 @@
           @click="selected = 'sales'"
           :class="selected === 'sales' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="text-theme-sm rounded-md px-3 py-2 font-medium hover:text-gray-900 dark:hover:text-white"
+          x-text="$t('ecommerce.statistics.sales')"
         >
           Sales
         </button>
@@ -34,20 +42,22 @@
           @click="selected = 'revenue'"
           :class="selected === 'revenue' ? 'shadow-theme-xs text-gray-900 dark:text-white bg-white dark:bg-gray-800' : 'text-gray-500 dark:text-gray-400'"
           class="text-theme-sm rounded-md px-3 py-2 font-medium hover:text-gray-900 dark:hover:text-white"
+          x-text="$t('ecommerce.statistics.revenue')"
         >
           Revenue
         </button>
       </div>
 
-      <div class="relative max-w-41">
+      <div class="relative max-w-40">
         <input
-          class="datepicker text-theme-sm shadow-theme-xs h-10 w-full max-w-11 rounded-lg border border-gray-200 bg-white py-2.5 pr-4 pl-[34px] font-medium text-gray-700 focus:ring-0 focus:outline-hidden focus-visible:outline-hidden xl:max-w-fit xl:pl-11 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+          class="datepicker text-theme-sm shadow-theme-xs h-10 w-full max-w-11 rounded-lg border border-gray-200 bg-white py-2.5 pr-4 pl-8.5 font-medium text-gray-700 focus:ring-0 focus:outline-hidden focus-visible:outline-hidden xl:max-w-fit xl:pl-11 rtl:pr-8.5 rtl:pl-4 rtl:xl:pr-11 rtl:xl:pl-4 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
           placeholder="Select dates"
+          :placeholder="$t('ecommerce.statistics.selectDateRange')"
           data-class="flatpickr-right"
           readonly="readonly"
         />
         <div
-          class="pointer-events-none absolute inset-0 right-auto left-3 flex items-center"
+          class="pointer-events-none absolute inset-0 right-auto left-4 flex items-center rtl:right-4 rtl:left-auto"
         >
           <svg
             class="fill-gray-700 dark:fill-gray-400"
@@ -69,6 +79,9 @@
     </div>
   </div>
   <div class="custom-scrollbar max-w-full overflow-x-auto">
-    <div id="chartThree" class="-ml-4 min-w-[700px] pl-2"></div>
+    <div
+      id="chartThree"
+      class="-ml-4 min-w-175 pl-2 xl:min-w-full rtl:-mr-4 rtl:ml-0 rtl:pr-2 rtl:pl-0"
+    ></div>
   </div>
 </div>
