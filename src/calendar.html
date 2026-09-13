@@ -12,9 +12,16 @@
   <body
     x-data="{ page: 'calendar', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
-         darkMode = JSON.parse(localStorage.getItem('darkMode'));
-         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
+         document.documentElement.classList.toggle('dark', darkMode);
+         document.documentElement.setAttribute('data-color-scheme', darkMode ? 'dark' : 'light');
+         $watch('darkMode', value => {
+           localStorage.setItem('darkMode', JSON.stringify(value));
+           document.documentElement.classList.toggle('dark', value);
+           document.documentElement.setAttribute('data-color-scheme', value ? 'dark' : 'light');
+         })"
     :class="{'dark bg-gray-900': darkMode === true}"
+    :data-color-scheme="darkMode ? 'dark' : 'light'"
   >
     <!-- ===== Preloader Start ===== -->
     <include src="./partials/preloader.html"></include>
@@ -48,9 +55,13 @@
             <!-- Breadcrumb End -->
 
             <div
-              class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+              class="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
             >
-              <div id="calendar" class="min-h-screen"></div>
+              <div
+                id="calendar"
+                class="min-h-screen"
+                :data-color-scheme="darkMode ? 'dark' : 'light'"
+              ></div>
             </div>
 
             <!-- BEGIN MODAL -->

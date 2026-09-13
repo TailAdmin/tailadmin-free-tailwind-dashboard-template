@@ -24,8 +24,10 @@ import map01 from "./components/map-01";
 
   if (isDark) {
     document.documentElement.classList.add("dark");
+    document.documentElement.setAttribute("data-color-scheme", "dark");
   } else {
-    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove("dark");    
+    document.documentElement.setAttribute("data-color-scheme", "light");
   }
 })();
 
