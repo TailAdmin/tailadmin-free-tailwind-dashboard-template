@@ -1,22 +1,40 @@
-import "jsvectormap/dist/jsvectormap.min.css";
-import "flatpickr/dist/flatpickr.min.css";
 import "dropzone/dist/dropzone.css";
+import "flatpickr/dist/flatpickr.min.css";
+import "jsvectormap/dist/jsvectormap.min.css";
 import "../css/style.css";
 
-import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
-import flatpickr from "flatpickr";
+import Alpine from "alpinejs";
 import Dropzone from "dropzone";
+import flatpickr from "flatpickr";
+import { setupI18n } from "./i18n";
 
+import "./components/calendar-init.js";
 import chart01 from "./components/charts/chart-01";
 import chart02 from "./components/charts/chart-02";
 import chart03 from "./components/charts/chart-03";
-import map01 from "./components/map-01";
-import "./components/calendar-init.js";
 import "./components/image-resize";
+import map01 from "./components/map-01";
+
+
+// TailAdmin Theme Manager: reads from localStorage, falls back to dark
+(function () {
+  var stored = localStorage.getItem("darkMode");
+  var isDark = stored !== null ? JSON.parse(stored) : false;
+
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+})();
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
+
+// Setup i18next & Alpine reactive integration
+setupI18n(Alpine);
+
 Alpine.start();
 
 // Init flatpickr
