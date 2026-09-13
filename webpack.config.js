@@ -1,7 +1,8 @@
 const path = require("path");
-const glob = require("glob");
+const { globSync } = require("glob");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const INCLUDE_PATTERN =
   /<include\s+src=["'](.+?)["']\s*\/?>\s*(?:<\/include>)?/gis;
@@ -22,7 +23,7 @@ const processNestedHtml = (content, loaderContext, dir = null) =>
 // HTML generation
 const paths = [];
 const generateHTMLPlugins = () =>
-  glob.sync("./src/*.html").map((dir) => {
+  globSync("./src/*.html").map((dir) => {
     const filename = path.basename(dir);
 
     if (filename !== "404.html") {
@@ -41,12 +42,18 @@ module.exports = {
   mode: "development",
   entry: "./src/js/index.js",
   devServer: {
-    static: {
-      directory: path.join(__dirname, "./build"),
-    },
-    compress: true,
-    port: 3000,
+    static: [
+      {
+        directory: path.join(__dirname, "./build"),
+      },
+      {
+        directory: path.join(__dirname, "./src"),
+        publicPath: "/src",
+      },
+    ],
     hot: true,
+    compress: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -62,22 +69,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  require("autoprefixer")({
-                    overrideBrowserslist: ["last 2 versions"],
-                  }),
-                ],
-              },
-            },
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -102,6 +94,19 @@ module.exports = {
       filename: "style.css",
       chunkFilename: "style.css",
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/images",
+          to: "src/images",
+        },
+        {
+          from: "src/css",
+          to: "src/css",
+        },
+        
+      ],
+    }),
   ],
   output: {
     filename: "bundle.js",
@@ -109,6 +114,5 @@ module.exports = {
     clean: true,
     assetModuleFilename: "[path][name][ext]",
   },
-  target: "web", // fix for "browserslist" error message
-  stats: "errors-only", // suppress irrelevant log messages
+  target: "web"
 };
