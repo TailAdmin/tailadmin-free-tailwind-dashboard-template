@@ -872,28 +872,3 @@ pre[class*="language-"] {
 :root {
   --fc-classic-border: var(--color-gray-200);
 }
-
-.dark,
-[data-color-scheme="dark"] {
-  --fc-classic-border: var(--color-gray-800);
-  --fc-classic-background: transparent;
-  --fc-classic-foreground: var(--color-white);
-  --fc-classic-faint-foreground: var(--color-gray-500);
-  --fc-classic-muted-foreground: var(--color-gray-400);
-  --fc-classic-faint: rgba(255, 255, 255, 0.03);
-  --fc-classic-muted: rgba(255, 255, 255, 0.06);
-  --fc-classic-strong: rgba(255, 255, 255, 0.1);
-  --fc-classic-today: transparent;
-  --fc-classic-highlight: rgba(70, 95, 255, 0.15);
-  --fc-classic-strong-border: var(--color-gray-700);
-}
-
-.dark .fc-classic-Jk3,
-[data-color-scheme="dark"] .fc-classic-Jk3 {
-  background-color: transparent;
-}
-
-.dark .fc-popover,
-[data-color-scheme="dark"] .fc-popover {
-  background-color: var(--color-gray-900);
-}
