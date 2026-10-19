@@ -135,8 +135,8 @@
       "title": "Notification",
       "requestsPermission": "requests permission to change",
       "project": "Project",
-      "minAgo": "{{count}} min ago",
-      "hrAgo": "{{count}} hr ago",
+      "minAgo": "{count} min ago",
+      "hrAgo": "{count} hr ago",
       "viewAll": "View All Notifications"
     }
   },
@@ -174,7 +174,7 @@
     "monthlyTarget": {
       "title": "Monthly Target",
       "subtitle": "Target you’ve set for each month",
-      "earned": "You earn {{amount}} today, it's higher than last month. Keep up your good work!",
+      "earned": "You earn {amount} today, it's higher than last month. Keep up your good work!",
       "target": "Target",
       "revenue": "Revenue",
       "today": "Today"
@@ -195,9 +195,7 @@
       "category": "Category",
       "price": "Price",
       "status": "Status",
-      "variants": "Variants",
-      "variants_one": "{{count}} Variant",
-      "variants_other": "{{count}} Variants",
+      "variants": "{count, plural, one {# Variant} other {# Variants}}",
       "categories": {
         "laptop": "Laptop",
         "watch": "Watch",
@@ -214,7 +212,7 @@
     "demographic": {
       "title": "Customers Demographic",
       "subtitle": "Number of customer based on country",
-      "customers": "{{count}} Customers",
+      "customers": "{count} Customers",
       "usa": "USA",
       "france": "France"
     }
@@ -229,11 +227,7 @@
     },
     "barChart": {
       "title": "Analytics",
-      "subtitle": "Visitor analytics of last 30 days",
-      "months12": "12 months",
-      "days30": "30 days",
-      "days7": "7 days",
-      "hours24": "24 hours"
+      "subtitle": "Visitor analytics of last 30 days"
     },
     "topChannels": {
       "title": "Top Channels",
@@ -255,10 +249,17 @@
       "avgMonthly": "Avg, Monthly"
     },
     "acquisitionChannels": {
-      "title": "Acquisition Channels"
+      "title": "Acquisition Channels",
+      "direct": "Direct",
+      "referral": "Referral",
+      "organicSearch": "Organic Search",
+      "social": "Social"
     },
     "session": {
-      "title": "Sessions By Device"
+      "title": "Sessions By Device",
+      "desktop": "Desktop",
+      "mobile": "Mobile",
+      "tablet": "Tablet"
     },
     "recentOrders": {
       "title": "Recent Orders",
@@ -297,7 +298,6 @@
       "title": "Featured Campaigns",
       "viewMore": "View More",
       "delete": "Delete",
-      "creator": "Creator",
       "products": "Products",
       "campaign": "Campaign",
       "status": "Status",
@@ -305,9 +305,7 @@
       "campaigns": {
         "growBrand": "Grow your brand by...",
         "betterIdeas": "Make Better Ideas...",
-        "increaseTraffic": "Increase your website tra...",
-        "digitalMarketing": "Digital Marketing that...",
-        "selfBranding": "Self branding"
+        "increaseTraffic": "Increase your website tra..."
       },
       "statuses": {
         "success": "Success",
@@ -319,9 +317,6 @@
       "title": "Traffic Stats",
       "viewMore": "View More",
       "delete": "Delete",
-      "today": "Today",
-      "week": "Week",
-      "month": "Month",
       "newSubscribers": "New Subscribers",
       "conversionRate": "Conversion Rate",
       "pageBounceRate": "Page Bounce Rate",
@@ -347,10 +342,7 @@
       "subtitle": "Target you’ve set for each month",
       "avgYearlyProfit": "Avg. Yearly Profit",
       "sales": "Sales",
-      "revenue": "Revenue",
-      "monthly": "Monthly",
-      "quarterly": "Quarterly",
-      "annually": "Annually"
+      "revenue": "Revenue"
     },
     "estimatedRevenue": {
       "title": "Estimated Revenue",
@@ -414,17 +406,13 @@
     "title": "Stocks",
     "dividend": {
       "title": "Dividend",
-      "series": "Dividend",
       "viewMore": "View More",
       "delete": "Delete"
     },
     "portfolioPerformance": {
       "title": "Portfolio Performance",
       "subtitle": "Here is your performance stats of each month",
-      "series": "Portfolio Performance",
-      "monthly": "Monthly",
-      "quarterly": "Quarterly",
-      "annually": "Annually"
+      "series": "Portfolio Performance"
     },
     "trendingStocks": {
       "title": "Trending Stocks",
@@ -447,24 +435,16 @@
         "status": "Status"
       },
       "actions": {
-        "bought": "Bought {{symbol}}",
-        "sell": "Sell {{symbol}}"
+        "bought": "Bought {symbol}",
+        "sell": "Sell {symbol}"
       },
       "categories": {
-        "finance": "Finance",
-        "technology": "Technology",
-        "socialMedia": "Social Media",
-        "ecommerce": "E-commerce"
+        "finance": "Finance"
       },
       "statuses": {
         "success": "Success",
         "pending": "Pending",
         "failed": "Failed"
-      },
-      "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {{current}} of {{total}}"
       }
     }
   },
@@ -472,9 +452,6 @@
     "title": "SaaS",
     "metrics": {
       "overview": "Overview",
-      "weekly": "Weekly",
-      "monthly": "Monthly",
-      "yearly": "Yearly",
       "totalRevenue": "Total Revenue",
       "activeUsers": "Active Users",
       "clv": "Customer Lifetime Value",
@@ -549,9 +526,9 @@
       "newInvoice": "New invoice",
       "createdInvoice": "created invoice",
       "justNow": "Just Now",
-      "minAgo": "15 minutes ago",
-      "monthsAgo": "5 months ago",
-      "weeksAgo": "2 weeks ago"
+      "fifteenMinAgo": "15 minutes ago",
+      "fiveMonthsAgo": "5 months ago",
+      "twoWeeksAgo": "2 weeks ago"
     }
   },
   "logistics": {
@@ -665,9 +642,7 @@
       "title": "API Token Usages",
       "totalApiTokenUsed": "Total API Token Used",
       "tokenUsed": "Token used",
-      "configuredKey": "{{count}} API keys configured",
-      "configuredKey_one": "{{count}} API key configured",
-      "configuredKey_other": "{{count}} API keys configured",
+      "configuredKey": "{count, plural, one {# API key configured} other {# API keys configured}}",
       "viewAllUsageDetails": "View All Usage Details"
     },
     "userAnalytics": {
@@ -718,8 +693,9 @@
       "pagination": {
         "previous": "Previous",
         "next": "Next",
-        "pageOf": "Page {{current}} of {{total}}"
-      }
+        "pageOf": "Page {current} of {total}"
+      },
+      "noResults": "No results found"
     }
   },
   "sales": {
@@ -861,6 +837,11 @@
       "virtualCard": "Virtual Card",
       "recentTransactions": "Recent Transactions",
       "seeAllTransactions": "See All Transactions",
+      "cardNumber": "Card Number",
+      "exp": "EXP",
+      "cvc": "CVC",
+      "active": "Active",
+      "inactive": "Inactive",
       "transactions": {
         "paymentReceived": "Payment Received",
         "cashbackDesc": "Cashback from Stellar Rewards",
