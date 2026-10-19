@@ -16,7 +16,6 @@ import {
   UserCircleIcon,
 } from "../icons";
 import { cn } from "../utils";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -40,46 +39,9 @@ const navItems: NavItem[] = [
     icon: <GridIcon fontSize={24} />,
     name: "Dashboard",
     key: "dashboard",
-    subItems: [{ name: "Ecommerce", key: "ecommerceHome", path: "/" }],
+    subItems: [{ name: "Vattenflöden", key: "ecommerceHome", path: "/" }],
   },
-  {
-    icon: <CalenderIcon fontSize={24} />,
-    name: "Calendar",
-    key: "calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon fontSize={24} />,
-    name: "User Profile",
-    key: "userProfile",
-    path: "/profile",
-  },
-  {
-    name: "Forms",
-    key: "forms",
-    icon: <ListIcon fontSize={24} />,
-    subItems: [
-      {
-        name: "Form Elements",
-        key: "formElements",
-        path: "/form-elements",
-        pro: false,
-      },
-    ],
-  },
-  {
-    name: "Tables",
-    key: "tables",
-    icon: <TableIcon fontSize={24} />,
-    subItems: [
-      {
-        name: "Basic Tables",
-        key: "basicTables",
-        path: "/basic-tables",
-        pro: false,
-      },
-    ],
-  },
+  
   {
     name: "Pages",
     key: "pages",
@@ -89,37 +51,6 @@ const navItems: NavItem[] = [
 ];
 
 const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon fontSize={24} />,
-    name: "Charts",
-    key: "charts",
-    subItems: [
-      { name: "Line Chart", key: "lineChart", path: "/line-chart" },
-      { name: "Bar Chart", key: "barChart", path: "/bar-chart" },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon fontSize={24} />,
-    name: "UI Elements",
-    key: "uiElements",
-    subItems: [
-      { name: "Alerts", key: "alerts", path: "/alerts", pro: false },
-      { name: "Avatar", key: "avatar", path: "/avatars", pro: false },
-      { name: "Badge", key: "badge", path: "/badge", pro: false },
-      { name: "Buttons", key: "buttons", path: "/buttons", pro: false },
-      { name: "Images", key: "images", path: "/images", pro: false },
-      { name: "Videos", key: "videos", path: "/videos", pro: false },
-    ],
-  },
-  {
-    icon: <PlugInIcon fontSize={24} />,
-    name: "Authentication",
-    key: "authentication",
-    subItems: [
-      { name: "Sign In", key: "signIn", path: "/signin", pro: false },
-      { name: "Sign Up", key: "signUp", path: "/signup", pro: false },
-    ],
-  },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -431,7 +362,7 @@ const AppSidebar: React.FC = () => {
           </div>
         </nav>
 
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
+        {isExpanded || isHovered || isMobileOpen ? null : null}
       </div>
     </aside>
   );

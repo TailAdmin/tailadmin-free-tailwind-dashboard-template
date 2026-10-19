@@ -24,10 +24,10 @@ export default function DemographicCard() {
       <div className="flex justify-between">
         <div>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-            {t("title")}
+            {t("Karta över Skåne")}
           </h3>
           <p className="mt-1 text-theme-sm text-gray-500 dark:text-gray-400">
-            {t("subtitle")}
+            {t("Nuvarande flöden")}
           </p>
         </div>
 
