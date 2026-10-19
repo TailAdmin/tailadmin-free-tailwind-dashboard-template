@@ -56,27 +56,27 @@ export default function DemographicCard() {
         </div>
       </div>
       <div className="border-gary-200 my-6 overflow-hidden rounded-2xl border bg-gray-50 px-4 py-6 sm:px-6 dark:border-gray-800 dark:bg-gray-900">
-        <div
-          id="mapOne"
-          className="mapOne map-btn -mx-4 -my-6 h-53 w-63 2xsm:w-76.75 xsm:w-89.5 sm:-mx-6 md:w-167 lg:w-158.5 xl:w-98.25 2xl:w-138.5"
-        >
-          <CountryMap />
-        </div>
-      </div>
+  <div
+    id="mapOne"
+    className="mapOne map-btn h-[400px] w-full md:h-[300px] xl:h-[1050px]"
+  >
+    <CountryMap />
+  </div>
+</div>
 
       <div className="space-y-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-full max-w-8 items-center rounded-full">
               <img
-                src="/images/country/country-01.svg"
-                alt="usa"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNkj_lgqbMnmkWbjp9fP8qzw1KY6U0mrvIXsnGvEwMNA&s=10"
+                alt="Malmö"
                 className="size-[48px]"
               />
             </div>
             <div>
               <p className="text-theme-sm font-semibold text-gray-800 dark:text-white/90">
-                {t("usa")}
+                {t("Malmö")}
               </p>
               <span className="block text-theme-xs text-gray-500 dark:text-gray-400">
                 {t("customers", { count: "2,379" })}
@@ -99,13 +99,13 @@ export default function DemographicCard() {
             <div className="w-full max-w-8 items-center rounded-full">
               <img
                 className="size-[48px]"
-                src="/images/country/country-02.svg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNEZadJpy9_c3xJfC7q3I-MMcYLMccXYY--4OC6qMU1w&s"
                 alt="france"
               />
             </div>
             <div>
               <p className="text-theme-sm font-semibold text-gray-800 dark:text-white/90">
-                {t("france")}
+                {t("Lund")}
               </p>
               <span className="block text-theme-xs text-gray-500 dark:text-gray-400">
                 {t("customers", { count: "589" })}

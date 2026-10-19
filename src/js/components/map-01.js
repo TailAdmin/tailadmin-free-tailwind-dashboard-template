@@ -1,60 +1,31 @@
 import jsVectorMap from "jsvectormap";
-import "jsvectormap/dist/maps/world";
+import "./skane-map"; // din genererade Skåne-karta
 
 const map01 = () => {
   const mapSelectorOne = document.querySelectorAll("#mapOne");
 
   if (mapSelectorOne.length) {
-    const mapOne = new jsVectorMap({
+    new jsVectorMap({
       selector: "#mapOne",
-      map: "world",
+      map: "skane",
       zoomButtons: false,
+      zoomOnScroll: false,
 
       regionStyle: {
-        initial: {
-          fontFamily: "Outfit",
-          fill: "#D9D9D9",
-        },
-        hover: {
-          fillOpacity: 1,
-          fill: "#465fff",
-        },
+        initial: { fontFamily: "Outfit", fill: "#D9D9D9", stroke: "#fff", strokeWidth: 1 },
+        hover: { fillOpacity: 1, fill: "#465fff" },
       },
       markers: [
-        {
-          name: "Egypt",
-          coords: [26.8206, 30.8025],
-        },
-        {
-          name: "United Kingdom",
-          coords: [55.3781, 3.436],
-        },
-        {
-          name: "United States",
-          coords: [37.0902, -95.7129],
-        },
+        { name: "Malmö", coords: [55.605, 13.0038] },
+        { name: "Lund", coords: [55.7047, 13.191] },
+        { name: "Helsingborg", coords: [56.0465, 12.6945] },
+        { name: "Kristianstad", coords: [56.0294, 14.1567] },
       ],
-
       markerStyle: {
-        initial: {
-          strokeWidth: 1,
-          fill: "#465fff",
-          fillOpacity: 1,
-          r: 4,
-        },
-        hover: {
-          fill: "#465fff",
-          fillOpacity: 1,
-        },
+        initial: { strokeWidth: 1, fill: "#465fff", fillOpacity: 1, r: 4 },
+        hover: { fill: "#465fff", fillOpacity: 1 },
         selected: {},
         selectedHover: {},
-      },
-
-      onRegionTooltipShow: function (tooltip, code) {
-        if (code === "EG") {
-          tooltip.selector.innerHTML =
-            tooltip.text() + " <b>(Hello Russia)</b>";
-        }
       },
     });
   }

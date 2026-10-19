@@ -6,8 +6,7 @@ if (typeof window !== "undefined") {
     jsVectorMap;
 }
 
-import "jsvectormap/dist/maps/world.js";
-
+import "./skane-map";
 export type VectorMapMarker = {
   name?: string;
   coords?: [number, number];
@@ -77,7 +76,7 @@ export type VectorMapProps = {
 };
 
 export function VectorMap({
-  map = "world",
+  map = "Sweden",
   containerStyle,
   containerClassName,
   backgroundColor = "transparent",

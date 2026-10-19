@@ -41,13 +41,13 @@ const navItems: NavItem[] = [
     key: "dashboard",
     subItems: [{ name: "Vattenflöden", key: "ecommerceHome", path: "/" }],
   },
-  
+  /* 
   {
     name: "Pages",
     key: "pages",
     icon: <PageIcon fontSize={24} />,
     subItems: [{ name: "Blank Page", key: "blankPage", path: "/blank" }],
-  },
+  },*/
 ];
 
 const othersItems: NavItem[] = [
@@ -299,14 +299,14 @@ const AppSidebar: React.FC = () => {
             <>
               <img
                 className="dark:hidden"
-                src="/images/logo/logo.svg"
+                src="https://www.allabolag.se/images/trademark/2147834.jpg"
                 alt="Logo"
                 width={150}
                 height={40}
               />
               <img
                 className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src="https://www.allabolag.se/images/trademark/2147832.jpg"
                 alt="Logo"
                 width={150}
                 height={40}

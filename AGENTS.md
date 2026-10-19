@@ -129,7 +129,7 @@ src/
 - **Charts** (`react-apexcharts`): import lazily with `React.lazy` + `Suspense`, or guard with `if (typeof window === "undefined") return null`. Follow the pattern used in existing chart components before choosing an approach.
 - **FullCalendar** and **Swiper**: these are also browser-only — follow the existing pattern in `src/pages/Calendar.tsx` and carousel components respectively before importing directly.
 - **Icons**: always import from `@/icons` using the named export (e.g., `import { CalendarIcon } from "@/icons"`). SVGs are compiled to React components via `vite-plugin-svgr`. Never inline raw SVG markup in components.
-- **Page SEO**: always add `<PageMeta title="Page Title | TailAdmin" description="…" />` as the first element in every page component.
+- **Page SEO**: always add `<PageMeta title="Page Title | Sydvatten" description="…" />` as the first element in every page component.
 - **Modals**: use `useModal` hook from `src/hooks/useModal.ts` and the `<Modal>` primitive from `src/components/ui/modal/`.
 - **Global state**: consume only via existing hooks — `useSidebar()`, `useTheme()`, `useLanguage()`.
 
