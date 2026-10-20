@@ -11,9 +11,9 @@
   },
   "sidebar": {
     "groups": {
-      "menu": "Menu",
+      "menu": "Platser",
       "support": "Support",
-      "others": "Others"
+      "others": "Annat"
     },
     "badges": {
       "new": "new",
@@ -21,7 +21,13 @@
     },
     "items": {
       "dashboard": "Dashboard",
-      "ecommerceHome": "Vattenproduktion",
+      "ecommerceHome": "ECommerce",
+      "locationOverview" : "Översikter",
+      "bolmen" : "Bolmen",
+      "ringsjon" : "Ringsjön",
+      "vomb" : "Vombsjön",
+      "elforbrukning" : "Elförbrukning",
+      "kommuner" : "Kommuner",
       "analytics": "Analytics",
       "marketing": "Marketing",
       "crm": "CRM",

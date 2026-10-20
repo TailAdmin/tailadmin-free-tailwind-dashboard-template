@@ -3,7 +3,6 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import AppLayout from "./layout/AppLayout";
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
-import Calendar from "./pages/Calendar";
 import BarChart from "./pages/Charts/BarChart";
 import LineChart from "./pages/Charts/LineChart";
 import Home from "./pages/Dashboard/Ecommerce";
@@ -11,13 +10,15 @@ import FormElements from "./pages/Forms/FormElements";
 import Blank from "./pages/OtherPage/Blank";
 import NotFound from "./pages/OtherPage/NotFound";
 import BasicTables from "./pages/Tables/BasicTables";
-import Alerts from "./pages/UiElements/Alerts";
 import Avatars from "./pages/UiElements/Avatars";
 import Badges from "./pages/UiElements/Badges";
 import Buttons from "./pages/UiElements/Buttons";
 import Images from "./pages/UiElements/Images";
 import Videos from "./pages/UiElements/Videos";
 import UserProfiles from "./pages/UserProfiles";
+import Bolmen from "./pages/Locations/Bolmen";
+import Vomb from "./pages/Locations/Vomb";
+import Ringsjon from "./pages/Locations/Ringsjon";
 
 export default function App() {
   return (
@@ -29,9 +30,13 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
 
+            {/* locationOverview */}
+            <Route path="/bolmen" element={<Bolmen/>} />
+            <Route path="/vomb" element={<Vomb/>} />
+            <Route path="/ringsjon" element={<Ringsjon/>} />
+
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
-            <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
 
             {/* Forms */}
@@ -41,7 +46,6 @@ export default function App() {
             <Route path="/basic-tables" element={<BasicTables />} />
 
             {/* Ui Elements */}
-            <Route path="/alerts" element={<Alerts />} />
             <Route path="/avatars" element={<Avatars />} />
             <Route path="/badge" element={<Badges />} />
             <Route path="/buttons" element={<Buttons />} />

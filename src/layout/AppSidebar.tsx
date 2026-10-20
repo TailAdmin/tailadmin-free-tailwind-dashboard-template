@@ -36,11 +36,27 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon fontSize={24} />,
-    name: "Dashboard",
-    key: "dashboard",
-    subItems: [{ name: "Vattenflöden", key: "ecommerceHome", path: "/" }],
+    icon: <PageIcon></PageIcon>,
+    name: "asodk",
+    key: "locationOverview",
+    subItems: [{ name: "Vattenflöden", key: "bolmen", path: "/bolmen" },
+      { name: "Vattenflöden", key: "vomb", path: "/vomb" },
+      { name: "Vattenflöden", key: "ringsjon", path: "/ringsjon"} ],
   },
+  {
+    icon: <PageIcon></PageIcon>,
+    name: "asodk",
+    key: "elforbrukning",
+    subItems: [{ name: "bolmenWater", key: "bolmen", path: "/" },
+      { name: "vombWater", key: "vomb", path: "/" },
+      { name: "ringsjonWater", key: "ringsjon", path: "/"} ],
+  },
+  {
+    icon: <PageIcon></PageIcon>,
+    name: "asodk",
+    key: "kommuner",
+    subItems: [{ name: "Vattenflöden", key: "kommuner", path: "/" }],
+  }
   /* 
   {
     name: "Pages",

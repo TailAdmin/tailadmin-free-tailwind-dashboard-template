@@ -5,6 +5,7 @@ import Chart from "react-apexcharts";
 import { useTranslation } from "react-i18next";
 import { CalenderIcon } from "../../icons";
 import ChartTab from "../common/ChartTab";
+import LineChartThree from "@/pages/Charts/LineChart";
 
 export default function StatisticsChart() {
   const { t } = useTranslation();
