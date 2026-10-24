@@ -3,17 +3,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router";
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
+  PageIcon
 } from "../icons";
 import { cn } from "../utils";
 
@@ -55,15 +47,8 @@ const navItems: NavItem[] = [
     icon: <PageIcon></PageIcon>,
     name: "asodk",
     key: "kommuner",
-    subItems: [{ name: "Vattenflöden", key: "kommuner", path: "/" }],
+    subItems: [{ name: "Kommuner", key: "kommuner", path: "/kommuner" }],
   }
-  /* 
-  {
-    name: "Pages",
-    key: "pages",
-    icon: <PageIcon fontSize={24} />,
-    subItems: [{ name: "Blank Page", key: "blankPage", path: "/blank" }],
-  },*/
 ];
 
 const othersItems: NavItem[] = [

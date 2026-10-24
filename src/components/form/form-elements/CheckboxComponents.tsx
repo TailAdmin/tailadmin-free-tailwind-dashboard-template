@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "@/components/TailAdminComponents/common/ComponentCard";
 import Checkbox from "@/components/form/input/Checkbox";
 import { cn } from "@/utils";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "@/components/TailAdminComponents/common/ComponentCard";
 import Label from "@/components/form/Label";
 import MultiSelect from "@/components/form/MultiSelect";
 import Select from "@/components/form/Select";

@@ -1,24 +1,25 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router";
-import { ScrollToTop } from "./components/common/ScrollToTop";
+import { ScrollToTop } from "./components/TailAdminComponents/common/ScrollToTop";
 import AppLayout from "./layout/AppLayout";
-import SignIn from "./pages/AuthPages/SignIn";
-import SignUp from "./pages/AuthPages/SignUp";
-import BarChart from "./pages/Charts/BarChart";
-import LineChart from "./pages/Charts/LineChart";
-import Home from "./pages/Dashboard/Ecommerce";
-import FormElements from "./pages/Forms/FormElements";
-import Blank from "./pages/OtherPage/Blank";
-import NotFound from "./pages/OtherPage/NotFound";
-import BasicTables from "./pages/Tables/BasicTables";
-import Avatars from "./pages/UiElements/Avatars";
-import Badges from "./pages/UiElements/Badges";
-import Buttons from "./pages/UiElements/Buttons";
-import Images from "./pages/UiElements/Images";
-import Videos from "./pages/UiElements/Videos";
-import UserProfiles from "./pages/UserProfiles";
+import SignIn from "./pages/TailAdminPages/AuthPages/SignIn";
+import SignUp from "./pages/TailAdminPages/AuthPages/SignUp";
+import BarChart from "./pages/TailAdminPages/Charts/BarChart";
+import LineChart from "./pages/TailAdminPages/Charts/LineChart";
+import Home from "./pages/Home"
+import FormElements from "./pages/TailAdminPages/Forms/FormElements";
+import Blank from "./pages/TailAdminPages/OtherPage/Blank";
+import NotFound from "./pages/TailAdminPages/OtherPage/NotFound";
+import BasicTables from "./pages/TailAdminPages/Tables/BasicTables";
+import Avatars from "./pages/TailAdminPages/UiElements/Avatars";
+import Badges from "./pages/TailAdminPages/UiElements/Badges";
+import Buttons from "./pages/TailAdminPages/UiElements/Buttons";
+import Images from "./pages/TailAdminPages/UiElements/Images";
+import Videos from "./pages/TailAdminPages/UiElements/Videos";
+import UserProfiles from "./pages/TailAdminPages/UserProfiles";
 import Bolmen from "./pages/Locations/Bolmen";
 import Vomb from "./pages/Locations/Vomb";
 import Ringsjon from "./pages/Locations/Ringsjon";
+import Kommuner from "./pages/Kommuner/Kommuner";
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/bolmen" element={<Bolmen/>} />
             <Route path="/vomb" element={<Vomb/>} />
             <Route path="/ringsjon" element={<Ringsjon/>} />
+            <Route path="/kommuner" element={<Kommuner/>} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />

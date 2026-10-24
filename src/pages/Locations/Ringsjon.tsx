@@ -1,4 +1,4 @@
-import EcommerceMetrics from '@/components/ecommerce/EcommerceMetrics'
+import EcommerceMetrics from '@/components/TailAdminComponents/ecommerce/EcommerceMetrics'
 import React from 'react'
 
 const Ringsjon = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
-import EcommerceMetrics from '@/components/ecommerce/EcommerceMetrics'
-import StatisticsChart from '@/components/ecommerce/StatisticsChart'
+import EcommerceMetrics from '@/components/TailAdminComponents/ecommerce/EcommerceMetrics'
+import StatisticsChart from '@/components/TailAdminComponents/ecommerce/StatisticsChart'
 
 const Bolmen = () => {
   return (

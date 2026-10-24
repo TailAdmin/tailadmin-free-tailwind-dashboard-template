@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "@/components/TailAdminComponents/common/ComponentCard";
 import FileInput from "@/components/form/input/FileInput";
 import Label from "@/components/form/Label";
 import { cn } from "@/utils";

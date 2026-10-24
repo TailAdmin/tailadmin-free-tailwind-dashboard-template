@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "@/components/TailAdminComponents/common/ComponentCard";
 import PhoneInput from "@/components/form/group-input/PhoneInput";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";

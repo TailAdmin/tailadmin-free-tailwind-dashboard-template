@@ -1,4 +1,4 @@
-import ComponentCard from "@/components/common/ComponentCard";
+import ComponentCard from "@/components/TailAdminComponents/common/ComponentCard";
 import Radio from "@/components/form/input/Radio";
 import { cn } from "@/utils";
 import { useState } from "react";
