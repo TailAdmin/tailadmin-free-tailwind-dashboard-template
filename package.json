@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@alpinejs/persist": "^3.17.2",
+    "@floating-ui/dom": "^1.8.0",
     "alpinejs": "^3.17.2",
     "apexcharts": "^7.3.0",
     "dropzone": "^6.2.1",

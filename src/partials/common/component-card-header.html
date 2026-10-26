@@ -1,0 +1,12 @@
+<div class="px-6 py-5">
+  <h3
+    class="text-base font-medium text-gray-800 dark:text-white/90"
+    x-text="cardTitle"
+  ></h3>
+  <template x-if="typeof cardDesc !== 'undefined' && cardDesc">
+    <p
+      class="mt-1 text-sm text-gray-500 dark:text-gray-400"
+      x-text="cardDesc"
+    ></p>
+  </template>
+</div>

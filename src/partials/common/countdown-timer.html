@@ -1,0 +1,63 @@
+<div
+  class="mb-10"
+  x-data="{
+    days: 29,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    init() {
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 29);
+
+      const update = () => {
+        const now = new Date();
+        const difference = targetDate.getTime() - now.getTime();
+
+        if (difference > 0) {
+          this.days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          this.hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+          this.minutes = Math.floor((difference / 1000 / 60) % 60);
+          this.seconds = Math.floor((difference / 1000) % 60);
+        } else {
+          this.days = 0;
+          this.hours = 0;
+          this.minutes = 0;
+          this.seconds = 0;
+        }
+      };
+
+      update();
+      setInterval(update, 1000);
+    },
+    formatTime(time) {
+      return time.toString().padStart(2, '0');
+    }
+  }"
+>
+  <div
+    class="text-title-md mb-2 flex flex-wrap justify-center gap-2 font-bold text-brand-500 xl:text-title-lg dark:text-brand-400"
+  >
+    <div class="timer-box">
+      <span x-text="formatTime(days)">29</span>
+    </div>
+    :
+    <div class="timer-box">
+      <span x-text="formatTime(hours)">00</span>
+    </div>
+    :
+    <div class="timer-box">
+      <span x-text="formatTime(minutes)">00</span>
+    </div>
+    :
+    <div class="timer-box">
+      <span x-text="formatTime(seconds)">00</span>
+    </div>
+  </div>
+
+  <div class="text-center text-base text-gray-500 dark:text-gray-400">
+    <span class="timer-box inline-block">
+      <span class="inline-block" x-text="days">29</span>
+    </span>
+    <span x-text="days === 1 ? ' day left' : ' days left'"> days left</span>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<!-- SIDEBAR HEADER -->
+<div
+  :class="sidebarToggle ? 'xl:justify-center' : 'justify-between'"
+  class="sidebar-header flex items-center gap-2 py-8"
+>
+  <a href="index.html">
+    <span class="sr-only">homepage</span>
+    <span class="logo" :class="sidebarToggle ? 'xl:hidden' : ''">
+      <img
+        class="h-10 w-37.5 dark:hidden"
+        src="./images/logo/logo.svg"
+        alt="Logo"
+      />
+      <img
+        class="hidden h-10 w-37.5 dark:block"
+        src="./images/logo/logo-dark.svg"
+        alt="Logo"
+      />
+    </span>
+
+    <img
+      class="logo-icon size-8"
+      :class="sidebarToggle ? 'xl:block hidden' : 'hidden'"
+      src="./images/logo/logo-icon.svg"
+      alt="Logo"
+    />
+  </a>
+</div>
+<!-- SIDEBAR HEADER -->
