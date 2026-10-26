@@ -1,0 +1,456 @@
+<div
+  x-data="basicTableThree()"
+  class="w-full max-w-full min-w-0 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 sm:p-0 dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Table Header Controls -->
+  <div
+    class="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+  >
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Latest Transactions
+      </h3>
+    </div>
+
+    <div class="flex w-full items-center gap-3 sm:w-auto">
+      <div class="relative flex-1 sm:w-75 sm:flex-initial">
+        <span
+          class="pointer-events-none absolute inset-y-0 inset-s-0 flex items-center ps-3.5"
+        >
+          <svg
+            class="size-5 text-gray-400"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.167 3.333a5.833 5.833 0 100 11.667 5.833 5.833 0 000-11.667zM2 9.167a7.167 7.167 0 1112.584 4.707l3.275 3.275a.667.667 0 11-.943.943l-3.275-3.275A7.167 7.167 0 012 9.167z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <input
+          type="text"
+          placeholder="Search..."
+          x-model="searchQuery"
+          class="h-10 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 ps-10 pe-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-transparent dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-800"
+        />
+      </div>
+
+      <button
+        type="button"
+        class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-3.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 sm:px-4 sm:py-2.5 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600"
+      >
+        <svg
+          class="size-5"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z"
+            fill="currentColor"
+          />
+        </svg>
+        <span class="hidden sm:inline">05 Feb - 06 March</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Table Content -->
+  <div class="w-full overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="border-y border-gray-100 dark:border-gray-800">
+        <tr>
+          <th
+            class="h-11 min-w-44 py-3 ps-5 text-start text-sm font-normal text-gray-500 sm:ps-6 dark:text-gray-400"
+          >
+            Name
+          </th>
+          <th
+            class="h-11 min-w-44 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400"
+          >
+            Date
+          </th>
+          <th
+            class="h-11 min-w-32 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400"
+          >
+            Price
+          </th>
+          <th
+            class="h-11 min-w-36 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400"
+          >
+            Category
+          </th>
+          <th
+            class="h-11 min-w-28 px-4 py-3 text-start text-sm font-normal text-gray-500 dark:text-gray-400"
+          >
+            Status
+          </th>
+          <th class="h-11 min-w-16 py-3 pe-5 sm:pe-6"></th>
+        </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <template x-if="rows.length > 0">
+          <template x-for="row in rows" :key="row.original.id">
+            <tr
+              class="h-16 border-b border-gray-100 transition hover:bg-gray-50/50 dark:border-gray-800 dark:hover:bg-white/2"
+            >
+              <td class="min-w-44 py-3 ps-5 text-start sm:ps-6">
+                <div class="flex items-center gap-3">
+                  <!-- Brand icon badge -->
+                  <div
+                    class="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full"
+                    :class="{
+                      'bg-[#1b4bf1] text-white': row.original.brand === 'paypal',
+                      'bg-black dark:bg-white': row.original.brand === 'apple',
+                      'bg-black text-white': row.original.brand === 'netflix',
+                      'bg-[#E82127]': row.original.brand === 'tesla',
+                      'bg-black': row.original.brand === 'amazon',
+                      'bg-[#1DB954]': row.original.brand === 'spotify',
+                      'bg-[#82B541]': row.original.brand === 'envato'
+                    }"
+                  >
+                    <!-- PayPal -->
+                    <template x-if="row.original.brand === 'paypal'">
+                      <svg
+                        class="size-4"
+                        width="21"
+                        height="24"
+                        viewBox="0 0 21 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          opacity="0.5"
+                          d="M18.427 6.976c.27-1.758 0-2.93-.944-4.013-1.034-1.217-2.922-1.713-5.35-1.713H5.166c-.495 0-.9.36-.99.857L1.256 20.594a.593.593 0 00.584.676h4.316l-.315 1.894c-.045.316.18.586.54.586h3.64c.45 0 .81-.316.855-.721l.764-4.78c.045-.406.45-.721.854-.721h.54c3.506 0 6.293-1.443 7.102-5.592.314-1.713.18-3.201-.72-4.193-.27-.316-.584-.541-.988-.767z"
+                          fill="#fff"
+                        />
+                        <path
+                          d="M18.427 6.976c.27-1.758 0-2.93-.944-4.013-1.034-1.217-2.922-1.713-5.35-1.713H5.166c-.495 0-.9.36-.99.857L1.256 20.594a.593.593 0 00.584.676h4.316l1.034-6.673c.09-.496.494-.857.989-.857h2.067c4.046 0 7.193-1.623 8.092-6.403.045-.09.045-.225.09-.36z"
+                          fill="#fff"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Apple -->
+                    <template x-if="row.original.brand === 'apple'">
+                      <svg
+                        class="size-4 text-white dark:text-black"
+                        width="18"
+                        height="20"
+                        viewBox="0 0 17 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M16.953 6.822c-.096.055-2.37 1.231-2.37 3.838.108 2.973 2.87 4.015 2.917 4.015-.047.056-.417 1.42-1.512 2.85C15.12 18.759 14.155 20 12.691 20c-1.393 0-1.893-.821-3.5-.821-1.726 0-2.214.821-3.536.821-1.464 0-2.5-1.309-3.416-2.53C1.05 15.874.037 13.367.002 10.96-.023 9.683.24 8.43.906 7.364c.94-1.487 2.619-2.496 4.452-2.53 1.404-.043 2.654.9 3.512.9.821 0 2.357-.9 4.094-.9.75.001 2.75.212 3.989 1.987zM8.75 4.582c-.25-1.166.44-2.33 1.083-3.074C10.655.61 11.953 0 13.07 0c.072 1.165-.38 2.307-1.19 3.14-.726.898-1.976 1.574-3.13 1.441z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Netflix -->
+                    <template x-if="row.original.brand === 'netflix'">
+                      <svg
+                        class="size-4"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.515 0H4.07v18c1.13-.268 2.31-.402 3.445-.452V0z"
+                          fill="#C20000"
+                        />
+                        <path
+                          d="M13.93 18V0h-3.445v17.584c2.011.128 3.445.416 3.445.416z"
+                          fill="#C20000"
+                        />
+                        <path
+                          d="M13.93 18L7.515 0H4.07l6.263 17.575c2.091.122 3.597.425 3.597.425z"
+                          fill="#FA0000"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Tesla -->
+                    <template x-if="row.original.brand === 'tesla'">
+                      <svg
+                        class="size-4 text-white"
+                        width="22"
+                        height="21"
+                        viewBox="0 0 22 21"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.522 20.952l2.944-16.556c2.806 0 3.69.308 3.819 1.564 0 0 1.882-.702 2.831-2.127-3.704-1.717-7.427-1.794-7.427-1.794l-2.172 2.645h.005L8.35 2.038S4.628 2.116.923 3.832C1.872 5.258 3.755 5.96 3.755 5.96c.128-1.256 1.012-1.564 3.8-1.566l2.967 16.558z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M10.521 1.275c2.995-.023 6.422.463 9.932 1.992.469-.844.59-1.217.59-1.217A28.803 28.803 0 0010.52 0 28.798 28.798 0 000 2.05s.171.46.59 1.217c3.508-1.53 6.936-2.015 9.93-1.992h.001z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Amazon -->
+                    <template x-if="row.original.brand === 'amazon'">
+                      <svg
+                        class="size-4.5 text-white"
+                        width="25"
+                        height="22"
+                        viewBox="0 0 25 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.666 10.802c0-1.012.25-1.877.748-2.596.499-.719 1.18-1.261 2.046-1.628.792-.337 1.767-.579 2.926-.726a76.973 76.973 0 011.936-.176v-.374c0-.939-.102-1.57-.308-1.892-.308-.44-.792-.66-1.452-.66h-.176a2.408 2.408 0 00-1.254.462c-.352.264-.58.63-.682 1.1-.059.293-.205.462-.44.506L7.48 4.51c-.25-.059-.374-.19-.374-.396 0-.044.007-.095.022-.154.25-1.305.861-2.273 1.837-2.904C9.94.426 11.08.073 12.386 0h.55c1.672 0 2.977.433 3.916 1.298.147.147.284.305.407.473.125.168.224.319.297.45.073.133.14.324.198.573.059.25.103.422.132.517.03.095.052.3.066.616.015.315.022.502.022.56v5.325c0 .381.055.73.165 1.045.11.315.217.543.319.682.102.14.271.363.506.67.088.133.132.25.132.353 0 .117-.059.22-.176.308a1156.917 1156.917 0 01-1.98 1.716c-.176.132-.389.147-.638.044a7.579 7.579 0 01-.54-.506 18.803 18.803 0 01-.33-.352 4.87 4.87 0 01-.318-.429 9.073 9.073 0 00-.308-.429c-.821.895-1.628 1.452-2.42 1.672-.499.147-1.115.22-1.848.22-1.13 0-2.057-.348-2.783-1.045s-1.089-1.683-1.089-2.959zm3.784-.44c0 .572.143 1.03.429 1.375.286.345.67.517 1.155.517.044 0 .106-.007.187-.022.08-.015.136-.022.165-.022.616-.161 1.093-.557 1.43-1.188.161-.279.282-.583.363-.913.08-.33.125-.598.132-.803.007-.205.011-.543.011-1.012v-.55c-.85 0-1.496.059-1.936.176-1.29.367-1.936 1.18-1.936 2.442z"
+                          fill="#fff"
+                        />
+                        <path
+                          d="M19.69 17.446a.69.69 0 01.132-.176 3.45 3.45 0 011.056-.506 7.185 7.185 0 011.628-.242c.147-.015.286-.007.418.022.66.058 1.056.169 1.188.33.059.088.088.22.088.396v.154c0 .513-.14 1.118-.418 1.815-.279.697-.667 1.258-1.166 1.683-.073.059-.14.088-.198.088a.195.195 0 01-.088-.022c-.088-.044-.11-.125-.066-.242.543-1.276.814-2.163.814-2.662 0-.161-.03-.279-.088-.352-.147-.176-.557-.264-1.232-.264-.25 0-.543.014-.88.044a45.83 45.83 0 00-1.012.132c-.088 0-.147-.015-.176-.044-.03-.03-.037-.059-.022-.088 0-.015.007-.037.022-.066zM.044 17.072c.073-.117.19-.124.352-.022 3.667 2.127 7.656 3.19 11.968 3.19 2.875 0 5.713-.535 8.514-1.606a17.473 17.473 0 00.616-.264c.22-.088.392-.044.517.132s.085.338-.12.484c-.265.19-.602.41-1.013.66-1.261.748-2.67 1.328-4.224 1.738-1.555.411-3.073.616-4.554.616-2.288 0-4.451-.4-6.49-1.199a17.88 17.88 0 01-5.478-3.377c-.088-.073-.132-.147-.132-.22 0-.044.015-.088.044-.132z"
+                          fill="#F90"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Spotify -->
+                    <template x-if="row.original.brand === 'spotify'">
+                      <svg
+                        class="size-4 text-white"
+                        width="28"
+                        height="19"
+                        viewBox="0 0 28 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M25.781 7.32c-.406 0-.656-.101-1.008-.304-5.562-3.32-15.507-4.118-21.945-2.32-.281.077-.633.202-1.008.202C.79 4.898 0 4.094 0 3.055 0 1.992.656 1.39 1.36 1.187 4.11.383 7.187 0 10.54 0c5.702 0 11.679 1.188 16.046 3.734.61.352 1.008.836 1.008 1.766a1.81 1.81 0 01-1.813 1.82zm-2.422 5.953c-.406 0-.68-.18-.96-.328-4.883-2.89-12.165-4.054-18.641-2.297-.375.102-.578.204-.93.204-.836 0-1.515-.68-1.515-1.516s.406-1.39 1.21-1.617c2.172-.61 4.391-1.063 7.641-1.063 5.07 0 9.969 1.258 13.828 3.555.633.375.883.86.883 1.539-.008.844-.664 1.523-1.516 1.523zm-2.101 5.125c-.328 0-.531-.101-.836-.28-4.875-2.938-10.547-3.063-16.149-1.915-.304.078-.703.203-.93.203-.757 0-1.234-.601-1.234-1.234 0-.805.477-1.188 1.063-1.313 6.398-1.414 12.937-1.289 18.515 2.047.477.305.758.578.758 1.29a1.18 1.18 0 01-1.187 1.202z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </template>
+                    <!-- Envato -->
+                    <template x-if="row.original.brand === 'envato'">
+                      <svg
+                        class="size-3.5 text-white"
+                        width="15"
+                        height="18"
+                        viewBox="0 0 15 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13.123 13.013l-5.04.54a.092.092 0 01-.065-.165l4.93-3.84c.319-.262.525-.668.438-1.106-.088-.669-.64-1.106-1.34-1.019l-5.36.785c-.093.012-.143-.107-.068-.166l5.312-4.056c1.046-.815 1.134-2.415.175-3.346-.872-.872-2.272-.844-3.144.028L.403 9.376a1.52 1.52 0 00-.378 1.31c.147.787.931 1.309 1.718 1.165l4.615-.94c.1-.022.154.112.07.168l-5.119 3.278c-.64.406-.931 1.134-.728 1.862.203.96 1.166 1.512 2.097 1.281l7.652-1.884a.091.091 0 01.094.147L9.23 17.238c-.319.406.203.96.64.64l3.931-3.23c.7-.582.235-1.719-.668-1.631l-.01-.004z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </template>
+                  </div>
+                  <span
+                    class="text-sm font-medium whitespace-nowrap text-gray-800 dark:text-white/90"
+                    x-text="row.original.name"
+                  ></span>
+                </div>
+              </td>
+              <td
+                class="min-w-44 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400"
+                x-text="row.original.date"
+              ></td>
+              <td
+                class="min-w-32 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400"
+                x-text="row.original.price"
+              ></td>
+              <td
+                class="min-w-36 px-4 py-3 text-start text-sm whitespace-nowrap text-gray-700 dark:text-gray-400"
+                x-text="row.original.category"
+              ></td>
+              <td
+                class="min-w-28 px-4 py-3 text-start text-sm whitespace-nowrap"
+              >
+                <span
+                  class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium"
+                  :class="{
+                    'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': statusBadgeColor(row.original.status) === 'success',
+                    'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': statusBadgeColor(row.original.status) === 'warning',
+                    'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': statusBadgeColor(row.original.status) === 'error'
+                  }"
+                  x-text="row.original.status"
+                ></span>
+              </td>
+              <td class="min-w-16 py-3 pe-5 text-end whitespace-nowrap sm:pe-6">
+                <button
+                  type="button"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white"
+                  aria-label="More options"
+                >
+                  <svg
+                    class="size-5"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="19" cy="12" r="1" />
+                    <circle cx="5" cy="12" r="1" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </template>
+        </template>
+
+        <template x-if="rows.length === 0">
+          <tr>
+            <td
+              colspan="6"
+              class="px-6 py-12 text-center text-sm text-gray-500 dark:text-gray-400"
+            >
+              <div class="flex flex-col items-center justify-center">
+                <div
+                  class="mb-3 flex size-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
+                >
+                  <svg
+                    class="size-6 text-gray-800 dark:text-white/90"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 21.072V11.029m0 0c-.23 0-.46-.053-.67-.159m.67.159c.23 0 .46-.053.671-.159m0 0a1.5 1.5 0 01-1.341 0m1.341 0l7.55-3.774M11.33 10.87L3.78 7.096m16.441 0a1.499 1.499 0 00-.592-.533L12.67 3.084a1.5 1.5 0 00-1.341 0L4.372 6.563c-.247.123-.45.309-.592.533m16.441 0a1.5 1.5 0 01.237.808v8.19a1.5 1.5 0 01-.83 1.341l-6.957 3.479a1.5 1.5 0 01-1.341 0l-6.958-3.479a1.5 1.5 0 01-.829-1.342V7.904c0-.292.085-.571.237-.808"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <h4
+                  class="text-base font-semibold text-gray-800 dark:text-white/90"
+                >
+                  No transactions found
+                </h4>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                  Try adjusting your search to find what you're looking for.
+                </p>
+              </div>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Table Footer - Pagination -->
+  <div class="border-t-0 px-5 py-4 sm:px-6">
+    <template x-if="totalPages > 0">
+      <nav
+        aria-label="Table pagination"
+        role="navigation"
+        class="flex items-center gap-1.5 self-center sm:self-auto"
+      >
+        <ul class="flex items-center gap-1.5">
+          <!-- Previous Button -->
+          <li>
+            <button
+              type="button"
+              aria-label="Previous page"
+              :aria-disabled="currentPage === 1"
+              :tabindex="currentPage === 1 ? -1 : undefined"
+              :disabled="currentPage === 1"
+              @click="prevPage()"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+              :class="currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-5 shrink-0 rtl:rotate-180"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+          </li>
+
+          <!-- Page Numbers & Ellipsis -->
+          <template x-for="(item, idx) in getPages()" :key="idx">
+            <li>
+              <template
+                x-if="item === 'ellipsis-start' || item === 'ellipsis-end' || item === '...'"
+              >
+                <span
+                  aria-hidden="true"
+                  class="flex size-10 animate-in items-center justify-center rounded-[10px] border border-gray-300 bg-white font-medium text-gray-700 shadow-theme-xs duration-150 fade-in-0 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+                >
+                  ...
+                  <span class="sr-only">More pages</span>
+                </span>
+              </template>
+              <template x-if="typeof item === 'number'">
+                <button
+                  type="button"
+                  :aria-label="'page ' + item"
+                  :aria-current="currentPage === item ? 'page' : undefined"
+                  @click="setPage(item - 1)"
+                  class="inline-flex size-10 shrink-0 animate-in items-center justify-center rounded-[10px] text-sm font-medium shadow-theme-xs transition-all duration-150 fade-in-0 outline-none select-none focus-visible:outline-hidden active:translate-y-px"
+                  :class="currentPage === item 
+                    ? 'border border-transparent bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 dark:bg-brand-500 dark:hover:bg-brand-600' 
+                    : 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white'"
+                  x-text="item"
+                ></button>
+              </template>
+            </li>
+          </template>
+
+          <!-- Next Button -->
+          <li>
+            <button
+              type="button"
+              aria-label="Next page"
+              :aria-disabled="currentPage === totalPages"
+              :tabindex="currentPage === totalPages ? -1 : undefined"
+              :disabled="currentPage === totalPages"
+              @click="nextPage()"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[10px] border border-gray-300 bg-transparent text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+              :class="currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50 hover:text-gray-800 active:translate-y-px dark:hover:bg-gray-700/50 dark:hover:text-white'"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="size-5 shrink-0 rtl:rotate-180"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </template>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+<div
+  x-data="basicTableFive()"
+  class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-4 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3"
+>
+  <div
+    class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Recent Orders
+      </h3>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        class="inline-flex items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600"
+      >
+        <svg
+          class="size-5"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Filter
+      </button>
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600"
+      >
+        See all
+      </button>
+    </div>
+  </div>
+
+  <div class="-mx-4 overflow-x-auto sm:-mx-6">
+    <table class="min-w-full">
+      <!-- Table Header -->
+      <thead class="border-y border-gray-100 dark:border-gray-800">
+        <tr>
+          <th
+            class="py-3 ps-4 text-start text-xs font-medium text-gray-500 sm:ps-6 dark:text-gray-400"
+          >
+            Products
+          </th>
+          <th
+            class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          >
+            Category
+          </th>
+          <th
+            class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          >
+            Country
+          </th>
+          <th
+            class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          >
+            CR
+          </th>
+          <th
+            class="py-3 pe-4 text-start text-xs font-medium text-gray-500 sm:pe-6 dark:text-gray-400"
+          >
+            Value
+          </th>
+        </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <template x-for="order in orders" :key="order.id">
+          <tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+            <td
+              class="py-3 ps-4 text-start text-sm font-medium text-gray-800 sm:ps-6 dark:text-white/90"
+              x-text="order.name"
+            ></td>
+            <td
+              class="py-3 text-start text-sm text-gray-500 dark:text-gray-400"
+              x-text="order.category"
+            ></td>
+            <td
+              class="py-3 text-start text-sm text-gray-500 dark:text-gray-400"
+            >
+              <div class="h-5 w-5">
+                <img
+                  :src="order.country"
+                  :alt="order.name"
+                  class="h-5 w-5 rounded-sm object-fill"
+                  width="20"
+                  height="20"
+                />
+              </div>
+            </td>
+            <td
+              class="py-3 text-start text-sm text-gray-500 dark:text-gray-400"
+              x-text="order.cr"
+            ></td>
+            <td
+              class="py-3 pe-4 text-start text-sm font-medium text-green-600 sm:pe-6 dark:text-green-500"
+              x-text="`$${order.value}`"
+            ></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</div>

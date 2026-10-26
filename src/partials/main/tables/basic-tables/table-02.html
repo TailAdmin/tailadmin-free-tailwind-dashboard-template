@@ -1,0 +1,370 @@
+<div
+  x-data="basicTableTwo()"
+  class="w-full max-w-full min-w-0 gap-0 overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 sm:p-0 dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Table Header Controls -->
+  <div
+    class="flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+  >
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Recent Orders
+      </h3>
+    </div>
+
+    <div class="flex w-full items-center gap-3 sm:w-auto">
+      <div class="flex-1 sm:w-64 sm:flex-initial md:w-72">
+        <div class="relative flex items-center">
+          <span
+            class="pointer-events-none absolute inset-y-0 inset-s-0 flex items-center ps-3.5"
+          >
+            <svg
+              class="size-5 text-gray-700 dark:text-gray-300"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.167 3.333a5.833 5.833 0 100 11.667 5.833 5.833 0 000-11.667zM2 9.167a7.167 7.167 0 1112.584 4.707l3.275 3.275a.667.667 0 11-.943.943l-3.275-3.275A7.167 7.167 0 012 9.167z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Search..."
+            x-model="searchQuery"
+            class="h-10 w-full rounded-[10px] border border-gray-300 bg-transparent py-2.5 ps-10 pe-4 text-sm text-gray-800 placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 focus:outline-hidden dark:border-gray-700 dark:bg-transparent dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-800"
+          />
+        </div>
+      </div>
+
+      <!-- Status Filter Dropdown -->
+      <div class="relative" @click.outside="dropdownOpen = false">
+        <button
+          type="button"
+          @click="dropdownOpen = !dropdownOpen"
+          class="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-[10px] border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px disabled:pointer-events-none disabled:border-gray-200 disabled:bg-white disabled:text-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white dark:disabled:border-gray-800 dark:disabled:bg-gray-900 dark:disabled:text-gray-600"
+        >
+          <svg
+            class="size-5"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.653 5.905a2.57 2.57 0 00-5.141 0m5.141 0a2.57 2.57 0 01-5.141 0m5.141 0h3.055m-8.196 0h-7.22m3.055 8.192a2.57 2.57 0 015.141 0m-5.141 0a2.57 2.57 0 005.141 0m-5.141 0H2.292m8.196 0h7.22"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Filter
+        </button>
+
+        <div
+          x-show="dropdownOpen"
+          x-transition
+          class="absolute inset-e-0 z-40 mt-2 w-40 rounded-xl border border-gray-200 bg-white p-1.5 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900"
+        >
+          <button
+            type="button"
+            @click="setStatusFilter('all')"
+            class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5"
+            :class="statusFilter === 'all' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            @click="setStatusFilter('complete')"
+            class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5"
+            :class="statusFilter === 'complete' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'"
+          >
+            Complete
+          </button>
+          <button
+            type="button"
+            @click="setStatusFilter('pending')"
+            class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5"
+            :class="statusFilter === 'pending' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'"
+          >
+            Pending
+          </button>
+          <button
+            type="button"
+            @click="setStatusFilter('cancel')"
+            class="flex w-full items-center rounded-lg px-3 py-2 text-start text-sm hover:bg-gray-100 dark:hover:bg-white/5"
+            :class="statusFilter === 'cancel' ? 'font-semibold text-brand-500 dark:text-brand-400' : 'text-gray-700 dark:text-gray-300'"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Content -->
+  <div class="max-w-full overflow-x-auto">
+    <div class="min-w-175 2xl:min-w-202">
+      <table class="min-w-full">
+        <thead
+          class="border-y border-gray-100 bg-gray-50 dark:border-gray-800 dark:bg-gray-900"
+        >
+          <tr>
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              <div class="flex items-center gap-3">
+                <label class="flex cursor-pointer items-center">
+                  <input
+                    type="checkbox"
+                    :checked="isAllSelected"
+                    @change="handleSelectAll()"
+                    class="peer sr-only"
+                    aria-label="Select all orders"
+                  />
+                  <span
+                    class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+                    :class="isAllSelected ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+                  >
+                    <span
+                      x-show="isAllSelected"
+                      class="grid place-content-center text-current transition-none [&>svg]:size-3"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6L9 17l-5-5"></path>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+                <span>Deal ID</span>
+              </div>
+            </th>
+
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Customer
+            </th>
+
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Product/Service
+            </th>
+
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Deal Value
+            </th>
+
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Close Date
+            </th>
+
+            <th
+              class="px-6 py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Status
+            </th>
+
+            <th
+              class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Action
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="min-h-96 divide-y divide-gray-100 dark:divide-gray-800">
+          <template x-if="rows.length > 0">
+            <template x-for="row in rows" :key="row.original.id">
+              <tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+                <td class="px-6 py-4 text-start">
+                  <div class="flex items-center gap-3">
+                    <label class="flex cursor-pointer items-center">
+                      <input
+                        type="checkbox"
+                        :checked="isRowSelected(row.original.id)"
+                        @change="handleRowSelect(row.original.id)"
+                        class="peer sr-only"
+                        :aria-label="`Select deal ${row.original.dealId}`"
+                      />
+                      <span
+                        class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+                        :class="isRowSelected(row.original.id) ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+                      >
+                        <span
+                          x-show="isRowSelected(row.original.id)"
+                          class="grid place-content-center text-current transition-none [&>svg]:size-3"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M20 6L9 17l-5-5"></path>
+                          </svg>
+                        </span>
+                      </span>
+                    </label>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-400"
+                      x-text="row.original.dealId"
+                    ></span>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <div class="flex items-center gap-3">
+                    <div
+                      class="flex size-10 shrink-0 items-center justify-center rounded-full text-xs font-semibold select-none"
+                      :class="row.original.user.avatarClassName"
+                      x-text="row.original.user.initials"
+                    ></div>
+                    <div>
+                      <span
+                        class="block text-sm font-medium text-gray-800 dark:text-white/90"
+                        x-text="row.original.user.name"
+                      ></span>
+                      <span
+                        class="block text-sm text-gray-500 dark:text-gray-400"
+                        x-text="row.original.user.email"
+                      ></span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span
+                    class="text-sm text-gray-700 dark:text-gray-400"
+                    x-text="row.original.productName"
+                  ></span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span
+                    class="text-sm text-gray-700 dark:text-gray-400"
+                    x-text="row.original.dealValue"
+                  ></span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span
+                    class="text-sm text-gray-700 dark:text-gray-400"
+                    x-text="row.original.closeDate"
+                  ></span>
+                </td>
+
+                <td class="px-6 py-4 text-start">
+                  <span
+                    class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium"
+                    :class="{
+                      'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': statusBadge(row.original.status).color === 'success',
+                      'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': statusBadge(row.original.status).color === 'warning',
+                      'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': statusBadge(row.original.status).color === 'error'
+                    }"
+                    x-text="statusBadge(row.original.status).label"
+                  ></span>
+                </td>
+
+                <td class="px-6 py-4 text-center">
+                  <button
+                    type="button"
+                    class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-500 transition-all outline-none select-none hover:bg-red-50 hover:text-red-500 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-400 dark:hover:bg-red-700/10 dark:hover:text-red-400"
+                    @click="handleDelete(row.original.id)"
+                    aria-label="Delete order"
+                  >
+                    <svg
+                      class="size-5"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.541 3.792a2.25 2.25 0 012.25-2.25h2.417a2.25 2.25 0 012.25 2.25v.25H16.666a.75.75 0 010 1.5h-.29v10.666a2.25 2.25 0 01-2.25 2.25h-8.25a2.25 2.25 0 01-2.25-2.25V5.541h-.292a.75.75 0 110-1.5H6.54v-.25zm8.334 9.454V5.541h-9.75v10.667c0 .414.336.75.75.75h8.25a.75.75 0 00.75-.75v-2.962zM8.041 4.041h3.917v-.25a.75.75 0 00-.75-.75H8.791a.75.75 0 00-.75.75v.25zM8.334 8a.75.75 0 01.75.75v5a.75.75 0 11-1.5 0v-5a.75.75 0 01.75-.75zm4.083.75a.75.75 0 00-1.5 0v5a.75.75 0 101.5 0v-5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </template>
+          </template>
+
+          <template x-if="rows.length === 0">
+            <tr>
+              <td
+                colspan="7"
+                class="px-6 py-12 text-center text-sm text-gray-500 dark:text-gray-400"
+              >
+                <div class="flex flex-col items-center justify-center">
+                  <div
+                    class="mb-3 flex size-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800"
+                  >
+                    <svg
+                      class="size-6 text-gray-800 dark:text-white/90"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 21.072V11.029m0 0c-.23 0-.46-.053-.67-.159m.67.159c.23 0 .46-.053.671-.159m0 0a1.5 1.5 0 01-1.341 0m1.341 0l7.55-3.774M11.33 10.87L3.78 7.096m16.441 0a1.499 1.499 0 00-.592-.533L12.67 3.084a1.5 1.5 0 00-1.341 0L4.372 6.563c-.247.123-.45.309-.592.533m16.441 0a1.5 1.5 0 01.237.808v8.19a1.5 1.5 0 01-.83 1.341l-6.957 3.479a1.5 1.5 0 01-1.341 0l-6.958-3.479a1.5 1.5 0 01-.829-1.342V7.904c0-.292.085-.571.237-.808"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <h4
+                    class="text-base font-semibold text-gray-800 dark:text-white/90"
+                  >
+                    No orders found
+                  </h4>
+                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    Try adjusting your search or filter to find what you're
+                    looking for.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

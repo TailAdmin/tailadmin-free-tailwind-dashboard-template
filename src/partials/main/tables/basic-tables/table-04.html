@@ -1,0 +1,147 @@
+<div
+  x-data="basicTableFour()"
+  class="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-4 pb-3 sm:px-6 dark:border-gray-800 dark:bg-white/3"
+>
+  <div class="mb-4 flex justify-between gap-2 sm:items-center">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+        Featured Campaigns
+      </h3>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="relative" @click.outside="dropdownOpen = false">
+      <button
+        type="button"
+        @click="dropdownOpen = !dropdownOpen"
+        class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white"
+        :class="dropdownOpen ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''"
+      >
+        <svg
+          class="size-5"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="12" cy="5" r="1" />
+          <circle cx="12" cy="19" r="1" />
+        </svg>
+      </button>
+
+      <div
+        x-show="dropdownOpen"
+        x-transition
+        class="absolute inset-e-0 z-40 mt-1 w-40 rounded-xl border border-gray-200 bg-white p-2 shadow-theme-lg dark:border-gray-800 dark:bg-gray-900"
+      >
+        <button
+          type="button"
+          @click="dropdownOpen = false"
+          class="flex w-full rounded-lg px-3 py-2 text-start text-sm font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+        >
+          View More
+        </button>
+        <button
+          type="button"
+          @click="dropdownOpen = false"
+          class="flex w-full rounded-lg px-3 py-2 text-start text-sm font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-scrollbar max-w-full overflow-x-auto">
+    <div class="min-w-full">
+      <table class="min-w-full">
+        <!-- Table Header -->
+        <thead class="border-y border-gray-100 dark:border-gray-800">
+          <tr>
+            <th
+              class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Products
+            </th>
+            <th
+              class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Campaign
+            </th>
+            <th
+              class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+            >
+              Status
+            </th>
+          </tr>
+        </thead>
+
+        <!-- Table Body -->
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          <template x-for="campaign in campaigns" :key="campaign.id">
+            <tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+              <td class="py-3">
+                <div class="flex items-center gap-4.5">
+                  <div class="h-10 w-10 overflow-hidden rounded-full">
+                    <img
+                      :src="campaign.creator.image"
+                      :alt="campaign.creator.name"
+                      class="h-full w-full object-cover"
+                      width="40"
+                      height="40"
+                    />
+                  </div>
+                  <div>
+                    <p
+                      class="text-sm text-gray-700 dark:text-gray-400"
+                      x-text="campaign.creator.name"
+                    ></p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3">
+                <div class="flex w-full items-center gap-5">
+                  <div class="w-full max-w-8">
+                    <img
+                      :src="campaign.campaign.image"
+                      alt="brand"
+                      class="h-8 w-8 object-contain"
+                      width="40"
+                      height="40"
+                    />
+                  </div>
+                  <div class="truncate">
+                    <p
+                      class="mb-0.5 truncate text-sm font-medium text-gray-700 dark:text-gray-400"
+                      x-text="campaign.campaign.name"
+                    ></p>
+                    <span
+                      class="text-xs text-gray-500 dark:text-gray-400"
+                      x-text="campaign.campaign.type"
+                    ></span>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3">
+                <span
+                  class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium"
+                  :class="{
+                    'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': getStatusColor(campaign.status) === 'success',
+                    'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': getStatusColor(campaign.status) === 'warning',
+                    'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': getStatusColor(campaign.status) === 'error'
+                  }"
+                  x-text="campaign.status"
+                ></span>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

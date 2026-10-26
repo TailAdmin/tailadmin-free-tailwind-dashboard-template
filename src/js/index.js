@@ -19,6 +19,11 @@ import statisticsChart from "./components/ecommerce/statistics-chart";
 import "./components/image-resize";
 import map01 from "./components/map-01";
 import customerPinPointMap from "./components/maps/vector/customer-pin-point-map";
+import basicTableFive from "./components/tables/basic-table-five";
+import basicTableFour from "./components/tables/basic-table-four";
+import basicTableOne from "./components/tables/basic-table-one";
+import basicTableThree from "./components/tables/basic-table-three";
+import basicTableTwo from "./components/tables/basic-table-two";
 import dropdown from "./components/ui/dropdown";
 import popover from "./components/ui/popover";
 import tooltip from "./components/ui/tooltip";
@@ -47,6 +52,13 @@ setupI18n(Alpine);
 Alpine.data("dropdown", dropdown);
 Alpine.data("tooltip", tooltip);
 Alpine.data("popover", popover);
+
+// Register Table components
+Alpine.data("basicTableOne", basicTableOne);
+Alpine.data("basicTableTwo", basicTableTwo);
+Alpine.data("basicTableThree", basicTableThree);
+Alpine.data("basicTableFour", basicTableFour);
+Alpine.data("basicTableFive", basicTableFive);
 
 Alpine.start();
 

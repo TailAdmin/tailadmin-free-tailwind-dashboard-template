@@ -1,0 +1,104 @@
+<div
+  x-data="basicTableOne()"
+  class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/5 dark:bg-white/3"
+>
+  <div class="max-w-full overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="border-b border-gray-100 dark:border-white/5">
+        <tr>
+          <th
+            class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400"
+          >
+            User
+          </th>
+          <th
+            class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400"
+          >
+            Project Name
+          </th>
+          <th
+            class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400"
+          >
+            Team
+          </th>
+          <th
+            class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400"
+          >
+            Status
+          </th>
+          <th
+            class="px-5 py-3 text-start text-xs font-medium text-gray-500 sm:px-6 dark:text-gray-400"
+          >
+            Budget
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 dark:divide-white/5">
+        <template x-for="order in orders" :key="order.id">
+          <tr class="transition hover:bg-gray-50/50 dark:hover:bg-white/2">
+            <td class="px-5 py-4 text-start sm:px-6">
+              <div class="flex items-center gap-3">
+                <div class="h-10 w-10 overflow-hidden rounded-full">
+                  <img
+                    :src="order.user.image"
+                    :alt="order.user.name"
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <span
+                    class="block text-sm font-medium text-gray-800 dark:text-white/90"
+                    x-text="order.user.name"
+                  ></span>
+                  <span
+                    class="block text-xs text-gray-500 dark:text-gray-400"
+                    x-text="order.user.role"
+                  ></span>
+                </div>
+              </div>
+            </td>
+            <td
+              class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400"
+              x-text="order.projectName"
+            ></td>
+            <td
+              class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400"
+            >
+              <div class="flex -space-x-2">
+                <template x-for="(img, idx) in order.team.images" :key="idx">
+                  <div
+                    class="h-6 w-6 overflow-hidden rounded-full border border-white dark:border-gray-800"
+                  >
+                    <img
+                      :src="img"
+                      :alt="`Team member ${idx + 1}`"
+                      class="h-full w-full object-cover"
+                    />
+                  </div>
+                </template>
+              </div>
+            </td>
+            <td
+              class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400"
+            >
+              <span
+                class="inline-flex items-center justify-center gap-1 rounded-lg px-2 py-0.5 text-xs font-medium"
+                :class="{
+                  'bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500': getStatusColor(order.status) === 'success',
+                  'bg-amber-50 text-amber-600 dark:bg-amber-500/15 dark:text-orange-400': getStatusColor(order.status) === 'warning',
+                  'bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500': getStatusColor(order.status) === 'error',
+                  'bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white/80': getStatusColor(order.status) === 'gray'
+                }"
+                x-text="order.status"
+              ></span>
+            </td>
+            <td
+              class="px-5 py-4 text-start text-sm text-gray-500 sm:px-6 dark:text-gray-400"
+              x-text="order.budget"
+            ></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</div>
