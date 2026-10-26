@@ -1,0 +1,69 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Input States
+    </h3>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+      Validation styles for error, success and disabled states on form controls.
+    </p>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Error Input -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Email
+      </label>
+      <input
+        type="email"
+        placeholder="demo-email@tailadmin.com"
+        aria-invalid="true"
+        class="h-11 w-full min-w-0 rounded-[10px] border border-red-500 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs ring-3 ring-red-500/20 outline-hidden transition-colors placeholder:text-gray-400 focus:border-red-500 focus:ring-3 focus:ring-red-500/20 dark:border-red-500/50 dark:bg-gray-900 dark:text-white/90 dark:ring-red-500/40 dark:placeholder:text-gray-500"
+      />
+      <p class="mt-1 text-xs text-red-500 dark:text-red-400">
+        Clear guidance for users.
+      </p>
+    </div>
+
+    <!-- Success Input -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Email
+      </label>
+      <input
+        type="email"
+        value="demoemail@gmail.com"
+        data-success="true"
+        class="h-11 w-full min-w-0 rounded-[10px] border border-green-500 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs ring-3 ring-green-500/20 outline-hidden transition-colors placeholder:text-gray-400 focus:border-green-500 focus:ring-3 focus:ring-green-500/20 dark:border-green-500/50 dark:bg-gray-900 dark:text-white/90 dark:ring-green-500/40 dark:placeholder:text-gray-500"
+      />
+      <p class="mt-1 text-xs text-green-600 dark:text-green-400">
+        This is an success message.
+      </p>
+    </div>
+
+    <!-- Disabled Input -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-400 dark:text-gray-500"
+      >
+        Email
+      </label>
+      <input
+        type="email"
+        value="info@tailadmin.com"
+        disabled
+        class="h-11 w-full min-w-0 cursor-not-allowed rounded-[10px] border border-gray-200 bg-gray-100/50 px-4 py-2.5 text-sm font-normal text-gray-400 shadow-none outline-hidden dark:border-gray-800 dark:bg-gray-800/50 dark:text-gray-500"
+      />
+    </div>
+  </div>
+</div>

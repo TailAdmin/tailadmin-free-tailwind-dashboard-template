@@ -1,0 +1,125 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Textarea input field
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Default Textarea -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Description
+      </label>
+      <textarea
+        placeholder="Enter a description..."
+        rows="6"
+        class="w-full min-w-0 rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+      ></textarea>
+    </div>
+
+    <!-- Disabled Textarea -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-400 dark:text-gray-500"
+      >
+        Description
+      </label>
+      <textarea
+        placeholder="Enter a description..."
+        rows="6"
+        disabled
+        class="w-full min-w-0 cursor-not-allowed rounded-[10px] border border-gray-200 bg-gray-100/50 px-4 py-2.5 text-sm font-normal text-gray-400 shadow-none outline-hidden dark:border-gray-800 dark:bg-gray-800/50 dark:text-gray-500"
+      ></textarea>
+    </div>
+
+    <!-- Error Textarea -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Description
+      </label>
+      <textarea
+        placeholder="Enter a description..."
+        rows="6"
+        aria-invalid="true"
+        class="w-full min-w-0 rounded-[10px] border border-red-500 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs ring-3 ring-red-500/20 outline-hidden transition-colors placeholder:text-gray-400 focus:border-red-500 focus:ring-3 focus:ring-red-500/20 dark:border-red-500/50 dark:bg-gray-900 dark:text-white/90 dark:ring-red-500/40 dark:placeholder:text-gray-500"
+      ></textarea>
+      <p class="mt-1 text-xs text-red-500 dark:text-red-400">
+        Please enter a message in the textarea.
+      </p>
+    </div>
+
+    <!-- Message with Actions -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Message with Actions
+      </label>
+      <div
+        class="relative flex w-full min-w-0 flex-col overflow-hidden rounded-[10px] border border-gray-300 bg-white shadow-theme-xs outline-hidden transition-colors focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:focus-within:border-brand-500/40"
+      >
+        <textarea
+          placeholder="Write your message or comment..."
+          rows="4"
+          class="w-full flex-1 resize-none border-0 bg-transparent px-4 py-2.5 text-sm font-normal text-gray-800 shadow-none placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden dark:text-white/90 dark:placeholder:text-gray-500"
+        ></textarea>
+        <div
+          class="flex w-full items-center justify-between border-t border-gray-200 px-3.5 py-2.5 dark:border-gray-800"
+        >
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              aria-label="Attach file"
+            >
+              <svg
+                class="size-4"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.582 1.542a3.587 3.587 0 013.587 3.587v8.325a2.17 2.17 0 01-4.337 0V5.13a.75.75 0 011.5 0v8.325a.669.669 0 001.337 0v-1.4l-.001-.019V5.13a2.087 2.087 0 00-4.173 0v8.325a3.506 3.506 0 007.01 0v-5.49a.75.75 0 011.5 0v5.49a5.006 5.006 0 01-10.01 0V5.13a3.587 3.587 0 013.587-3.587z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <span class="text-xs text-gray-400"> Markdown supported </span>
+          </div>
+          <button
+            type="button"
+            class="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-1.5 text-xs font-medium text-white shadow-theme-xs transition-all outline-none select-none hover:bg-brand-600 focus-visible:ring-3 focus-visible:ring-brand-500/20 active:translate-y-px"
+          >
+            <svg
+              class="size-3.5"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.985 2.444c-1.872-.873-3.832 1.026-3.02 2.924l1.856 4.337a.75.75 0 010 .59l-1.856 4.337c-.812 1.899 1.148 3.797 3.02 2.925l11.833-5.517c1.733-.808 1.733-3.271 0-4.079L4.985 2.444zm-1.64 2.334c-.271-.633.382-1.265 1.006-.975l11.834 5.518a.75.75 0 010 1.359L4.35 16.197c-.624.29-1.277-.342-1.006-.975L5.2 10.885a2.28 2.28 0 00.054-.138h3.864a.75.75 0 000-1.5H5.252a2.253 2.253 0 00-.052-.132L3.345 4.778z"
+                fill="currentColor"
+              />
+            </svg>
+            <span>Send</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

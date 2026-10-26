@@ -1,0 +1,290 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Dropzone
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    x-data="{
+      files: [],
+      isDragActive: false,
+      isPreviewOpen: false,
+      previewFile: null,
+      handleFiles(fileList) {
+        for (let i = 0; i < fileList.length; i++) {
+          const file = fileList[i];
+          if (file.type.startsWith('image/')) {
+            const preview = URL.createObjectURL(file);
+            this.files.push({
+              name: file.name,
+              size: file.size,
+              preview: preview
+            });
+          }
+        }
+      },
+      handleDrop(e) {
+        this.isDragActive = false;
+        if (e.dataTransfer && e.dataTransfer.files) {
+          this.handleFiles(e.dataTransfer.files);
+        }
+      },
+      removeFile(index) {
+        if (this.files[index] && this.files[index].preview) {
+          URL.revokeObjectURL(this.files[index].preview);
+        }
+        this.files.splice(index, 1);
+      },
+      clearAll() {
+        this.files.forEach(f => {
+          if (f.preview) URL.revokeObjectURL(f.preview);
+        });
+        this.files = [];
+      },
+      openPreview(file) {
+        this.previewFile = file;
+        this.isPreviewOpen = true;
+      },
+      formatSize(bytes) {
+        if (bytes < 1024) return bytes + ' B';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+      }
+    }"
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <div class="w-full">
+      <!-- Drop Area -->
+      <div
+        @click="$refs.fileInput.click()"
+        @dragover.prevent="isDragActive = true"
+        @dragleave.prevent="isDragActive = false"
+        @drop.prevent="handleDrop($event)"
+        class="relative flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed p-7 text-center outline-hidden transition-all duration-200 lg:p-10"
+        :class="isDragActive ? 'border-brand-500 bg-brand-50/60 dark:bg-brand-950/20' : 'border-gray-300 bg-gray-50 hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-500'"
+      >
+        <input
+          type="file"
+          x-ref="fileInput"
+          @change="handleFiles($event.target.files); $event.target.value = ''"
+          multiple
+          accept="image/png, image/jpeg, image/webp, image/svg+xml"
+          class="hidden"
+        />
+
+        <div class="flex flex-col items-center">
+          <!-- Circular Upload Icon -->
+          <div
+            class="mb-4 flex size-17 items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+          >
+            <svg
+              class="size-7 text-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+            >
+              <path
+                d="M15 11.25a.75.75 0 01.75.75v1.5a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25V12a.75.75 0 011.5 0v1.5c0 .414.335.75.75.75h9a.75.75 0 00.75-.75V12a.75.75 0 01.75-.75zm-5.998-9a.744.744 0 01.547.241L13 5.937A.75.75 0 0111.938 7L9.752 4.813V12a.75.75 0 01-1.5 0V4.809l-2.19 2.19A.75.75 0 015 5.938l3.468-3.466a.745.745 0 01.532-.222z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+
+          <!-- Heading -->
+          <h4
+            class="mb-2 text-xl font-semibold text-gray-800 dark:text-white/90"
+          >
+            <span x-text="isDragActive ? 'Drop files here' : 'Drop File Here'"
+              >Drop File Here</span
+            >
+          </h4>
+
+          <!-- Subtitle -->
+          <p class="mb-4 max-w-72.5 text-sm text-gray-700 dark:text-gray-400">
+            Drag and drop your PNG, JPG, WebP, SVG images here or browse
+          </p>
+
+          <!-- Browse Action -->
+          <span
+            class="text-sm font-medium text-brand-500 underline hover:text-brand-600"
+          >
+            Browse File
+          </span>
+        </div>
+      </div>
+
+      <!-- Uploaded Images Preview Gallery -->
+      <div x-show="files.length > 0" x-cloak class="mt-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300">
+            Uploaded Images (<span x-text="files.length"></span>)
+          </h5>
+          <button
+            type="button"
+            @click="clearAll()"
+            class="text-xs font-medium text-red-500 transition-colors select-none hover:text-red-600 active:translate-y-px dark:text-red-400"
+          >
+            Clear all
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          <template x-for="(file, index) in files" :key="index">
+            <div
+              class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white shadow-theme-xs transition hover:shadow-theme-sm dark:border-gray-800 dark:bg-gray-900"
+            >
+              <!-- Image Preview Container -->
+              <div
+                class="relative aspect-4/3 w-full overflow-hidden bg-gray-100 dark:bg-gray-800"
+              >
+                <img
+                  :src="file.preview"
+                  :alt="file.name"
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+
+                <!-- Hover Action Overlay -->
+                <div
+                  class="absolute inset-0 flex items-center justify-center gap-2 bg-gray-900/60 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                >
+                  <button
+                    type="button"
+                    @click.stop="openPreview(file)"
+                    class="flex size-8 items-center justify-center rounded-full bg-white/90 text-gray-800 backdrop-blur-xs transition-all outline-none select-none hover:bg-white active:translate-y-px dark:bg-gray-800/90 dark:text-white dark:hover:bg-gray-800"
+                    title="Preview image"
+                    :aria-label="'Preview ' + file.name"
+                  >
+                    <svg
+                      class="size-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M10 13.862a6.519 6.519 0 01-6.077-4.16 6.519 6.519 0 0112.154 0A6.519 6.519 0 0110 13.862zm0-9.819a8.019 8.019 0 00-7.585 5.416.75.75 0 000 .487 8.019 8.019 0 0015.17 0 .75.75 0 000-.487A8.019 8.019 0 0010 4.043zm-.008 3.801a1.858 1.858 0 100 3.716h.014a1.858 1.858 0 000-3.716h-.014z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    @click.stop="removeFile(index)"
+                    class="flex size-8 items-center justify-center rounded-full bg-white/90 text-red-500 backdrop-blur-xs transition-all outline-none select-none hover:bg-white active:translate-y-px dark:bg-gray-800/90 dark:text-red-400 dark:hover:bg-gray-800"
+                    title="Remove image"
+                    :aria-label="'Remove ' + file.name"
+                  >
+                    <svg
+                      class="size-4"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.541 3.792a2.25 2.25 0 012.25-2.25h2.417a2.25 2.25 0 012.25 2.25v.25H16.666a.75.75 0 010 1.5h-.29v10.666a2.25 2.25 0 01-2.25 2.25h-8.25a2.25 2.25 0 01-2.25-2.25V5.541h-.292a.75.75 0 110-1.5H6.54v-.25zm8.334 9.454V5.541h-9.75v10.667c0 .414.336.75.75.75h8.25a.75.75 0 00.75-.75v-2.962zM8.041 4.041h3.917v-.25a.75.75 0 00-.75-.75H8.791a.75.75 0 00-.75.75v.25zM8.334 8a.75.75 0 01.75.75v5a.75.75 0 11-1.5 0v-5a.75.75 0 01.75-.75zm4.083.75a.75.75 0 00-1.5 0v5a.75.75 0 101.5 0v-5z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- File Metadata -->
+              <div class="p-3">
+                <p
+                  class="truncate text-xs font-medium text-gray-800 dark:text-white/90"
+                  x-text="file.name"
+                  :title="file.name"
+                ></p>
+                <p
+                  class="mt-0.5 text-[11px] text-gray-500 dark:text-gray-400"
+                  x-text="formatSize(file.size)"
+                ></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- Image Preview Modal -->
+      <div
+        x-show="isPreviewOpen"
+        x-cloak
+        @keydown.escape.window="isPreviewOpen = false"
+        class="fixed inset-0 z-99999 flex items-center justify-center overflow-y-auto p-4 sm:p-5"
+        style="display: none"
+      >
+        <div
+          @click="isPreviewOpen = false"
+          x-show="isPreviewOpen"
+          x-transition.opacity
+          class="fixed inset-0 bg-gray-400/50 backdrop-blur-[32px] dark:bg-black/80"
+        ></div>
+
+        <div
+          x-show="isPreviewOpen"
+          x-transition
+          @click.outside="isPreviewOpen = false"
+          class="relative w-full max-w-2xl rounded-3xl bg-white p-6 sm:p-8 dark:bg-gray-900"
+        >
+          <button
+            @click="isPreviewOpen = false"
+            type="button"
+            class="absolute top-5 right-5 z-20 flex size-9 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-all outline-none select-none hover:bg-gray-200 hover:text-gray-600 active:translate-y-px dark:bg-white/5 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-300"
+            aria-label="Close"
+          >
+            <svg
+              class="size-5 fill-current"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M6.04289 16.5418C5.65237 16.9323 5.65237 17.5655 6.04289 17.956C6.43342 18.3465 7.06658 18.3465 7.45711 17.956L11.9987 13.4144L16.5408 17.9565C16.9313 18.347 17.5645 18.347 17.955 17.9565C18.3455 17.566 18.3455 16.9328 17.955 16.5423L13.4129 12.0002L17.955 7.45808C18.3455 7.06756 18.3455 6.43439 17.955 6.04387C17.5645 5.65335 16.9313 5.65335 16.5408 6.04387L11.9987 10.586L7.45711 6.04439C7.06658 5.65386 6.43342 5.65386 6.04289 6.04439C5.65237 6.43491 5.65237 7.06808 6.04289 7.4586L10.5845 12.0002L6.04289 16.5418Z"
+              />
+            </svg>
+          </button>
+
+          <template x-if="previewFile">
+            <div>
+              <div class="mb-4 pe-10">
+                <h4
+                  class="text-lg font-semibold text-gray-800 dark:text-white/90"
+                >
+                  Image Preview
+                </h4>
+                <p
+                  class="text-xs text-gray-500 dark:text-gray-400"
+                  x-text="previewFile.name + ' • ' + formatSize(previewFile.size)"
+                ></p>
+              </div>
+
+              <div
+                class="relative aspect-video w-full overflow-hidden rounded-xl border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-800"
+              >
+                <img
+                  :src="previewFile.preview"
+                  :alt="previewFile.name"
+                  class="h-full w-full object-contain"
+                />
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

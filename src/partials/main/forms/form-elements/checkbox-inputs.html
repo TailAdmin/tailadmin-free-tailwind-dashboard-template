@@ -1,0 +1,217 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Checkboxes
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Default Checkboxes (Unlabeled) -->
+    <div
+      x-data="{ isCheckedOne: false, isCheckedTwo: true }"
+      class="flex flex-row items-center gap-6"
+    >
+      <!-- Unchecked -->
+      <label
+        class="group relative flex cursor-pointer items-center"
+        aria-label="Default unchecked checkbox"
+      >
+        <input type="checkbox" class="peer sr-only" x-model="isCheckedOne" />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="isCheckedOne ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="isCheckedOne"
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+      </label>
+
+      <!-- Checked -->
+      <label
+        class="group relative flex cursor-pointer items-center"
+        aria-label="Checked checkbox"
+      >
+        <input type="checkbox" class="peer sr-only" x-model="isCheckedTwo" />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="isCheckedTwo ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="isCheckedTwo"
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+      </label>
+
+      <!-- Disabled Checked -->
+      <div
+        class="relative flex items-center"
+        aria-label="Disabled checked checkbox"
+      >
+        <span
+          class="relative flex size-4 shrink-0 cursor-not-allowed items-center justify-center rounded-md border border-gray-200 bg-transparent text-gray-300 shadow-none dark:border-gray-800 dark:text-gray-600"
+        >
+          <span
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Labeled Checkboxes -->
+    <div
+      x-data="{ isCheckedDefault: false, isChecked: true }"
+      class="flex flex-wrap items-center gap-6 sm:gap-8"
+    >
+      <!-- Default -->
+      <label class="group flex cursor-pointer items-center gap-2.5">
+        <input
+          type="checkbox"
+          class="peer sr-only"
+          x-model="isCheckedDefault"
+        />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="isCheckedDefault ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="isCheckedDefault"
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+        <span
+          class="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Default
+        </span>
+      </label>
+
+      <!-- Checked -->
+      <label class="group flex cursor-pointer items-center gap-2.5">
+        <input type="checkbox" class="peer sr-only" x-model="isChecked" />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-md border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="isChecked ? 'border-brand-500 bg-brand-500 text-white hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="isChecked"
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+        <span
+          class="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Checked
+        </span>
+      </label>
+
+      <!-- Disabled -->
+      <div class="flex items-center gap-2.5">
+        <span
+          class="relative flex size-4 shrink-0 cursor-not-allowed items-center justify-center rounded-md border border-gray-200 bg-transparent text-gray-300 shadow-none dark:border-gray-800 dark:text-gray-600"
+        >
+          <span
+            class="grid place-content-center text-current transition-none [&>svg]:size-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </span>
+        </span>
+        <span
+          class="cursor-not-allowed text-sm font-medium text-gray-400 dark:text-gray-600"
+        >
+          Disabled
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

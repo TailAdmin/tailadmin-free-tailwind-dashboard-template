@@ -1,0 +1,292 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Default Inputs
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Basic Input -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Input
+      </label>
+      <input
+        type="text"
+        class="h-11 w-full min-w-0 rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+      />
+    </div>
+
+    <!-- Input with Placeholder -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Input with Placeholder
+      </label>
+      <input
+        type="text"
+        placeholder="info@gmail.com"
+        class="h-11 w-full min-w-0 rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+      />
+    </div>
+
+    <!-- Select Input -->
+    <div
+      x-data="{ isOpen: false, selected: '', options: ['Option 1', 'Option 2', 'Option 3'] }"
+      class="relative"
+    >
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Select Input
+      </label>
+      <div class="relative">
+        <button
+          type="button"
+          @click="isOpen = !isOpen"
+          @click.outside="isOpen = false"
+          class="flex h-11 w-full min-w-0 items-center justify-between gap-2 rounded-[10px] border border-gray-300 bg-white py-2.5 ps-4 pe-3.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-all duration-200 select-none hover:border-gray-400 hover:bg-gray-50/50 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:hover:border-gray-600 dark:hover:bg-gray-800/50 dark:focus:border-brand-500/40"
+        >
+          <span
+            :class="selected ? 'text-gray-800 dark:text-white/90' : 'text-gray-400 dark:text-gray-500'"
+            x-text="selected || 'Select Option'"
+            >Select Option</span
+          >
+          <svg
+            class="size-4 text-gray-500 transition-transform duration-200 dark:text-gray-400"
+            :class="isOpen ? 'rotate-180' : ''"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.83325 7.91666L9.99992 12.0833L14.1666 7.91666"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div
+          x-show="isOpen"
+          x-cloak
+          x-transition
+          class="absolute top-full left-0 z-50 mt-2 flex max-h-60 w-full flex-col gap-1 overflow-y-auto rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-[#1E2635]"
+        >
+          <template x-for="option in options" :key="option">
+            <button
+              type="button"
+              @click="selected = option; isOpen = false"
+              class="relative flex w-full cursor-pointer items-center justify-between rounded-lg py-2.5 ps-3 pe-8 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5"
+            >
+              <span x-text="option"></span>
+              <span
+                x-show="selected === option"
+                class="absolute inset-e-3 flex items-center justify-center text-brand-500 dark:text-brand-400"
+              >
+                <svg
+                  class="size-4"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.3334 4L6.00008 11.3333L2.66675 8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Input -->
+    <div x-data="{ showPassword: false }">
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Password Input
+      </label>
+      <div
+        class="relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-300 bg-white shadow-theme-xs outline-hidden transition-colors focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:focus-within:border-brand-500/40"
+      >
+        <input
+          :type="showPassword ? 'text' : 'password'"
+          placeholder="••••••••"
+          class="h-full flex-1 rounded-none border-0 bg-transparent px-4 py-2.5 text-sm font-normal text-gray-800 shadow-none placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden dark:text-white/90 dark:placeholder:text-gray-500"
+        />
+        <div class="flex items-center pe-3.5">
+          <button
+            type="button"
+            @click="showPassword = !showPassword"
+            class="flex size-7 items-center justify-center rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            :aria-label="showPassword ? 'Hide password' : 'Show password'"
+          >
+            <template x-if="showPassword">
+              <svg
+                class="size-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 13.862a6.519 6.519 0 01-6.077-4.16 6.519 6.519 0 0112.154 0A6.519 6.519 0 0110 13.862zm0-9.819a8.019 8.019 0 00-7.585 5.416.75.75 0 000 .487 8.019 8.019 0 0015.17 0 .75.75 0 000-.487A8.019 8.019 0 0010 4.043zm-.008 3.801a1.858 1.858 0 100 3.716h.014a1.858 1.858 0 000-3.716h-.014z"
+                />
+              </svg>
+            </template>
+            <template x-if="!showPassword">
+              <svg
+                class="size-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.638 3.577a.75.75 0 00-1.06 1.06l1.275 1.277a8.03 8.03 0 00-2.437 3.545.75.75 0 000 .487 8.019 8.019 0 0011.083 4.614l1.864 1.863a.75.75 0 101.06-1.06L4.638 3.576zm7.723 9.844l-1.914-1.913c-.14.034-.289.053-.44.053h-.015a1.858 1.858 0 01-1.803-2.312l-2.27-2.27a6.532 6.532 0 00-1.996 2.723 6.518 6.518 0 008.438 3.72zm3.716-3.719a6.516 6.516 0 01-1.257 2.03l1.061 1.06a8.012 8.012 0 001.704-2.846.75.75 0 000-.487A8.019 8.019 0 007.522 4.433l1.23 1.23a6.519 6.519 0 017.326 4.04z"
+                />
+              </svg>
+            </template>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Date Picker Input -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Date Picker Input
+      </label>
+      <div class="relative">
+        <input
+          type="text"
+          placeholder="mm/dd/yyyy"
+          class="datepickerTwo h-11 w-full min-w-0 rounded-[10px] border border-gray-300 bg-white py-2.5 ps-4 pe-10 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+        />
+        <span
+          class="pointer-events-none absolute inset-e-3.5 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+        >
+          <svg
+            class="size-5"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Time Select Input -->
+    <div
+      x-data
+      x-init="
+        if (typeof flatpickr !== 'undefined') {
+          flatpickr($refs.timeInput, {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: 'h:i K'
+          });
+        }
+      "
+    >
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Time Select Input
+      </label>
+      <div class="relative">
+        <input
+          x-ref="timeInput"
+          type="text"
+          placeholder="12:00 AM"
+          class="h-11 w-full min-w-0 rounded-[10px] border border-gray-300 bg-white py-2.5 ps-4 pe-10 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+        />
+        <span
+          class="pointer-events-none absolute inset-e-3.5 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+        >
+          <svg
+            class="size-5"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M3.042 10a6.958 6.958 0 1113.916 0 6.958 6.958 0 01-13.916 0zM10 1.542a8.458 8.458 0 100 16.916 8.458 8.458 0 000-16.916zm0 9.208a.75.75 0 01-.75-.75V5.417a.75.75 0 011.5 0V9.25h2.583a.75.75 0 010 1.5H10z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <!-- Input with Payment -->
+    <div>
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Input with Payment
+      </label>
+      <div
+        class="relative flex h-11 w-full min-w-0 items-center overflow-hidden rounded-[10px] border border-gray-300 bg-white shadow-theme-xs outline-hidden transition-colors focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:focus-within:border-brand-500/40"
+      >
+        <div
+          class="flex h-auto items-center justify-center self-stretch border-e border-gray-200 ps-3.5 pe-3 dark:border-gray-800"
+        >
+          <svg
+            class="h-5 w-auto"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="10" cy="16" r="9" fill="#E80B26" />
+            <circle cx="22" cy="16" r="9" fill="#F59D31" />
+            <path
+              d="M16 22.7085C17.8413 21.0605 19 18.6658 19 16.0002C19 13.3347 17.8413 10.9399 16 9.29199C14.1587 10.9399 13 13.3347 13 16.0002C13 18.6658 14.1587 21.0605 16 22.7085Z"
+              fill="#FC6020"
+            />
+          </svg>
+        </div>
+        <input
+          type="text"
+          placeholder="Card number"
+          class="h-full flex-1 rounded-none border-0 bg-transparent px-4 py-2.5 text-sm font-normal text-gray-800 shadow-none placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden dark:text-white/90 dark:placeholder:text-gray-500"
+        />
+      </div>
+    </div>
+  </div>
+</div>

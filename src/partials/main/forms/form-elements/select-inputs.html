@@ -1,0 +1,338 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Select Inputs
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Single Select -->
+    <div
+      x-data="{ isOpen: false, selected: '', options: ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'] }"
+      class="relative"
+    >
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Select Input
+      </label>
+      <div class="relative">
+        <button
+          type="button"
+          @click="isOpen = !isOpen"
+          @click.outside="isOpen = false"
+          class="flex h-11 w-full min-w-0 items-center justify-between gap-2 rounded-[10px] border border-gray-300 bg-white py-2.5 ps-4 pe-3.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-all duration-200 select-none hover:border-gray-400 hover:bg-gray-50/50 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:hover:border-gray-600 dark:hover:bg-gray-800/50 dark:focus:border-brand-500/40"
+        >
+          <span
+            :class="selected ? 'text-gray-800 dark:text-white/90' : 'text-gray-400 dark:text-gray-500'"
+            x-text="selected || 'Select Option'"
+            >Select Option</span
+          >
+          <svg
+            class="size-4 text-gray-500 transition-transform duration-200 dark:text-gray-400"
+            :class="isOpen ? 'rotate-180' : ''"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.83325 7.91666L9.99992 12.0833L14.1666 7.91666"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div
+          x-show="isOpen"
+          x-cloak
+          x-transition
+          class="absolute top-full left-0 z-50 mt-2 flex max-h-60 w-full flex-col gap-1 overflow-y-auto rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-[#1E2635]"
+        >
+          <template x-for="option in options" :key="option">
+            <button
+              type="button"
+              @click="selected = option; isOpen = false"
+              class="relative flex w-full cursor-pointer items-center justify-between rounded-lg py-2.5 ps-3 pe-8 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5"
+            >
+              <span x-text="option"></span>
+              <span
+                x-show="selected === option"
+                class="absolute inset-e-3 flex items-center justify-center text-brand-500 dark:text-brand-400"
+              >
+                <svg
+                  class="size-4"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.3334 4L6.00008 11.3333L2.66675 8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multiple Select -->
+    <div
+      x-data="{
+        isOpen: false,
+        selected: ['Blue', 'Green'],
+        options: ['Blue', 'Green', 'Red', 'Yellow', 'Purple', 'Orange'],
+        toggle(option) {
+          if (this.selected.includes(option)) {
+            this.selected = this.selected.filter(item => item !== option);
+          } else {
+            this.selected.push(option);
+          }
+        },
+        remove(option) {
+          this.selected = this.selected.filter(item => item !== option);
+        }
+      }"
+      class="relative"
+    >
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Multiple Select Options
+      </label>
+      <div class="relative">
+        <div
+          @click="isOpen = !isOpen"
+          @click.outside="isOpen = false"
+          class="flex h-auto min-h-11 w-full min-w-0 cursor-pointer items-center justify-between gap-2 rounded-[10px] border border-gray-300 bg-white py-1.5 ps-3 pe-3.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-all duration-200 focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 hover:border-gray-400 hover:bg-gray-50/50 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:focus-within:border-brand-500/40 dark:hover:border-gray-600 dark:hover:bg-gray-800/50"
+        >
+          <div class="flex flex-1 flex-wrap items-center gap-2">
+            <template x-if="selected.length === 0">
+              <span class="text-gray-400 dark:text-gray-500"
+                >Select Option</span
+              >
+            </template>
+            <template x-for="item in selected" :key="item">
+              <span
+                class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-100 py-1 ps-2.5 pe-1.5 text-sm font-normal text-gray-800 dark:border-gray-800 dark:bg-white/5 dark:text-white/90"
+              >
+                <span x-text="item"></span>
+                <button
+                  type="button"
+                  @click.stop="remove(item)"
+                  class="inline-flex size-3.5 cursor-pointer items-center justify-center rounded-full text-gray-400 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  <svg
+                    class="size-3"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 4L4 12M4 4L12 12"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </template>
+          </div>
+          <svg
+            class="size-4 shrink-0 text-gray-500 transition-transform duration-200 dark:text-gray-400"
+            :class="isOpen ? 'rotate-180' : ''"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.83325 7.91666L9.99992 12.0833L14.1666 7.91666"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <div
+          x-show="isOpen"
+          x-cloak
+          x-transition
+          class="absolute top-full left-0 z-50 mt-2 flex max-h-60 w-full flex-col gap-1 overflow-y-auto rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-[#1E2635]"
+        >
+          <template x-for="option in options" :key="option">
+            <button
+              type="button"
+              @click.stop="toggle(option)"
+              class="relative flex w-full cursor-pointer items-center justify-between rounded-lg py-2.5 ps-3 pe-8 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5"
+            >
+              <span x-text="option"></span>
+              <span
+                x-show="selected.includes(option)"
+                class="absolute inset-e-3 flex items-center justify-center text-brand-500 dark:text-brand-400"
+              >
+                <svg
+                  class="size-4"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.3334 4L6.00008 11.3333L2.66675 8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Searchable Select (Combobox) -->
+    <div
+      x-data="{
+        isOpen: false,
+        search: '',
+        selected: '',
+        items: ['Next.js', 'React', 'Vue.js', 'Svelte', 'Angular', 'Nuxt.js', 'Remix', 'Astro', 'Gatsby'],
+        get filteredItems() {
+          if (!this.search) return this.items;
+          return this.items.filter(item => item.toLowerCase().includes(this.search.toLowerCase()));
+        },
+        selectItem(item) {
+          this.selected = item;
+          this.search = item;
+          this.isOpen = false;
+        },
+        clear() {
+          this.selected = '';
+          this.search = '';
+        }
+      }"
+      class="relative"
+    >
+      <label
+        class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
+      >
+        Searchable Select (Combobox)
+      </label>
+      <div class="relative">
+        <div
+          class="relative flex h-11 w-full min-w-0 items-center rounded-[10px] border border-gray-300 bg-white shadow-theme-xs outline-hidden transition-colors focus-within:border-brand-300 focus-within:ring-3 focus-within:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:focus-within:border-brand-500/40"
+        >
+          <input
+            type="text"
+            x-model="search"
+            @focus="isOpen = true"
+            @click="isOpen = true"
+            @click.outside="isOpen = false"
+            placeholder="Select framework..."
+            class="h-full flex-1 rounded-none border-0 bg-transparent px-4 py-2.5 text-sm font-normal text-gray-800 shadow-none placeholder:text-gray-400 focus:border-transparent focus:ring-0 focus:outline-hidden dark:text-white/90 dark:placeholder:text-gray-500"
+          />
+          <div class="flex items-center gap-1 pe-3">
+            <button
+              x-show="search"
+              @click.stop="clear()"
+              type="button"
+              class="flex size-5 items-center justify-center rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+            >
+              <svg
+                class="size-3.5"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 4L4 12M4 4L12 12"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              @click="isOpen = !isOpen"
+              class="flex size-6 items-center justify-center text-gray-500 dark:text-gray-400"
+            >
+              <svg
+                class="size-4 transition-transform duration-200"
+                :class="isOpen ? 'rotate-180' : ''"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.83325 7.91666L9.99992 12.0833L14.1666 7.91666"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          x-show="isOpen"
+          x-cloak
+          x-transition
+          class="absolute top-full left-0 z-50 mt-2 flex max-h-60 w-full flex-col gap-1 overflow-y-auto rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-[#1E2635]"
+        >
+          <template x-if="filteredItems.length === 0">
+            <div class="px-3 py-2.5 text-sm text-gray-500 dark:text-gray-400">
+              No framework found.
+            </div>
+          </template>
+          <template x-for="item in filteredItems" :key="item">
+            <button
+              type="button"
+              @click="selectItem(item)"
+              class="relative flex w-full cursor-pointer items-center justify-between rounded-lg py-2.5 ps-3 pe-8 text-sm font-medium text-gray-700 outline-hidden transition-colors duration-200 select-none hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5"
+            >
+              <span x-text="item"></span>
+              <span
+                x-show="selected === item"
+                class="absolute inset-e-3 flex items-center justify-center text-brand-500 dark:text-brand-400"
+              >
+                <svg
+                  class="size-4"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.3334 4L6.00008 11.3333L2.66675 8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

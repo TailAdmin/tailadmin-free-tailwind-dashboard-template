@@ -1,0 +1,52 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Toggle switch input
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <div
+      x-data="{ activeSwitch: true, inactiveSwitch: false }"
+      class="flex items-center gap-7"
+    >
+      <!-- Active Switch -->
+      <button
+        type="button"
+        role="switch"
+        :aria-checked="activeSwitch.toString()"
+        @click="activeSwitch = !activeSwitch"
+        aria-label="Active switch"
+        class="relative inline-flex h-5 w-11 shrink-0 cursor-pointer items-center rounded-full p-[1.5px] outline-hidden transition-colors select-none focus-visible:ring-2 focus-visible:ring-brand-500/20 dark:focus-visible:ring-brand-500/30"
+        :class="activeSwitch ? 'bg-brand-500 hover:bg-brand-600 dark:bg-brand-500 dark:hover:bg-brand-600' : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'"
+      >
+        <span
+          class="pointer-events-none block h-[17px] w-[26px] shrink-0 rounded-full bg-white shadow-theme-sm ring-0 transition-transform duration-150 ease-linear"
+          :class="activeSwitch ? 'translate-x-[15px] rtl:-translate-x-[15px]' : 'translate-x-0 rtl:translate-x-0'"
+        ></span>
+      </button>
+
+      <!-- Inactive Switch -->
+      <button
+        type="button"
+        role="switch"
+        :aria-checked="inactiveSwitch.toString()"
+        @click="inactiveSwitch = !inactiveSwitch"
+        aria-label="Inactive switch"
+        class="relative inline-flex h-5 w-11 shrink-0 cursor-pointer items-center rounded-full p-[1.5px] outline-hidden transition-colors select-none focus-visible:ring-2 focus-visible:ring-brand-500/20 dark:focus-visible:ring-brand-500/30"
+        :class="inactiveSwitch ? 'bg-brand-500 hover:bg-brand-600 dark:bg-brand-500 dark:hover:bg-brand-600' : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'"
+      >
+        <span
+          class="pointer-events-none block h-[17px] w-[26px] shrink-0 rounded-full bg-white shadow-theme-sm ring-0 transition-transform duration-150 ease-linear"
+          :class="inactiveSwitch ? 'translate-x-[15px] rtl:-translate-x-[15px]' : 'translate-x-0 rtl:translate-x-0'"
+        ></span>
+      </button>
+    </div>
+  </div>
+</div>

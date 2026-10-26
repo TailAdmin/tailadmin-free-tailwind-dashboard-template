@@ -1,0 +1,144 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+>
+  <!-- Card Header -->
+  <div class="px-6 py-5">
+    <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+      Radio Buttons
+    </h3>
+  </div>
+
+  <!-- Card Body -->
+  <div
+    class="space-y-6 border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+  >
+    <!-- Default Radio Buttons (Unlabeled) -->
+    <div x-data="{ value: 'option1' }" class="flex flex-row items-center gap-6">
+      <label
+        class="group relative flex cursor-pointer items-center"
+        aria-label="Option 1"
+      >
+        <input
+          type="radio"
+          name="default-radio"
+          value="option1"
+          x-model="value"
+          class="peer sr-only"
+        />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="value === 'option1' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="value === 'option1'"
+            class="flex size-4 items-center justify-center"
+          >
+            <span class="size-2 rounded-full bg-white"></span>
+          </span>
+        </span>
+      </label>
+
+      <label
+        class="group relative flex cursor-pointer items-center"
+        aria-label="Option 2"
+      >
+        <input
+          type="radio"
+          name="default-radio"
+          value="option2"
+          x-model="value"
+          class="peer sr-only"
+        />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="value === 'option2' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="value === 'option2'"
+            class="flex size-4 items-center justify-center"
+          >
+            <span class="size-2 rounded-full bg-white"></span>
+          </span>
+        </span>
+      </label>
+
+      <div class="relative flex items-center" aria-label="Option 3 (disabled)">
+        <span
+          class="relative flex size-4 shrink-0 cursor-not-allowed items-center justify-center rounded-full border border-gray-200 bg-gray-100/50 shadow-none dark:border-gray-800 dark:bg-gray-800/50"
+        ></span>
+      </div>
+    </div>
+
+    <!-- Labeled Radio Buttons -->
+    <div
+      x-data="{ value: 'selected' }"
+      class="flex flex-wrap items-center gap-6 sm:gap-8"
+    >
+      <!-- Default -->
+      <label class="group flex cursor-pointer items-center gap-2.5">
+        <input
+          type="radio"
+          name="labeled-radio"
+          value="default"
+          x-model="value"
+          class="peer sr-only"
+        />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="value === 'default' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="value === 'default'"
+            class="flex size-4 items-center justify-center"
+          >
+            <span class="size-2 rounded-full bg-white"></span>
+          </span>
+        </span>
+        <span
+          class="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Default
+        </span>
+      </label>
+
+      <!-- Selected -->
+      <label class="group flex cursor-pointer items-center gap-2.5">
+        <input
+          type="radio"
+          name="labeled-radio"
+          value="selected"
+          x-model="value"
+          class="peer sr-only"
+        />
+        <span
+          class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+          :class="value === 'selected' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+        >
+          <span
+            x-show="value === 'selected'"
+            class="flex size-4 items-center justify-center"
+          >
+            <span class="size-2 rounded-full bg-white"></span>
+          </span>
+        </span>
+        <span
+          class="cursor-pointer text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Selected
+        </span>
+      </label>
+
+      <!-- Disabled -->
+      <div class="flex items-center gap-2.5">
+        <span
+          class="relative flex size-4 shrink-0 cursor-not-allowed items-center justify-center rounded-full border border-gray-200 bg-gray-100/50 shadow-none dark:border-gray-800 dark:bg-gray-800/50"
+        ></span>
+        <span
+          class="cursor-not-allowed text-sm font-medium text-gray-400 dark:text-gray-600"
+        >
+          Disabled
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
