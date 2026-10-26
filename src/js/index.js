@@ -9,7 +9,7 @@ import Dropzone from "dropzone";
 import flatpickr from "flatpickr";
 import { setupI18n } from "./i18n";
 
-import "./components/calendar-init.js";
+import "./components/calendar/calendar-init.js";
 import chart01 from "./components/charts/chart-01";
 import chart02 from "./components/charts/chart-02";
 import chart03 from "./components/charts/chart-03";

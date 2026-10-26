@@ -1,0 +1,266 @@
+<div
+  id="eventModal"
+  class="fixed inset-0 z-99999 hidden items-center justify-center overflow-y-auto bg-gray-900/50 p-4 backdrop-blur-xs"
+>
+  <div
+    class="modal-dialog relative w-full max-w-175 rounded-3xl border border-gray-200 bg-white p-6 shadow-theme-lg sm:p-11 dark:border-gray-800 dark:bg-[#1E2635]"
+  >
+    <!-- Top-end circular close button (Figma large design) -->
+    <button
+      type="button"
+      class="modal-close-btn absolute inset-e-6 top-6 hidden size-11 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-800 sm:flex dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      aria-label="Close"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-6"
+      >
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+      <span class="sr-only">Close</span>
+    </button>
+
+    <!-- Title and subtitle -->
+    <div class="flex flex-col gap-2">
+      <h3
+        class="text-title-lg font-semibold text-gray-800 sm:text-2xl dark:text-white/90"
+      >
+        Add / Edit Event
+      </h3>
+      <p class="text-sm font-normal text-gray-500 dark:text-gray-400">
+        Plan your next big moment: schedule or edit an event to stay on track
+      </p>
+    </div>
+
+    <!-- Form fields -->
+    <form id="eventForm" class="mt-6 space-y-5 sm:mt-8 sm:space-y-6">
+      <!-- Event Title -->
+      <div>
+        <label
+          for="event-title"
+          class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Event Title
+        </label>
+        <input
+          type="text"
+          id="event-title"
+          placeholder="Event title"
+          class="h-11 w-full rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+        />
+      </div>
+
+      <!-- Event Color -->
+      <div x-data="{ eventLevel: 'Primary' }">
+        <label
+          class="mb-3 block text-sm font-medium text-gray-700 sm:mb-4 dark:text-gray-300"
+        >
+          Event Color
+        </label>
+        <div class="flex flex-wrap items-center gap-4 sm:gap-5">
+          <!-- Primary -->
+          <label
+            for="modal-color-primary"
+            class="group flex cursor-pointer items-center gap-2 text-sm font-normal text-gray-700 select-none dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              id="modal-color-primary"
+              name="event-level"
+              value="Primary"
+              x-model="eventLevel"
+              checked
+              class="peer sr-only"
+            />
+            <span
+              class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+              :class="eventLevel === 'Primary' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+            >
+              <span
+                x-show="eventLevel === 'Primary'"
+                class="flex size-4 items-center justify-center"
+              >
+                <span class="size-2 rounded-full bg-white"></span>
+              </span>
+            </span>
+            Primary
+          </label>
+
+          <!-- Danger -->
+          <label
+            for="modal-color-danger"
+            class="group flex cursor-pointer items-center gap-2 text-sm font-normal text-gray-700 select-none dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              id="modal-color-danger"
+              name="event-level"
+              value="Danger"
+              x-model="eventLevel"
+              class="peer sr-only"
+            />
+            <span
+              class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+              :class="eventLevel === 'Danger' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+            >
+              <span
+                x-show="eventLevel === 'Danger'"
+                class="flex size-4 items-center justify-center"
+              >
+                <span class="size-2 rounded-full bg-white"></span>
+              </span>
+            </span>
+            Danger
+          </label>
+
+          <!-- Success -->
+          <label
+            for="modal-color-success"
+            class="group flex cursor-pointer items-center gap-2 text-sm font-normal text-gray-700 select-none dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              id="modal-color-success"
+              name="event-level"
+              value="Success"
+              x-model="eventLevel"
+              class="peer sr-only"
+            />
+            <span
+              class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+              :class="eventLevel === 'Success' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+            >
+              <span
+                x-show="eventLevel === 'Success'"
+                class="flex size-4 items-center justify-center"
+              >
+                <span class="size-2 rounded-full bg-white"></span>
+              </span>
+            </span>
+            Success
+          </label>
+
+          <!-- Warning -->
+          <label
+            for="modal-color-warning"
+            class="group flex cursor-pointer items-center gap-2 text-sm font-normal text-gray-700 select-none dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              id="modal-color-warning"
+              name="event-level"
+              value="Warning"
+              x-model="eventLevel"
+              class="peer sr-only"
+            />
+            <span
+              class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+              :class="eventLevel === 'Warning' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+            >
+              <span
+                x-show="eventLevel === 'Warning'"
+                class="flex size-4 items-center justify-center"
+              >
+                <span class="size-2 rounded-full bg-white"></span>
+              </span>
+            </span>
+            Warning
+          </label>
+
+          <!-- Info -->
+          <label
+            for="modal-color-info"
+            class="group flex cursor-pointer items-center gap-2 text-sm font-normal text-gray-700 select-none dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              id="modal-color-info"
+              name="event-level"
+              value="Info"
+              x-model="eventLevel"
+              class="peer sr-only"
+            />
+            <span
+              class="peer relative flex size-4 shrink-0 cursor-pointer items-center justify-center rounded-full border shadow-theme-xs outline-hidden transition-colors peer-focus-visible:border-brand-500 peer-focus-visible:ring-3 peer-focus-visible:ring-brand-500/20 dark:peer-focus-visible:border-brand-400 dark:peer-focus-visible:ring-brand-500/30"
+              :class="eventLevel === 'Info' ? 'border-brand-500 bg-brand-500 hover:border-brand-600 hover:bg-brand-600 dark:border-brand-500 dark:bg-brand-500 dark:hover:border-brand-600 dark:hover:bg-brand-600' : 'border-gray-300 bg-white hover:border-brand-500 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-brand-400'"
+            >
+              <span
+                x-show="eventLevel === 'Info'"
+                class="flex size-4 items-center justify-center"
+              >
+                <span class="size-2 rounded-full bg-white"></span>
+              </span>
+            </span>
+            Info
+          </label>
+        </div>
+      </div>
+
+      <!-- Enter Start Date -->
+      <div>
+        <label
+          for="event-start-date"
+          class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Enter Start Date
+        </label>
+        <div class="relative">
+          <input
+            type="text"
+            id="event-start-date"
+            placeholder="yyyy-mm-dd"
+            class="h-11 w-full rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+          />
+        </div>
+      </div>
+
+      <!-- Enter End Date -->
+      <div>
+        <label
+          for="event-end-date"
+          class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Enter End Date
+        </label>
+        <div class="relative">
+          <input
+            type="text"
+            id="event-end-date"
+            placeholder="yyyy-mm-dd"
+            class="h-11 w-full rounded-[10px] border border-gray-300 bg-white px-4 py-2.5 text-sm font-normal text-gray-800 shadow-theme-xs outline-hidden transition-colors placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/20 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-gray-500 dark:focus:border-brand-500/40"
+          />
+        </div>
+      </div>
+
+      <!-- Action buttons (Small: 2 columns full-width, Large: right-aligned) -->
+      <div class="grid grid-cols-2 gap-3 pt-2 sm:flex sm:justify-end sm:pt-4">
+        <button
+          type="button"
+          class="modal-close-btn flex h-11 w-full cursor-pointer items-center justify-center rounded-[10px] border border-gray-300 bg-transparent px-5 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 sm:w-auto dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn-add-event flex h-11 w-full cursor-pointer items-center justify-center rounded-[10px] bg-brand-500 px-5 py-3 text-sm font-medium text-white shadow-theme-xs hover:bg-brand-600 sm:w-auto"
+        >
+          Add Event
+        </button>
+        <button
+          type="button"
+          class="btn-update-event hidden h-11 w-full cursor-pointer items-center justify-center rounded-[10px] bg-brand-500 px-5 py-3 text-sm font-medium text-white shadow-theme-xs hover:bg-brand-600 sm:w-auto"
+        >
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

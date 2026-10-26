@@ -1,3 +1,4 @@
+import flatpickr from "flatpickr";
 import { Calendar } from "fullcalendar";
 import dayGridPlugin from "fullcalendar/daygrid";
 import interactionPlugin from "fullcalendar/interaction";
@@ -45,6 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const isRtl = document.documentElement.dir === "rtl";
   const locale = document.documentElement.lang || "en";
 
+  let isMobile = window.innerWidth < 640;
+  window.addEventListener("resize", () => {
+    isMobile = window.innerWidth < 640;
+  });
+
   let currentView = "dayGridMonth";
   let selectedEvent = null;
   let eventTitle = "";
@@ -91,11 +97,45 @@ document.addEventListener("DOMContentLoaded", function () {
   const getModalAddBtnEl = document.querySelector(".btn-add-event");
   const getModalUpdateBtnEl = document.querySelector(".btn-update-event");
 
+  let startPicker = null;
+  let endPicker = null;
+
+  function initPickers() {
+    if (getModalStartDateEl && !startPicker) {
+      startPicker = flatpickr(getModalStartDateEl, {
+        dateFormat: "Y-m-d",
+        prevArrow:
+          '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+        nextArrow:
+          '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+        onChange: (_selectedDates, dateStr) => {
+          eventStartDate = dateStr;
+        },
+      });
+    }
+
+    if (getModalEndDateEl && !endPicker) {
+      endPicker = flatpickr(getModalEndDateEl, {
+        dateFormat: "Y-m-d",
+        prevArrow:
+          '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+        nextArrow:
+          '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+        onChange: (_selectedDates, dateStr) => {
+          eventEndDate = dateStr;
+        },
+      });
+    }
+  }
+
+  initPickers();
+
   function openModal() {
     if (modalEl) {
       modalEl.classList.remove("hidden");
       modalEl.classList.add("flex");
       modalEl.style.display = "flex";
+      initPickers();
     }
   }
 
@@ -118,11 +158,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (getModalTitleEl) getModalTitleEl.value = "";
     if (getModalStartDateEl) getModalStartDateEl.value = "";
     if (getModalEndDateEl) getModalEndDateEl.value = "";
+    if (startPicker) startPicker.clear();
+    if (endPicker) endPicker.clear();
 
     const defaultRadio = document.querySelector(
       'input[name="event-level"][value="Primary"]',
     );
-    if (defaultRadio) defaultRadio.checked = true;
+    if (defaultRadio) {
+      defaultRadio.checked = true;
+      defaultRadio.dispatchEvent(new Event("change"));
+    }
   }
 
   function handleOpenAddModal() {
@@ -139,9 +184,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (getModalStartDateEl) getModalStartDateEl.value = eventStartDate;
     if (getModalEndDateEl) getModalEndDateEl.value = eventEndDate;
+    if (startPicker) startPicker.setDate(eventStartDate, false);
+    if (endPicker) endPicker.setDate(eventEndDate, false);
 
-    if (getModalAddBtnEl) getModalAddBtnEl.style.display = "flex";
-    if (getModalUpdateBtnEl) getModalUpdateBtnEl.style.display = "none";
+    if (getModalAddBtnEl) {
+      getModalAddBtnEl.classList.remove("hidden");
+      getModalAddBtnEl.style.display = "flex";
+    }
+    if (getModalUpdateBtnEl) {
+      getModalUpdateBtnEl.classList.add("hidden");
+      getModalUpdateBtnEl.style.display = "none";
+    }
 
     openModal();
   }
@@ -158,9 +211,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (getModalStartDateEl) getModalStartDateEl.value = eventStartDate;
     if (getModalEndDateEl) getModalEndDateEl.value = eventEndDate;
+    if (startPicker) startPicker.setDate(eventStartDate, false);
+    if (endPicker) endPicker.setDate(eventEndDate, false);
 
-    if (getModalAddBtnEl) getModalAddBtnEl.style.display = "flex";
-    if (getModalUpdateBtnEl) getModalUpdateBtnEl.style.display = "none";
+    if (getModalAddBtnEl) {
+      getModalAddBtnEl.classList.remove("hidden");
+      getModalAddBtnEl.style.display = "flex";
+    }
+    if (getModalUpdateBtnEl) {
+      getModalUpdateBtnEl.classList.add("hidden");
+      getModalUpdateBtnEl.style.display = "none";
+    }
 
     openModal();
   }
@@ -189,19 +250,31 @@ document.addEventListener("DOMContentLoaded", function () {
     if (getModalTitleEl) getModalTitleEl.value = eventTitle;
     if (getModalStartDateEl) getModalStartDateEl.value = eventStartDate;
     if (getModalEndDateEl) getModalEndDateEl.value = eventEndDate;
+    if (startPicker) startPicker.setDate(eventStartDate, false);
+    if (endPicker) endPicker.setDate(eventEndDate, false);
 
     const checkedRadio = document.querySelector(
       `input[name="event-level"][value="${eventLevel}"]`,
     );
-    if (checkedRadio) checkedRadio.checked = true;
+    if (checkedRadio) {
+      checkedRadio.checked = true;
+      checkedRadio.dispatchEvent(new Event("change"));
+    }
 
-    if (getModalAddBtnEl) getModalAddBtnEl.style.display = "none";
-    if (getModalUpdateBtnEl) getModalUpdateBtnEl.style.display = "flex";
+    if (getModalAddBtnEl) {
+      getModalAddBtnEl.classList.add("hidden");
+      getModalAddBtnEl.style.display = "none";
+    }
+    if (getModalUpdateBtnEl) {
+      getModalUpdateBtnEl.classList.remove("hidden");
+      getModalUpdateBtnEl.style.display = "flex";
+    }
 
     openModal();
   }
 
-  function handleAddOrUpdateEvent() {
+  function handleAddOrUpdateEvent(e) {
+    if (e && e.preventDefault) e.preventDefault();
     const titleVal =
       (getModalTitleEl?.value || "").trim() ||
       (selectedEvent ? "Event" : "New Event");
@@ -240,9 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calendar.removeAllEvents();
     events.forEach((ev) => calendar.addEvent(ev));
-
     closeModal();
-    resetModalFields();
   }
 
   /*=====================*/
@@ -255,16 +326,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const colorMap = {
       success: {
-        bg: "border border-success-100 bg-success-50 dark:border-success-500/20 dark:bg-success-500/15",
-        dot: "bg-success-500",
-        title: "text-success-700 dark:text-success-400",
-        time: "text-success-600/80 dark:text-success-400/80",
+        bg: "border border-green-100 bg-green-50 dark:border-green-500/20 dark:bg-green-500/15",
+        dot: "bg-green-500",
+        title: "text-green-700 dark:text-green-400",
+        time: "text-green-600/80 dark:text-green-400/80",
       },
       danger: {
-        bg: "border border-error-100 bg-error-50 dark:border-error-500/20 dark:bg-error-500/15",
-        dot: "bg-error-500",
-        title: "text-error-700 dark:text-error-400",
-        time: "text-error-600/80 dark:text-error-400/80",
+        bg: "border border-red-100 bg-red-50 dark:border-red-500/20 dark:bg-red-500/15",
+        dot: "bg-red-500",
+        title: "text-red-700 dark:text-red-400",
+        time: "text-red-600/80 dark:text-red-400/80",
       },
       primary: {
         bg: "border border-brand-100 bg-brand-50 dark:border-brand-500/20 dark:bg-brand-500/15",
@@ -278,6 +349,12 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "text-orange-700 dark:text-orange-400",
         time: "text-orange-600/80 dark:text-orange-400/80",
       },
+      info: {
+        bg: "border border-blue-100 bg-blue-50 dark:border-blue-500/20 dark:bg-blue-500/15",
+        dot: "bg-blue-500",
+        title: "text-blue-700 dark:text-blue-400",
+        time: "text-blue-600/80 dark:text-blue-400/80",
+      },
     };
 
     const colors = colorMap[calendarLevel] || colorMap["primary"];
@@ -289,14 +366,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isTimeGridView) {
       return {
         html: `
-          <div dir="ltr" class="event-fc-color flex h-full w-full flex-col justify-start overflow-hidden rounded-lg p-1.5 transition-colors ${colors.bg}">
-            <div class="flex items-center gap-1.5">
-              <div class="size-2 shrink-0 rounded-full ${colors.dot}"></div>
-              <div class="truncate text-xs font-semibold leading-tight ${colors.title}">${eventInfo.event.title || ""}</div>
+          <div dir="ltr" class="event-fc-color flex h-full w-full flex-col justify-start overflow-hidden rounded-md p-1 transition-colors sm:rounded-lg sm:p-1.5 ${colors.bg}">
+            <div class="flex items-center gap-1 sm:gap-1.5">
+              <div class="size-1.5 shrink-0 rounded-full sm:size-2 ${colors.dot}"></div>
+              <div class="truncate text-[11px] font-semibold leading-tight sm:text-xs ${colors.title}">${eventInfo.event.title || ""}</div>
             </div>
             ${
               eventInfo.timeText
-                ? `<div class="mt-0.5 truncate ps-3.5 text-[11px] font-medium leading-tight ${colors.time}">${eventInfo.timeText}</div>`
+                ? `<div class="mt-0.5 truncate ps-2.5 text-[10px] font-medium leading-tight sm:ps-3.5 sm:text-[11px] ${colors.time}">${eventInfo.timeText}</div>`
                 : ""
             }
           </div>
@@ -306,14 +383,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return {
       html: `
-        <div dir="ltr" class="event-fc-color flex items-center rounded-lg py-1.5 ps-2.5 pe-3 transition-colors ${colors.bg}">
-          <div class="fc-daygrid-event-dot ms-0 me-2 h-3.5 w-1 shrink-0 rounded-full border-none ${colors.dot}"></div>
+        <div dir="ltr" class="event-fc-color flex items-center rounded-md py-1 ps-1.5 pe-2 transition-colors sm:rounded-lg sm:py-1.5 sm:ps-2.5 sm:pe-3 ${colors.bg}">
+          <div class="fc-daygrid-event-dot ms-0 me-1 h-2.5 w-1 shrink-0 rounded-full border-none sm:me-2 sm:h-3.5 ${colors.dot}"></div>
           ${
             eventInfo.timeText
-              ? `<div class="fc-event-time me-1.5 p-0 text-xs font-normal text-gray-500 dark:text-gray-400">${eventInfo.timeText}</div>`
+              ? `<div class="fc-event-time me-1 p-0 text-[10px] font-normal text-gray-500 sm:me-1.5 sm:text-xs dark:text-gray-400">${eventInfo.timeText}</div>`
               : ""
           }
-          <div class="fc-event-title truncate p-0 text-xs font-medium text-gray-700 dark:text-white">${eventInfo.event.title || ""}</div>
+          <div class="fc-event-title truncate p-0 text-[11px] font-medium text-gray-700 sm:text-xs dark:text-white">${eventInfo.event.title || ""}</div>
         </div>
       `,
     };
@@ -348,26 +425,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     containerEl.innerHTML = `
-      <div class="relative calendar-view-dropdown">
+      <div class="calendar-view-dropdown relative">
         <button
           type="button"
-          class="calendar-view-btn flex h-9 w-full min-w-20 items-center justify-center gap-1.5 rounded-lg border border-gray-300 ps-3 pe-2 text-sm font-medium text-gray-700 shadow-xs dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+          class="calendar-view-btn flex h-9 w-full min-w-18 items-center justify-center gap-1 rounded-lg border border-gray-300 ps-2.5 pe-1.5 text-xs font-medium text-gray-700 shadow-xs sm:min-w-20 sm:gap-1.5 sm:ps-3 sm:pe-2 sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
           aria-expanded="false"
           aria-haspopup="listbox"
         >
           <span class="calendar-view-label">${activeOption.label}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="calendar-view-chevron h-4.5 w-4.5 transition-transform duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="calendar-view-chevron h-4 w-4 transition-transform duration-200 sm:h-4.5 sm:w-4.5">
             <path d="m6 9 6 6 6-6"/>
           </svg>
         </button>
-        <div class="calendar-view-menu absolute inset-e-0 z-50 mt-1.5 hidden w-38 space-y-0.5 rounded-xl border border-gray-200 bg-white p-1.5 shadow-lg dark:border-gray-700 dark:bg-gray-900">
+        <div class="calendar-view-menu absolute inset-e-0 z-50 mt-1.5 hidden w-36 max-w-[calc(100vw-32px)] space-y-0.5 rounded-xl border border-gray-200 bg-white p-1.5 shadow-lg sm:w-38 dark:border-gray-700 dark:bg-gray-900">
           ${viewOptions
             .map(
               (view) => `
             <button
               type="button"
               data-view-key="${view.key}"
-              class="calendar-view-option w-full rounded-lg px-2.5 py-1.5 text-start text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5 ${
+              class="calendar-view-option w-full rounded-lg px-2.5 py-1.5 text-start text-xs text-gray-700 hover:bg-gray-100 sm:text-sm dark:text-gray-300 dark:hover:bg-white/5 ${
                 activeViewKey === view.key
                   ? "bg-gray-100 font-medium dark:bg-white/5"
                   : "font-normal"
@@ -448,6 +525,8 @@ document.addEventListener("DOMContentLoaded", function () {
   /*=====================*/
   // FullCalendar Options & Init
   /*=====================*/
+  const bookmarkIconHtml = `<span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4.5 text-brand-500 sm:size-5.5"><path d="M19 3v17a1 1 0 01-1.496.868l-4.512-2.578a2 2 0 00-1.984 0l-4.512 2.578A1 1 0 015 20V3z" /></svg></span>`;
+
   const calendarOptions = {
     plugins: [
       themePlugin,
@@ -466,80 +545,98 @@ document.addEventListener("DOMContentLoaded", function () {
       end: "",
     },
     headerToolbarClass:
-      "sticky top-0! flex-col gap-4 z-20! [padding-inline:24px]! pt-6 sm:flex-row",
-    toolbarTitleClass: "text-lg! font-medium! text-gray-800 dark:text-white/90",
-    toolbarSectionClass: "ta-toolbar-section",
+      "sticky top-0! z-20! flex-wrap gap-2 sm:gap-4 [padding-inline:16px]! sm:[padding-inline:24px]! pt-4 sm:pt-6",
+    toolbarTitleClass:
+      "text-base! sm:text-lg! font-semibold! text-gray-800 dark:text-white/90",
+    toolbarSectionClass: (info) => {
+      if (info.name === "start") {
+        return "ta-toolbar-section ta-toolbar-start order-2 flex w-full items-center justify-between sm:order-1 sm:w-auto sm:justify-start gap-2";
+      }
+      if (info.name === "center") {
+        return "ta-toolbar-section ta-toolbar-center order-1 flex items-center justify-start sm:order-2 sm:justify-center";
+      }
+      if (info.name === "end") {
+        return "ta-toolbar-section ta-toolbar-end order-1 flex items-center justify-end sm:order-3 sm:justify-end";
+      }
+      return "ta-toolbar-section";
+    },
     buttonGroupClass: "gap-2",
 
     buttons: {
       prev: {
         iconContent: {
-          html: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-6 bg-transparent text-gray-700 rtl:rotate-180 dark:text-gray-400"><path d="M15 18l-6-6 6-6" /></svg>`,
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 bg-transparent text-gray-700 sm:size-6 rtl:rotate-180 dark:text-gray-400"><path d="M15 18l-6-6 6-6" /></svg>`,
         },
         className:
-          "flex size-10! p-0! items-center justify-center! rounded-lg! border! bg-transparent! border-gray-200! text-gray-700 hover:border-gray-200 hover:bg-gray-50! focus:shadow-none active:border-gray-200! active:bg-transparent! active:shadow-none! dark:border-gray-800! dark:text-gray-400 dark:hover:border-gray-800 dark:hover:bg-gray-900! dark:active:border-gray-800!",
+          "flex size-9! sm:size-10! p-0! items-center justify-center! rounded-lg! border! bg-transparent! border-gray-200! text-gray-700 hover:border-gray-200 hover:bg-gray-50! focus:shadow-none active:border-gray-200! active:bg-transparent! active:shadow-none! dark:border-gray-800! dark:text-gray-400 dark:hover:border-gray-800 dark:hover:bg-gray-900! dark:active:border-gray-800!",
       },
       next: {
         iconContent: {
-          html: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-6 bg-transparent text-gray-700 rtl:rotate-180 dark:text-gray-400"><path d="M9 18l6-6-6-6" /></svg>`,
+          html: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5 bg-transparent text-gray-700 sm:size-6 rtl:rotate-180 dark:text-gray-400"><path d="M9 18l6-6-6-6" /></svg>`,
         },
         className:
-          "flex size-10! p-0! items-center justify-center! rounded-lg! border! bg-transparent! border-gray-200! text-gray-700 hover:border-gray-200 hover:bg-gray-50! focus:shadow-none active:border-gray-200! active:bg-transparent! active:shadow-none! dark:border-gray-800! dark:text-gray-400 dark:hover:border-gray-800 dark:hover:bg-gray-900! dark:active:border-gray-800!",
+          "flex size-9! sm:size-10! p-0! items-center justify-center! rounded-lg! border! bg-transparent! border-gray-200! text-gray-700 hover:border-gray-200 hover:bg-gray-50! focus:shadow-none active:border-gray-200! active:bg-transparent! active:shadow-none! dark:border-gray-800! dark:text-gray-400 dark:hover:border-gray-800 dark:hover:bg-gray-900! dark:active:border-gray-800!",
       },
       addEventButton: {
         text: "Add Event +",
         click: () => handleOpenAddModal(),
         className:
-          "rounded-lg! border-0! bg-brand-500! px-4! py-2.5! text-sm! font-medium! text-white hover:bg-brand-600! focus:shadow-none! w-auto!",
+          "rounded-lg! border-0! bg-brand-500! px-3! sm:px-4! py-2! sm:py-2.5! text-xs! sm:text-sm! font-medium! text-white hover:bg-brand-600! focus:shadow-none! w-auto!",
       },
     },
 
     // View configurations
     views: {
       multiMonthYear: {
-        aspectRatio: 1.2,
-        contentHeight: "auto",
-        height: "auto",
         multiMonthMaxColumns: 3,
-        tableClass: "overflow-hidden! rounded-lg! bg-transparent!",
-        singleMonthMinWidth: 320,
+        singleMonthClass: "fc-multimonth",
+        tableClass:
+          "overflow-visible! border-0! sm:border! sm:border-gray-200! dark:sm:border-gray-800! rounded-none! sm:rounded-lg! mt-0! bg-transparent!",
+        singleMonthHeaderClass:
+          "mb-0! bg-white dark:bg-gray-900 sm:bg-transparent!",
+        tableHeaderClass:
+          "mb-0! rounded-none! sm:rounded-t-lg! bg-gray-50 dark:bg-gray-900!",
+        tableBodyClass: "mt-0!",
+        singleMonthMinWidth: 280,
         showNonCurrentDates: true,
         singleMonthHeaderInnerClass:
           "text-sm font-medium! text-gray-800 dark:text-white/90",
+        dayHeaderRowClass: "fc-multimonth-day-header-row",
         dayHeaderClass: (data) =>
           data.inPopover
             ? "relative! border-b! border-gray-200! bg-gray-50/70! px-4! py-3! text-start! dark:border-gray-800! dark:bg-gray-800/50!"
-            : "border-0! bg-gray-50 py-2! dark:bg-gray-900",
+            : "border-0! bg-gray-50 py-2! dark:bg-gray-900 dark:sm:bg-transparent! first:rounded-none! first:sm:rounded-ss-lg! last:rounded-none! last:sm:rounded-se-lg!",
         dayHeaderInnerClass: (data) =>
           data.inPopover
             ? "text-sm! font-semibold! text-gray-800! dark:text-white/90!"
-            : "py-1 text-xs font-medium text-gray-400 uppercase",
+            : "py-1 text-[11px] sm:text-xs font-medium text-gray-400 uppercase",
         dayCellClass: (data) => {
           if (data.inPopover) return "bg-transparent! p-3!";
           let cls = "relative! p-0.5 sm:p-1!";
           if (data.isToday)
             cls +=
-              " isolate bg-gray-100! dark:bg-gray-800/40! font-semibold text-brand-500 dark:text-brand-400";
+              " isolate rounded-sm! bg-gray-100! dark:bg-gray-800/40! font-semibold text-brand-500 dark:text-brand-400";
           if (data.isOther) cls += " bg-transparent!";
           return cls;
         },
         dayCellInnerClass: (data) =>
           data.inPopover
             ? "flex custom-scrollbar max-h-60 flex-col gap-1.5 overflow-y-auto"
-            : "",
-        dayCellTopInnerClass: "text-sm! text-gray-700 dark:text-gray-300",
+            : "h-0 max-h-0 overflow-hidden invisible",
+        dayCellTopInnerClass:
+          "text-xs! sm:text-sm! text-gray-700 dark:text-gray-300",
         dayMaxEvents: 0,
+        moreLinkClass:
+          "border-0! border-transparent! bg-transparent! p-0! hover:bg-transparent! focus:outline-none! focus:ring-0!",
         rowMoreLinkClass:
-          "absolute! -top-1! -start-0.5! z-10! border-0! aria-hidden:hidden! bg-transparent! p-0!",
-        // rowMoreLinkInnerClass: "overflow-visible!",
+          "absolute! top-0! sm:-top-0.5! start-0.5! sm:start-1! z-10! border-0! border-transparent! bg-transparent! p-0!",
+        rowMoreLinkInnerClass: "overflow-visible",
         moreLinkContent() {
-          return {
-            html: `<span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5.5 text-brand-500"><path d="M19 3v17a1 1 0 01-1.496.868l-4.512-2.578a2 2 0 00-1.984 0l-4.512 2.578A1 1 0 015 20V3z" /></svg></span>`,
-          };
+          return { html: bookmarkIconHtml };
         },
       },
       dayGridMonth: {
-        dayMaxEvents: 2,
+        dayMaxEvents: isMobile ? 0 : 2,
         dayHeaderAlign: (data) => (data.inPopover ? "start" : "center"),
         dayHeaderClass: (data) =>
           data.inPopover
@@ -548,24 +645,33 @@ document.addEventListener("DOMContentLoaded", function () {
         dayHeaderInnerClass: (data) =>
           data.inPopover
             ? "text-sm! font-semibold! text-gray-800! dark:text-white/90!"
-            : "px-5! py-4! text-sm font-medium text-gray-400 uppercase",
+            : "px-1! py-2! sm:px-3! sm:py-3! md:px-5! md:py-4! text-xs! sm:text-sm! font-medium! text-gray-400 uppercase",
         dayCellClass: (data) => {
           if (data.inPopover) return "bg-transparent! p-3!";
-          return `bg-transparent! p-2! ${
+          return `bg-transparent! p-1! sm:p-2! ${
             data.isToday ? "bg-gray-100! dark:bg-gray-800/40!" : ""
           }`;
         },
+        dayCellTopInnerClass:
+          "text-xs! sm:text-sm! text-gray-700 dark:text-gray-300",
         dayCellInnerClass: (data) => {
           if (data.inPopover)
             return "flex custom-scrollbar max-h-60 flex-col gap-1.5 overflow-y-auto";
+          if (isMobile) return "h-0 max-h-0 overflow-hidden invisible";
           return data.isToday ? "rounded-sm!" : "";
         },
-        dayCellTopInnerClass: "text-gray-700 dark:text-gray-300",
+        rowMoreLinkClass: isMobile
+          ? "absolute -top-1 -start-0.5 z-10 border-0 bg-transparent p-0"
+          : "",
+        rowMoreLinkInnerClass: isMobile ? "overflow-visible" : "",
         moreLinkClass:
-          "border-0! bg-transparent! p-0! hover:bg-transparent! focus:outline-none",
+          "border-0 bg-transparent p-0 hover:bg-transparent focus:outline-none",
         moreLinkContent(args) {
+          if (isMobile) {
+            return { html: bookmarkIconHtml };
+          }
           return {
-            html: `<span class="fc-more-link-badge inline-flex items-center rounded-sm bg-brand-50 px-1.5 py-0.5 text-xs font-medium text-brand-600 transition-colors hover:bg-brand-100 dark:bg-brand-500/15 dark:text-brand-400 dark:hover:bg-brand-500/25">+${args.num} more</span>`,
+            html: `<span class="fc-more-link-badge inline-flex items-center rounded-sm bg-brand-50 px-1 py-0.5 text-[10px] font-medium text-brand-600 transition-colors hover:bg-brand-100 sm:px-1.5 sm:text-xs dark:bg-brand-500/15 dark:text-brand-400 dark:hover:bg-brand-500/25">+${args.num} more</span>`,
           };
         },
       },
@@ -573,6 +679,16 @@ document.addEventListener("DOMContentLoaded", function () {
         slotDuration: "01:00:00",
         slotMinHeight: 56,
         allDaySlot: true,
+        dayMaxEvents: isMobile ? 0 : undefined,
+        moreLinkClass:
+          "border-0 bg-transparent p-0 hover:bg-transparent focus:outline-none",
+        rowMoreLinkClass: isMobile
+          ? "absolute -top-1 -start-0.5 z-10 border-0 bg-transparent p-0"
+          : "",
+        rowMoreLinkInnerClass: isMobile ? "overflow-visible" : "",
+        moreLinkContent: isMobile
+          ? () => ({ html: bookmarkIconHtml })
+          : undefined,
         dayHeaderContent: (arg) => {
           const weekday = new Intl.DateTimeFormat(locale, {
             weekday: "short",
@@ -589,7 +705,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.isToday ? "bg-gray-100/70! dark:bg-gray-800/60!" : ""
           }`,
         dayHeaderInnerClass: (data) =>
-          `px-3! py-3.5! text-center! text-xs! font-medium! text-gray-500! uppercase! dark:text-gray-400! ${
+          `px-1.5! sm:px-3! py-2.5! sm:py-3.5! text-center! text-[11px]! sm:text-xs! font-medium! text-gray-500! uppercase! dark:text-gray-400! ${
             data.isToday
               ? "font-semibold! text-brand-500! dark:text-brand-400!"
               : ""
@@ -597,7 +713,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slotHeaderDividerClass:
           "border-e! border-s-0! border-y-0! border-gray-200! dark:border-gray-800!",
         slotHeaderClass:
-          "px-3! py-2! text-start! text-xs! font-medium! text-gray-400! dark:text-gray-500!",
+          "px-1.5! sm:px-3! py-1.5! sm:py-2! text-start! text-[11px]! sm:text-xs! font-medium! text-gray-400! dark:text-gray-500!",
         slotLaneClass: "border-gray-100! dark:border-gray-800/60!",
         dayLaneClass: (data) =>
           `border-gray-200! dark:border-gray-800! ${
@@ -606,12 +722,22 @@ document.addEventListener("DOMContentLoaded", function () {
         allDayDividerClass:
           "border-b! border-t-0! border-x-0! border-gray-200! p-0! bg-transparent! dark:border-gray-800!",
         allDayHeaderClass:
-          "border-0! bg-gray-50! text-xs! font-medium! text-gray-500! dark:border-0! dark:bg-gray-900! dark:text-gray-400!",
+          "border-0! bg-gray-50! text-[11px]! sm:text-xs! font-medium! text-gray-500! dark:border-0! dark:bg-gray-900! dark:text-gray-400!",
       },
       timeGridDay: {
         slotDuration: "00:30:00",
         slotMinHeight: 48,
         allDaySlot: true,
+        dayMaxEvents: isMobile ? 0 : undefined,
+        moreLinkClass:
+          "border-0 bg-transparent p-0 hover:bg-transparent focus:outline-none",
+        rowMoreLinkClass: isMobile
+          ? "absolute -top-1 -start-0.5 z-10 border-0 bg-transparent p-0"
+          : "",
+        rowMoreLinkInnerClass: isMobile ? "overflow-visible" : "",
+        moreLinkContent: isMobile
+          ? () => ({ html: bookmarkIconHtml })
+          : undefined,
         dayHeaderContent: (arg) => {
           const weekday = new Intl.DateTimeFormat(locale, {
             weekday: "short",
@@ -628,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.isToday ? "bg-gray-100/70! dark:bg-gray-800/60!" : ""
           }`,
         dayHeaderInnerClass: (data) =>
-          `px-4! py-3.5! text-center! text-xs! font-medium! text-gray-500! uppercase! dark:text-gray-400! ${
+          `px-2! sm:px-4! py-2.5! sm:py-3.5! text-center! text-xs! font-medium! text-gray-500! uppercase! dark:text-gray-400! ${
             data.isToday
               ? "font-semibold! text-brand-500! dark:text-brand-400!"
               : ""
@@ -636,7 +762,7 @@ document.addEventListener("DOMContentLoaded", function () {
         slotHeaderDividerClass:
           "border-e! border-s-0! border-y-0! border-gray-200! dark:border-gray-800!",
         slotHeaderClass:
-          "px-3! py-2! text-start! text-xs! font-medium! text-gray-400! dark:text-gray-500!",
+          "px-2! sm:px-3! py-1.5! sm:py-2! text-start! text-[11px]! sm:text-xs! font-medium! text-gray-400! dark:text-gray-500!",
         slotLaneClass: "border-gray-100! dark:border-gray-800/60!",
         dayLaneClass: (data) =>
           `border-gray-200! dark:border-gray-800! ${
@@ -654,6 +780,7 @@ document.addEventListener("DOMContentLoaded", function () {
     borderless: true,
     viewClass:
       "border-t! border-b-0! border-x-0! border-gray-200! bg-transparent! dark:border-gray-800! dark:bg-transparent!",
+    tableHeaderClass: "border-0! bg-gray-50! dark:bg-gray-900!",
     dayHeaderDividerClass:
       "border-b! border-t-0! border-x-0! border-gray-200! p-0! bg-transparent! dark:border-gray-800!",
     slotMinHeight: 56,
@@ -704,6 +831,11 @@ document.addEventListener("DOMContentLoaded", function () {
   /*=====================*/
   // Event Listeners for Modal
   /*=====================*/
+  const eventForm = document.getElementById("eventForm");
+  if (eventForm) {
+    eventForm.addEventListener("submit", handleAddOrUpdateEvent);
+  }
+
   if (getModalAddBtnEl) {
     getModalAddBtnEl.addEventListener("click", handleAddOrUpdateEvent);
   }
@@ -717,6 +849,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("click", (event) => {
     if (event.target === modalEl) {
+      closeModal();
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      modalEl &&
+      !modalEl.classList.contains("hidden")
+    ) {
       closeModal();
     }
   });
