@@ -7,7 +7,9 @@
     "viewMore": "View More",
     "delete": "Delete",
     "filter": "Filter",
-    "seeAll": "See all"
+    "seeAll": "See all",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   },
   "sidebar": {
     "groups": {
@@ -92,7 +94,6 @@
       "badge": "Badge",
       "breadcrumb": "Breadcrumb",
       "buttons": "Buttons",
-      "buttonsGroup": "Buttons Group",
       "cards": "Cards",
       "carousel": "Carousel",
       "dropdowns": "Dropdowns",
@@ -120,7 +121,15 @@
       "supportReply": "Ticket Reply",
       "email": "Email",
       "inbox": "Inbox",
-      "inboxDetails": "Details"
+      "inboxDetails": "Details",
+      "dialogs": "Dialogs",
+      "hr": "HR",
+      "emptyState": "Empty State",
+      "variants01": "Variants 01",
+      "variants02": "Variants 02",
+      "variants03": "Variants 03",
+      "variants04": "Variants 04",
+      "variants05": "Variants 05"
     },
     "widget": {
       "title": "#1 Tailwind CSS Dashboard",
@@ -187,7 +196,8 @@
       "monthly": "Monthly",
       "quarterly": "Quarterly",
       "annually": "Annually",
-      "selectDateRange": "Select date range"
+      "selectDateRange": "Select date range",
+      "overview": "Overview"
     },
     "recentOrders": {
       "title": "Recent Orders",
@@ -216,7 +226,9 @@
       "subtitle": "Number of customer based on country",
       "customers": "{{count}} Customers",
       "usa": "USA",
-      "france": "France"
+      "france": "France",
+      "yemen": "Yemen",
+      "uk": "United Kingdom"
     }
   },
   "analytics": {
@@ -233,7 +245,12 @@
       "months12": "12 months",
       "days30": "30 days",
       "days7": "7 days",
-      "hours24": "24 hours"
+      "hours24": "24 hours",
+      "twelveMonths": "12 months",
+      "thirtyDays": "30 days",
+      "sevenDays": "7 days",
+      "twentyFourHours": "24 hours",
+      "visitors": "Visitors"
     },
     "topChannels": {
       "title": "Top Channels",
@@ -255,10 +272,15 @@
       "avgMonthly": "Avg, Monthly"
     },
     "acquisitionChannels": {
-      "title": "Acquisition Channels"
+      "title": "Acquisition Channels",
+      "direct": "Direct",
+      "organic": "Organic",
+      "referral": "Referral",
+      "total": "Total: 120k"
     },
     "session": {
-      "title": "Sessions By Device"
+      "title": "Sessions By Device",
+      "total": "Total"
     },
     "recentOrders": {
       "title": "Recent Orders",
@@ -291,7 +313,8 @@
       "title": "Impression & Data Traffic",
       "totalRevenue": "Total Revenue",
       "sales": "Sales",
-      "revenue": "Revenue"
+      "revenue": "Revenue",
+      "selectDateRange": "Select date range"
     },
     "featuredCampaign": {
       "title": "Featured Campaigns",
@@ -326,7 +349,9 @@
       "conversionRate": "Conversion Rate",
       "pageBounceRate": "Page Bounce Rate",
       "thenLastWeek": "then last Week",
-      "newSales": "New Sales"
+      "newSales": "New Sales",
+      "thanYesterday": "than yesterday",
+      "thanLastMonth": "than last Month"
     },
     "trafficSource": {
       "title": "Top Traffic Source",
@@ -407,7 +432,10 @@
         "complete": "Complete",
         "pending": "Pending",
         "cancel": "Cancel"
-      }
+      },
+      "searchPlaceholder": "Search...",
+      "noOrders": "No orders found",
+      "noOrdersDescription": "Try adjusting your search or filter to find what you're looking for."
     }
   },
   "stocks": {
@@ -447,24 +475,19 @@
         "status": "Status"
       },
       "actions": {
-        "bought": "Bought {{symbol}}",
-        "sell": "Sell {{symbol}}"
+        "bought": "Bought {symbol}",
+        "sell": "Sell {symbol}"
       },
       "categories": {
         "finance": "Finance",
         "technology": "Technology",
-        "socialMedia": "Social Media",
-        "ecommerce": "E-commerce"
+        "ecommerce": "E-commerce",
+        "media": "Social Media"
       },
       "statuses": {
         "success": "Success",
         "pending": "Pending",
         "failed": "Failed"
-      },
-      "pagination": {
-        "previous": "Previous",
-        "next": "Next",
-        "pageOf": "Page {{current}} of {{total}}"
       }
     }
   },
@@ -478,7 +501,8 @@
       "totalRevenue": "Total Revenue",
       "activeUsers": "Active Users",
       "clv": "Customer Lifetime Value",
-      "cac": "Customer Acquisition Cost"
+      "cac": "Customer Acquisition Cost",
+      "filter": "Filter"
     },
     "churnRate": {
       "title": "Churn Rate",
@@ -504,8 +528,10 @@
         "adImpressions": "Ad Impressions",
         "websiteSession": "Website Session",
         "appDownload": "App Download",
-        "newUsers": "New Users"
-      }
+        "newUsers": "New Users",
+        "adImpression": "Ad Impression"
+      },
+      "total": "Total: 120k"
     },
     "recentInvoices": {
       "title": "Recent Invoices",
@@ -566,6 +592,7 @@
       "monthly": "Monthly",
       "yearly": "Yearly",
       "shipment": "Shipment",
+      "inTransit": "In Transit",
       "delivery": "Delivery"
     },
     "revenueEarned": {
@@ -771,13 +798,18 @@
         "usa": "USA",
         "france": "France",
         "japan": "Japan",
+        "egypt": "Egypt",
         "germany": "Germany"
       }
     },
     "topProducts": {
       "title": "Top Products",
+      "searchPlaceholder": "Search...",
+      "noProducts": "No products found",
+      "noProductsDescription": "Try changing your search query.",
       "table": {
         "productName": "Product Name",
+        "productId": "Product ID",
         "category": "Category",
         "sales": "Sales",
         "earnings": "Earnings",
@@ -788,25 +820,37 @@
         "classicDenimJacket": "Classic Denim Jacket",
         "slimFitChinos": "Slim Fit Chinos",
         "organicCottonTShirt": "Organic Cotton T-Shirt",
-        "leatherAnkleBoots": "Leather Ankle Boots"
+        "leatherAnkleBoots": "Leather Ankle Boots",
+        "woolBlendScarf": "Wool Blend Scarf"
       },
       "variants": {
         "threeSizes": "3 Sizes",
         "fourColors": "4 Colors",
         "fiveColors": "5 Colors",
-        "sixSizes": "6 Sizes"
+        "sixSizes": "6 Sizes",
+        "twoColors": "2 Colors"
       },
       "categories": {
         "jacket": "Jacket",
         "pants": "Pants",
         "tShirt": "T-Shirt",
-        "footwear": "Footwear"
+        "footwear": "Footwear",
+        "accessory": "Accessory"
       },
       "statuses": {
         "inStock": "In Stock",
         "lowStock": "Low Stock",
         "outOfStock": "Out of Stock"
       }
+    },
+    "revenueChart": {
+      "title": "Revenue Breakdown",
+      "subtitle": "Revenue insights & performance overview",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "online": "Online",
+      "offline": "Offline"
     }
   },
   "finance": {
@@ -894,6 +938,137 @@
         "completed": "Completed",
         "inProgress": "In Progress"
       }
+    }
+  },
+  "hr": {
+    "header": {
+      "title": "HR Dashboard",
+      "subtitle": "Here's what's happening across your team.",
+      "dateRange": "Aug 16, 2028 - Sep 16, 2028",
+      "addMember": "Add Member"
+    },
+    "quickStats": {
+      "title": "Quick stats",
+      "monthly": "Monthly",
+      "weekly": "Weekly",
+      "yearly": "Yearly",
+      "thanLastMonth": "than last month",
+      "thanLastWeek": "than last week",
+      "thanLastYear": "than last year",
+      "totalEmployee": "Total Employee",
+      "activeEmployee": "Active Employee",
+      "onLeave": "On Leave",
+      "totalPayroll": "Total Payroll"
+    },
+    "attendanceOverview": {
+      "title": "Attendance overview",
+      "monthly": "Monthly",
+      "weekly": "Weekly",
+      "yearly": "Yearly",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      }
+    },
+    "employeeByDepartment": {
+      "title": "Employee by Department",
+      "thanLastMonth": "than last month",
+      "viewDetails": "View Details",
+      "exportData": "Export Data",
+      "departments": {
+        "engineering": "Engineering",
+        "marketing": "Marketing",
+        "sales": "Sales",
+        "hr": "Human Resources",
+        "finance": "Finance",
+        "others": "Others"
+      }
+    },
+    "interviewAndMeetings": {
+      "title": "Interview and Meetings",
+      "monthYear": "January 2027",
+      "joinNow": "Join Now",
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
+      "meetings": {
+        "productSync": "Product Team Sync",
+        "frontendInterview": "Interview Candidates - Frontend Developer"
+      }
+    },
+    "jobStatistics": {
+      "title": "Job Statistics",
+      "monthly": "Monthly",
+      "weekly": "Weekly",
+      "yearly": "Yearly",
+      "totalJob": "Total Job",
+      "activeJob": "Active Job",
+      "interview": "Interview",
+      "hired": "Hired"
+    },
+    "employeeGrowth": {
+      "title": "Employee Growth",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "series": "Employees",
+      "days": {
+        "sat": "Sat",
+        "sun": "Sun",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri"
+      }
+    },
+    "employeeDirectory": {
+      "title": "Employee Directory",
+      "searchPlaceholder": "Search...",
+      "filter": "Filter",
+      "noEmployeesTitle": "No employees found",
+      "allDepartment": "All Department",
+      "allStatus": "All Status",
+      "table": {
+        "users": "Users",
+        "department": "Department",
+        "role": "Role",
+        "status": "Status",
+        "joined": "Joined",
+        "action": "Action"
+      },
+      "departments": {
+        "all": "All Department",
+        "engineering": "Engineering",
+        "hr": "HR",
+        "sales": "Sales",
+        "marketing": "Marketing",
+        "finance": "Finance"
+      },
+      "statuses": {
+        "all": "All Status",
+        "active": "Active",
+        "onboarding": "Onboarding",
+        "onLeave": "On Leave"
+      },
+      "roles": {
+        "seniorDeveloper": "Senior Developer",
+        "juniorDeveloper": "Junior Developer",
+        "hrSpecialist": "HR Specialist",
+        "accountExecutive": "Account Executive"
+      },
+      "noEmployees": "No employees found matching the selected criteria."
     }
   }
 }
