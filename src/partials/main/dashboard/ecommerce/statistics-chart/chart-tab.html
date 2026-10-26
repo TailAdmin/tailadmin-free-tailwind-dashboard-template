@@ -1,0 +1,33 @@
+<div
+  class="flex items-center gap-0.5 rounded-lg bg-gray-100 p-0.5 dark:bg-gray-900"
+>
+  <button
+    type="button"
+    @click="setTab('overview')"
+    :class="selectedTab === 'overview' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'"
+    class="h-8 rounded-md px-3 text-sm font-medium transition-colors"
+    x-text="$t('ecommerce.statistics.overview')"
+  >
+    Overview
+  </button>
+
+  <button
+    type="button"
+    @click="setTab('sales')"
+    :class="selectedTab === 'sales' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'"
+    class="h-8 rounded-md px-3 text-sm font-medium transition-colors"
+    x-text="$t('ecommerce.statistics.sales')"
+  >
+    Sales
+  </button>
+
+  <button
+    type="button"
+    @click="setTab('revenue')"
+    :class="selectedTab === 'revenue' ? 'bg-white text-gray-900 shadow-theme-xs hover:bg-white hover:text-gray-900 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-800 dark:hover:text-white' : 'text-gray-500 hover:bg-transparent hover:text-gray-900 dark:text-gray-400 dark:hover:bg-transparent dark:hover:text-white'"
+    class="h-8 rounded-md px-3 text-sm font-medium transition-colors"
+    x-text="$t('ecommerce.statistics.revenue')"
+  >
+    Revenue
+  </button>
+</div>

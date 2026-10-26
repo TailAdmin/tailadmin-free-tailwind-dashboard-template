@@ -1,0 +1,27 @@
+<div
+  class="mb-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"
+>
+  <div>
+    <h3
+      class="text-lg font-semibold text-gray-800 dark:text-white/90"
+      x-text="$t('ecommerce.statistics.title')"
+    >
+      Statistics
+    </h3>
+    <p
+      class="mt-1 text-sm text-gray-500 dark:text-gray-400"
+      x-text="$t('ecommerce.statistics.subtitle')"
+    >
+      Target you've set for each month
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-3 sm:justify-end">
+    <include
+      src="./partials/main/dashboard/ecommerce/statistics-chart/chart-tab.html"
+    />
+    <include
+      src="./partials/main/dashboard/ecommerce/statistics-chart/date-picker.html"
+    />
+  </div>
+</div>

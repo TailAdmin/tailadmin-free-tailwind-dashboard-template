@@ -1,0 +1,25 @@
+<div class="relative inline-flex items-center">
+  <svg
+    class="pointer-events-none absolute inset-s-3 top-1/2 z-10 size-5 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M8 2a.75.75 0 01.75.75v1h6.5v-1a.75.75 0 011.5 0v1h1.75A2.25 2.25 0 0120.75 6v13a2.25 2.25 0 01-2.25 2.25h-13A2.25 2.25 0 013.25 19V6A2.25 2.25 0 015.5 3.75h1.75v-1A.75.75 0 018 2zm0 3.25H5.5a.75.75 0 00-.75.75v2.25h14.5V6a.75.75 0 00-.75-.75H8zm11.25 4.5H4.75V19c0 .414.336.75.75.75h13a.75.75 0 00.75-.75V9.75z"
+      fill="currentColor"
+    />
+  </svg>
+  <input
+    id="statisticsChartDatePicker"
+    class="h-9 w-48 max-w-full cursor-pointer rounded-lg border border-gray-200 bg-white ps-9 pe-3 text-sm font-medium text-gray-700 shadow-theme-xs outline-none hover:bg-gray-50 focus:border-brand-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50"
+    placeholder="Select date range"
+    :placeholder="$t('ecommerce.statistics.selectDateRange')"
+    data-class="flatpickr-right"
+    readonly="readonly"
+  />
+</div>

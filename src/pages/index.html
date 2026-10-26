@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template
+    </title>
+  </head>
+  <body
+    x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark bg-gray-900': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/common/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/layout/app-layout/sidebar/index.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
+      >
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <include src="./partials/layout/app-layout/header/index.html" />
+          <!-- ===== Header End ===== -->
+          <div
+            class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6"
+          >
+            <div class="grid grid-cols-12 gap-4 md:gap-6">
+              <div class="col-span-12 space-y-6 xl:col-span-7">
+                <!-- Ecommerce Metrics Start -->
+                <include
+                  src="./partials/main/dashboard/ecommerce/ecommerce-metrics.html"
+                />
+                <!-- Ecommerce Metrics End -->
+
+                <!-- Monthly Sales Chart Start -->
+                <include
+                  src="./partials/main/dashboard/ecommerce/monthly-sales-chart.html"
+                />
+                <!-- Monthly Sales Chart End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-5">
+                <!-- Monthly Target Start -->
+                <include
+                  src="./partials/main/dashboard/ecommerce/monthly-target.html"
+                />
+                <!-- Monthly Target End -->
+              </div>
+
+              <div class="col-span-12">
+                <!-- Statistics Chart Start -->
+                <include
+                  src="./partials/main/dashboard/ecommerce/statistics-chart.html"
+                />
+                <!-- Statistics Chart End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-5">
+                <!-- Demographic Card Start -->
+                <div>
+                  <include
+                    src="./partials/main/dashboard/ecommerce/demographic-card.html"
+                  />
+                </div>
+                <!-- Demographic Card End -->
+              </div>
+
+              <div class="col-span-12 xl:col-span-7">
+                <!-- Recent Orders Start -->
+                <include
+                  src="./partials/main/dashboard/ecommerce/recent-orders.html"
+                />
+                <!-- Recent Orders End -->
+              </div>
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

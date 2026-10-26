@@ -1,0 +1,22 @@
+<div>
+  <div class="relative">
+    <div class="max-h-45 overflow-hidden">
+      <div
+        id="monthlyTargetChart"
+        class="h-full [&_.apexcharts-datalabels-group]:translate-y-0! [&_.apexcharts-datalabels-group_.apexcharts-text]:fill-gray-800! [&_.apexcharts-datalabels-group_.apexcharts-text]:font-semibold! dark:[&_.apexcharts-datalabels-group_.apexcharts-text]:fill-white/90!"
+      ></div>
+    </div>
+
+    <span
+      class="absolute bottom-2.5 left-1/2 -translate-x-1/2 rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-600 dark:bg-green-500/15 dark:text-green-500"
+    >
+      +10%
+    </span>
+  </div>
+  <p
+    class="mx-auto mt-4.5 w-full max-w-95 text-center text-sm text-gray-500 sm:text-base dark:text-gray-400"
+    x-text="$t('ecommerce.monthlyTarget.earned', { amount: '$3287' })"
+  >
+    You earn $3287 today, it's higher than last month. Keep up your good work!
+  </p>
+</div>

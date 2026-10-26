@@ -1,0 +1,74 @@
+<div
+  class="rounded-2xl border border-gray-200 bg-white px-5 pt-5 pb-5 sm:px-6 sm:pt-6 sm:pb-5 dark:border-gray-800 dark:bg-white/3"
+>
+  <div class="flex items-center justify-between">
+    <h3
+      class="text-lg font-semibold text-gray-800 dark:text-white/90"
+      x-text="$t('ecommerce.monthlySales.title')"
+    >
+      Monthly Sales
+    </h3>
+    <div
+      x-data="dropdown({ placement: 'bottom-end' })"
+      @click.outside="open = false"
+      @keydown.escape.window="open = false"
+      class="relative h-fit"
+    >
+      <button
+        x-ref="trigger"
+        type="button"
+        @click="toggle"
+        class="inline-flex size-8 shrink-0 items-center justify-center rounded-[10px] border-none bg-transparent text-gray-700 transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 focus-visible:outline-hidden active:translate-y-px dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white"
+        :class="open ? 'bg-gray-50 text-gray-800 dark:bg-gray-700/50 dark:text-white' : ''"
+        aria-haspopup="true"
+        :aria-expanded="open"
+      >
+        <svg
+          class="size-5"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+          <circle cx="5" cy="12" r="1" />
+        </svg>
+      </button>
+      <div
+        x-ref="dropdown"
+        x-cloak
+        x-show="open"
+        x-transition:enter="animate-in fade-in-0 zoom-in-95 duration-100"
+        x-transition:leave="animate-out fade-out-0 zoom-out-95 fill-mode-forwards duration-75"
+        class="fixed z-40 w-40 space-y-1 rounded-2xl border border-gray-200 bg-white p-2 shadow-theme-lg outline-none dark:border-gray-800 dark:bg-[#1E2635]"
+      >
+        <button
+          type="button"
+          @click="open = false"
+          class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-gray-500 hover:bg-gray-100 hover:text-gray-700 rtl:text-right dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+          x-text="$t('common.viewMore')"
+        >
+          View More
+        </button>
+        <button
+          type="button"
+          @click="open = false"
+          class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-normal text-red-500 hover:bg-red-50 hover:text-red-600 rtl:text-right dark:text-red-400 dark:hover:bg-red-500/10 dark:hover:text-red-300"
+          x-text="$t('common.delete')"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-scrollbar max-w-full overflow-x-auto">
+    <div id="monthlySalesChart" class="min-w-162.5 xl:min-w-full"></div>
+  </div>
+</div>

@@ -1,0 +1,238 @@
+<div class="max-w-full overflow-x-auto">
+  <table class="min-w-full">
+    <thead class="border-y border-gray-100 dark:border-gray-800">
+      <tr>
+        <th
+          class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.products')"
+        >
+          Products
+        </th>
+        <th
+          class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.category')"
+        >
+          Category
+        </th>
+        <th
+          class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.price')"
+        >
+          Price
+        </th>
+        <th
+          class="py-3 text-start text-xs font-medium text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.status')"
+        >
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+      <!-- Order 1 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img
+                src="./images/product/product-01.jpg"
+                class="h-12.5 w-12.5 object-cover"
+                alt="MacBook Pro 13”"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                MacBook Pro 13”
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400"
+                x-text="$t('ecommerce.recentOrders.variants', { count: 2 })"
+              >
+                2 Variants
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="py-3 text-sm text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.categories.laptop')"
+        >
+          Laptop
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">$2399.00</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span
+            class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]"
+            x-text="$t('ecommerce.recentOrders.statuses.delivered')"
+          >
+            Delivered
+          </span>
+        </td>
+      </tr>
+
+      <!-- Order 2 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img
+                src="./images/product/product-02.jpg"
+                class="h-12.5 w-12.5 object-cover"
+                alt="Apple Watch Ultra"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                Apple Watch Ultra
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400"
+                x-text="$t('ecommerce.recentOrders.variants', { count: 1 })"
+              >
+                1 Variant
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="py-3 text-sm text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.categories.watch')"
+        >
+          Watch
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">$879.00</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span
+            class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-amber-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-amber-600 transition-colors select-none [text-shadow:0_4px_4px_rgba(254,223,137,0.60)] dark:bg-amber-500/15 dark:text-orange-400 dark:[text-shadow:0_4px_4px_rgba(247,144,9,0.20)]"
+            x-text="$t('ecommerce.recentOrders.statuses.pending')"
+          >
+            Pending
+          </span>
+        </td>
+      </tr>
+
+      <!-- Order 3 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img
+                src="./images/product/product-03.jpg"
+                class="h-12.5 w-12.5 object-cover"
+                alt="iPhone 15 Pro Max"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                iPhone 15 Pro Max
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400"
+                x-text="$t('ecommerce.recentOrders.variants', { count: 2 })"
+              >
+                2 Variants
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="py-3 text-sm text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.categories.smartphone')"
+        >
+          SmartPhone
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">$1869.00</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span
+            class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]"
+            x-text="$t('ecommerce.recentOrders.statuses.delivered')"
+          >
+            Delivered
+          </span>
+        </td>
+      </tr>
+
+      <!-- Order 4 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img
+                src="./images/product/product-04.jpg"
+                class="h-12.5 w-12.5 object-cover"
+                alt="iPad Pro 3rd Gen"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                iPad Pro 3rd Gen
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400"
+                x-text="$t('ecommerce.recentOrders.variants', { count: 2 })"
+              >
+                2 Variants
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="py-3 text-sm text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.categories.electronics')"
+        >
+          Electronics
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">$1699.00</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span
+            class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-red-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-red-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-red-200)] dark:bg-red-500/15 dark:text-red-500 dark:[text-shadow:0_4px_4px_rgba(240,68,56,0.20)]"
+            x-text="$t('ecommerce.recentOrders.statuses.canceled')"
+          >
+            Canceled
+          </span>
+        </td>
+      </tr>
+
+      <!-- Order 5 -->
+      <tr>
+        <td class="py-3">
+          <div class="flex items-center gap-3">
+            <div class="h-12.5 w-12.5 overflow-hidden rounded-md">
+              <img
+                src="./images/product/product-05.jpg"
+                class="h-12.5 w-12.5 object-cover"
+                alt="AirPods Pro 2nd Gen"
+              />
+            </div>
+            <div>
+              <p class="text-sm font-medium text-gray-800 dark:text-white/90">
+                AirPods Pro 2nd Gen
+              </p>
+              <span
+                class="text-xs text-gray-500 dark:text-gray-400"
+                x-text="$t('ecommerce.recentOrders.variants', { count: 1 })"
+              >
+                1 Variant
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="py-3 text-sm text-gray-500 dark:text-gray-400"
+          x-text="$t('ecommerce.recentOrders.categories.accessories')"
+        >
+          Accessories
+        </td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">$240.00</td>
+        <td class="py-3 text-sm text-gray-500 dark:text-gray-400">
+          <span
+            class="inline-flex h-5.5 w-fit shrink-0 items-center justify-center gap-1 rounded-lg bg-green-50 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-green-600 transition-colors select-none [text-shadow:0_4px_4px_var(--color-green-200)] dark:bg-green-500/15 dark:text-green-500 dark:[text-shadow:0_4px_4px_rgba(18,183,106,0.20)]"
+            x-text="$t('ecommerce.recentOrders.statuses.delivered')"
+          >
+            Delivered
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
