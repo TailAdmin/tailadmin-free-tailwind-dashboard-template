@@ -13,6 +13,10 @@ import "./components/calendar/calendar-init.js";
 import chart01 from "./components/charts/chart-01";
 import chart02 from "./components/charts/chart-02";
 import chart03 from "./components/charts/chart-03";
+import barChart01 from "./components/charts/bar-chart/bar-chart-01";
+import barChart02 from "./components/charts/bar-chart/bar-chart-02";
+import lineChart01 from "./components/charts/line-chart/line-chart-01";
+import lineChart02 from "./components/charts/line-chart/line-chart-02";
 import monthlySalesChart from "./components/ecommerce/monthly-sales-chart";
 import monthlyTargetChart from "./components/ecommerce/monthly-target-chart";
 import statisticsChart from "./components/ecommerce/statistics-chart";
@@ -102,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
   chart02();
   chart03();
   map01();
+  lineChart01();
+  lineChart02();
+  barChart01();
+  barChart02();
 });
 
 // Get the current year
