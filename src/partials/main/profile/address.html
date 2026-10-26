@@ -1,0 +1,124 @@
+<div
+  x-data="{
+    address: {
+      country: 'United Kingdom',
+      cityState: 'Leeds, East London',
+      postalCode: 'ERT 2489',
+      taxId: 'AS4568384'
+    },
+    isModalOpen: false,
+    editForm: {
+      country: '',
+      cityState: '',
+      postalCode: '',
+      taxId: ''
+    },
+    openModal() {
+      this.editForm = JSON.parse(JSON.stringify(this.address));
+      this.isModalOpen = true;
+    },
+    saveAddress() {
+      this.address = JSON.parse(JSON.stringify(this.editForm));
+      this.isModalOpen = false;
+    }
+  }"
+  class="rounded-2xl border border-gray-200 bg-white p-5 lg:p-6 dark:border-gray-800 dark:bg-white/3"
+>
+  <div
+    class="flex flex-col gap-6 sm:flex-row lg:items-start lg:justify-between"
+  >
+    <div class="flex-1">
+      <h4
+        class="mb-4 text-lg font-semibold text-gray-800 lg:mb-6 dark:text-white/90"
+      >
+        Address
+      </h4>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-7 2xl:gap-x-32">
+        <div>
+          <p
+            class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400"
+          >
+            Country
+          </p>
+          <p
+            class="text-sm font-medium text-gray-800 dark:text-white/90"
+            x-text="address.country?.trim() || 'N/A'"
+          >
+            United Kingdom
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400"
+          >
+            City/State
+          </p>
+          <p
+            class="text-sm font-medium text-gray-800 dark:text-white/90"
+            x-text="address.cityState?.trim() || 'N/A'"
+          >
+            Leeds, East London
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400"
+          >
+            Postal Code
+          </p>
+          <p
+            class="text-sm font-medium text-gray-800 dark:text-white/90"
+            x-text="address.postalCode?.trim() || 'N/A'"
+          >
+            ERT 2489
+          </p>
+        </div>
+
+        <div>
+          <p
+            class="mb-2 text-xs leading-normal text-gray-500 dark:text-gray-400"
+          >
+            TAX ID
+          </p>
+          <p
+            class="text-sm font-medium text-gray-800 dark:text-white/90"
+            x-text="address.taxId?.trim() || 'N/A'"
+          >
+            AS4568384
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button
+        type="button"
+        @click="openModal()"
+        class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm font-medium text-gray-700 shadow-theme-xs transition-all outline-none select-none hover:bg-gray-50 hover:text-gray-800 focus-visible:ring-3 focus-visible:ring-gray-300/50 active:translate-y-px lg:w-auto dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-white"
+      >
+        <svg
+          class="size-5"
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M17.091 3.532a2.25 2.25 0 00-3.182 0l-8.302 8.302c-.308.308-.52.7-.61 1.126l-.735 3.485a.75.75 0 00.888.889l3.485-.735a2.25 2.25 0 001.127-.611l8.301-8.302a2.25 2.25 0 000-3.182l-.972-.972zm-2.121 1.06a.75.75 0 011.06 0l.973.973a.75.75 0 010 1.06l-.899.899-2.033-2.033.899-.898zm-1.96 1.96l-6.342 6.342a.75.75 0 00-.203.376l-.498 2.358 2.358-.497a.75.75 0 00.376-.204l6.343-6.342-2.033-2.033z"
+            fill="currentColor"
+          />
+        </svg>
+        <span>Edit</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Edit Address Modal -->
+  <include src="./edit-address-modal.html" />
+</div>
