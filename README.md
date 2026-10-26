@@ -101,6 +101,22 @@ To learn more about pro version features and pricing, visit our [pricing page](h
 
 ## Update Logs
 
+### Version 2.5.0 - [October 26, 2026]
+
+- Added fully modular HR dashboards with specialized KPI cards, heatmap grids, and timeline analytics.
+- Integrated `@tanstack/alpine-table` for client-side sorting, search filtering, and pagination across directory and transaction tables.
+- Updated AI Assistant (Text, Image, Code, and Video generators), Chat, Support Tickets, Email, and Task management pages layout.
+- Added dedicated internationalized 404 error page and clean redirect handling.
+- Decoupled monolithic page templates into reusable, modular Alpine.js partials across layouts, dashboards, and UI elements.
+- Updated interactive map modules powered by MapLibre GL, Leaflet, and jsvectormap.
+- Modularized ApexCharts partials and isolated dedicated JavaScript controllers for all chart types (Bar, Line, Pie, Radar, Radial).
+- Standardized CSS variables and color tokens aligned with Tailwind CSS v4.
+- Enhanced dropdown, card, and button animations using `tw-animate-css`.
+- Integrated `@alpinejs/focus` for accessible dialogs, modals, and keyboard focus trapping.
+- Configured ESLint (`@eslint/js`, `eslint-config-prettier`) and Prettier (`prettier-plugin-tailwindcss`) code quality workflows.
+- Added Cloudflare Wrangler deployment configuration and optimized Webpack asset compilation.
+- Updated core libraries including Alpine.js plugins, FullCalendar, and Swiper.
+
 ### Version 2.4.0 - [September 13, 2026]
 
 - Added Internationalization (Multi Language) support.

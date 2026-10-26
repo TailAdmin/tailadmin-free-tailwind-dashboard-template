@@ -1,0 +1,20 @@
+# Legacy AI generator routes (both extensionless and .html)
+/code-generator         /ai-chat/code        301
+/code-generator.html    /ai-chat/code        301
+/image-generator        /ai-chat/image       301
+/image-generator.html   /ai-chat/image       301
+/text-generator         /ai-chat/text        301
+/text-generator.html    /ai-chat/text        301
+/video-generator        /ai-chat/video       301
+/video-generator.html   /ai-chat/video       301
+
+# AI settings default route
+/ai-settings            /ai-settings/account 301
+/ai-settings.html       /ai-settings/account 301
+/ai-settings/index.html /ai-settings/account 301
+
+# UI Elements
+/modals                 /dialogs             301
+/modals.html            /dialogs             301
+/button-group           /buttons             301
+/button-group.html      /buttons             301

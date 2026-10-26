@@ -1,4 +1,12 @@
 node_modules
-package-lock.json
-/build
+build
+.vercel
+.commandcode
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
 .DS_Store
