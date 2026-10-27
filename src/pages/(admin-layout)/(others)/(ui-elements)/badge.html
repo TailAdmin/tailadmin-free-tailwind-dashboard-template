@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Badge | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+  </head>
+  <body
+    x-data="{ page: 'badge', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark bg-gray-900': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/common/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/layout/app-layout/sidebar/index.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
+      >
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <include src="./partials/layout/app-layout/header/index.html" />
+          <!-- ===== Header End ===== -->
+          <div
+            class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6"
+          >
+            <!-- Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'Badges' }">
+              <include src="./partials/common/page-breadcrumb.html" />
+            </div>
+            <!-- Breadcrumb End -->
+
+            <div class="space-y-5 sm:space-y-6">
+              <!-- With Solid Background Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'With Solid Background' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/solid-variant.html"
+                  />
+                </div>
+              </div>
+              <!-- With Solid Background Card End -->
+
+              <!-- With Light Background Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'With Light Background' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/light-variant.html"
+                  />
+                </div>
+              </div>
+              <!-- With Light Background Card End -->
+
+              <!-- Ghost Variant Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Ghost Variant' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/ghost-variant.html"
+                  />
+                </div>
+              </div>
+              <!-- Ghost Variant Card End -->
+
+              <!-- Solid Background with Leading Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div
+                  x-data="{ cardTitle: 'Solid Background with Leading Icon' }"
+                >
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/solid-variant-with-leading-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Solid Background with Leading Icon Card End -->
+
+              <!-- Light Background with Leading Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div
+                  x-data="{ cardTitle: 'Light Background with Leading Icon' }"
+                >
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/light-variant-with-leading-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Light Background with Leading Icon Card End -->
+
+              <!-- Ghost Variant with Leading Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Ghost Variant with Leading Icon' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/ghost-variant-with-leading-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Ghost Variant with Leading Icon Card End -->
+
+              <!-- Solid Background with Trailing Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div
+                  x-data="{ cardTitle: 'Solid Background with Trailing Icon' }"
+                >
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/solid-variant-with-trailing-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Solid Background with Trailing Icon Card End -->
+
+              <!-- Light Background with Trailing Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div
+                  x-data="{ cardTitle: 'Light Background with Trailing Icon' }"
+                >
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/light-variant-with-trailing-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Light Background with Trailing Icon Card End -->
+
+              <!-- Ghost Variant with Trailing Icon Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Ghost Variant with Trailing Icon' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/badges/ghost-variant-with-trailing-icon.html"
+                  />
+                </div>
+              </div>
+              <!-- Ghost Variant with Trailing Icon Card End -->
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

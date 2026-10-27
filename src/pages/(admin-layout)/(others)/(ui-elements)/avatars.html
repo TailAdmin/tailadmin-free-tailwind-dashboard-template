@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Avatars | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+  </head>
+  <body
+    x-data="{ page: 'avatars', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark bg-gray-900': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/common/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/layout/app-layout/sidebar/index.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
+      >
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <include src="./partials/layout/app-layout/header/index.html" />
+          <!-- ===== Header End ===== -->
+          <div class="mx-auto max-w-(--breakpoint-2xl) p-4 md:p-6">
+            <!-- Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'Avatar' }">
+              <include src="./partials/common/page-breadcrumb.html" />
+            </div>
+            <!-- Breadcrumb End -->
+
+            <div class="space-y-5 sm:space-y-6">
+              <!-- Default Avatar Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Default Avatar' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include
+                    src="./partials/others/ui-elements/avatars/default-avatar.html"
+                  />
+                </div>
+              </div>
+              <!-- Default Avatar Card End -->
+
+              <!-- Avatar Group Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Avatar Group' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include
+                    src="./partials/others/ui-elements/avatars/avatar-group.html"
+                  />
+                </div>
+              </div>
+              <!-- Avatar Group Card End -->
+
+              <!-- Avatar with Online Indicator Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Avatar with Online Indicator' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include
+                    src="./partials/others/ui-elements/avatars/online-indicator.html"
+                  />
+                </div>
+              </div>
+              <!-- Avatar with Online Indicator Card End -->
+
+              <!-- Avatar with Offline Indicator Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Avatar with Offline Indicator' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include
+                    src="./partials/others/ui-elements/avatars/offline-indicator.html"
+                  />
+                </div>
+              </div>
+              <!-- Avatar with Offline Indicator Card End -->
+
+              <!-- Avatar with Busy Indicator Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Avatar with Busy Indicator' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div class="border-t border-gray-100 p-8 dark:border-gray-800">
+                  <include
+                    src="./partials/others/ui-elements/avatars/busy-indicator.html"
+                  />
+                </div>
+              </div>
+              <!-- Avatar with Busy Indicator Card End -->
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>

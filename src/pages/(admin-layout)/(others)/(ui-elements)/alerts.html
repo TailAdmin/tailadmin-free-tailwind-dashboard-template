@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
+  </head>
+  <body
+    x-data="{ page: 'alerts', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark bg-gray-900': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/common/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/layout/app-layout/sidebar/index.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-x-hidden overflow-y-auto"
+      >
+        <!-- ===== Main Content Start ===== -->
+        <main id="main-content">
+          <!-- ===== Header Start ===== -->
+          <include src="./partials/layout/app-layout/header/index.html" />
+          <!-- ===== Header End ===== -->
+          <div
+            class="mx-auto max-w-(--breakpoint-2xl) p-4 pb-20 md:p-6 md:pb-6"
+          >
+            <!-- Page Breadcrumb Start -->
+            <div x-data="{ pageTitle: 'Alerts' }">
+              <include src="./partials/common/page-breadcrumb.html" />
+            </div>
+            <!-- Page Breadcrumb End -->
+
+            <div class="space-y-5 sm:space-y-6">
+              <!-- Default Alert Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Default Alert' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/alerts/alert-default.html"
+                  />
+                </div>
+              </div>
+              <!-- Default Alert Card End -->
+
+              <!-- Success Alert Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Success Alert' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/alerts/alert-success.html"
+                  />
+                </div>
+              </div>
+              <!-- Success Alert Card End -->
+
+              <!-- Warning Alert Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Warning Alert' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/alerts/alert-warning.html"
+                  />
+                </div>
+              </div>
+              <!-- Warning Alert Card End -->
+
+              <!-- Error Alert Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Error Alert' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/alerts/alert-error.html"
+                  />
+                </div>
+              </div>
+              <!-- Error Alert Card End -->
+
+              <!-- Info Alert Card Start -->
+              <div
+                class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/3"
+              >
+                <div x-data="{ cardTitle: 'Info Alert' }">
+                  <include src="./partials/common/component-card-header.html" />
+                </div>
+                <div
+                  class="border-t border-gray-100 p-4 sm:p-6 dark:border-gray-800"
+                >
+                  <include
+                    src="./partials/others/ui-elements/alerts/alert-info.html"
+                  />
+                </div>
+              </div>
+              <!-- Info Alert Card End -->
+            </div>
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
