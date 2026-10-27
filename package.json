@@ -46,6 +46,7 @@
     "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
+    "@alpinejs/collapse": "^3.17.5",
     "@alpinejs/persist": "^3.17.2",
     "@floating-ui/dom": "^1.8.0",
     "@tanstack/alpine-table": "^9.3.1",

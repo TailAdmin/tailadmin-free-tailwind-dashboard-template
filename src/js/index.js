@@ -3,6 +3,7 @@ import "flatpickr/dist/flatpickr.min.css";
 import "jsvectormap/dist/jsvectormap.min.css";
 import "../css/style.css";
 
+import collapse from "@alpinejs/collapse";
 import persist from "@alpinejs/persist";
 import Alpine from "alpinejs";
 import Dropzone from "dropzone";
@@ -47,6 +48,7 @@ import tooltip from "./components/ui/tooltip";
 })();
 
 Alpine.plugin(persist);
+Alpine.plugin(collapse);
 window.Alpine = Alpine;
 
 // Setup i18next & Alpine reactive integration
