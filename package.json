@@ -53,7 +53,7 @@
     "alpinejs": "^3.17.2",
     "apexcharts": "^7.3.0",
     "dropzone": "^6.2.1",
-    "flatpickr": "^4.6.13",
+    "flatpickr": "npm:flatpickr-ce@^4.7.0",
     "fullcalendar": "^7.1.0",
     "i18next": "^26.4.2",
     "i18next-browser-languagedetector": "^8.2.1",
