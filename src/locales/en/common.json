@@ -13,7 +13,7 @@
     "groups": {
       "menu": "Platser",
       "support": "Support",
-      "others": "Annat"
+      "others": "Fix och annat roligt"
     },
     "badges": {
       "new": "new",
@@ -26,6 +26,7 @@
       "bolmen" : "Bolmen",
       "ringsjon" : "Ringsjön",
       "vomb" : "Vombsjön",
+      "eloverview" : "El Översikt",
       "elforbrukning" : "Elförbrukning",
       "kommuner" : "Kommuner",
       "analytics": "Analytics",
