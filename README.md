@@ -73,6 +73,33 @@ git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
     yarn dev
     ```
 
+## UI-tester (Playwright)
+
+Testerna ligger i `tests/` och körs mot dev-servern på http://localhost:5173.
+
+### Köra testerna
+
+```bash
+npx playwright test tests/kommuner.spec.ts --project=chromium
+```
+
+Dev-servern startas automatiskt om den inte redan körs.
+
+### Rapporter
+
+Varje körning skriver en markdown-rapport till `rapporter/`, med tider, resultat per test och felmeddelanden vid fel. Mappen ignoreras i git.
+
+### Tester
+
+- **kommunsidan visar kartan och hover-texten**: kontrollerar att rubriken och standardtexten i högerpanelen syns.
+- **Malmö- och Lund-länkarna går till rätt adress**: kontrollerar URL:erna `/malmo`, `/lund` och `/kommuner`.
+- **hover över en kommun ändrar högerpanelen**: kontrollerar att standardtexten försvinner vid hover över region `1280`.
+
+### Begränsningar
+
+- Testerna kontrollerar inte innehållet på Malmö- och Lund-sidorna.
+- Hover-testet kontrollerar inte vilken data panelen visar.
+
 ## Components
 
 TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The
