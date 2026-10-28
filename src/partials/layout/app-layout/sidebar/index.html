@@ -13,7 +13,7 @@
 <aside
   x-cloak
   :class="sidebarToggle ? 'translate-x-0 xl:w-22.5' : '-translate-x-full rtl:translate-x-full'"
-  class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-auto border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black"
+  class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-72.5 flex-col border-r border-gray-200 bg-white px-5 transition-all duration-300 xl:static xl:translate-x-0 rtl:right-0 rtl:left-auto rtl:border-r-0 rtl:border-l dark:border-gray-800 dark:bg-black"
   @click.outside="if (window.innerWidth < 1280) sidebarToggle = false"
   aria-label="sidebar navigation"
 >
@@ -21,7 +21,7 @@
   <include src="./sidebar-header.html" />
 
   <div
-    class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
+    class="no-scrollbar flex flex-1 flex-col overflow-y-auto duration-300 ease-linear"
   >
     <!-- Sidebar Menu -->
     <nav
@@ -35,8 +35,10 @@
       <include src="./sidebar-nav-group-others.html" />
     </nav>
     <!-- Sidebar Menu -->
+  </div>
 
-    <!-- Sidebar Widget -->
+  <!-- Sidebar Widget -->
+  <div :class="sidebarToggle ? 'xl:hidden' : ''" class="pt-1 pb-4">
     <include src="./sidebar-widget.html" />
   </div>
 </aside>
