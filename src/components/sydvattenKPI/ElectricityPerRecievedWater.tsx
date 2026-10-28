@@ -13,6 +13,8 @@ export default function ElectricityPerRecievedWater({ location }: { location: Lo
         Elförbrukning: 200 Kw/h. <br></br>
         Invånare: 0.
       </p>
+
+      <
     </div>
   );
 }

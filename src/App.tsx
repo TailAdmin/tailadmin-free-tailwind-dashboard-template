@@ -20,6 +20,8 @@ import Bolmen from "./pages/Locations/Bolmen";
 import Vomb from "./pages/Locations/Vomb";
 import Ringsjon from "./pages/Locations/Ringsjon";
 import Kommuner from "./pages/Kommuner/Kommuner";
+import Malmo from "./pages/Kommuner/Malmo";
+import Lund from "./pages/Kommuner/Lund";
 
 export default function App() {
   return (
@@ -36,7 +38,8 @@ export default function App() {
             <Route path="/vomb" element={<Vomb/>} />
             <Route path="/ringsjon" element={<Ringsjon/>} />
             <Route path="/kommuner" element={<Kommuner/>} />
-
+            <Route path="/malmo" element={<Malmo/>}/>
+            <Route path="/lund" element={<Lund/>}/>
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/blank" element={<Blank />} />

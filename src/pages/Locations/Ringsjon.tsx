@@ -1,13 +1,19 @@
-import EcommerceMetrics from '@/components/TailAdminComponents/ecommerce/EcommerceMetrics'
-import React from 'react'
+import LocationCard from '@/components/sydvattenKPI/LocationCard'
+import { locationById } from '@/data/locations'
+import LatestFlowCard from '@/components/sydvattenKPI/LatestFlowCard'
+import VattenNivaCard from '@/components/sydvattenKPI/VattenNivaCard'
 
 const Ringsjon = () => {
   return (
-    <div > <h3 aria-brailleroledescription=''>Ringsjön </h3> 
-        <div>
-            
-            <EcommerceMetrics></EcommerceMetrics>
-            
+    <div className="grid grid-cols-1 gap-4 md:gap-6">
+      <h4 className="mt-2 text-title-sm font-bold text-gray-800 dark:text-white/90">Ringsjön</h4> 
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+            <LocationCard location={locationById.ringsjon} />
+                
+                   <VattenNivaCard location ={locationById.ringsjon}/>
+               
+                   <LatestFlowCard location ={locationById.ringsjon} />
+               
             </div></div>
     
   )

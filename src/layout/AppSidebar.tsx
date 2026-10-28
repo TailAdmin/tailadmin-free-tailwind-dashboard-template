@@ -31,7 +31,8 @@ const navItems: NavItem[] = [
     icon: <PageIcon></PageIcon>,
     name: "asodk",
     key: "locationOverview",
-    subItems: [{ name: "Vattenflöden", key: "bolmen", path: "/bolmen" },
+    subItems: [
+      { name: "Vattenflöden", key: "bolmen", path: "/bolmen" },
       { name: "Vattenflöden", key: "vomb", path: "/vomb" },
       { name: "Vattenflöden", key: "ringsjon", path: "/ringsjon"} ],
   },
@@ -39,7 +40,8 @@ const navItems: NavItem[] = [
     icon: <PageIcon></PageIcon>,
     name: "asodk",
     key: "elforbrukning",
-    subItems: [{ name: "bolmenWater", key: "bolmen", path: "/" },
+    subItems: [
+      { name: "bolmenWater", key: "bolmen", path: "/" },
       { name: "vombWater", key: "vomb", path: "/" },
       { name: "ringsjonWater", key: "ringsjon", path: "/"} ],
   },
@@ -47,7 +49,10 @@ const navItems: NavItem[] = [
     icon: <PageIcon></PageIcon>,
     name: "asodk",
     key: "kommuner",
-    subItems: [{ name: "Kommuner", key: "kommuner", path: "/kommuner" }],
+    subItems: [
+      { name: "kommuner", key: "kommunoversikt", path: "/kommuner" },
+      { name: "kommuner", key: "malmo", path: "/malmo" },
+      { name: "kommuner", key: "lund", path: "/lund" }],
   }
 ];
 
