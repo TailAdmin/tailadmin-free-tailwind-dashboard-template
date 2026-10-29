@@ -18,3 +18,11 @@
 /modals.html            /dialogs             301
 /button-group           /buttons             301
 /button-group.html      /buttons             301
+
+# Error pages
+/404                    /error-404           301
+/404.html               /error-404           301
+/500                    /error-500           301
+/500.html               /error-500           301
+/503                    /error-503           301
+/503.html               /error-503           301

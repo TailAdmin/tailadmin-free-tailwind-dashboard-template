@@ -13,7 +13,7 @@
     </title>
   </head>
   <body
-    x-data="{ page: 'page404', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'error404', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode')) ?? false;
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"

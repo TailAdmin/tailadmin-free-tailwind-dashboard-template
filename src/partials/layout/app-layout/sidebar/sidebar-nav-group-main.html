@@ -352,10 +352,10 @@
         aria-controls="menu-pages"
         :aria-expanded="selected === 'Pages' ? 'true' : 'false'"
         class="group menu-item"
-        :class="(selected === 'Pages') || (page === 'blank' || page === 'page404') ? 'menu-item-active' : 'menu-item-inactive'"
+        :class="(selected === 'Pages') || (page === 'blank' || page === 'error404') ? 'menu-item-active' : 'menu-item-inactive'"
       >
         <svg
-          :class="(selected === 'Pages') || (page === 'blank' || page === 'page404') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
+          :class="(selected === 'Pages') || (page === 'blank' || page === 'error404') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -421,10 +421,10 @@
           </li>
           <li>
             <a
-              href="404.html"
+              href="error-404.html"
               target="_blank"
               class="group menu-dropdown-item"
-              :class="page === 'page404' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+              :class="page === 'error404' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
               x-text="$t('sidebar.items.error404')"
             >
               404 Error

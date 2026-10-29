@@ -90,7 +90,7 @@ module.exports = {
           to: (context) => context.parsedUrl.pathname + ".html",
         },
       ],
-      index: "/404.html",
+      index: "/error-404.html",
     },
     setupMiddlewares: (middlewares, devServer) => {
       const redirects = [
@@ -111,6 +111,13 @@ module.exports = {
         ["/ai-settings/", "/ai-settings/account.html"],
         ["/ai-settings.html", "/ai-settings/account.html"],
         ["/ai-settings/index.html", "/ai-settings/account.html"],
+        // Error pages
+        ["/404", "/error-404.html"],
+        ["/404.html", "/error-404.html"],
+        ["/500", "/error-500.html"],
+        ["/500.html", "/error-500.html"],
+        ["/503", "/error-503.html"],
+        ["/503.html", "/error-503.html"],
       ];
 
       redirects.forEach(([from, to]) => {
@@ -128,14 +135,17 @@ module.exports = {
             const fs = devServer.compiler.outputFileSystem;
             const path404 = path.join(
               devServer.compiler.outputPath,
-              "404.html",
+              "error-404.html",
             );
             let html404 = null;
 
             if (fs && fs.existsSync(path404)) {
               html404 = fs.readFileSync(path404, "utf8");
             } else {
-              const diskFallback = path.resolve(__dirname, "build/404.html");
+              const diskFallback = path.resolve(
+                __dirname,
+                "build/error-404.html",
+              );
               if (require("fs").existsSync(diskFallback)) {
                 html404 = require("fs").readFileSync(diskFallback, "utf8");
               }
