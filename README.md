@@ -73,32 +73,68 @@ git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
     yarn dev
     ```
 
-## UI-tester (Playwright)
+## UI tests with Playwright
 
-Testerna ligger i `tests/` och körs mot dev-servern på http://localhost:5173.
+The tests for the municipality page live in `tests/` and run against the dev server at http://localhost:5173.
 
-### Köra testerna
+### Prerequisites
+
+- Node.js 20.x or later
+- The repository cloned and the `testing-branch` checked out
+
+### Installation
+
+```bash
+npm install
+npx playwright install
+```
+
+- `npm install` installs Playwright and the other packages listed in `package.json`.
+- `npx playwright install` downloads the browsers (Chromium, Firefox, WebKit). It only needs to be run once per machine.
+
+### Running the tests
+
+Run the three tests in Chromium:
 
 ```bash
 npx playwright test tests/kommuner.spec.ts --project=chromium
 ```
 
-Dev-servern startas automatiskt om den inte redan körs.
+The dev server starts automatically if it is not already running. If you already have `npm run dev` running, Playwright reuses that server.
 
-### Rapporter
+To run in all browsers:
 
-Varje körning skriver en markdown-rapport till `rapporter/`, med tider, resultat per test och felmeddelanden vid fel. Mappen ignoreras i git.
+```bash
+npx playwright test tests/kommuner.spec.ts
+```
 
-### Tester
+To watch the browser while the tests run:
 
-- **kommunsidan visar kartan och hover-texten**: kontrollerar att rubriken och standardtexten i högerpanelen syns.
-- **Malmö- och Lund-länkarna går till rätt adress**: kontrollerar URL:erna `/malmo`, `/lund` och `/kommuner`.
-- **hover över en kommun ändrar högerpanelen**: kontrollerar att standardtexten försvinner vid hover över region `1280`.
+```bash
+npx playwright test tests/kommuner.spec.ts --project=chromium --headed
+```
 
-### Begränsningar
+### Reports
 
-- Testerna kontrollerar inte innehållet på Malmö- och Lund-sidorna.
-- Hover-testet kontrollerar inte vilken data panelen visar.
+Each run writes a markdown report to the `rapporter/` folder, with timestamps, the result for each test, and error messages for failures. The file name includes the time, for example `rapport-2026-10-29T11-17-00-000Z.md`. The folder is ignored by git.
+
+### Tests
+
+- **kommunsidan visar kartan och hover-texten** (the municipality page shows the map and hover text): checks that the "Översikt" heading and the default text in the side panel are visible.
+- **Malmö- och Lund-länkarna går till rätt adress** (the Malmö and Lund links go to the right address): clicks Malmö, Lund and Kartöversikt, and checks the URLs `/malmo`, `/lund` and `/kommuner`.
+- **hover över en kommun ändrar högerpanelen** (hovering over a municipality changes the side panel): hovers over region `1280` and checks that the default text disappears.
+
+### Limitations
+
+- The tests do not check the content of the Malmö and Lund pages.
+- The hover test does not check which data the panel shows.
+- The tests do not verify that the chart data is correct. That is covered by backend tests.
+
+### Troubleshooting
+
+- **`npx playwright` not found:** run `npm install` again.
+- **Tests fail with `ERR_CONNECTION_REFUSED`:** the dev server did not start. Check that `npm run dev` works.
+- **The hover test fails:** check that region `1280` exists on the map. The map may have changed.
 
 ## Components
 
