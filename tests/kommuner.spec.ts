@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Test 1: Kommunsidan laddas.
- * Kontrollerar att rubriken "Översikt" och texten i högerpanelen syns.
- * Grönt: sidan och kartpanelen renderas.
- * Rött: sidan laddas inte, rutten /kommuner saknas, eller texterna har ändrats.
+ * Test 1: The municipality page loads.
+ * Checks that the "Översikt" heading and the default text in the side panel are visible.
+ * Pass: the page and the map panel render.
+ * Fail: the page does not load, the /kommuner route is missing, or the texts have changed.
  */
 test('kommunsidan visar kartan och hover-texten', async ({ page }) => {
   await page.goto('/kommuner');
@@ -18,12 +18,12 @@ test('kommunsidan visar kartan och hover-texten', async ({ page }) => {
 });
 
 /**
- * Test 2: Menylänkarna för Malmö och Lund fungerar.
- * Klickar på Malmö, Lund och Kartöversikt och kontrollerar att URL:en blir
- * /malmo, /lund respektive /kommuner.
- * Grönt: menylänkarna leder till rätt adress.
- * Rött: en länk saknas, fel adress, eller routingen i App.tsx stämmer inte.
- * Obs: testet kontrollerar inte innehållet på Malmö- och Lund-sidorna.
+ * Test 2: The Malmö and Lund menu links work.
+ * Clicks Malmö, Lund and Kartöversikt and checks that the URL becomes
+ * /malmo, /lund and /kommuner respectively.
+ * Pass: the menu links lead to the correct addresses.
+ * Fail: a link is missing, the address is wrong, or the routing in App.tsx does not match.
+ * Note: the test does not check the content of the Malmö and Lund pages.
  */
 test('Malmö- och Lund-länkarna går till rätt adress', async ({ page }) => {
   await page.goto('/kommuner');
@@ -39,12 +39,12 @@ test('Malmö- och Lund-länkarna går till rätt adress', async ({ page }) => {
 });
 
 /**
- * Test 3: Hover över en kommun ändrar högerpanelen.
- * Hovrar över region 1280 på kartan och kontrollerar att standardtexten
- * "Hovra över en kommun..." försvinner.
- * Grönt: panelen reagerar på hover.
- * Rött: hover ger ingen reaktion, eller data-code="1280" finns inte på kartan.
- * Obs: testet kontrollerar inte vad panelen visar i stället.
+ * Test 3: Hovering over a municipality changes the side panel.
+ * Hovers over region 1280 on the map and checks that the default text
+ * "Hovra över en kommun..." disappears.
+ * Pass: the panel reacts to the hover.
+ * Fail: the hover has no effect, or data-code="1280" does not exist on the map.
+ * Note: the test does not check what the panel shows instead.
  */
 test('hover över en kommun ändrar högerpanelen', async ({ page }) => {
   await page.goto('/kommuner');
