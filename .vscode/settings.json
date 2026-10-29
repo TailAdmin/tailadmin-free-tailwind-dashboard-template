@@ -1,4 +1,5 @@
 {
   "css.validate": false,
-  "prettier.printWidth": 80
+  "prettier.printWidth": 80,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

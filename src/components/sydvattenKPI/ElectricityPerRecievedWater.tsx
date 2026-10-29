@@ -14,7 +14,7 @@ export default function ElectricityPerRecievedWater({ location }: { location: Lo
         Invånare: 0.
       </p>
 
-      <
+      
     </div>
   );
 }
