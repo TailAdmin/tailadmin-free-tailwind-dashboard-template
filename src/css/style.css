@@ -366,6 +366,11 @@ layer(base);
 .apexcharts-tooltip-marker {
   @apply !mr-1.5 !h-1.5 !w-1.5;
 }
+.apexcharts-canvas,
+.apexcharts-canvas * {
+  direction: ltr !important;
+}
+
 .apexcharts-legend-text {
   @apply !pl-5 !text-gray-700 dark:!text-gray-400;
 }
@@ -595,6 +600,10 @@ span.flatpickr-weekday,
 
 .flatpickr-calendar.static {
   @apply right-0 rtl:right-auto rtl:left-0;
+}
+
+[dir="rtl"] .flatpickr-calendar {
+  direction: rtl;
 }
 
 [dir="rtl"] .flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,
