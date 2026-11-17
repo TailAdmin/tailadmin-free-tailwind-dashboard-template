@@ -101,6 +101,14 @@ To learn more about pro version features and pricing, visit our [pricing page](h
 
 ## Update Logs
 
+### Version 2.5.1 - [November 17, 2026]
+
+- Updated sidebar widget label to "Purchase Now" and refined sidebar header spacing.
+- Replaced the filled eye icon with a stroke icon in password toggles, inputs, and dropzone preview.
+- Updated 404 page and countdown timer title sizing.
+- Hid the native dropdown arrow on phone number country selects.
+- Improved RTL support for ApexCharts and `flatpickr` calendars.
+
 ### Version 2.5.0 - [October 26, 2026]
 
 - Added new HR dashboards.
